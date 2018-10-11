@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/rendall
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://rendall.tv
+  * I am rendall (https://keybase.io/rendall) on keybase.
+  * I have a public key ASCQAUvXTIMQUOpgwMnEjjU96nXmB0_pV-oqdZb2LwM3ego
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012090014bd74c831050ea60c0c9c48e353dea75e6074fe957ea2a7596f62f03377a0a",
+      "host": "keybase.io",
+      "kid": "012090014bd74c831050ea60c0c9c48e353dea75e6074fe957ea2a7596f62f03377a0a",
+      "uid": "81d1e244e948e6a2595ecc6ecaddfa19",
+      "username": "rendall"
+    },
+    "merkle_root": {
+      "ctime": 1539243739,
+      "hash": "82114be41d248c6f47845214ff09827ace5768a5a518c8aa9c1672025bd7d46363fa3c2d0e0589bcc580b7c3e823f8545b52837276fb640d63471e818d2594da",
+      "hash_meta": "9a077e8eb31a397c2dc46aa7a00b01f7eb912a92d1af483264b81aa13484ee9a",
+      "seqno": 3779604
+    },
+    "service": {
+      "entropy": "9G0Gkq9+QS6o6N4qgUwJo9io",
+      "hostname": "rendall.tv",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.7.3"
+  },
+  "ctime": 1539243765,
+  "expire_in": 504576000,
+  "prev": "de1cf2a45f77b87ce34171ab8e6cfa95c09ff0641b2f5e7eea5c90a7efbf4ed5",
+  "seqno": 28,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgkAFL10yDEFDqYMDJxI41Pep15gdP6VfqKnWW9i8DN3oKp3BheWxvYWTESpcCHMQg3hzypF93uHzjQXGrjmz6lcCf8GQbL15+6lyQp++/TtXEILX6XxVsQm3WNdIh/f1DC3MV72Iw4mIOpMuP0xswHzf6AgHCo3NpZ8RAGSvD8tYMGdOxRReJ/GJGEqUkakKn6qLxXfNbh9Q5uXjrPHV4FKE4pKDmAlwd3kMaB4QehdEdFmHK97yq+AqqCKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIFNrVjQuZQtG2UqThKxZN3bsWxRJSKteWeEhgwoBVo61o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rendall
+
+==================================================================
