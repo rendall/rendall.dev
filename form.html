@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form name="contact" method="POST" netlify-honeypot="hpot" netlify>
+    <form name="contact" method="POST" netlify-honeypot="city" netlify>
         <fieldset>
             <label for="name">your name<input name="name"></label>
             <div class="notify-invalid">please enter your name</div>
@@ -23,7 +23,7 @@
             <div class="notify-invalid">please enter a message</div>
         </fieldset>
         <input type="hidden" name="form-name" value="contact" /> 
-        <input name="hpot" />
+        <input type="hidden" name="city" />
         <button>Send</button>
     </form>
 </body>
