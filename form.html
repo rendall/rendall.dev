@@ -6,98 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        html {
-            font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif;
-            background-color: #efeeee;
-            color: #403434;
-        }
-
-        a, .link {
-            color: black;
-            text-decoration: none;
-        }
-
-        a:hover, .link:hover {
-            text-decoration: underline;
-        }
-
-        form input, textarea {
-            display: block;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin-left: 1rem;
-        }
-
-        li {
-            margin-bottom: 1rem;
-        }
-
-        li img {
-            width: 2rem;
-            height: 2rem;
-            vertical-align: middle;
-            margin-right: 1rem;
-        }
-
-        input[type=checkbox] {
-            height: 0;
-            width: 0;
-            visibility: hidden;
-            display: none;
-        }
-
-        input+label {
-            cursor: pointer;
-        }
-
-        form {
-            visibility: hidden;
-        }
-
-        fieldset {
-            border: none;
-        }
-
-        input,
-        textarea {
-            width: 30rem;
-        }
-
-        input:checked~form {
-            visibility: visible;
-        }
-
-        .notify-invalid {
-            display: none;
-        }
-    </style>
 </head>
-
 <body>
-    <ul>
-        <li><a href="/rendall"><img alt="résumé" src="icons/resume.svg" />résumé </a></li>
-        <li><a href="http://rendallkoski.blogspot.fi"><img alt="thoughts" src="icons/thought.svg" />thoughts </a></li>
-        <li><a href="mailto:rendall@gmail.com" target="_blank" rel="noopener"><img alt="email" src="icons/email.svg" />email
-            </a></li>
-        <li><a href="https://github.com/rendall" target="_blank" rel="noopener"><img alt="github" src="icons/github.svg" />github
-            </a></li>
-        <li><a href="https://twitter.com/rendall" target="_blank" rel="noopener"><img alt="twitter" src="icons/twitter.svg" />twitter
-            </a></li>
-        <li><a href="https://www.linkedin.com/in/rendallkoski/" target="_blank" rel="noopener"><img alt="linkedin" src="icons/linkedin.svg" />linkedin
-            </a></li>
-        <li><a href="https://keybase.io/rendall" target="_blank" rel="noopener"><img alt="keybase" src="icons/keybase.svg" />keybase
-            </a></li>
-        <li><a href="https://www.goodreads.com/user/show/4419416-rendall" target="_blank" rel="noopener"><img alt="goodreads"
-                    src="icons/goodreads.svg" />goodreads </a></li>
-        <li><a href="tel:+13037369736" target="_blank" rel="noopener"><img alt="voice" src="icons/phone.svg" />voice
-                (US)</a></li>
-        <li>
-            <input id="form-toggle" type="checkbox" />
-            <label for="form-toggle" class="link"><img alt="hello" src="icons/hello.svg" />say hello</label>
+       <p><img alt="hello" src="icons/hello.svg" />say hello</p>
+        <p>You can get in touch with me by filling out this form. The message will come to me in a dream, so be imaginitive!</p>
+                    <p>Please leave valid contact information, or I will not be able to get back in touch with you.</p>
             <form name="contact" method="POST" netlify-honeypot="city" netlify>
                 <fieldset>
                     <label for="name">your name<input name="name"></label>
@@ -115,7 +28,5 @@
                 <input type="hidden" name="city" />
                 <button>Send</button>
             </form>
-        </li>
-    </ul>
 </body>
 </html>
