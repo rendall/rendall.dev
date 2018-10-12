@@ -9,22 +9,28 @@
 </head>
 
 <body>
-    <form name="contact" method="POST" netlify-honeypot="city" netlify>
-        <fieldset>
-            <label for="name">your name<input name="name"></label>
-            <div class="notify-invalid">please enter your name</div>
-        </fieldset>
-        <fieldset>
-            <label for="email">email<input name="email" /></label>
-            <div class="notify-invalid">please enter an email</div>
-        </fieldset>
-        <fieldset>
-            <label for="message">message<textarea name="message"></textarea></label>
-            <div class="notify-invalid">please enter a message</div>
-        </fieldset>
-        <input type="hidden" name="form-name" value="contact" /> 
-        <input type="hidden" name="city" />
-        <button>Send</button>
-    </form>
+    <ul>
+        <li>
+            <input id="form-toggle" type="checkbox" />
+            <label for="form-toggle" class="link"><img alt="hello" src="icons/hello.svg" />say hello</label>
+            <form name="contact" method="POST" netlify-honeypot="city" netlify>
+                <fieldset>
+                    <label for="name">your name<input name="name"></label>
+                    <div class="notify-invalid">please enter your name</div>
+                </fieldset>
+                <fieldset>
+                    <label for="email">email<input name="email" /></label>
+                    <div class="notify-invalid">please enter an email</div>
+                </fieldset>
+                <fieldset>
+                    <label for="message">message<textarea name="message"></textarea></label>
+                    <div class="notify-invalid">please enter a message</div>
+                </fieldset>
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="city" />
+                <button>Send</button>
+            </form>
+        </li>
+    </ul>
 </body>
 </html>
