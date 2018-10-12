@@ -1,25 +1,30 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <form name="contact" method="POST" netlify>
-        <p>
-          <label>Your Name: <input type="text" name="name" /></label>   
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email" /></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
+        <fieldset>
+            <label for="name">your name<input name="name"></label>
+            <div class="notify-invalid">please enter your name</div>
+        </fieldset>
+        <fieldset>
+            <label for="email">email<input name="email" /></label>
+            <div class="notify-invalid">please enter an email</div>
+        </fieldset>
+        <fieldset>
+            <label for="message">message<textarea name="message"></textarea></label>
+            <div class="notify-invalid">please enter a message</div>
+        </fieldset>
+        <input type="hidden" name="form-name" value="contact" /> Netlify expects this field. q.v.
+        https://www.netlify.com/docs/form-handling/
+        <button>Send</button>
+    </form>
 </body>
 </html>
