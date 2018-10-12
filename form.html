@@ -6,6 +6,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html {
+            font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif;
+            background-color: #efeeee;
+            color: #403434;
+        }
+
+        a, .link {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover, .link:hover {
+            text-decoration: underline;
+        }
+
+        form input, textarea {
+            display: block;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-left: 1rem;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        li img {
+            width: 2rem;
+            height: 2rem;
+            vertical-align: middle;
+            margin-right: 1rem;
+        }
+
+        input[type=checkbox] {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+            display: none;
+        }
+
+        input+label {
+            cursor: pointer;
+        }
+
+        form {
+            visibility: hidden;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        input,
+        textarea {
+            width: 30rem;
+        }
+
+        input:checked~form {
+            visibility: visible;
+        }
+
+        .notify-invalid {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
