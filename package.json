@@ -1,0 +1,22 @@
+{
+  "name": "rendall.tv",
+  "version": "0.1.0",
+  "description": "The website for rendall.tv",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rendall/rendall.github.io.git"
+  },
+  "author": "Rendall Koski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rendall/rendall.github.io/issues"
+  },
+  "homepage": "https://github.com/rendall/rendall.github.io#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.5.4"
+  }
+}
