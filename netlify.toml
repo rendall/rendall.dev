@@ -1,0 +1,25 @@
+# rewrite blog.rendall.tv to show content at /blog
+[[redirects]]
+from = "https://blog.rendall.tv"
+to = "/blog"
+status = 200
+force = false
+
+[[redirects]]
+from = "https://blog.rendall.tv/*"
+to = "/blog/:splat"
+status = 200
+force = false
+
+# but *redirect* the url /blog to the url blog.rendall.tv
+[[redirects]]
+from = "/blog"
+to = "https://blog.rendall.tv"
+status = 301
+force = true
+
+[[redirects]]
+from = "/blog/*"
+to = "https://blog.rendall.tv/:splat"
+status = 301
+force = true
