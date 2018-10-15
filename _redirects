@@ -1,2 +1,2 @@
-https://blog.rendall.tv https://rendall.tv/blog 200
-https://blog.rendall.tv/* https://rendall.tv/blog/:splat 200
+https://blog.rendall.tv /blog 200
+https://blog.rendall.tv/* /blog/:splat 200
