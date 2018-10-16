@@ -260,11 +260,16 @@
         // It is more important that the site is navigable by keyboard than it do interesting things without javascript.
         const onFormToggle = (e) => {
             e.preventDefault();
-            document.querySelector('.contain-form').classList.toggle('is-visible');
-            document.querySelector('.contain-form').classList.remove('is-success');
-            document.querySelector('.notify-success').classList.remove('is-success');
-            resetError();
+            const isSuccess = document.querySelector('.contain-form').classList.contains('is-visible');
+
+            if (isSuccess) {
+                document.querySelector('.contain-form').classList.remove('is-success');
+                document.querySelector('.notify-success').classList.remove('is-success');
+                resetError();
+            }
+            else document.querySelector('.contain-form').classList.toggle('is-visible');
         }
+
         document.querySelector('#form-toggle').addEventListener('click', onFormToggle);
 
         // To include those browsers that do not use js, the form is visible by default and hidden with javascript.
