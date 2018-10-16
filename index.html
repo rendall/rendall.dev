@@ -261,6 +261,9 @@
         const onFormToggle = (e) => {
             e.preventDefault();
             document.querySelector('.contain-form').classList.toggle('is-visible');
+            document.querySelector('.contain-form').classList.remove('is-success');
+            document.querySelector('.notify-success').classList.remove('is-success');
+            resetError();
         }
         document.querySelector('#form-toggle').addEventListener('click', onFormToggle);
 
