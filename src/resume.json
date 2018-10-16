@@ -1,0 +1,16 @@
+{
+    "name": "Rendall Koski",
+    "experience": [
+        {
+            "firm": "Futurice",
+            "dateStart": "2018-04",
+            "description": "Lorem Ipsum"
+        },
+        {
+            "firm": "Loyalistic Oy",
+            "dateStart": "2014-05",
+            "dateEnd": "2015-09",
+            "description": "Sic dolor amet"
+        }
+    ]
+}
