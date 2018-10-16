@@ -260,7 +260,7 @@
         // It is more important that the site is navigable by keyboard than it do interesting things without javascript.
         const onFormToggle = (e) => {
             e.preventDefault();
-            const isSuccess = document.querySelector('.contain-form').classList.contains('is-visible');
+            const isSuccess = document.querySelector('.notify-success').classList.contains('is-success');
 
             if (isSuccess) {
                 document.querySelector('.contain-form').classList.remove('is-success');
