@@ -4,7 +4,8 @@
   "description": "The website for rendall.tv",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "cd src && eleventy --input=. --output=../"
   },
   "repository": {
     "type": "git",
