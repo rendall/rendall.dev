@@ -255,13 +255,15 @@
 
         document.querySelector('form button').addEventListener('click', onFormClick);
 
-        // I tried to do a CSS-only toggle to show the form 'say hello' using the hidden checkbox hack, but it did not play well with accessibility.
-        // It's more important to me that the site be navigable by keyboard than that it do interesting things without javascript.
+        // The CSS-only 'hidden checkbox button toggle' hack does not play well with a11y.
+        // It is more important that the site is navigable by keyboard than it do interesting things without javascript.
         const onFormToggle = (e) => {
             e.preventDefault();
             document.querySelector('.contain-form').classList.toggle('is-visible');
         }
         document.querySelector('#form-toggle').addEventListener('click', onFormToggle);
-        document.querySelector('.contain-form').classList.remove('is-visible'); // this hides the form if javascript is enabled
+
+        // To include those browsers that do not use js, the form is visible by default and hidden with javascript.
+        document.querySelector('.contain-form').classList.remove('is-visible'); 
     </script>
 </body>
