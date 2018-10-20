@@ -23,3 +23,6 @@ from = "/blog/*"
 to = "https://blog.rendall.tv/:splat"
 status = 301
 force = true
+
+[build]
+  functions = "/functions"
