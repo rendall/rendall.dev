@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build": "cd src && eleventy --input=. --output=../"
+    "help": "sass --help",
+    "build:11ty": "cd src && eleventy --input=. --output=../",
+    "build:css": "sass ./src/scss:./css --no-source-map",
+    "build": "sass ./src/scss:./css --no-source-map && cd src && eleventy --input=. --output=../"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   "homepage": "https://github.com/rendall/rendall.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.5.4",
-    "netlify-lambda": "^1.0.2"
+    "netlify-lambda": "^1.0.2",
+    "sass": "^1.14.3"
   }
 }

@@ -4,119 +4,8 @@
     <title>Rendall's website</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" hreflang="en" href="http://www.rendall.tv" />
-    <style>
-        html {
-            font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif;
-            background-color: #efeeee;
-            color: #403434;
-        }
-        
-        main {
-            max-width: 35rem;
-        }
-
-        a {
-            color: black;
-            text-decoration: none;
-        }
-        
-        a:focus {
-            outline: darkslategray solid 1px;
-            outline-offset: 5px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        form input, textarea {
-            display: block;
-            border: solid gray 1px;
-            border-radius: 0.5rem;    
-            padding-left: 0.5rem;
-            font-family: 'Courier New', Courier, monospace; 
-            font-weight: bold;
-            font-size: 1rem;
-            color: #6a5151;
-            min-height: 2rem;
-            width: 90%;
-            max-width: 30rem;
-            min-width: 15rem;
-        }
-
-        fieldset {
-            border: none;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin-left: 1rem;
-        }
-
-        li {
-            margin-bottom: 1rem;
-        }
-
-        li img {
-            width: 2rem;
-            height: 2rem;
-            vertical-align: middle;
-            margin-right: 1rem;
-        }
-
-        .contain-form {
-            visibility: hidden;
-        }
-
-        .contain-form.is-visible {
-            visibility: visible;
-        }
-
-        .contain-form.is-success {
-            display: none;
-        }
-
-        .notify-invalid {
-            display: none;
-        }
-        
-        .notify-invalid.is-invalid {
-            display: block;
-            color: red;
-        }
-        
-        .notify-success {
-            display: none;
-        }
-        
-        .notify-success.is-success {
-            display: block;
-        }
-
-        .notify-error {
-            display: none;
-        }
-
-        .notify-error.is-error {
-            display: block;
-            color: red;
-        }
-
-        .h15rem {
-            height: 15rem;
-        }
-        
-        .h2rem {
-            height: 2rem;
-        }
-
-        .pad-top-05rem {
-            padding-top: 0.5rem;
-        }
-    </style>
-
+    <link rel="alternate" hreflang="en" href="//www.rendall.tv" />
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
 </head>
 
 <body>
@@ -125,14 +14,14 @@
         <h1>Rendall<span>&nbsp;</span>Koski</h1>
     </header>
 
-    <main>
+    <main class="max-width-35rem">
         <section>
             <p>I am an expat US citizen living in Finland. I create software, code, cook, hike, mix cocktails, practice
                 Finnish and frighten horses.</p>
             <p>Here are various ways to contact me or otherwise get to know me. I'm sure with a little creative
                 stalking, you could find others.</p>
             <ul>
-                <li><a href="/rendall"><img alt="résumé" src="icons/resume.svg" />résumé </a></li>
+                <li><a href="/resume"><img alt="résumé" src="icons/resume.svg" />résumé </a></li>
                 <li><a href="/blog"><img alt="thoughts" src="icons/thought.svg" />thoughts
                     </a></li>
                 <li><a href="mailto:rendall@gmail.com" target="_blank" rel="noopener"><img alt="email" src="icons/email.svg" />email
