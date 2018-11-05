@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build": "cd src && eleventy --input=. --output=../"
+    "help": "sass --help",
+    "build:11ty": "cd src && eleventy --input=. --output=../",
+    "build:css": "sass ./src/scss:./css --no-source-map",
+    "build": "sass ./src/scss:./css --no-source-map && cd src && eleventy --input=. --output=../"
   },
   "repository": {
     "type": "git",
