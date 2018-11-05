@@ -580,3 +580,9 @@ ul.comma-separated-list > li:last-child:after {
 .Resume .no-print a:hover {
   text-decoration: underline;
 }
+
+@media print {
+  html {
+    background-color: white;
+  }
+}

@@ -623,3 +623,9 @@ th {
                 }
             }
         }
+
+        @media print {
+            html {
+                background-color: white;
+            }
+        }
