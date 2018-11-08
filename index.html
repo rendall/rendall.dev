@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
+<html>
+
 <head>
     <title>Rendall's website</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="alternate" hreflang="en" href="//www.rendall.tv" />
-    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen">
+    <link rel="preload" as="stylesheet" href="/css/styles.css" type="text/css" media="screen">
 </head>
 
 <body>
@@ -41,128 +43,41 @@
                 <li>
                     <a href="#" id="form-toggle"><img alt="hello" src="icons/hello.svg" />say hello</a>
                     <span class="contain-form is-visible">
-                <p>You can get in touch with me by filling out this form. The message will come to me in a dream, so be imaginitive!</p>
-                    <p>Please leave valid contact information, or I will not be able to get back in touch with you.</p>
-                    <div class="notify-error"><p>There was an error. It's me, not you. You could try again later? Or try another method? Email? Smoke signals? Tell me what went wrong!</p><p id="error-message"></p></div>
-                    <form name="contact" method="POST" netlify-honeypot="city" netlify>
-                        <fieldset>
-                            <label for="message">message<textarea name="message" class="h15rem pad-top-05rem"></textarea></label>
-                            <div class="notify-invalid">please enter a message</div>
-                        </fieldset>
-                        <fieldset>
-                            <label for="name">your name<input name="name" class="h2rem"></label>
-                            <div class="notify-invalid">please enter your name</div>
-                        </fieldset>
-                        <fieldset>
-                            <label for="email">email<input name="email" class="h2rem"/></label>
-                            <div class="notify-invalid">please enter an email</div>
-                        </fieldset>
-                        <input type="hidden" name="form-name" value="contact" />
-                        <input type="hidden" name="confirm" />
-                        <fieldset><button>Send</button></fieldset>
-                    </form>
+                        <p>You can get in touch with me by filling out this form. The message will come to me in a
+                            dream, so be imaginitive!</p>
+                        <p>Please leave valid contact information, or I will not be able to get back in touch with you.</p>
+                        <div class="notify-error">
+                            <p>There was an error. It's me, not you. You could try again later? Or try another method?
+                                Email? Smoke signals? Tell me what went wrong!</p>
+                            <p id="error-message"></p>
+                        </div>
+                        <form name="contact" method="POST" netlify-honeypot="city" netlify>
+                            <fieldset>
+                                <label for="message">message<textarea name="message" class="h15rem pad-top-05rem"></textarea></label>
+                                <div class="notify-invalid">please enter a message</div>
+                            </fieldset>
+                            <fieldset>
+                                <label for="name">your name<input name="name" class="h2rem"></label>
+                                <div class="notify-invalid">please enter your name</div>
+                            </fieldset>
+                            <fieldset>
+                                <label for="email">email<input name="email" class="h2rem" /></label>
+                                <div class="notify-invalid">please enter an email</div>
+                            </fieldset>
+                            <input type="hidden" name="form-name" value="contact" />
+                            <input type="hidden" name="confirm" />
+                            <fieldset><button>Send</button></fieldset>
+                        </form>
                     </span>
-                    <div class="notify-success"><p>Message successfully received! Thank you.</p></div>
+                    <div class="notify-success">
+                        <p>Message successfully received! Thank you.</p>
+                    </div>
                 </li>
             </ul>
         </section>
     </main>
-    <script type="text/javascript">
+    <script src="js/home.js" type="text/javascript"></script>
 
-        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        const isValidField = (field) => {
-            switch (field.name) {
-                case "name": return field.value != "";
-                case "email": return emailRegex.test(field.value);
-                case "message": return field.value != "";
-                case "form-name": {
-                    const formName = document.querySelector('form').attributes.getNamedItem('name').value;
-                    if (field.value !== formName) console.warn(`form-name field '${field.value}' does not equal form name '${formName}'`);
-                    return true; // Invalidating a hidden field would confuse the user.
-                }
-                case "confirm": return true;
-                default: {
-                    console.warn(`unknown field name '${field.name}'`);
-                    return true; // invalidating an unknown field would confuse the user
-                }
-            }
-        }
-
-        const sendMessage = (fields, url) => {
-            const sendExec = (resolve, reject) => {
-                const params = fields.map(f => `${f.name}=${encodeURI(f.value)}`).join('&');
-                const sendReq = new XMLHttpRequest();
-                const onSendComplete = (e) => sendReq.status === 200 ? resolve() : reject(`${sendReq.status}:${sendReq.statusText}`);
-
-                sendReq.open('POST', url);
-                sendReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                sendReq.timeout = 5000;
-
-                sendReq.addEventListener('load', onSendComplete);
-                sendReq.send(params);
-            }
-
-            return new Promise(sendExec);
-        }
-
-        const showSuccess = () => {
-
-            document.querySelector('.contain-form').classList.add('is-success');
-            document.querySelector('.notify-success').classList.add('is-success');
-            resetError();
-            console.log('success');
-        }
-
-        const showError = (e) => {
-            document.querySelector('.notify-error').classList.add('is-error');
-            document.querySelector('#error-message').innerHTML = e;
-            console.error(e);
-        }
-
-        const showInvalid = (invalidFields) => invalidFields.map(f => document.querySelector(`label[for=${f}] + .notify-invalid`)).forEach(div => div.classList.add('is-invalid'));
-        const resetState = (collection, stateName, x=0, dummy=null) => collection.item(x) === null? null : resetState(collection, stateName, x+1, collection.item(x).classList.remove(stateName));
-
-        const resetError = () => {
-            resetState(document.getElementsByClassName('notify-error'), 'is-error');
-            document.querySelector('#error-message').innerHTML = "";
-
-        }
-        const onFormClick = (e) => {
-            e.preventDefault();
-
-            resetState(document.getElementsByClassName('notify-invalid'), 'is-invalid');
-            const fields = Array.from(document.querySelectorAll('form input,textarea'));
-            const invalidFields = fields.reduce( (acc,f) => isValidField(f)? acc : [...acc, f.name], []);
-            const isValid = invalidFields.length === 0;
-
-            if (isValid) sendMessage(fields, '/')
-                .then(response => showSuccess(response))
-                .catch(error => showError(error));
-
-            else showInvalid(invalidFields);
-        }
-
-        document.querySelector('form button').addEventListener('click', onFormClick);
-
-        // The CSS-only 'hidden checkbox button toggle' hack does not play well with a11y.
-        // It is more important that the site is navigable by keyboard than it do interesting things without javascript.
-        const onFormToggle = (e) => {
-            e.preventDefault();
-            const isSuccess = document.querySelector('.notify-success').classList.contains('is-success');
-
-            if (isSuccess) {
-                document.querySelector('.contain-form').classList.remove('is-success');
-                document.querySelector('.contain-form').classList.add('is-visible');
-                document.querySelector('.notify-success').classList.remove('is-success');
-                resetError();
-            }
-            else document.querySelector('.contain-form').classList.toggle('is-visible');
-        }
-
-        document.querySelector('#form-toggle').addEventListener('click', onFormToggle);
-
-        // To include those browsers that do not use js, the form is visible by default and hidden with javascript.
-        document.querySelector('.contain-form').classList.remove('is-visible'); 
-    </script>
 </body>
+
+</html>
