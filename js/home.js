@@ -91,4 +91,4 @@ const onFormToggle = (e) => {
 document.querySelector('#form-toggle').addEventListener('click', onFormToggle);
 
 // To include those browsers that do not use js, the form is visible by default and hidden with javascript.
-document.querySelector('.contain-form').classList.remove('is-visible');
+// document.querySelector('.contain-form').classList.remove('is-visible');
