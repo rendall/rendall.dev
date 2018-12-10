@@ -65,8 +65,9 @@
                                 <label for="email">email<input name="email" class="h2rem" /></label>
                                 <div class="notify-invalid">please enter an email</div>
                             </fieldset>
-                            <input type="hidden" name="form-name" value="contact" />
-                            <input type="hidden" name="city" />
+                            <fieldset class="hide">
+                                <!-- spam prevention: this should remain empty --><label for="city">city</label><input name="city" />
+                            </fieldset>
                             <fieldset><button>Send</button></fieldset>
                         </form>
                     </span>
