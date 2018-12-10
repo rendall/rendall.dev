@@ -1,133 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Rendall&#39;s Blog</title>
+		<link rel="stylesheet" href="/css/styles.css">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rendall&#39;s Blog">
+	</head>
+	<body>
+		<header>
+			<h1 class="home"><a href="/">Rendall&#39;s Blog</a></h1>
+			<ul class="nav"><li class="nav-item nav-item-active"><a href="/blog/">Home</a></li><li class="nav-item"><a href="/blog/posts/">Archive</a></li></ul>
+		</header>
 
-<head>
-    <title>Rendall's website</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        html {
-            font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif;
-            background-color: #efeeee;
-            color: #403434;
-        }
-        
-        main {
-            max-width: 35rem;
-        }
+		<main class="tmpl-home">
+			
 
-        a {
-            color: black;
-            text-decoration: none;
-        }
-        
-        a:focus {
-            outline: darkslategray solid 1px;
-            outline-offset: 5px;
-        }
+<ol reversed class="postlist" style="counter-reset: start-from 3">
 
-        a:hover {
-            text-decoration: underline;
-        }
+  <li class="postlist-item">
+    <h2><a href="/blog/posts/2018.11.05/" class="postlist-link">Placeholder</a></h2>
+    <time class="postlist-date" datetime="2018-12-10">10 Dec 2018</time>
+    <article> <p>This is a holder for my blog until I migrate my site this week. I will be using eleventy.</p>
+<p>My old blog is <a href="https://rendallkoski.blogspot.com/">here</a>.</p>
+<p>The blog's title is an anagram.</p>
 
-        form input, textarea {
-            display: block;
-            border: solid gray 1px;
-            border-radius: 0.5rem;    
-            padding-left: 0.5rem;
-            font-family: 'Courier New', Courier, monospace; 
-            font-weight: bold;
-            font-size: 1rem;
-            color: #6a5151;
-            min-height: 2rem;
-            width: 30rem;
-            min-width: 15rem;
-        }
+    
+      <a href="/tags/meta/" class="tag">meta</a>
+  </li>
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin-left: 1rem;
-        }
+  <li class="postlist-item">
+    <h2><a href="/blog/posts/2018.11.10/" class="postlist-link">Giving good technical interview</a></h2>
+    <time class="postlist-date" datetime="2018-11-10">10 Nov 2018</time>
+    <article> <p>Having both received and given a fair number of technical interviews, I have some thoughts on what makes an interview a good and productive experience for all involved. Of course, every company is different, but generally companies that attract and hold good people seem to follow these general patterns.</p>
+<ul>
+<li>Agenda - have a written agenda for the interview.</li>
+<li>Mutual interview - interviewers are aware that they are also being interviewed and so represent the company well, <em>even</em> if the interviewee seems to lack confidence or is eager to please.</li>
+<li>Relaxed - interviewers that deliberately ramp up tension are not getting the best out of their candidates.</li>
+<li>Focus - interview time should be set aside for the interview without distraction. Interviewers should not be multi-tasking during the interview, and should particularly avoid checking emails or texting or catching up on sleep.</li>
+<li>Allow for breaks during the interview.</li>
+<li>Feedback - allow some time at the end for the interviewee to give feedback about the interview itself.</li>
+<li>Coding exercise - definitely have a coding exercise, whether pair-programming or whiteboard or some other method. If the job involves coding, there should be some sort of coding challenge during the interview. Whole encyclopedias have been written about coding exercises and how to do them properly, and it is very unique to the company. That said, an in-interview coding challenge is inherently stressful, and so all attempts should be made to minimize that stress. After all, a well-run company should not be looking for people who can code well under stress.</li>
+</ul>
 
-        li {
-            margin-bottom: 1rem;
-        }
+    
+      <a href="/tags/tech/" class="tag">tech</a>
+      <a href="/tags/interview/" class="tag">interview</a>
+  </li>
 
-        li img {
-            width: 2rem;
-            height: 2rem;
-            vertical-align: middle;
-            margin-right: 1rem;
-        }
+</ol>
 
-        .contain-form {
-            visibility: hidden;
-        }
 
-        .contain-form.is-visible {
-            visibility: visible;
-        }
+<p>More <a href="/posts/">here</a>.</p>
 
-        fieldset {
-            border: none;
-        }
 
-        .contain-form.is-success {
-            display: none;
-        }
+		</main>
 
-        .notify-invalid {
-            display: none;
-        }
-        
-        .notify-invalid.is-invalid {
-            display: block;
-            color: red;
-        }
-        
-        .notify-success {
-            display: none;
-        }
-        
-        .notify-success.is-success {
-            display: block;
-        }
+		<footer></footer>
 
-        .notify-error {
-            display: none;
-        }
-
-        .notify-error.is-error {
-            display: block;
-            color: red;
-        }
-
-        .h15rem {
-            height: 15rem;
-        }
-        
-        .h2rem {
-            height: 2rem;
-        }
-
-        .pad-top-05rem {
-            padding-top: 0.5rem;
-        }
-    </style>
-
-</head>
-
-<body>
-    <header>
-        <h1>Rendall's blog</h1>
-    </header>
-
-    <main>
-        <article>
-            <p>2018.11.05</p>
-            <p>This is a holder for my blog until I migrate my site this week. I will be using <a href="https://11ty.io">eleventy</a>.</p>
-            <p>Old blog is <a href="https://rendallkoski.blogspot.com">here</a>.</p>
-            <p><a href="//rendall.tv">Home</a></p>
-        </article>
-    </main>
-</body>
+		<!-- Current page: /blog/ -->
+	</body>
+</html>

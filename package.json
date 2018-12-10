@@ -7,7 +7,7 @@
     "test": "test",
     "help": "sass --help",
     "build:11ty": "cd _src && eleventy --input=. --output=../",
-    "build:css": "sass ./_src/scss:./css --no-source-map",
+    "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
     "build": "yarn run build:11ty && yarn run build:css"
   },
   "repository": {

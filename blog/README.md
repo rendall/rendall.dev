@@ -1,0 +1,1 @@
+This subdirectory of the main site is served as the root of a subdomain. Therefore internal absolute links should not include the subdirectory in their paths.

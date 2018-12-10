@@ -1,6 +1,7 @@
 {
-  "title": "Kola Red Slink",
+  "title": "Rendall's Blog",
   "url": "https://blog.rendall.tv",
+  "homesite": "https://www.rendall.tv",
   "feed": {
     "subtitle": "Sketches, thoughts, and observations on all the things. A personal notebook.",
     "filename": "feed.xml",
