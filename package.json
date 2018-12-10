@@ -6,9 +6,9 @@
   "scripts": {
     "test": "test",
     "help": "sass --help",
-    "build:11ty": "cd src && eleventy --input=. --output=../",
-    "build:css": "sass ./src/scss:./css --no-source-map",
-    "build": "sass ./src/scss:./css --no-source-map && cd src && eleventy --input=. --output=../"
+    "build:11ty": "cd _src && eleventy --input=. --output=../",
+    "build:css": "sass ./_src/scss:./css --no-source-map",
+    "build": "yarn run build:11ty && yarn run build:css"
   },
   "repository": {
     "type": "git",
