@@ -1,8 +1,8 @@
 ---
-permalink: /blog/tags/
 layout: layouts/home.njk
+permalink: /tags/index.html
 ---
-<h1>Tags</h1>
+<h2 class="Blog__Headline">Tags</h2>
 
 {% for tag in collections.tagList %}
   {% set tagUrl %}/tags/{{ tag }}/{% endset %}
