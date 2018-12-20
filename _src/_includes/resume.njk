@@ -20,5 +20,8 @@
     </div>
         {{ content | safe }}
     </main>
+    <script>
+        document.querySelector('#print-button').addEventListener('click', () => window.print());
+    </script>
 </body>
 </html>
