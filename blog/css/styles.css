@@ -405,6 +405,11 @@ body {
   padding: 0;
 }
 
+.Site,
+.Blog,
+.Resume {
+  margin-left: 1rem;
+}
 .Site section,
 .Blog section,
 .Resume section {
@@ -552,10 +557,6 @@ body {
   content: "";
 }
 
-.Resume {
-  margin-left: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
-}
 .Resume h1,
 .Resume h2,
 .Resume h3,

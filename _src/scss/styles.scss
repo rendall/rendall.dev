@@ -438,6 +438,9 @@ body {
 .Site,
 .Blog,
 .Resume {
+
+  margin-left: 1rem;
+  
   section {
     margin: 1rem;
   }
@@ -560,9 +563,6 @@ body {
 }
 
 .Resume {
-  margin-left: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
-
   h1,
   h2,
   h3,
