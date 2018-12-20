@@ -10,7 +10,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy.MM.dd');
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-MM-dd');
   });
   
   // The normal slug filter does not completely remove url-unsafe characters, so use this:
@@ -36,25 +36,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // only content in the `posts/` directory
-  eleventyConfig.addCollection("posts", function(collection) {
-    //const removeBlogPath = (post) => post.url && post.url.startsWith('/blog')? {...post, url:post.url.slice(5)} : post;
-    //const alterItems = (coll) => ({...coll, items:coll.items.map(removeBlogPath)});
-
-    //collection.items = collection.items.map(removeBlogPath);
-    //collection = alterItems(collection);
-
-    const sortedCollection = collection.getFilteredByGlob("./posts/*").sort(function(a, b) {
-      return a.date - b.date;
-    });
-    //console.log("sortedCollection", sortedCollection);
-
-    return sortedCollection;
-
-    //const alteredCollection = sortedCollection.map(removeBlogPath);
-
-    //console.log("alteredCollection", alteredCollection);
-    //return alteredCollection;
-  });
+  eleventyConfig.addCollection("posts", collection => collection.getFilteredByGlob("./posts/*").sort((a, b) => a.date - b.date ));
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
