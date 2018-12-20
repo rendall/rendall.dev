@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+templateClass: Blog__Post
+permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title | slugify }}/index.html
+---
+<h2 class="Blog__Title">{{ title }}</h2>
+
+<article class="Blog__Article">
+<time class="Blog__Date" datetime="{{ page.year }}-{{ page.month }}-{{ page.day }}">{{ date | readableDate }}</time>
+{{ content | safe }}
+</article>
+
+<p><a href="{{ '/' | url }}">← Home</a></p>

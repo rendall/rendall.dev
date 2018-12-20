@@ -1,3 +1,4 @@
+const string = require('string');
 const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -9,8 +10,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-MM-dd');
   });
+  
+  // The normal slug filter does not completely remove url-unsafe characters, so use this:
+  eleventyConfig.addFilter("slugify", input => string(input).slugify().toString() );
+
+  // This is for post urls of the form ./posts/<year>/<month>/<date>
+  eleventyConfig.addFilter("year", date => (new Date(date).getFullYear()));
+  eleventyConfig.addFilter("month", date => (new Date(date).getMonth() + 1 ));
+  eleventyConfig.addFilter("day", date => (new Date(date).getDate()));
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
@@ -23,15 +32,11 @@ module.exports = function(eleventyConfig) {
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toFormat('yyyy-LL-dd');
+    return DateTime.fromJSDate(dateObj).toFormat('yyyy.MM.dd');
   });
 
   // only content in the `posts/` directory
-  eleventyConfig.addCollection("posts", function(collection) {
-    return collection.getFilteredByGlob("./blog/posts/*").sort(function(a, b) {
-      return a.date - b.date;
-    });
-  });
+  eleventyConfig.addCollection("posts", collection => collection.getFilteredByGlob("./posts/*").sort((a, b) => a.date - b.date ));
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
@@ -78,7 +83,7 @@ module.exports = function(eleventyConfig) {
       input: ".",
       includes: "_includes",
       data: "_data",
-      output: "_site"
+      output: "../../blog/"
     }
   };
 };
