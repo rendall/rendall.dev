@@ -6,9 +6,9 @@
   "scripts": {
     "test": "test",
     "help": "sass --help",
-    "build:11ty": "cd src && eleventy --input=. --output=../",
-    "build:css": "sass ./src/scss:./css --no-source-map",
-    "build": "sass ./src/scss:./css --no-source-map && cd src && eleventy --input=. --output=../"
+    "build:11ty": "cd _src && eleventy --output=../ && cd blog && eleventy",
+    "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
+    "build": "yarn run build:11ty && yarn run build:css"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,13 @@
   },
   "homepage": "https://github.com/rendall/rendall.github.io#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.5.4",
-    "netlify-lambda": "^1.0.2",
-    "sass": "^1.14.3"
+    "@11ty/eleventy": "^0.6.0",
+    "@11ty/eleventy-plugin-rss": "^1.0.3",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.0",
+    "luxon": "^1.8.2",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.0.2",
+    "sass": "^1.14.3",
+    "string": "^3.3.3"
   }
 }

@@ -1,85 +1,101 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
-<head>
-    <title>Rendall's website</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="-FSaRT58EqpfLpq5KSosoDUsrFBuJ8iXG7-7WCrgc8k" />
-    <link rel="alternate" hreflang="en" href="//www.rendall.tv" />
-    <link rel="stylesheet" href="/css/styles.css" type="text/css" media="screen">
-</head>
+    <head>
+        <title>Rendall's website</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-site-verification" content="-FSaRT58EqpfLpq5KSosoDUsrFBuJ8iXG7-7WCrgc8k"/>
+        <link rel="alternate" hreflang="en" href="//www.rendall.tv"/>
+        <link rel="stylesheet" href="/css/styles.css" type="text/css" media="screen">
+    </head>
 
-<body>
-    <header>
-        <div>Welcome to the website of </div>
+<body class="Site">
+    <header class="Site__Header">
+        <div>Welcome to the wonderful website of </div>
         <h1>Rendall<span>&nbsp;</span>Koski</h1>
     </header>
 
     <main class="max-width-35rem">
-        <section>
-            <p>I am an expat US citizen living in Finland. I create software, code, cook, hike, mix cocktails, practice
-                Finnish and frighten horses.</p>
-            <p>Here are various ways to contact me or otherwise get to know me. I'm sure with a little creative
-                stalking, you could find others.</p>
+            <p>I am an expat US citizen living in Finland. I create software, code, cook, hike, mix cocktails, practice Finnish and frighten horses.</p>
+            <p>Here are various ways to contact me or otherwise get to know me. I'm sure with a little creative stalking, you could find others.</p>
             <ul>
-                <li><a href="/resume"><img alt="résumé" src="icons/resume.svg" />résumé </a></li>
-                <li><a href="/blog"><img alt="thoughts" src="icons/thought.svg" />thoughts
-                    </a></li>
-                <li><a href="mailto:rendall@gmail.com" target="_blank" rel="noopener"><img alt="email" src="icons/email.svg" />email
-                    </a></li>
-                <li><a href="https://github.com/rendall" target="_blank" rel="noopener"><img alt="github" src="icons/github.svg" />github
-                    </a></li>
-                <li><a href="https://twitter.com/rendall" target="_blank" rel="noopener"><img alt="twitter" src="icons/twitter.svg" />twitter
-                    </a></li>
-                <li><a href="https://www.linkedin.com/in/rendallkoski/" target="_blank" rel="noopener"><img alt="linkedin"
-                            src="icons/linkedin.svg" />linkedin </a></li>
-                <li><a href="https://keybase.io/rendall" target="_blank" rel="noopener"><img alt="keybase" src="icons/keybase.svg" />keybase
-                    </a></li>
-                <li><a href="https://www.goodreads.com/user/show/4419416-rendall" target="_blank" rel="noopener"><img
-                            alt="goodreads" src="icons/goodreads.svg" />goodreads </a></li>
-                <li><a href="tel:+13037369736" target="_blank" rel="noopener"><img alt="voice" src="icons/phone.svg" />voice
-                        (US)</a></li>
                 <li>
-                    <a href="#" id="form-toggle"><img alt="hello" src="icons/hello.svg" />say hello</a>
-                    <span class="contain-form is-visible">
-                        <p>You can get in touch with me by filling out this form. The message will come to me in a
-                            dream, so be imaginitive!</p>
+                    <a href="/resume"><img alt="résumé" src="icons/resume.svg"/>résumé
+                    </a>
+                </li>
+                <li>
+                    <a href="/blog"><img alt="thoughts" src="icons/thought.svg"/>thoughts
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:rendall@gmail.com" target="_blank" rel="noopener"><img alt="email" src="icons/email.svg"/>email
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/rendall" target="_blank" rel="noopener"><img alt="github" src="icons/github.svg"/>github
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/rendall" target="_blank" rel="noopener"><img alt="twitter" src="icons/twitter.svg"/>twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/rendallkoski/" target="_blank" rel="noopener"><img alt="linkedin" src="icons/linkedin.svg"/>linkedin
+                    </a>
+                </li>
+                <li>
+                    <a href="https://keybase.io/rendall" target="_blank" rel="noopener"><img alt="keybase" src="icons/keybase.svg"/>keybase
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.goodreads.com/user/show/4419416-rendall" target="_blank" rel="noopener"><img alt="goodreads" src="icons/goodreads.svg"/>goodreads
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:+13037369736" target="_blank" rel="noopener"><img alt="voice" src="icons/phone.svg"/>voice (US)</a>
+                </li>
+                <li>
+                    <a href="#" id="form-toggle"><img alt="hello" src="icons/hello.svg"/>say hello</a>
+                    <div class="contain-form is-visible">
+                        <p>You can get in touch with me by filling out this form. The message will come to me in a dream, so be imaginitive!</p>
                         <p>Please leave valid contact information, or I will not be able to get back in touch with you.</p>
                         <div class="notify-error">
-                            <p>There was an error. It's me, not you. You could try again later? Or try another method?
-                                Email? Smoke signals? Tell me what went wrong!</p>
+                            <p>There was an error. It's me, not you. You could try again later? Or try another method? Email? Smoke signals? Tell me what went wrong!</p>
                             <p id="error-message"></p>
                         </div>
-                        <form name="contact" method="POST" netlify-honeypot="city" netlify>
+                        <form name="contact" method="POST" netlify-honeypot="city" netlify="netlify">
                             <fieldset>
-                                <label for="message">message<textarea name="message" class="h15rem pad-top-05rem"></textarea></label>
+                                <label for="message">message<textarea name="message" id="message" class="h15rem pad-top-05rem"></textarea>
+                                </label>
                                 <div class="notify-invalid">please enter a message</div>
                             </fieldset>
                             <fieldset>
-                                <label for="name">your name<input name="name" class="h2rem"></label>
+                                <label for="name">your name<input name="name" id="name" class="h2rem"></label>
                                 <div class="notify-invalid">please enter your name</div>
                             </fieldset>
                             <fieldset>
-                                <label for="email">email<input name="email" class="h2rem" /></label>
+                                <label for="email">email<input type="email" name="email" id="email" class="h2rem"/></label>
                                 <div class="notify-invalid">please enter an email</div>
                             </fieldset>
                             <fieldset class="hide">
-                                <!-- spam prevention: this should remain empty --><label for="city">city</label><input name="city" />
+                                <!-- spam prevention: this should remain empty -->
+                                <label for="city">city</label><input name="city" id="city"/>
                             </fieldset>
-                            <fieldset><button>Send</button></fieldset>
+                            <fieldset>
+                                <button>Send</button>
+                            </fieldset>
                         </form>
-                    </span>
+                    </div>
                     <div class="notify-success">
                         <p>Message successfully received! Thank you.</p>
                     </div>
                 </li>
             </ul>
-        </section>
-    </main>
-    <script src="js/home.js" type="text/javascript"></script>
+        </main>
+        <script src="js/home.js"></script>
 
-</body>
+    </body>
 
 </html>
