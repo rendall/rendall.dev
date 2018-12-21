@@ -18,6 +18,29 @@
 <ol reversed class="Blog__Postlist">
 
   <li class="postlist-item">
+    <h2><a href="/posts/2018/12/21/database-vocabulary-acid/" class="postlist-link">Database vocabulary: ACID</a></h2>
+    <time class="postlist-date" datetime="2018.12.21">2018-12-21</time>
+    <article> <p>Databases are often themselves described in terms of their ACID properties (e.g. &quot;eventual consistency&quot;), so knowing the vocabulary is useful when considering a database solution. Some contemporary database management systems intentionally disregard ACID properties in a tradeoff for other gains.</p>
+<p><em><strong>ACID</strong></em> is an acronym representing four traits of a database transaction that will guarantee valid data even if the transaction is not completed. Transactions that violate these principles could leave the database in an unknown or invalid state.</p>
+<ul>
+<li><strong>Atomicity</strong>: a transaction must either complete all operations of the transaction or no operations.</li>
+<li><strong>Consistency</strong>: a transaction that completes must conform to all and any constraints on the data.
+<ul>
+<li><em>eventual consistency</em>: in a distributed database, a change to the data in one instance will take time to propogate to other instances. Eventual consistency means that this change will eventually propogate (&quot;converge&quot;), and all relational constraints and rules will be applied; but before then, anything goes: old, invalid date might be retrieved instead.</li>
+</ul>
+</li>
+<li><strong>Isolation</strong>: a transaction's operations must not influence (be visible to) other transactions until the transaction is complete. Rather, transactions executed at the same time must behave as if they were executed one at a time.</li>
+<li><strong>Durability</strong>: the changes made by a completed transaction must be permanent.</li>
+</ul>
+<p>The influential paper describing these properties is <a href="https://web.archive.org/web/20170810141540/https://web.stanford.edu/class/cs340v/papers/recovery.pdf">&quot;Principles of Transaction-Oriented Database Recovery&quot;</a> by Haerder and Reuter, 1983.</p>
+
+    
+      <a href="/tags/database/" class="tag">database</a>
+      <a href="/tags/glossary/" class="tag">glossary</a>
+      <a href="/tags/tech/" class="tag">tech</a>
+  </li>
+
+  <li class="postlist-item">
     <h2><a href="/posts/2018/12/20/introduction/" class="postlist-link">Introduction</a></h2>
     <time class="postlist-date" datetime="2018.12.20">2018-12-20</time>
     <article> <p>Hello.</p>
