@@ -31,7 +31,8 @@
 		<link href="https://blog.rendall.tv/posts/2018/12/21/database-vocabulary-acid/"/>
 		<updated>2018-12-21T02:00:00+02:00</updated>
 		<id>https://blog.rendall.tv/posts/2018/12/21/database-vocabulary-acid/</id>
-		<content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;ACID&lt;/strong&gt;&lt;/em&gt; is an acronym representing four traits of a database transaction that will guarantee valid data even if the transaction is not completed. Transactions that violate these principles could leave the database in an unknown or invalid state. Databases are often themselves described in terms of their ACID properties (e.g. &amp;quot;eventual consistency&amp;quot;), so knowing the vocabulary is useful when considering a database solution. Some contemporary database management systems intentionally disregard ACID properties in a tradeoff for other gains.&lt;/p&gt;
+		<content type="html">&lt;p&gt;Databases are often themselves described in terms of their ACID properties (e.g. &amp;quot;eventual consistency&amp;quot;), so knowing the vocabulary is useful when considering a database solution. Some contemporary database management systems intentionally disregard ACID properties in a tradeoff for other gains.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;ACID&lt;/strong&gt;&lt;/em&gt; is an acronym representing four traits of a database transaction that will guarantee valid data even if the transaction is not completed. Transactions that violate these principles could leave the database in an unknown or invalid state.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Atomicity&lt;/strong&gt;: a transaction must either complete all operations of the transaction or no operations.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Consistency&lt;/strong&gt;: a transaction that completes must conform to all and any constraints on the data.
