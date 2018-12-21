@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.tv/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.tv"/>
-	<updated>2018-12-20T02:00:00+02:00</updated>
+	<updated>2018-12-21T02:00:00+02:00</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -23,6 +23,26 @@
 &lt;p&gt;The third is to write more.&lt;/p&gt;
 &lt;p&gt;These intentions are for me, and not for you, dear reader. If I quietly correct a typo, for instance, and you drag me for violating my second intention, I will tell you to stuff it.&lt;/p&gt;
 &lt;p&gt;This blog is a bit of a continuation of &lt;a href=&quot;https://rendallkoski.blogspot.com/&quot;&gt;another&lt;/a&gt;, but since I am taking ownership of the hosting, coding and designing of this one, it feels like a clean break and true start.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Database vocabulary: ACID</title>
+		<link href="https://blog.rendall.tv/posts/2018/12/21/database-vocabulary-acid/"/>
+		<updated>2018-12-21T02:00:00+02:00</updated>
+		<id>https://blog.rendall.tv/posts/2018/12/21/database-vocabulary-acid/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;&lt;strong&gt;ACID&lt;/strong&gt;&lt;/em&gt; is an acronym representing four traits of a database transaction that will guarantee valid data even if the transaction is not completed. Transactions that violate these principles could leave the database in an unknown or invalid state. Databases are often themselves described in terms of their ACID properties (e.g. &amp;quot;eventual consistency&amp;quot;), so knowing the vocabulary is useful when considering a database solution. Some contemporary database management systems intentionally disregard ACID properties in a tradeoff for other gains.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Atomicity&lt;/strong&gt;: a transaction must either complete all operations of the transaction or no operations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consistency&lt;/strong&gt;: a transaction that completes must conform to all and any constraints on the data.
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;eventual consistency&lt;/em&gt;: in a distributed database, a change to the data in one instance will take time to propogate to other instances. Eventual consistency means that this change will eventually propogate (&amp;quot;converge&amp;quot;), and all relational constraints and rules will be applied; but before then, anything goes: old, invalid date might be retrieved instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Isolation&lt;/strong&gt;: a transaction&#39;s operations must not influence (be visible to) other transactions until the transaction is complete. Rather, transactions executed at the same time must behave as if they were executed one at a time.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Durability&lt;/strong&gt;: the changes made by a completed transaction must be permanent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The influential paper describing these properties is &lt;a href=&quot;https://web.archive.org/web/20170810141540/https://web.stanford.edu/class/cs340v/papers/recovery.pdf&quot;&gt;&amp;quot;Principles of Transaction-Oriented Database Recovery&amp;quot;&lt;/a&gt; by Haerder and Reuter, 1983.&lt;/p&gt;
 </content>
 	</entry>
 </feed>
