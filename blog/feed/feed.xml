@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.tv/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.tv"/>
-	<updated>2018-12-25T02:00:00+02:00</updated>
+	<updated>2019-01-14T02:00:00+02:00</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -53,6 +53,45 @@
 		<updated>2018-12-25T02:00:00+02:00</updated>
 		<id>https://blog.rendall.tv/posts/2018/12/25/happy-holidays/</id>
 		<content type="html">&lt;p&gt;Happy Holidays, everyone. I just launched this blog right into the holiday season, and so start with a gap! I hope your holidays are going well.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Problem: Typescript adds Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });</title>
+		<link href="https://blog.rendall.tv/posts/2019/1/14/problem-typescript-adds-objectdefinepropertyexports-esmodule-value-true/"/>
+		<updated>2019-01-14T02:00:00+02:00</updated>
+		<id>https://blog.rendall.tv/posts/2019/1/14/problem-typescript-adds-objectdefinepropertyexports-esmodule-value-true/</id>
+		<content type="html">&lt;p&gt;You&#39;re using Typescript in a frontend project, and import a module into your code. Something like:&lt;br&gt;
+&lt;code&gt;import { Observable } from &#39;rxjs&#39;;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You&#39;re using a bundler like &lt;a href=&quot;https://webpack.js.org/&quot;&gt;&lt;em&gt;Webpack&lt;/em&gt;&lt;/a&gt; that squeezes those modules into a single minimized javascript file, so you want to keep that line as-is.&lt;/p&gt;
+&lt;p&gt;However, when Typescript compiles into javascript, it adds the line &lt;code&gt;Object.defineProperty(exports, &amp;quot;__esModule&amp;quot;, { value: true });&lt;/code&gt; which causes an error &lt;code&gt;Uncaught ReferenceError: exports is not defined&lt;/code&gt; or something similar in your browser&#39;s console.&lt;/p&gt;
+&lt;p&gt;You search for solutions, but everyone is talking about using &lt;a href=&quot;https://requirejs.org/&quot;&gt;&lt;em&gt;RequireJS&lt;/em&gt;&lt;/a&gt; like it&#39;s 2014!&lt;/p&gt;
+&lt;p&gt;You want to get rid of this unwanted &lt;code&gt;Object.defineProperty&lt;/code&gt; line but leave the rest of your code untouched.&lt;/p&gt;
+&lt;p&gt;Solution: Modify these two lines in your &lt;code&gt;tsconfig.json&lt;/code&gt; to the following:&lt;br&gt;
+&lt;code&gt;&amp;quot;module&amp;quot;: &amp;quot;es6&amp;quot;,&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;&amp;quot;lib&amp;quot;: [&amp;quot;dom&amp;quot;,&amp;quot;es6&amp;quot;]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Explanation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;commonjs&lt;/code&gt; (the current Typescript default) or one of the other suggested options assumes you are writing a &lt;code&gt;Node.js&lt;/code&gt; application, or&lt;/li&gt;
+&lt;li&gt;that you will use a module loader (like &lt;em&gt;RequireJS&lt;/em&gt;) which loads files into your web application at runtime.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;es6&lt;/code&gt; is a working standard that will keep your &lt;code&gt;import&lt;/code&gt; line intact.&lt;/li&gt;
+&lt;li&gt;But &lt;code&gt;es6&lt;/code&gt; assumes you are importing from a javascript file (e.g. &lt;code&gt;import { this } from &#39;./that.js&#39;&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;However, you are using a package manager, you hipster, and that module is not in an external javascript file, but is sitting in a &lt;code&gt;node_modules&lt;/code&gt; directory somewhere waiting for your package bundler to roll it on up.&lt;/li&gt;
+&lt;li&gt;Typescript sees the &lt;code&gt;es6&lt;/code&gt; module style, but not the &lt;code&gt;es6&lt;/code&gt; lib, and so believes you are loading an external javascript file. This is why you need to add the &lt;code&gt;es6&lt;/code&gt; to &lt;code&gt;lib:&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;But once you enable &lt;code&gt;lib:&lt;/code&gt;, the browser-specific code in your typescript will break without the &lt;code&gt;dom&lt;/code&gt; library, so you need to add that, too.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Step-by-step: Still need help? Follow these instructions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;If you do not have a &lt;code&gt;tsconfig.json&lt;/code&gt;:&lt;/em&gt; In your project directory, type &lt;code&gt;tsc --init&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In the &lt;code&gt;tsconfig.json&lt;/code&gt; file, find the line starting &lt;code&gt;module:&lt;/code&gt; and change its value to &lt;code&gt;es6&lt;/code&gt; like so: &lt;code&gt;&amp;quot;module&amp;quot;: &amp;quot;es6&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Further down, find the line starting &lt;code&gt;lib:&lt;/code&gt; and add &lt;code&gt;dom&lt;/code&gt; and &lt;code&gt;es6&lt;/code&gt; to the array, like so: &lt;code&gt;&amp;quot;lib&amp;quot;: [&amp;quot;dom&amp;quot;,&amp;quot;es6&amp;quot;]&lt;/code&gt;. Make sure to uncomment it if necessary.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;More info:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://json.schemastore.org/tsconfig&quot;&gt;The &lt;code&gt;tsconfig.json&lt;/code&gt; schema&lt;/a&gt; contains all of the options for every key-value pair, including:&lt;/li&gt;
+&lt;li&gt;Current &lt;code&gt;module&lt;/code&gt; options (one of): &lt;code&gt;&amp;quot;commonjs&amp;quot;, &amp;quot;amd&amp;quot;, &amp;quot;umd&amp;quot;, &amp;quot;system&amp;quot;, &amp;quot;es6&amp;quot;, &amp;quot;es2015&amp;quot;, &amp;quot;esnext&amp;quot;,&lt;/code&gt; or &lt;code&gt;&amp;quot;none&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Current &lt;code&gt;lib&lt;/code&gt; options (any combination of): &lt;code&gt;&amp;quot;es5&amp;quot;, &amp;quot;es6&amp;quot;, &amp;quot;es2015&amp;quot;, &amp;quot;es7&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;, &amp;quot;es2018&amp;quot;, &amp;quot;esnext&amp;quot;, &amp;quot;dom&amp;quot;, &amp;quot;dom.iterable&amp;quot;, &amp;quot;webworker&amp;quot;, &amp;quot;scripthost&amp;quot;, &amp;quot;es2015.core&amp;quot;, &amp;quot;es2015.collection&amp;quot;, &amp;quot;es2015.generator&amp;quot;, &amp;quot;es2015.iterable&amp;quot;, &amp;quot;es2015.promise&amp;quot;, &amp;quot;es2015.proxy&amp;quot;, &amp;quot;es2015.reflect&amp;quot;, &amp;quot;es2015.symbol&amp;quot;, &amp;quot;es2015.symbol.wellknown&amp;quot;, &amp;quot;es2016.array.include&amp;quot;, &amp;quot;es2017.object&amp;quot;, &amp;quot;es2017.intl&amp;quot;, &amp;quot;es2017.sharedmemory&amp;quot;, &amp;quot;es2017.string&amp;quot;, &amp;quot;es2017.typedarrays&amp;quot;, &amp;quot;es2018.intl&amp;quot;, &amp;quot;es2018.promise&amp;quot;, &amp;quot;es2018.regexp&amp;quot;, &amp;quot;esnext.asynciterable&amp;quot;, &amp;quot;esnext.array&amp;quot;, &amp;quot;esnext.intl&amp;quot;, &amp;quot;esnext.symbol&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
 	</entry>
 </feed>
