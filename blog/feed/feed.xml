@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.tv/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.tv"/>
-	<updated>2019-01-14T02:00:00+02:00</updated>
+	<updated>2019-01-26T02:00:00+02:00</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -91,6 +91,111 @@
 &lt;li&gt;&lt;a href=&quot;http://json.schemastore.org/tsconfig&quot;&gt;The &lt;code&gt;tsconfig.json&lt;/code&gt; schema&lt;/a&gt; contains all of the options for every key-value pair, including:&lt;/li&gt;
 &lt;li&gt;Current &lt;code&gt;module&lt;/code&gt; options (one of): &lt;code&gt;&amp;quot;commonjs&amp;quot;, &amp;quot;amd&amp;quot;, &amp;quot;umd&amp;quot;, &amp;quot;system&amp;quot;, &amp;quot;es6&amp;quot;, &amp;quot;es2015&amp;quot;, &amp;quot;esnext&amp;quot;,&lt;/code&gt; or &lt;code&gt;&amp;quot;none&amp;quot;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Current &lt;code&gt;lib&lt;/code&gt; options (any combination of): &lt;code&gt;&amp;quot;es5&amp;quot;, &amp;quot;es6&amp;quot;, &amp;quot;es2015&amp;quot;, &amp;quot;es7&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;, &amp;quot;es2018&amp;quot;, &amp;quot;esnext&amp;quot;, &amp;quot;dom&amp;quot;, &amp;quot;dom.iterable&amp;quot;, &amp;quot;webworker&amp;quot;, &amp;quot;scripthost&amp;quot;, &amp;quot;es2015.core&amp;quot;, &amp;quot;es2015.collection&amp;quot;, &amp;quot;es2015.generator&amp;quot;, &amp;quot;es2015.iterable&amp;quot;, &amp;quot;es2015.promise&amp;quot;, &amp;quot;es2015.proxy&amp;quot;, &amp;quot;es2015.reflect&amp;quot;, &amp;quot;es2015.symbol&amp;quot;, &amp;quot;es2015.symbol.wellknown&amp;quot;, &amp;quot;es2016.array.include&amp;quot;, &amp;quot;es2017.object&amp;quot;, &amp;quot;es2017.intl&amp;quot;, &amp;quot;es2017.sharedmemory&amp;quot;, &amp;quot;es2017.string&amp;quot;, &amp;quot;es2017.typedarrays&amp;quot;, &amp;quot;es2018.intl&amp;quot;, &amp;quot;es2018.promise&amp;quot;, &amp;quot;es2018.regexp&amp;quot;, &amp;quot;esnext.asynciterable&amp;quot;, &amp;quot;esnext.array&amp;quot;, &amp;quot;esnext.intl&amp;quot;, &amp;quot;esnext.symbol&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Class notes: Mastering Git</title>
+		<link href="https://blog.rendall.tv/posts/2019/1/26/class-notes-mastering-git/"/>
+		<updated>2019-01-26T02:00:00+02:00</updated>
+		<id>https://blog.rendall.tv/posts/2019/1/26/class-notes-mastering-git/</id>
+		<content type="html">&lt;p&gt;I recently took up the &lt;a href=&quot;https://developer.microsoft.com/en-us/collective&quot;&gt;Microsoft Dev Collective&lt;/a&gt;&#39;s offer for a 30-day free trial of &lt;a href=&quot;https://www.pluralsight.com/&quot;&gt;Pluralsight&lt;/a&gt; and, among other courses, I took &lt;a href=&quot;https://twitter.com/nusco&quot;&gt;Paolo Perrotta&lt;/a&gt;&#39;s excellent video course &lt;em&gt;&lt;a href=&quot;https://app.pluralsight.com/library/courses/mastering-git&quot;&gt;Mastering Git&lt;/a&gt;&lt;/em&gt;, comprised of 8 videos, 2 hours 45 minutes total. I highly recommend this course if you are even a little unclear on how git works. Especially if, like me, you use the same git commands every day with only a vague notion of what they do.&lt;/p&gt;
+&lt;p&gt;These are my class notes:&lt;/p&gt;
+&lt;p&gt;git tracks changes in 4 places:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;working directory&lt;/em&gt; - this is the project directory in the OS file structure&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;index&lt;/em&gt; - a.k.a the staging area&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;repository&lt;/em&gt; - in the &lt;code&gt;.git&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;stash&lt;/em&gt; - a kind of scratch pad or clipboard for the developer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2 questions which will completely define and explain any command:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How does this command move information across the 4 areas?&lt;/li&gt;
+&lt;li&gt;How does this command change the repository?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some useful git log commands:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git log --graph --decorate --oneline&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --patch&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log -- &amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Distributed Workflow patterns. This is the social side of git: how git users on a team use it. These are useful terms for fruitful discussion.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Distribution models: how sourcecode is shared among repositories
+&lt;ul&gt;
+&lt;li&gt;Peer-to-peer: developers pulling from each other&#39;s repositories&lt;/li&gt;
+&lt;li&gt;Centralized: one repository holds the canonical version&lt;/li&gt;
+&lt;li&gt;Pull-request model: devs do not push directly, but request&lt;/li&gt;
+&lt;li&gt;hierarchical model: some devs are gatekeepers to canonical repositories&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Branching models: how branches are used
+&lt;ul&gt;
+&lt;li&gt;Stable versus unstable (does a branch allow broken code?)&lt;/li&gt;
+&lt;li&gt;Integration (is there a &amp;quot;master&amp;quot; branch to which all repos merge/rebase?)&lt;/li&gt;
+&lt;li&gt;Release branch&lt;/li&gt;
+&lt;li&gt;Feature branch&lt;/li&gt;
+&lt;li&gt;Hotfix branch (versus cherry-pick, which is a rebase)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Constraints: allowed, disallowed and preferred methods
+&lt;ul&gt;
+&lt;li&gt;Merge versus rebase (messy truth versus clean inaccuracy)&lt;/li&gt;
+&lt;li&gt;Gatekeeping and responsibility (do some devs have privs)&lt;/li&gt;
+&lt;li&gt;&amp;quot;Don&#39;t push when the build is broken&amp;quot; (CI error)&lt;/li&gt;
+&lt;li&gt;clean history before push to integration?&lt;/li&gt;
+&lt;li&gt;Every pull request linked to an issue/ticket number&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Gitflow: such an &lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot;&gt;influential model&lt;/a&gt; deserves separate discussion&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Don&#39;t &amp;quot;just use Gitflow&amp;quot;. It is not optimal for every project, e.g.:
+&lt;ul&gt;
+&lt;li&gt;web apps that need to maintain only one release branch&lt;/li&gt;
+&lt;li&gt;project with continuous integration in which features released immediately, Gitflow has too many layers&lt;/li&gt;
+&lt;li&gt;projects with long term feature development
+&lt;ul&gt;
+&lt;li&gt;large code bases touching everywhere could cause integration headaches&lt;/li&gt;
+&lt;li&gt;perhaps better to integrate often, even when features are not yet complete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Growing a workflow: Avoid designing a complete workflow from the beginning, but start small and grow it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Sample starter workflow:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Distribution model: Centralized&lt;/li&gt;
+&lt;li&gt;Branching model:
+&lt;ul&gt;
+&lt;li&gt;One integration branch (master)&lt;/li&gt;
+&lt;li&gt;One feature branch per feature&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Constraints:
+&lt;ul&gt;
+&lt;li&gt;Keep master stable, fix ASAP if it breaks&lt;/li&gt;
+&lt;li&gt;Integrate feature branches every few days&lt;/li&gt;
+&lt;li&gt;User merge over rebase by default&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;quot;Simple, clear purpose and principles give rise to complex intelligent behavior. Complex rules and regulations give rise to simple stupid behavior.&amp;quot;&lt;/p&gt;
+&lt;p&gt;-- Dee Hock&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Personal thoughts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Other constraints I have seen:&lt;/li&gt;
+&lt;li&gt;Merge feature branches into the master branch, but clean up with interactive rebase the history of the branch before doing so.&lt;/li&gt;
+&lt;li&gt;Do not rebase the history of the master branch.&lt;/li&gt;
+&lt;li&gt;Features that are not released yet should be hidden by default, to be turned on with an internal flag&lt;/li&gt;
+&lt;li&gt;Branches should have an associated issue number, and commit messages should reference that number (required a githook to enforce)&lt;/li&gt;
 &lt;/ul&gt;
 </content>
 	</entry>

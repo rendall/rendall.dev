@@ -464,13 +464,6 @@ body {
 .Resume fieldset.hide {
   display: none;
 }
-.Site ul,
-.Blog ul,
-.Resume ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
 .Site li,
 .Blog li,
 .Resume li {
@@ -567,6 +560,11 @@ body {
 .Resume > ul, .Resume > p, .Resume > h3 {
   margin-left: 2rem;
 }
+.Resume ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 .Resume li {
   margin-bottom: 0.5rem;
 }
@@ -598,6 +596,25 @@ body {
 }
 .Blog__NavItem--Active {
   color: gray;
+}
+.Blog__Article ul, .Blog article ul {
+  list-style-position: outside;
+  margin-bottom: 1rem;
+}
+.Blog__Article li, .Blog article li {
+  margin-bottom: 0;
+}
+.Blog__Article li > ul, .Blog article li > ul {
+  margin-top: 1rem;
+}
+.Blog__Article > ul, .Blog article > ul {
+  list-style-type: disc;
+}
+.Blog__Article > ul ul, .Blog article > ul ul {
+  list-style-type: circle;
+}
+.Blog__Article > ul ul ul, .Blog article > ul ul ul {
+  list-style-type: square;
 }
 .Blog__Postlist {
   list-style-type: none;
