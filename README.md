@@ -1,2 +1,2 @@
-# rendall.github.io
-Website for rendall.tv - staging
+# rendall.tv
+Website for (rendall.tv)[https://rendall.tv]
