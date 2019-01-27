@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Rendall&#39;s Blog</title>
+		<title>Tagged “RxJS”</title>
 		<link rel="stylesheet" href="/css/styles.css">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rendall&#39;s Blog">
 	</head>
@@ -13,7 +13,8 @@
 		</header>
 
 		<main class="tmpl-home">
-			
+			<h2 class="Blog__Headline">Tagged “RxJS”</h2>
+
 
 <ol reversed class="Blog__Postlist">
 
@@ -40,161 +41,16 @@
       <a href="/tags/RxJS/" class="tag">RxJS</a>
   </li>
 
-  <li class="postlist-item">
-    <h2><a href="/posts/2019/1/26/class-notes-mastering-git/" class="postlist-link">Class notes: Mastering Git</a></h2>
-    <time class="postlist-date" datetime="2019.01.26">2019-01-26</time>
-    <article> <p>These are my class notes to <a href="https://twitter.com/nusco">Paolo Perrotta</a>'s excellent and entertaining video course <em><a href="https://app.pluralsight.com/library/courses/mastering-git">Mastering Git</a></em>, comprising 8 videos of 2 hours 45 minutes total. I recently took up the <a href="https://developer.microsoft.com/en-us/collective">Microsoft Dev Collective</a>'s offer for a 30-day free trial of <a href="https://www.pluralsight.com/">Pluralsight</a> and this was one of several that I enjoyed. I highly recommend this course if you are familiar with git, but even a little unclear on how git works. Especially if, like me, you use the same git commands every day with only a vague notion of what they do. Signore Perrotta explains everything brilliantly.</p>
-<p>git tracks changes in 4 places:</p>
-<ul>
-<li><em>working directory</em> - this is the project directory in the OS file structure</li>
-<li><em>index</em> - a.k.a the staging area</li>
-<li><em>repository</em> - in the <code>.git</code> directory</li>
-<li><em>stash</em> - a kind of scratch pad or clipboard for the developer</li>
-</ul>
-<p>2 questions which will completely define and explain any command:</p>
-<ul>
-<li>How does this command move information across the 4 areas?</li>
-<li>How does this command change the repository?</li>
-</ul>
-<p>Some useful git log commands:</p>
-<ul>
-<li><code>git log --graph --decorate --oneline</code></li>
-<li><code>git log --patch</code></li>
-<li><code>git log -- &lt;filename&gt;</code></li>
-</ul>
-<p>Distributed Workflow patterns. This is the social side of git: how git users on a team use it. These are useful terms for fruitful discussion.</p>
-<ul>
-<li>Distribution models: how sourcecode is shared among repositories
-<ul>
-<li>Peer-to-peer: developers pulling from each other's repositories</li>
-<li>Centralized: one repository holds the canonical version</li>
-<li>Pull-request model: devs do not push directly, but request</li>
-<li>hierarchical model: some devs are gatekeepers to canonical repositories</li>
-<li>etc.</li>
-</ul>
-</li>
-<li>Branching models: how branches are used
-<ul>
-<li>Stable versus unstable (does a branch allow broken code?)</li>
-<li>Integration (is there a &quot;master&quot; branch to which all repos merge/rebase?)</li>
-<li>Release branch</li>
-<li>Feature branch</li>
-<li>Hotfix branch (versus cherry-pick, which is a rebase)</li>
-</ul>
-</li>
-<li>Constraints: allowed, disallowed and preferred methods
-<ul>
-<li>Merge versus rebase (messy truth versus clean inaccuracy)</li>
-<li>Gatekeeping and responsibility (do some devs have privs)</li>
-<li>&quot;Don't push when the build is broken&quot; (CI error)</li>
-<li>clean history before push to integration?</li>
-<li>Every pull request linked to an issue/ticket number</li>
-</ul>
-</li>
-</ul>
-<p>Gitflow: such an <a href="https://nvie.com/posts/a-successful-git-branching-model/">influential model</a> deserves separate discussion</p>
-<ul>
-<li>Don't &quot;just use Gitflow&quot;. It is not optimal for every project, e.g.:
-<ul>
-<li>web apps that need to maintain only one release branch</li>
-<li>project with continuous integration in which features released immediately, Gitflow has too many layers</li>
-<li>projects with long term feature development
-<ul>
-<li>large code bases touching everywhere could cause integration headaches</li>
-<li>perhaps better to integrate often, even when features are not yet complete</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Growing a workflow: Avoid designing a complete workflow from the beginning, but start small and grow it.</p>
-<ul>
-<li>
-<p>Sample starter workflow:</p>
-<ul>
-<li>Distribution model: Centralized</li>
-<li>Branching model:
-<ul>
-<li>One integration branch (master)</li>
-<li>One feature branch per feature</li>
-</ul>
-</li>
-<li>Constraints:
-<ul>
-<li>Keep master stable, fix ASAP if it breaks</li>
-<li>Integrate feature branches every few days</li>
-<li>User merge over rebase by default</li>
-</ul>
-</li>
-</ul>
-<p>&quot;Simple, clear purpose and principles give rise to complex intelligent behavior. Complex rules and regulations give rise to simple stupid behavior.&quot;</p>
-<p>-- Dee Hock</p>
-</li>
-</ul>
-<p>Personal thoughts:</p>
-<ul>
-<li>Other constraints I have seen:</li>
-<li>Merge feature branches into the master branch, but clean up with interactive rebase the history of the branch before doing so.</li>
-<li>Do not rebase the history of the master branch.</li>
-<li>Features that are not released yet should be hidden by default, to be turned on with an internal flag</li>
-<li>Branches should have an associated issue number, and commit messages should reference that number (required a githook to enforce)</li>
-</ul>
-
-    
-      <a href="/tags/code/" class="tag">code</a>
-      <a href="/tags/git/" class="tag">git</a>
-  </li>
-
-  <li class="postlist-item">
-    <h2><a href="/posts/2019/1/14/problem-typescript-adds-objectdefinepropertyexports-esmodule-value-true/" class="postlist-link">Problem: Typescript adds Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });</a></h2>
-    <time class="postlist-date" datetime="2019.01.14">2019-01-14</time>
-    <article> <p>You're using Typescript in a frontend project, and import a module into your code. Something like:<br>
-<code>import { Observable } from 'rxjs';</code></p>
-<p>You're using a bundler like <a href="https://webpack.js.org"><em>Webpack</em></a> that squeezes those modules into a single minimized javascript file, so you want to keep that line as-is.</p>
-<p>However, when Typescript compiles into javascript, it adds the line <code>Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });</code> which causes an error <code>Uncaught ReferenceError: exports is not defined</code> or something similar in your browser's console.</p>
-<p>You search for solutions, but everyone is talking about using <a href="https://requirejs.org/"><em>RequireJS</em></a> like it's 2014!</p>
-<p>You want to get rid of this unwanted <code>Object.defineProperty</code> line but leave the rest of your code untouched.</p>
-<p>Solution: Modify these two lines in your <code>tsconfig.json</code> to the following:<br>
-<code>&quot;module&quot;: &quot;es6&quot;,</code><br>
-<code>&quot;lib&quot;: [&quot;dom&quot;,&quot;es6&quot;]</code></p>
-<p>Explanation:</p>
-<ul>
-<li><code>commonjs</code> (the current Typescript default) or one of the other suggested options assumes you are writing a <code>Node.js</code> application, or</li>
-<li>that you will use a module loader (like <em>RequireJS</em>) which loads files into your web application at runtime.</li>
-<li><code>es6</code> is a working standard that will keep your <code>import</code> line intact.</li>
-<li>But <code>es6</code> assumes you are importing from a javascript file (e.g. <code>import { this } from './that.js'</code>).</li>
-<li>However, you are using a package manager, you hipster, and that module is not in an external javascript file, but is sitting in a <code>node_modules</code> directory somewhere waiting for your package bundler to roll it on up.</li>
-<li>Typescript sees the <code>es6</code> module style, but not the <code>es6</code> lib, and so believes you are loading an external javascript file. This is why you need to add the <code>es6</code> to <code>lib:</code></li>
-<li>But once you enable <code>lib:</code>, the browser-specific code in your typescript will break without the <code>dom</code> library, so you need to add that, too.</li>
-</ul>
-<p>Step-by-step: Still need help? Follow these instructions:</p>
-<ol>
-<li><em>If you do not have a <code>tsconfig.json</code>:</em> In your project directory, type <code>tsc --init</code></li>
-<li>In the <code>tsconfig.json</code> file, find the line starting <code>module:</code> and change its value to <code>es6</code> like so: <code>&quot;module&quot;: &quot;es6&quot;</code></li>
-<li>Further down, find the line starting <code>lib:</code> and add <code>dom</code> and <code>es6</code> to the array, like so: <code>&quot;lib&quot;: [&quot;dom&quot;,&quot;es6&quot;]</code>. Make sure to uncomment it if necessary.</li>
-</ol>
-<p>More info:</p>
-<ul>
-<li><a href="http://json.schemastore.org/tsconfig">The <code>tsconfig.json</code> schema</a> contains all of the options for every key-value pair, including:</li>
-<li>Current <code>module</code> options (one of): <code>&quot;commonjs&quot;, &quot;amd&quot;, &quot;umd&quot;, &quot;system&quot;, &quot;es6&quot;, &quot;es2015&quot;, &quot;esnext&quot;,</code> or <code>&quot;none&quot;</code></li>
-<li>Current <code>lib</code> options (any combination of): <code>&quot;es5&quot;, &quot;es6&quot;, &quot;es2015&quot;, &quot;es7&quot;, &quot;es2016&quot;, &quot;es2017&quot;, &quot;es2018&quot;, &quot;esnext&quot;, &quot;dom&quot;, &quot;dom.iterable&quot;, &quot;webworker&quot;, &quot;scripthost&quot;, &quot;es2015.core&quot;, &quot;es2015.collection&quot;, &quot;es2015.generator&quot;, &quot;es2015.iterable&quot;, &quot;es2015.promise&quot;, &quot;es2015.proxy&quot;, &quot;es2015.reflect&quot;, &quot;es2015.symbol&quot;, &quot;es2015.symbol.wellknown&quot;, &quot;es2016.array.include&quot;, &quot;es2017.object&quot;, &quot;es2017.intl&quot;, &quot;es2017.sharedmemory&quot;, &quot;es2017.string&quot;, &quot;es2017.typedarrays&quot;, &quot;es2018.intl&quot;, &quot;es2018.promise&quot;, &quot;es2018.regexp&quot;, &quot;esnext.asynciterable&quot;, &quot;esnext.array&quot;, &quot;esnext.intl&quot;, &quot;esnext.symbol&quot;</code></li>
-</ul>
-
-    
-      <a href="/tags/code/" class="tag">code</a>
-      <a href="/tags/typescript/" class="tag">typescript</a>
-  </li>
-
 </ol>
 
 
-<p>More <a href="/posts/">here</a>.</p>
+<p>See <a href="/tags/">all tags</a>.</p>
 
 
 		</main>
 
 		<footer></footer>
 
-		<!-- Current page: / -->
+		<!-- Current page: /tags/RxJS/ -->
 	</body>
 </html>
