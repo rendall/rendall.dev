@@ -2,3 +2,4 @@ RAW
 node_modules
 .sass-cache
 print
+.env
