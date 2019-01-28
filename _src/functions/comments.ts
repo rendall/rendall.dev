@@ -1,3 +1,5 @@
+import { User, Context } from "./interfaces";
+
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 const COMMENT_TOO_LONG = "comment is too long"
 const INCLUDES_LINK = "comment includes link: user verification required"
@@ -8,7 +10,7 @@ const extractUser = (context: Context): User => ({
   name: "name",
   email: "email"
 })
-const verifyText = (text: string): { verifyCode: Number message: string } => {
+const verifyText = (text: string): { verifyCode: Number, message: string } => {
   // too long?
   // has link?
   // is ok =>
