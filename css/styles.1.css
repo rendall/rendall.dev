@@ -338,9 +338,281 @@ template {
   display: none;
 }
 
-.Site__SocialList img.icon {
+/* rendall.tv customization */
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #efeeee;
+  color: #403434;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Site,
+.Blog,
+.Resume {
+  margin-left: 0;
+}
+.Site section,
+.Blog section,
+.Resume section {
+  margin: 1rem;
+}
+.Site a,
+.Blog a,
+.Resume a {
+  color: black;
+  text-decoration: none;
+}
+.Site a:focus,
+.Blog a:focus,
+.Resume a:focus {
+  outline: darkslategray solid 1px;
+  outline-offset: 5px;
+}
+.Site a:hover,
+.Blog a:hover,
+.Resume a:hover {
+  text-decoration: underline;
+}
+.Site form input,
+.Site textarea,
+.Blog form input,
+.Blog textarea,
+.Resume form input,
+.Resume textarea {
+  display: block;
+  border: solid gray 1px;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #6a5151;
+  min-height: 2rem;
+  max-width: 30rem;
+  min-width: 15rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.Site fieldset,
+.Blog fieldset,
+.Resume fieldset {
+  border: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+.Site fieldset.hide,
+.Blog fieldset.hide,
+.Resume fieldset.hide {
+  display: none;
+}
+.Site ul,
+.Blog ul,
+.Resume ul {
+  padding: 0;
+}
+.Site li,
+.Blog li,
+.Resume li {
+  margin-bottom: 1rem;
+  list-style: none;
+}
+.Site li img,
+.Blog li img,
+.Resume li img {
   width: 2rem;
   height: 2rem;
   vertical-align: middle;
   margin-right: 1rem;
+}
+.Site .contain-form,
+.Blog .contain-form,
+.Resume .contain-form {
+  visibility: hidden;
+}
+.Site .contain-form.is-visible,
+.Blog .contain-form.is-visible,
+.Resume .contain-form.is-visible {
+  visibility: visible;
+}
+.Site .contain-form.is-success,
+.Blog .contain-form.is-success,
+.Resume .contain-form.is-success {
+  display: none;
+}
+.Site .notify-invalid,
+.Blog .notify-invalid,
+.Resume .notify-invalid {
+  display: none;
+}
+.Site .notify-invalid.is-invalid,
+.Blog .notify-invalid.is-invalid,
+.Resume .notify-invalid.is-invalid {
+  display: block;
+  color: red;
+}
+.Site .notify-success,
+.Blog .notify-success,
+.Resume .notify-success {
+  display: none;
+}
+.Site .notify-success.is-success,
+.Blog .notify-success.is-success,
+.Resume .notify-success.is-success {
+  display: block;
+}
+.Site .notify-error,
+.Blog .notify-error,
+.Resume .notify-error {
+  display: none;
+}
+.Site .notify-error.is-error,
+.Blog .notify-error.is-error,
+.Resume .notify-error.is-error {
+  display: block;
+  color: red;
+}
+.Site .append-colon:after,
+.Blog .append-colon:after,
+.Resume .append-colon:after {
+  content: ": ";
+}
+.Site ul.comma-separated-list,
+.Blog ul.comma-separated-list,
+.Resume ul.comma-separated-list {
+  display: inline;
+}
+.Site ul.comma-separated-list > li,
+.Blog ul.comma-separated-list > li,
+.Resume ul.comma-separated-list > li {
+  display: inline;
+}
+.Site ul.comma-separated-list > li:after,
+.Blog ul.comma-separated-list > li:after,
+.Resume ul.comma-separated-list > li:after {
+  content: ", ";
+}
+.Site ul.comma-separated-list > li:last-child:after,
+.Blog ul.comma-separated-list > li:last-child:after,
+.Resume ul.comma-separated-list > li:last-child:after {
+  content: "";
+}
+
+.Resume h1,
+.Resume h2,
+.Resume h3,
+.Resume h4,
+.Resume h5 {
+  page-break-after: avoid;
+}
+.Resume > ul, .Resume > p, .Resume > h3 {
+  margin-left: 2rem;
+}
+.Resume ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.Resume li {
+  margin-bottom: 0.5rem;
+}
+.Resume .organization {
+  display: inline;
+  page-break-before: always;
+}
+.Resume .position,
+.Resume .degree,
+.Resume .dates {
+  display: inline;
+  margin-left: 1rem;
+}
+.Resume p.nb {
+  margin: 0 0 0 3rem;
+}
+.Resume a {
+  font-weight: bold;
+}
+.Resume a:hover {
+  text-decoration: underline;
+}
+
+.Blog__Nav {
+  list-style-type: none;
+}
+.Blog__NavItem {
+  display: inline;
+}
+.Blog__NavItem--Active {
+  color: gray;
+}
+.Blog__Article ul, .Blog article ul {
+  list-style-position: outside;
+  margin-bottom: 1rem;
+}
+.Blog__Article li, .Blog article li {
+  margin-bottom: 0;
+}
+.Blog__Article li > ul, .Blog article li > ul {
+  margin-top: 1rem;
+}
+.Blog__Article > ul, .Blog article > ul {
+  list-style-type: disc;
+}
+.Blog__Article > ul ul, .Blog article > ul ul {
+  list-style-type: circle;
+}
+.Blog__Article > ul ul ul, .Blog article > ul ul ul {
+  list-style-type: square;
+}
+.Blog__Postlist {
+  list-style-type: none;
+  counter-reset: 3;
+}
+
+.h15rem {
+  height: 15rem;
+}
+
+.h2rem {
+  height: 2rem;
+}
+
+.pad-top-05rem {
+  padding-top: 0.5rem;
+}
+
+.max-width-35rem {
+  max-width: 35rem;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.display-inline {
+  display: inline;
+}
+
+@media (min-width: 600px) {
+  .Site ul {
+    padding-left: 2rem;
+  }
+
+  .Site, .Blog, .Resume {
+    margin-left: 1rem;
+  }
+}
+@media print {
+  html {
+    background-color: white;
+  }
+
+  .no-print {
+    display: none;
+  }
 }
