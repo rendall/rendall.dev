@@ -28,6 +28,11 @@
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
     "sass": "^1.14.3",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "gotrue-js": "^0.9.24"
   }
 }
