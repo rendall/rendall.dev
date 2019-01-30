@@ -17,11 +17,236 @@
       vertical-align: middle;
       margin-right: 1rem;
     }
+
+    form input,
+    textarea {
+      display: block;
+      border: solid gray 1px;
+      border-radius: 0.5rem;
+      padding-left: 0.5rem;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #6a5151;
+      min-height: 2rem;
+      max-width: 30rem;
+      min-width: 15rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    fieldset {
+      border: none;
+      margin: 0 0 1rem 0;
+      padding: 0;
+
+      &.hide {
+        display: none;
+      }
+    }
+
     .contain-form {
       display: none;
       &.is-visible {
         display: inherit;
       }
+      &.is-success {
+        display: none;
+      }
     }
+
+    .notify-invalid {
+      display: none;
+      &.is-invalid {
+        display: block;
+        color: red;
+      }
+    }
+
+    .notify-success {
+      display: none;
+      &.is-success {
+        display: block;
+      }
+    }
+
+    .notify-error {
+      display: none;
+      &.is-error {
+        display: block;
+        color: red;
+      }
+    }
+  }
+}
+
+.Blog {
+  &__Header {
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__Nav {
+    list-style-type: none;
+  }
+
+  &__NavItem {
+    display: inline;
+
+    &--Active {
+      color: gray;
+    }
+  }
+
+  &__Title {
+  }
+
+  &__Post {
+  }
+
+  &__Article,
+  article {
+    ul {
+      list-style-position: outside;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0;
+
+      & > ul {
+        margin-top: 1rem;
+      }
+    }
+
+    & > ul {
+      list-style-type: disc;
+      & ul {
+        list-style-type: circle;
+        & ul {
+          list-style-type: square;
+        }
+      }
+    }
+  }
+
+  &__Date {
+  }
+
+  &__Postlist {
+    list-style-type: none;
+    counter-reset: 3;
+
+    .postlist-item {
+      h2 {
+        a {
+          text-decoration: none;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Resume {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    page-break-after: avoid;
+  }
+
+  & > ul,
+  & > p,
+  & > h3 {
+    margin-left: 2rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  .organization {
+    display: inline;
+    page-break-before: always;
+  }
+
+  .position,
+  .degree,
+  .dates {
+    display: inline;
+    margin-left: 1rem;
+  }
+
+  p.nb {
+    margin: 0 0 0 3rem;
+  }
+
+  a {
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// utilities
+
+.h15rem {
+  height: 15rem;
+}
+
+.h2rem {
+  height: 2rem;
+}
+
+.pad-top-05rem {
+  padding-top: 0.5rem;
+}
+
+.max-width-35rem {
+  max-width: 35rem;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.display-inline {
+  display: inline;
+}
+
+ul.comma-separated-list {
+  display: inline;
+
+  & > li {
+    display: inline;
+    &:after {
+      content: ", ";
+    }
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
+
+.append-colon {
+  &:after {
+    content: ": ";
   }
 }
