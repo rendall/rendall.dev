@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>How to webfont</title>
+		<link rel="stylesheet" href="/css/styles.css">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rendall&#39;s blog">
+	</head>
+	<body class="Blog">
+		<header class="Blog__Header">
+			<h1 class="home"><a href="/">Rendall&#39;s blog</a></h1>
+		</header>
+
+		<main class="Blog__Post">
+			<h2 class="Blog__Title">How to webfont</h2>
+
+<article class="Blog__Article">
+<time class="Blog__Date" datetime="--">2019-01-30</time>
+<p>This is a quick how-to to get a webfont into your site without a lot of theory. Webfonts can badly affect the performance of your website but I will not get into the nitty-gritty here. Check the end of the post for links to detailed articles about how to optimize the loading of your font.</p>
+<p><strong>First</strong>, get your font. This site uses <a href="https://fonts.google.com/specimen/Montserrat"><em>Montserrat</em></a> but there are lots of other groovy options over at <a href="https://fonts.google.com">Google fonts</a>. There are other nifty sites for free fonts, too. If this is your site's text font, grab the files that represent the <em>regular</em>, <em>italic</em>, <em>bold</em> and <em>bold italic</em> versions.</p>
+<p><strong>Second</strong>, download the font files and host them yourself. <strong>Do not</strong> just throw the link into your html <code>head</code> tag like this <code>&lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans&quot; rel=&quot;stylesheet&quot;&gt;</code>. Among many reasons for not doing this, you would badly slow down your site's load time.</p>
+<p><strong>Third</strong>, <em>optimize</em> your font! <a href="https://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel</a> is good enough and has a good reputation, but there are other online optimizine services and programs. Your font likely has glyphs and such that you will <em>never</em> use! Get those out of there! These instructions are intended for sites that will write in a Latin-ish alphabet about a wide range of topics. Modify these instructions according to your purposes, but the idea is to get rid of all glyphs you will not need!</p>
+<ul>
+<li>Using <a href="https://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel</a></li>
+<li>Upload all of the font files you downloaded in the second step.</li>
+<li>Select all of the font formats except <code>EOT lite</code></li>
+<li>If your font files are TrueType, select <code>TrueType hinting: Keep Existing</code></li>
+<li>Check <code>Spaces</code> and <code>Hyphens</code> in <code>Fix Missing Glyphs</code></li>
+<li>If you have a fallback font, and you do, pick it in <code>X-height Matching</code></li>
+<li>Under <code>Subsetting</code> choose <code>custom</code>. This is where you toss most of your font file size.
+<ul>
+<li>Important: deselect as much as you can. Start with nothing selected.</li>
+<li>If this is a display font for just the header or logotype
+<ul>
+<li>Under <code>Single Characters</code> add only those characters you will use</li>
+</ul>
+</li>
+<li>If this is your website's text font, select these:
+<ul>
+<li>Lowercase</li>
+<li>Uppercase</li>
+<li>Numbers</li>
+<li>Punctuation</li>
+<li>(maybe) Currency</li>
+<li>Look at <code>Subset Preview</code> to make sure that you have all the glyphs you will need</li>
+<li>Add anything missing in <code>Single Characters</code>, e.g: <code>ÄÖÅäöåé</code> (for this site)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Enter a memorable name under <code>CSS: CSS Filename</code>, e.g. <code>fonts.css</code></li>
+<li>Check the <code>Agreement</code> assuming your fonts are legal (and they are, if you got them from the Google site)</li>
+<li>Then <code>Download your kit</code></li>
+</ul>
+<p><strong>Fourth</strong>, unzip and open up your css file (e.g. <code>fonts.css</code>). There are a few modifications you will need to make, here.</p>
+<ul>
+<li>Change all of the <code>font-family</code> values to the same value.
+<ul>
+<li>(e.g. Change <code>font-family: 'montserratbold'</code> to <code>font-family: 'Montserrat'</code>)</li>
+</ul>
+</li>
+<li>Under each <code>@font-face</code> declaration change <code>font-weight</code> and <code>font-style</code> as appropriate
+<ul>
+<li>For the <em>bold</em> version of your font, change <code>font-weight</code> to <code>bold</code></li>
+<li>For the <em>italic</em> version of your font, change <code>font-style</code> to <code>italic</code></li>
+<li>For the <em>italic</em> and <em>bold</em> version of your font, change them both</li>
+</ul>
+</li>
+<li>Change every <code>url</code> value to be relative to the <code>css</code> file
+<ul>
+<li>e.g. <code>url('../fonts/montserrat-bold.eot')</code></li>
+</ul>
+</li>
+<li>Inside of each <code>@font-face</code> declaration, add this line: <code>font-display: optional;</code>
+<ul>
+<li>Or not. Read more about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display"><code>font-display</code> here</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Fifth</strong>, paste the <code>@font-face</code> declarations into your site's stylesheet, and move the fonts into your project directory structure. Again, make sure that the paths in the <code>url</code> are relative to the <code>css</code> file that contains the <code>@font-face</code> declarations, and <em>not</em>, for example, to the webpage that links to it.</p>
+<p>Troubleshooting: fire up your browser, open the <a href="https://developers.google.com/web/tools/chrome-devtools/">developer console</a>, and see if the fonts are being loaded. If not, it should tell you whence it seeks them.</p>
+<p><strong>Sixth</strong>, wire up your <code>html</code> tags to the font files, using the name you chose for them in the fourth step. e.g. <code>html { font-family: &quot;Montserrat&quot;, Arial, Helvetica, sans-serif;}</code></p>
+<p><strong>Finally</strong>, you have definitely degraded the load time and performance of your site. Is it worth it?</p>
+<p>Here are some relatively recent (as of writing) articles about the topic:</p>
+<ul>
+<li><a href="https://www.zachleat.com/web/font-checklist/">https://www.zachleat.com/web/font-checklist/</a> (Zach Leatherman has done a lot of work in the space of optimizing webfont loading.)</li>
+<li><a href="https://frontendnews.io/editions/2018-07-25-tips-for-loading-web-fonts">https://frontendnews.io/editions/2018-07-25-tips-for-loading-web-fonts</a></li>
+<li><a href="https://www.malthemilthers.com/font-loading-strategy-acceptable-flash-of-invisible-text/">https://www.malthemilthers.com/font-loading-strategy-acceptable-flash-of-invisible-text/</a></li>
+<li><a href="https://www.sitepoint.com/optimizing-web-fonts-for-performance-the-state-of-the-art/">https://www.sitepoint.com/optimizing-web-fonts-for-performance-the-state-of-the-art/</a></li>
+</ul>
+
+</article>
+
+<p><a href="/">← Home</a></p>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /posts/2019/1/30/how-to-webfont/ -->
+	</body>
+</html>
