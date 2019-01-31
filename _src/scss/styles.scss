@@ -142,15 +142,32 @@
     list-style-type: none;
     counter-reset: 3;
 
-    .postlist-item {
-      h2 {
-        a {
-          text-decoration: none;
-          
-          &:hover {
-            text-decoration: underline;
+    .Postlist__Item {
+      margin-bottom: 2rem;
+
+      header.Item__Header {
+        margin-bottom: 0.75rem;
+        h2.Item__Headline {
+          margin: 0 0 0.25rem 0;
+
+          a.Headline__Link {
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
+      }
+
+      article.Item__Teaser {
+        p {
+          display: inline;
+          margin-right: 0.5rem;
+        }
+      }
+
+      &--active {
       }
     }
   }

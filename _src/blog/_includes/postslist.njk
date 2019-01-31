@@ -1,9 +1,9 @@
 <ol reversed class="Blog__Postlist">
 {% for post in postslist | reverse %}
-  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-    <header>
-    <h2><a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
-    <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+  <li class="Postlist__Item{% if post.url == url %} Postlist__Item--active{% endif %}">
+    <header class="Item__Header">
+    <h2 class="Item__Headline"><a href="{{ post.url | url }}" class="Headline__Link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
+    <time class="Item__Date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
     {% for tag in post.data.tags %}
       {%- if tag != "post" -%}
       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
@@ -11,7 +11,7 @@
       {%- endif -%}
     {% endfor %}
     </header>
-    <article> {{ post.templateContent | teaser | safe }} <a href="{{ post.url | url }}" class="postlist-more">More →</a></article>
+    <article class="Item__Teaser"> {{ post.templateContent | teaser | safe }} <a href="{{ post.url | url }}" class="Item__More">More →</a></article>
   </li>
 {% endfor %}
 </ol>
