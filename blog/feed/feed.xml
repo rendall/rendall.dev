@@ -225,13 +225,12 @@
 		<link href="https://blog.rendall.tv/posts/2019/1/30/how-to-webfont/"/>
 		<updated>2019-01-30T02:00:00+02:00</updated>
 		<id>https://blog.rendall.tv/posts/2019/1/30/how-to-webfont/</id>
-		<content type="html">&lt;p&gt;This is a quick how-to to get a webfont into your site without a lot of theory. Webfonts can badly affect the performance of your website but I will not get into the nitty-gritty here. Check the end of the post for links to detailed articles about how to optimize the loading of your font.&lt;/p&gt;
+		<content type="html">&lt;p&gt;This is a quick guide to get a webfont into your website with some attention to web performance and is intended as a starting point for small sites that will write in a Latin alphabet. At the end of the post are some resources for further optimizations, if you choose.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;First&lt;/strong&gt;, get your font. This site uses &lt;a href=&quot;https://fonts.google.com/specimen/Montserrat&quot;&gt;&lt;em&gt;Montserrat&lt;/em&gt;&lt;/a&gt; but there are lots of other groovy options over at &lt;a href=&quot;https://fonts.google.com/&quot;&gt;Google fonts&lt;/a&gt;. There are other nifty sites for free fonts, too. If this is your site&#39;s text font, grab the files that represent the &lt;em&gt;regular&lt;/em&gt;, &lt;em&gt;italic&lt;/em&gt;, &lt;em&gt;bold&lt;/em&gt; and &lt;em&gt;bold italic&lt;/em&gt; versions.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Second&lt;/strong&gt;, download the font files and host them yourself. &lt;strong&gt;Do not&lt;/strong&gt; just throw the link into your html &lt;code&gt;head&lt;/code&gt; tag like this &lt;code&gt;&amp;lt;link href=&amp;quot;https://fonts.googleapis.com/css?family=Open+Sans&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;&lt;/code&gt;. Among many reasons for not doing this, you would badly slow down your site&#39;s load time.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Third&lt;/strong&gt;, &lt;em&gt;optimize&lt;/em&gt; your font! &lt;a href=&quot;https://www.fontsquirrel.com/tools/webfont-generator&quot;&gt;Font Squirrel&lt;/a&gt; is good enough and has a good reputation, but there are other online optimizine services and programs. Your font likely has glyphs and such that you will &lt;em&gt;never&lt;/em&gt; use! Get those out of there! These instructions are intended for sites that will write in a Latin-ish alphabet about a wide range of topics. Modify these instructions according to your purposes, but the idea is to get rid of all glyphs you will not need!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Third&lt;/strong&gt;, &lt;em&gt;optimize&lt;/em&gt; your font! &lt;a href=&quot;https://www.fontsquirrel.com/tools/webfont-generator&quot;&gt;Font Squirrel&lt;/a&gt; is good enough and has a good reputation, but there are other online optimizine services and programs. Your font likely has glyphs and such that you will &lt;em&gt;never&lt;/em&gt; use! Get those out of there!&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Using &lt;a href=&quot;https://www.fontsquirrel.com/tools/webfont-generator&quot;&gt;Font Squirrel&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Upload all of the font files you downloaded in the second step.&lt;/li&gt;
+&lt;li&gt;Upload all of the font files you downloaded in the second step to &lt;a href=&quot;https://www.fontsquirrel.com/tools/webfont-generator&quot;&gt;Font Squirrel&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Select all of the font formats except &lt;code&gt;EOT lite&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;If your font files are TrueType, select &lt;code&gt;TrueType hinting: Keep Existing&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Check &lt;code&gt;Spaces&lt;/code&gt; and &lt;code&gt;Hyphens&lt;/code&gt; in &lt;code&gt;Fix Missing Glyphs&lt;/code&gt;&lt;/li&gt;
@@ -280,16 +279,16 @@
 &lt;li&gt;e.g. &lt;code&gt;url(&#39;../fonts/montserrat-bold.eot&#39;)&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Inside of each &lt;code&gt;@font-face&lt;/code&gt; declaration, add this line: &lt;code&gt;font-display: optional;&lt;/code&gt;
+&lt;li&gt;Inside of each &lt;code&gt;@font-face&lt;/code&gt; declaration, add either line: &lt;code&gt;font-display: swap;&lt;/code&gt; or &lt;code&gt;font-display: optional;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;Or not. Read more about &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display&quot;&gt;&lt;code&gt;font-display&lt;/code&gt; here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Fifth&lt;/strong&gt;, paste the &lt;code&gt;@font-face&lt;/code&gt; declarations into your site&#39;s stylesheet, and move the fonts into your project directory structure. Again, make sure that the paths in the &lt;code&gt;url&lt;/code&gt; are relative to the &lt;code&gt;css&lt;/code&gt; file that contains the &lt;code&gt;@font-face&lt;/code&gt; declarations, and &lt;em&gt;not&lt;/em&gt;, for example, to the webpage that links to it.&lt;/p&gt;
-&lt;p&gt;Troubleshooting: fire up your browser, open the &lt;a href=&quot;https://developers.google.com/web/tools/chrome-devtools/&quot;&gt;developer console&lt;/a&gt;, and see if the fonts are being loaded. If not, it should tell you whence it seeks them.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Sixth&lt;/strong&gt;, wire up your &lt;code&gt;html&lt;/code&gt; tags to the font files, using the name you chose for them in the fourth step. e.g. &lt;code&gt;html { font-family: &amp;quot;Montserrat&amp;quot;, Arial, Helvetica, sans-serif;}&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Finally&lt;/strong&gt;, you have definitely degraded the load time and performance of your site. Is it worth it?&lt;/p&gt;
+&lt;p&gt;Troubleshooting: fire up your browser and see if the fonts are being loaded. If not, the &lt;a href=&quot;https://developers.google.com/web/tools/chrome-devtools/&quot;&gt;developer console&lt;/a&gt; should tell you whence it seeks them.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Finally&lt;/strong&gt;, you have definitely degraded the load time and performance of your site. You have to decide whether it&#39;s &lt;em&gt;good enough&lt;/em&gt; or if you need further optimizations.&lt;/p&gt;
 &lt;p&gt;Here are some relatively recent (as of writing) articles about the topic:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.zachleat.com/web/font-checklist/&quot;&gt;https://www.zachleat.com/web/font-checklist/&lt;/a&gt; (Zach Leatherman has done a lot of work in the space of optimizing webfont loading.)&lt;/li&gt;
