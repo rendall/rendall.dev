@@ -18,109 +18,15 @@
 
 <ol reversed class="Blog__Postlist">
 
-  <li class="postlist-item">
-    <h2><a href="/posts/2019/1/26/class-notes-mastering-git/" class="postlist-link">Class notes: Mastering Git</a></h2>
-    <time class="postlist-date" datetime="2019.01.26">2019-01-26</time>
-    <article> <p>These are my class notes to <a href="https://twitter.com/nusco">Paolo Perrotta</a>'s excellent and entertaining video course <em><a href="https://app.pluralsight.com/library/courses/mastering-git">Mastering Git</a></em>, comprising 8 videos of 2 hours 45 minutes total. I recently took up the <a href="https://developer.microsoft.com/en-us/collective">Microsoft Dev Collective</a>'s offer for a 30-day free trial of <a href="https://www.pluralsight.com/">Pluralsight</a> and this was one of several that I enjoyed. I highly recommend this course if you are familiar with git, but even a little unclear on how git works. Especially if, like me, you use the same git commands every day with only a vague notion of what they do. Signore Perrotta explains everything brilliantly.</p>
-<p>git tracks changes in 4 places:</p>
-<ul>
-<li><em>working directory</em> - this is the project directory in the OS file structure</li>
-<li><em>index</em> - a.k.a the staging area</li>
-<li><em>repository</em> - in the <code>.git</code> directory</li>
-<li><em>stash</em> - a kind of scratch pad or clipboard for the developer</li>
-</ul>
-<p>2 questions which will completely define and explain any command:</p>
-<ul>
-<li>How does this command move information across the 4 areas?</li>
-<li>How does this command change the repository?</li>
-</ul>
-<p>Some useful git log commands:</p>
-<ul>
-<li><code>git log --graph --decorate --oneline</code></li>
-<li><code>git log --patch</code></li>
-<li><code>git log -- &lt;filename&gt;</code></li>
-</ul>
-<p>Distributed Workflow patterns. This is the social side of git: how git users on a team use it. These are useful terms for fruitful discussion.</p>
-<ul>
-<li>Distribution models: how sourcecode is shared among repositories
-<ul>
-<li>Peer-to-peer: developers pulling from each other's repositories</li>
-<li>Centralized: one repository holds the canonical version</li>
-<li>Pull-request model: devs do not push directly, but request</li>
-<li>hierarchical model: some devs are gatekeepers to canonical repositories</li>
-<li>etc.</li>
-</ul>
-</li>
-<li>Branching models: how branches are used
-<ul>
-<li>Stable versus unstable (does a branch allow broken code?)</li>
-<li>Integration (is there a &quot;master&quot; branch to which all repos merge/rebase?)</li>
-<li>Release branch</li>
-<li>Feature branch</li>
-<li>Hotfix branch (versus cherry-pick, which is a rebase)</li>
-</ul>
-</li>
-<li>Constraints: allowed, disallowed and preferred methods
-<ul>
-<li>Merge versus rebase (messy truth versus clean inaccuracy)</li>
-<li>Gatekeeping and responsibility (do some devs have privs)</li>
-<li>&quot;Don't push when the build is broken&quot; (CI error)</li>
-<li>clean history before push to integration?</li>
-<li>Every pull request linked to an issue/ticket number</li>
-</ul>
-</li>
-</ul>
-<p>Gitflow: such an <a href="https://nvie.com/posts/a-successful-git-branching-model/">influential model</a> deserves separate discussion</p>
-<ul>
-<li>Don't &quot;just use Gitflow&quot;. It is not optimal for every project, e.g.:
-<ul>
-<li>web apps that need to maintain only one release branch</li>
-<li>project with continuous integration in which features released immediately, Gitflow has too many layers</li>
-<li>projects with long term feature development
-<ul>
-<li>large code bases touching everywhere could cause integration headaches</li>
-<li>perhaps better to integrate often, even when features are not yet complete</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Growing a workflow: Avoid designing a complete workflow from the beginning, but start small and grow it.</p>
-<ul>
-<li>
-<p>Sample starter workflow:</p>
-<ul>
-<li>Distribution model: Centralized</li>
-<li>Branching model:
-<ul>
-<li>One integration branch (master)</li>
-<li>One feature branch per feature</li>
-</ul>
-</li>
-<li>Constraints:
-<ul>
-<li>Keep master stable, fix ASAP if it breaks</li>
-<li>Integrate feature branches every few days</li>
-<li>User merge over rebase by default</li>
-</ul>
-</li>
-</ul>
-<p>&quot;Simple, clear purpose and principles give rise to complex intelligent behavior. Complex rules and regulations give rise to simple stupid behavior.&quot;</p>
-<p>-- Dee Hock</p>
-</li>
-</ul>
-<p>Personal thoughts:</p>
-<ul>
-<li>Other constraints I have seen:</li>
-<li>Merge feature branches into the master branch, but clean up with interactive rebase the history of the branch before doing so.</li>
-<li>Do not rebase the history of the master branch.</li>
-<li>Features that are not released yet should be hidden by default, to be turned on with an internal flag</li>
-<li>Branches should have an associated issue number, and commit messages should reference that number (required a githook to enforce)</li>
-</ul>
-
+  <li class="Postlist__Item">
+    <header class="Item__Header">
+    <h2 class="Item__Headline"><a href="/posts/2019/1/26/class-notes-mastering-git/" class="Headline__Link">Class notes: Mastering Git</a></h2>
+    <time class="Item__Date" datetime="2019.01.26">2019-01-26</time>
     
       <a href="/tags/code/" class="tag">code</a>
       <a href="/tags/git/" class="tag">git</a>
+    </header>
+    <article class="Item__Teaser"> <p>These are my class notes to <a href="https://twitter.com/nusco">Paolo Perrotta</a>'s excellent and entertaining video course <em><a href="https://app.pluralsight.com/library/courses/mastering-git">Mastering Git</a></em>, comprising 8 videos of 2 hours 45 minutes total. I recently took up the <a href="https://developer.microsoft.com/en-us/collective">Microsoft Dev Collective</a>'s offer for a 30-day free trial of <a href="https://www.pluralsight.com/">Pluralsight</a> and this was one of several that I enjoyed. I highly recommend this course if you are familiar with git, but even a little unclear on how git works. Especially if, like me, you use the same git commands every day with only a vague notion of what they do. Signore Perrotta explains everything brilliantly.</p> <a href="/posts/2019/1/26/class-notes-mastering-git/" class="Item__More">More →</a></article>
   </li>
 
 </ol>

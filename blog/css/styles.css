@@ -515,13 +515,25 @@ a:visited {
   list-style-type: none;
   counter-reset: 3;
 }
-.Blog__Postlist .postlist-item h2 a {
+.Blog__Postlist .Postlist__Item {
+  margin-bottom: 2rem;
+}
+.Blog__Postlist .Postlist__Item header.Item__Header {
+  margin-bottom: 0.75rem;
+}
+.Blog__Postlist .Postlist__Item header.Item__Header h2.Item__Headline {
+  margin: 0 0 0.25rem 0;
+}
+.Blog__Postlist .Postlist__Item header.Item__Header h2.Item__Headline a.Headline__Link {
   text-decoration: none;
 }
-.Blog__Postlist .postlist-item h2 a:hover {
+.Blog__Postlist .Postlist__Item header.Item__Header h2.Item__Headline a.Headline__Link:hover {
   text-decoration: underline;
 }
-
+.Blog__Postlist .Postlist__Item article.Item__Teaser p {
+  display: inline;
+  margin-right: 0.5rem;
+}
 .Resume h1,
 .Resume h2,
 .Resume h3,
