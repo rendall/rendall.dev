@@ -5,7 +5,7 @@ tags:
 navtitle: Home
 ---
 
-{% set postslist = collections.posts | head(-3) %}
+{% set postslist = collections.posts | head(-30) %}
 {% include "postslist.njk" %}
 
 <p>More <a href="{{ '/posts/' | url }}">here</a>.</p>

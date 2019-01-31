@@ -12,6 +12,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-MM-dd');
   });
+
+  // This extracts the first paragraph of 'content' and returns it
+  eleventyConfig.addFilter("teaser", content => {
+    
+    if (!content) return;
+
+    const paragraphRegex = /^\<p>.*\<\/p\>/m
+    const firstParagraph = content.match(paragraphRegex);
+
+    if (firstParagraph === null) return content;
+    return firstParagraph[0]
+  })
   
   // The normal slug filter does not completely remove url-unsafe characters, so use this:
   eleventyConfig.addFilter("slugify", input => string(input).slugify().toString() );
