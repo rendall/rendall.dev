@@ -222,8 +222,69 @@
   }
 }
 
-// utilities
+.Blog {
+  &__Header {
+  }
 
+  &__Nav {
+    list-style-type: none;
+  }
+
+  &__NavItem {
+    display: inline;
+
+    &--Active {
+      color: gray;
+    }
+  }
+
+  &__Title {
+  }
+
+  &__Post {
+
+  }
+
+  &__Article, article {
+    ul {
+      list-style-position: outside;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0;
+
+      & > ul {
+        margin-top: 1rem;
+      }
+    }
+
+    & > ul {
+      list-style-type: disc;
+      & ul {
+        list-style-type: circle;
+        & ul {
+          list-style-type: square;
+        }
+      }
+    }
+  }
+
+  &__Date {
+  }
+
+  &__Postlist {
+    list-style-type: none;
+    counter-reset: 3;
+  }
+
+
+}
+
+footer {
+  height: 3rem;
+  display: block;
+}
 .h15rem {
   height: 15rem;
 }
