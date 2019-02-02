@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>User login</title>
-        <style>
-            form {
-                display: grid;
-                grid-template-columns: max-content max-content;
-                grid-gap: 0.5rem;
-            }
+  <head>
+    <title>User login</title>
+    <style>
+      form {
+        display: grid;
+        grid-template-columns: max-content max-content;
+        grid-gap: 0.5rem;
+      }
 
-            label {
-                text-align: right;
-            }
+      label {
+        text-align: right;
+      }
 
-            label[for]::after {
-                content: ':';
-            }
-        </style>
-    </head>
-    <body>
-        <form action="">
-            <label for="name">Name</label>
-            <input id="name"/>
-            <label for="email">Email</label>
-            <input id="email" type="email"/>
-            <label for="password">Password</label>
-            <input id="password" type="password"/>
-            <label for="isSignup">Log in</label>
-            <input id="isSignup" type="checkbox"/>
-            <label></label>
-            <button type="button" id="submit-btn">Sign Up</button>
-        </form>
-        <script src="js/users.js"></script>
-    </body>
+      form label[for]::after {
+        content: ":";
+      }
+
+      button.link-btn {
+        background-color: unset;
+        color: unset;
+        border: 0;
+        cursor: pointer;
+      }
+
+      button.link-btn:hover {
+        text-decoration: underline;
+      }
+
+      .is-hidden {
+        display: none;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="login-form" action="">
+      <label for="name">Name</label>
+      <input id="name" />
+      <label for="email">Email</label>
+      <input id="email" type="email" />
+      <label for="password">Password</label>
+      <input id="password" type="password" />
+      <label for="isSignup">Sign up</label>
+      <input id="isSignup" type="checkbox" />
+      <label></label>
+      <button type="button" id="submit-btn">Log in</button>
+      <label></label>
+      <button type="button" id="recovery-btn" class="link-btn">
+        Recover password
+      </button>
+    </form>
+    <p id="message-display"></p>
+    <button type="button" id="logout-btn">Log out</button>
+    <script src="js/users.js"></script>
+  </body>
 </html>
