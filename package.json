@@ -34,6 +34,7 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
+    "dotenv-webpack": "^1.7.0",
     "gotrue-js": "^0.9.24"
   }
 }
