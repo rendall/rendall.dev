@@ -21,12 +21,12 @@ const selectAllCommentsPromise = (path: string, user?: User) =>
 const insertCommentPromise = (user: User, body: string) =>
   new Promise((resolve, reject) => {})
 
-const getComments = (event: Event, context: Context, callback) =>
+const getComments = (event: Event, context: Context, callback:Function) =>
   selectAllCommentsPromise(context.path).then(comments =>
     callback(null, { statusCode: 200, body: JSON.stringify(comments) })
   )
 
-const putComment = (event: Event, context: Context, callback) => {
+const putComment = (event: Event, context: Context, callback:Function) => {
   // validate info
   const user: User = extractUser(context)
   const { verifyCode, message } = verifyText(context.body)
@@ -56,7 +56,7 @@ const putComment = (event: Event, context: Context, callback) => {
   }
 }
 
-const commentsHandler = (event: Event, context: Context, callback) => {
+const commentsHandler = (event: Event, context: Context, callback:Function) => {
   if (isBlacklisted(context.headers["client-ip"])) {
     callback(null, { statusCode: 204 })
     return

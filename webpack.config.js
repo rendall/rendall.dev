@@ -3,9 +3,9 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './js/users.js',
+  entry: './_src/ts/home.js',
   output: {
-    filename: 'users.js',
+    filename: 'home.js',
     path: path.resolve(__dirname, 'js')
   },
   devtool: 'source-map',

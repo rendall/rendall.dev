@@ -26,7 +26,7 @@ const onSignupError = (error: Error) => displayError(error.message)
 const onLogin = () => { updateUI() } // return user object
 const onLoginError = (error: Error) => displayError(error.message)
 const onLogoutError = (error: Error) => displayError(error.message)
-const onLogout = (e: Event) => auth.currentUser().logout().then(() => updateUI()).catch((error:Error) => onLogoutError(error))
+const onLogout = (e: Event) => auth.currentUser()!.logout().then(() => updateUI()).catch((error:Error) => onLogoutError(error))
 
 const onSubmit = (e:Event) => {
 
