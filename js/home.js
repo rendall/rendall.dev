@@ -4,7 +4,11 @@ const isValidField = (field) => {
     switch (field.name) {
         case "name": return field.value != "";
         case "email": return emailRegex.test(field.value);
-        case "message": return field.value != "";
+        case "message": {
+            const httpLink = /https?:\/\// // no http links
+            const website = /\w*\.[a-z]{2,4}\b/
+            return field.value != "" && !httpLink.test(field.value) && !website.test(field.value)
+        }
         case "form-name": {
             const formName = document.querySelector('form').attributes.getNamedItem('name').value;
             if (field.value !== formName) console.warn(`form-name field '${field.value}' does not equal form name '${formName}'`);
