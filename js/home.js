@@ -1,13 +1,13 @@
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const httpRegex = /https?:\/\// // no http links
+const websiteRegex = /\w*\.[a-z]{2,4}\b/ // nor websites
 
 const isValidField = (field) => {
     switch (field.name) {
         case "name": return field.value != "";
         case "email": return emailRegex.test(field.value);
         case "message": {
-            const httpLink = /https?:\/\// // no http links
-            const website = /\w*\.[a-z]{2,4}\b/
-            return field.value != "" && !httpLink.test(field.value) && !website.test(field.value)
+            return field.value != "" && !httpRegex.test(field.value) && !websiteRegex.test(field.value)
         }
         case "form-name": {
             const formName = document.querySelector('form').attributes.getNamedItem('name').value;
@@ -15,6 +15,7 @@ const isValidField = (field) => {
             return true; // Invalidating a hidden field would confuse the user.
         }
         case "confirm": return true;
+        case "city": return true;
         default: {
             console.warn(`unknown field name '${field.name}'`);
             return true; // invalidating an unknown field would confuse the user
