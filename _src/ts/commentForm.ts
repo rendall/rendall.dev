@@ -1,5 +1,7 @@
 export const setupCommentForm = (sendFunc?:any) => {
 
+    if (document.getElementById("form-toggle") === null) return;
+
     const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     const isValidField = (field: { name: string, value: string }): boolean => {
