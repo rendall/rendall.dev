@@ -371,12 +371,35 @@ template {
   font-style: italic;
   font-display: swap;
 }
+/* Fallback font approximately matching Montserrat default
+font-family: Arial
+font-size: 1.06rem
+line-height: 1.52
+letter-spacing: 0.051rem
+word-spacing: -0.119rem
+
+approximately matches:
+font-family: Montserrat
+font-size: 1rem
+line-height: 1.6
+*/
 html {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.41;
+  letter-spacing: -0.004rem;
+  word-spacing: -0.022rem;
   background-color: #efeeee;
   color: #403434;
   margin: 0;
   padding: 0;
+}
+html.web-font {
+  font-family: "Montserrat";
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0rem;
+  word-spacing: 0rem;
 }
 
 ul {
@@ -570,6 +593,44 @@ a:visited {
 }
 .Resume a:hover {
   text-decoration: underline;
+}
+
+.Blog__Nav {
+  list-style-type: none;
+}
+.Blog__NavItem {
+  display: inline;
+}
+.Blog__NavItem--Active {
+  color: gray;
+}
+.Blog__Article ul, .Blog article ul {
+  list-style-position: outside;
+  margin-bottom: 1rem;
+}
+.Blog__Article li, .Blog article li {
+  margin-bottom: 0;
+}
+.Blog__Article li > ul, .Blog article li > ul {
+  margin-top: 1rem;
+}
+.Blog__Article > ul, .Blog article > ul {
+  list-style-type: disc;
+}
+.Blog__Article > ul ul, .Blog article > ul ul {
+  list-style-type: circle;
+}
+.Blog__Article > ul ul ul, .Blog article > ul ul ul {
+  list-style-type: square;
+}
+.Blog__Postlist {
+  list-style-type: none;
+  counter-reset: 3;
+}
+
+footer {
+  height: 3rem;
+  display: block;
 }
 
 .h15rem {
