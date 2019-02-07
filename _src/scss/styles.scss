@@ -3,6 +3,8 @@
 @import "_normalize-css";
 @import "_rendall-normalize";
 
+$site-max-width: 45rem;
+
 .Site {
   &__Header {
   }
@@ -107,29 +109,43 @@
   }
 
   &__Post {
-  }
-
-  &__Article,
-  article {
-    ul {
-      list-style-position: outside;
-      margin-bottom: 1rem;
-    }
-
-    li {
-      margin-bottom: 0;
-
-      & > ul {
-        margin-top: 1rem;
+    .Post {
+      &__Header {
+        margin-bottom: 0.75rem;
       }
-    }
 
-    & > ul {
-      list-style-type: disc;
-      & ul {
-        list-style-type: circle;
-        & ul {
-          list-style-type: square;
+      &__Title {
+        margin: 0 0 0.25rem 0;
+      }
+
+      &__Article {
+        max-width: 45rem;
+
+        p {
+          margin: 0 0 1rem 0;
+        }
+
+        ul {
+          list-style-position: outside;
+          margin-bottom: 0.5rem;
+        }
+
+        li {
+          margin-bottom: 0.25rem;
+
+          & > ul {
+            margin-top: 0.5rem;
+          }
+        }
+
+        & > ul {
+          list-style-type: disc;
+          & ul {
+            list-style-type: circle;
+            & ul {
+              list-style-type: square;
+            }
+          }
         }
       }
     }
@@ -139,11 +155,13 @@
   }
 
   &__Postlist {
+    padding: 0;
+    margin: 0;
     list-style-type: none;
-    counter-reset: 3;
+    max-width: $site-max-width;
 
     .Postlist__Item {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
 
       header.Item__Header {
         margin-bottom: 0.75rem;
