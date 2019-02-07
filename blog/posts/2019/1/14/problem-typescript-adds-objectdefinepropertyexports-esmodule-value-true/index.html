@@ -9,14 +9,19 @@
 	</head>
 	<body class="Blog">
 		<header class="Blog__Header">
-			<h1 class="home"><a href="/">Rendall&#39;s blog</a></h1>
+			<h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
 		</header>
 
 		<main class="Blog__Post">
-			<h2 class="Blog__Title">Problem: Typescript adds Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });</h2>
+			<header class="Post__Header">
+    <h2 class="Post__Title">Problem: Typescript adds Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });</h2>
+    <time class="Post__Date" datetime="--">2019-01-14</time>
+    
+      <a href="/tags/code/" class="tag">code</a>
+      <a href="/tags/typescript/" class="tag">typescript</a>
+</header>
 
-<article class="Blog__Article">
-<time class="Blog__Date" datetime="--">2019-01-14</time>
+<article class="Post__Article">
 <p>You're using Typescript in a frontend project, and import a module into your code. Something like:<br>
 <code>import { Observable } from 'rxjs';</code></p>
 <p>You're using a bundler like <a href="https://webpack.js.org"><em>Webpack</em></a> that squeezes those modules into a single minimized javascript file, so you want to keep that line as-is.</p>
