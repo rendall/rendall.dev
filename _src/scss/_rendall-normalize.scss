@@ -57,8 +57,36 @@ $a-visited: lighten($color-text, 20%);
   font-display: swap;
 }
 
+/* Fallback font approximately matching Montserrat default
+font-family: Arial
+font-size: 1.06rem
+line-height: 1.52
+letter-spacing: 0.051rem
+word-spacing: -0.119rem
+
+approximately matches:
+font-family: Montserrat
+font-size: 1rem
+line-height: 1.6
+*/
+
 html {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.41;
+  letter-spacing: -0.004rem;
+  word-spacing: -0.022rem;
+
+  &.web-font {
+
+    font-family: "Montserrat";
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: 0rem;
+    word-spacing: 0rem;
+
+  }
+
   background-color: $color-background;
   color: $color-text;
   margin: 0;
