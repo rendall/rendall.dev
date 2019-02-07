@@ -3,10 +3,18 @@ layout: layouts/base.njk
 templateClass: Blog__Post
 permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title | slugify }}/index.html
 ---
-<h2 class="Blog__Title">{{ title }}</h2>
+<header class="Post__Header">
+    <h2 class="Post__Title">{{ title }}</h2>
+    <time class="Post__Date" datetime="{{ page.year }}-{{ page.month }}-{{ page.day }}">{{ date | readableDate }}</time>
+    {% for tag in tags %}
+      {%- if tag != "post" -%}
+      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+      {%- endif -%}
+    {% endfor %}
+</header>
 
-<article class="Blog__Article">
-<time class="Blog__Date" datetime="{{ page.year }}-{{ page.month }}-{{ page.day }}">{{ date | readableDate }}</time>
+<article class="Post__Article">
 {{ content | safe }}
 </article>
 
