@@ -371,24 +371,9 @@ template {
   font-style: italic;
   font-display: swap;
 }
-/* Fallback font approximately matching Montserrat default
-font-family: Arial
-font-size: 1.06rem
-line-height: 1.52
-letter-spacing: 0.051rem
-word-spacing: -0.119rem
-
-approximately matches:
-font-family: Montserrat
-font-size: 1rem
-line-height: 1.6
-*/
 html {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.15rem;
-  line-height: 1.41;
-  letter-spacing: -0.004rem;
-  word-spacing: -0.022rem;
+  letter-spacing: 0.05rem;
   background-color: #efeeee;
   color: #403434;
   margin: 0;
@@ -396,10 +381,7 @@ html {
 }
 html.web-font {
   font-family: "Montserrat";
-  font-size: 1rem;
-  line-height: 1;
   letter-spacing: 0rem;
-  word-spacing: 0rem;
 }
 
 ul {
@@ -509,37 +491,45 @@ a:visited {
 .Blog__NavItem--Active {
   color: gray;
 }
-.Blog__Article ul,
-.Blog article ul {
+.Blog__Post .Post__Header {
+  margin-bottom: 0.75rem;
+}
+.Blog__Post .Post__Title {
+  margin: 0 0 0.25rem 0;
+}
+.Blog__Post .Post__Article {
+  max-width: 45rem;
+}
+.Blog__Post .Post__Article p {
+  margin: 0 0 1rem 0;
+}
+.Blog__Post .Post__Article ul {
   list-style-position: outside;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
-.Blog__Article li,
-.Blog article li {
-  margin-bottom: 0;
+.Blog__Post .Post__Article li {
+  margin-bottom: 0.25rem;
 }
-.Blog__Article li > ul,
-.Blog article li > ul {
-  margin-top: 1rem;
+.Blog__Post .Post__Article li > ul {
+  margin-top: 0.5rem;
 }
-.Blog__Article > ul,
-.Blog article > ul {
+.Blog__Post .Post__Article > ul {
   list-style-type: disc;
 }
-.Blog__Article > ul ul,
-.Blog article > ul ul {
+.Blog__Post .Post__Article > ul ul {
   list-style-type: circle;
 }
-.Blog__Article > ul ul ul,
-.Blog article > ul ul ul {
+.Blog__Post .Post__Article > ul ul ul {
   list-style-type: square;
 }
 .Blog__Postlist {
+  padding: 0;
+  margin: 0;
   list-style-type: none;
-  counter-reset: 3;
+  max-width: 45rem;
 }
 .Blog__Postlist .Postlist__Item {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .Blog__Postlist .Postlist__Item header.Item__Header {
   margin-bottom: 0.75rem;

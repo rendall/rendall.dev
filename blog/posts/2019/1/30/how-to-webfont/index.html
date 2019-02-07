@@ -9,14 +9,19 @@
 	</head>
 	<body class="Blog">
 		<header class="Blog__Header">
-			<h1 class="home"><a href="/">Rendall&#39;s blog</a></h1>
+			<h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
 		</header>
 
 		<main class="Blog__Post">
-			<h2 class="Blog__Title">How to webfont</h2>
+			<header class="Post__Header">
+    <h2 class="Post__Title">How to webfont</h2>
+    <time class="Post__Date" datetime="--">2019-01-30</time>
+    
+      <a href="/tags/code/" class="tag">code</a>
+      <a href="/tags/web/" class="tag">web</a>
+</header>
 
-<article class="Blog__Article">
-<time class="Blog__Date" datetime="--">2019-01-30</time>
+<article class="Post__Article">
 <p>This is a quick guide to get a webfont into your website with some attention to web performance and is intended as a starting point for small sites that will write in a Latin alphabet. At the end of the post are some resources for further optimizations, if you choose.</p>
 <p><strong>First</strong>, get your font. This site uses <a href="https://fonts.google.com/specimen/Montserrat"><em>Montserrat</em></a> but there are lots of other groovy options over at <a href="https://fonts.google.com">Google fonts</a>. There are other nifty sites for free fonts, too. If this is your site's text font, grab the files that represent the <em>regular</em>, <em>italic</em>, <em>bold</em> and <em>bold italic</em> versions.</p>
 <p><strong>Second</strong>, download the font files and host them yourself. <strong>Do not</strong> just throw the link into your html <code>head</code> tag like this <code>&lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans&quot; rel=&quot;stylesheet&quot;&gt;</code>. Among many reasons for not doing this, you would badly slow down your site's load time.</p>
