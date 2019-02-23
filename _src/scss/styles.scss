@@ -49,9 +49,11 @@ $site-max-width: 45rem;
 
     .contain-form {
       display: none;
+
       &.is-visible {
         display: inherit;
       }
+
       &.is-success {
         display: none;
       }
@@ -59,6 +61,7 @@ $site-max-width: 45rem;
 
     .notify-invalid {
       display: none;
+      
       &.is-invalid {
         display: block;
         color: red;
@@ -67,6 +70,7 @@ $site-max-width: 45rem;
 
     .notify-success {
       display: none;
+
       &.is-success {
         display: block;
       }
@@ -74,6 +78,7 @@ $site-max-width: 45rem;
 
     .notify-error {
       display: none;
+      
       &.is-error {
         display: block;
         color: red;
@@ -140,8 +145,10 @@ $site-max-width: 45rem;
 
         & > ul {
           list-style-type: disc;
+
           & ul {
             list-style-type: circle;
+            
             & ul {
               list-style-type: square;
             }
@@ -165,6 +172,7 @@ $site-max-width: 45rem;
 
       header.Item__Header {
         margin-bottom: 0.75rem;
+
         h2.Item__Headline {
           margin: 0 0 0.25rem 0;
 
@@ -234,18 +242,77 @@ $site-max-width: 45rem;
 
   a {
     font-weight: bold;
+
     &:hover {
       text-decoration: underline;
     }
   }
 }
 
-// utilities
+.Blog {
+  &__Header {
+  }
+
+  &__Nav {
+    list-style-type: none;
+  }
+
+  &__NavItem {
+    display: inline;
+
+    &--Active {
+      color: gray;
+    }
+  }
+
+  &__Title {
+  }
+
+  &__Post {
+  }
+
+  &__Article,
+  article {
+    ul {
+      list-style-position: outside;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0;
+
+      & > ul {
+        margin-top: 1rem;
+      }
+    }
+
+    & > ul {
+      list-style-type: disc;
+
+      & ul {
+        list-style-type: circle;
+        
+        & ul {
+          list-style-type: square;
+        }
+      }
+    }
+  }
+
+  &__Date {
+  }
+
+  &__Postlist {
+    list-style-type: none;
+    counter-reset: 3;
+  }
+}
 
 footer {
   height: 3rem;
   display: block;
 }
+
 .h15rem {
   height: 15rem;
 }
@@ -275,9 +342,11 @@ ul.comma-separated-list {
 
   & > li {
     display: inline;
+
     &:after {
       content: ", ";
     }
+
     &:last-child:after {
       content: "";
     }

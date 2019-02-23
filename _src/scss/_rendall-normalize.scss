@@ -6,11 +6,7 @@ $a-visited: lighten($color-text, 20%);
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Bold.eot");
-  src: url("../fonts/Montserrat-Bold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Montserrat-Bold.woff2") format("woff2"),
-    url("../fonts/Montserrat-Bold.woff") format("woff"),
-    url("../fonts/Montserrat-Bold.ttf") format("truetype"),
-    url("../fonts/Montserrat-Bold.svg#Montserrat") format("svg");
+  src: url("../fonts/Montserrat-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff"), url("../fonts/Montserrat-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Bold.svg#Montserrat") format("svg");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -19,11 +15,7 @@ $a-visited: lighten($color-text, 20%);
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Regular.eot");
-  src: url("../fonts/Montserrat-Regular.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Montserrat-Regular.woff2") format("woff2"),
-    url("../fonts/Montserrat-Regular.woff") format("woff"),
-    url("../fonts/Montserrat-Regular.ttf") format("truetype"),
-    url("../fonts/Montserrat-Regular.svg#Montserrat") format("svg");
+  src: url("../fonts/Montserrat-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg#Montserrat") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -32,11 +24,7 @@ $a-visited: lighten($color-text, 20%);
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Italic.eot");
-  src: url("../fonts/Montserrat-Italic.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/Montserrat-Italic.woff2") format("woff2"),
-    url("../fonts/Montserrat-Italic.woff") format("woff"),
-    url("../fonts/Montserrat-Italic.ttf") format("truetype"),
-    url("../fonts/Montserrat-Italic.svg#Montserrat") format("svg");
+  src: url("../fonts/Montserrat-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Italic.woff2") format("woff2"), url("../fonts/Montserrat-Italic.woff") format("woff"), url("../fonts/Montserrat-Italic.ttf") format("truetype"), url("../fonts/Montserrat-Italic.svg#Montserrat") format("svg");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -45,13 +33,7 @@ $a-visited: lighten($color-text, 20%);
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Bolditalic.eot");
-  src: url("../fonts/Montserrat-Bolditalic.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/Montserrat-Bolditalic.woff2") format("woff2"),
-    url("../fonts/Montserrat-Bolditalic.woff") format("woff"),
-    url("../fonts/Montserrat-Bolditalic.ttf") format("truetype"),
-    url("../fonts/Montserrat-Bolditalic.svg#montserratbold_italic")
-      format("svg");
+  src: url("../fonts/Montserrat-Bolditalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Bolditalic.woff2") format("woff2"), url("../fonts/Montserrat-Bolditalic.woff") format("woff"), url("../fonts/Montserrat-Bolditalic.ttf") format("truetype"), url("../fonts/Montserrat-Bolditalic.svg#montserratbold_italic") format("svg");
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -84,6 +66,7 @@ ul {
 
 a {
   color: $color-text;
+  
   &:visited {
     color: $a-visited;
   }
@@ -93,6 +76,7 @@ a {
   body {
     margin: 1rem;
   }
+
   ul {
     margin-left: 1rem;
   }
