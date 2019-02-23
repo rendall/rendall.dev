@@ -1,9 +1,8 @@
 /* rendall.tv styles */
 
-@import '_normalize-css';
+@import "_normalize-css";
 
 /* rendall.tv customization */
-
 
 html {
   font-family: Arial, Helvetica, sans-serif;
@@ -21,9 +20,8 @@ body {
 .Site,
 .Blog,
 .Resume {
-
   margin-left: 0;
-  
+
   section {
     margin: 1rem;
   }
@@ -134,9 +132,11 @@ body {
 
     & > li {
       display: inline;
+
       &:after {
         content: ", ";
       }
+      
       &:last-child:after {
         content: "";
       }
@@ -163,8 +163,8 @@ body {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }  
-  
+  }
+
   li {
     margin-bottom: 0.5rem;
   }
@@ -187,6 +187,7 @@ body {
 
   a {
     font-weight: bold;
+    
     &:hover {
       text-decoration: underline;
     }
@@ -213,10 +214,10 @@ body {
   }
 
   &__Post {
-
   }
 
-  &__Article, article {
+  &__Article,
+  article {
     ul {
       list-style-position: outside;
       margin-bottom: 1rem;
@@ -232,8 +233,10 @@ body {
 
     & > ul {
       list-style-type: disc;
+      
       & ul {
         list-style-type: circle;
+
         & ul {
           list-style-type: square;
         }
@@ -248,7 +251,6 @@ body {
     list-style-type: none;
     counter-reset: 3;
   }
-
 }
 
 .h15rem {
@@ -279,7 +281,10 @@ body {
   .Site ul {
     padding-left: 2rem;
   }
-  .Site, .Blog, .Resume {
+
+  .Site,
+  .Blog,
+  .Resume {
     margin-left: 1rem;
   }
 }
