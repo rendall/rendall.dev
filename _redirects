@@ -7,5 +7,5 @@ https://www.rendall.dev/blog https://blog.rendall.dev 301!
 https://www.rendall.dev/blog/* https://blog.rendall.dev/:splat 301!
 
 # redirect all .tv traffic to .dev
-//blog.rendall.tv/* //blog.rendall.dev/:splat 200
-//blog.rendall.tv //blog.rendall.dev 301!
+# //blog.rendall.tv/* //blog.rendall.dev/:splat 200
+# //blog.rendall.tv //blog.rendall.dev 301!
