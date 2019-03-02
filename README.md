@@ -1,11 +1,10 @@
-# rendall.tv
+# rendall.dev
 
-Website for [rendall.tv](https://rendall.tv)
+Website for [rendall.dev](https://rendall.dev)
 
 - Create a blog post by adding a file to `_src/blog/posts` then `yarn build`
 
-Todo
+## Todo
 
-- Add `.dev` domain and eventually switch entirely from `.tv`
-
-    - Two phases: get `.dev` working as an alternate for all pages, then 2) redirect from `.tv` to `.dev`
+- Use [details](https://github.github.io/details-dialog-element/index.html) for 'Say Hello'
+- Add 'Next' and 'Previous' links in blog posts
