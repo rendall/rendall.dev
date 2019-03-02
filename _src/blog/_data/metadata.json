@@ -1,12 +1,12 @@
 {
   "title": "Rendall's blog",
-  "url": "https://blog.rendall.tv",
-  "homesite": "https://www.rendall.tv",
+  "url": "https://blog.rendall.dev",
+  "homesite": "https://www.rendall.dev",
   "feed": {
     "subtitle": "Sketches, thoughts, and observations on all the things. A personal notebook.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
-    "url": "https://blog.rendall.tv/feed/feed.xml",
+    "url": "https://blog.rendall.dev/feed/feed.xml",
     "id": "https://blog.rendall.tv/"
   },
   "author": {

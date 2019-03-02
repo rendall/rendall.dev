@@ -1,7 +1,7 @@
 {
-  "name": "rendall.tv",
+  "name": "rendall.dev",
   "version": "0.1.0",
-  "description": "The website for rendall.tv",
+  "description": "The website for rendall.dev",
   "main": "index.js",
   "scripts": {
     "test": "test",
