@@ -8,3 +8,4 @@ Website for [rendall.dev](https://rendall.dev)
 
 - Use [details](https://github.github.io/details-dialog-element/index.html) for 'Say Hello'
 - Add 'Next' and 'Previous' links in blog posts
+- Add serviceworker, especially to cache Montserrat webfont
