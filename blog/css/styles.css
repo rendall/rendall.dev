@@ -384,6 +384,10 @@ html.web-font {
   letter-spacing: 0rem;
 }
 
+body {
+  margin: 0.25rem;
+}
+
 ul {
   padding: 0;
   list-style: none;
