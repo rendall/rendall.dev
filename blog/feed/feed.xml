@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.dev/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.dev"/>
-	<updated>2019-01-30T02:00:00+02:00</updated>
+	<updated>2019-03-03T02:00:00+02:00</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -296,6 +296,17 @@
 &lt;li&gt;&lt;a href=&quot;https://www.malthemilthers.com/font-loading-strategy-acceptable-flash-of-invisible-text/&quot;&gt;https://www.malthemilthers.com/font-loading-strategy-acceptable-flash-of-invisible-text/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.sitepoint.com/optimizing-web-fonts-for-performance-the-state-of-the-art/&quot;&gt;https://www.sitepoint.com/optimizing-web-fonts-for-performance-the-state-of-the-art/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Top-level domain change: rendall.dev</title>
+		<link href="https://blog.rendall.dev/posts/2019/3/3/top-level-domain-change-rendalldev/"/>
+		<updated>2019-03-03T02:00:00+02:00</updated>
+		<id>https://blog.rendall.dev/posts/2019/3/3/top-level-domain-change-rendalldev/</id>
+		<content type="html">&lt;p&gt;For years my website and freelance company has been &lt;code&gt;rendall.tv&lt;/code&gt;. Today that changes to &lt;code&gt;rendall.dev&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I got a domain name and a website way back in the early 00s right after undergrad, as many of us do, as a way to promote myself and showcase projects I had been involved with. The design was kitsch. I might call it &lt;a href=&quot;https://web.archive.org/web/20180409221000/https://rendall.tv/&quot;&gt;&lt;em&gt;ironic urban cowboy&lt;/em&gt;&lt;/a&gt;. The original brown-and-tan color scheme came from a drop-down list in freaking &lt;em&gt;Macromedia &lt;em&gt;Dreamweaver&lt;/em&gt;&lt;/em&gt;! And thus it sat for years, changing only very slightly, as more than a decade passed, even as the world&#39;s taste, and my own, changed. For years I paid $35 USD per month to a hosting company.&lt;/p&gt;
+&lt;p&gt;The domain change and design change also corresponds to a personal shift in me that has been ongoing for some few years. It is difficult to put into words, but it corresponds to a kind of increased seriousness of purpose or narrowing of focus. Software development in years past for me has been a way to make a decent income and have fun while doing it. While this is still true for me, it has also become a way of life, both my vocation and avocation. I don&#39;t want to predict what this internal shift means for the future (if anything!), or rhapsodize about the &lt;em&gt;passion&lt;/em&gt; (such an overused cliche of a word!) I feel for software development, but on some level it feels like I am waking up. To what, I do not know yet. To possibility, perhaps. There is so much happening, so many possibilities, so much talented activity.&lt;/p&gt;
 </content>
 	</entry>
 </feed>
