@@ -8,6 +8,7 @@ https://www.rendall.dev/blog/* https://blog.rendall.dev/:splat 301!
 
 # redirect all .tv traffic to .dev
 https://blog.rendall.tv/* https://blog.rendall.dev/:splat 301!
+https://staging.rendall.tv/* https://staging.rendall.dev/:splat 301!
 https://www.rendall.tv/* https://www.rendall.dev/:splat 301!
 https://rendall.dev/* https://www.rendall.dev/:splat 301!
 https://rendall.netlify.com/* https://www.rendall.dev/:splat 301!
