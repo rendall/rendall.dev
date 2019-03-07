@@ -1,0 +1,3 @@
+# intentional
+User-agent: *
+Allow: /
