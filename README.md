@@ -9,3 +9,6 @@ Website for [rendall.dev](https://rendall.dev)
 - Use [details](https://github.github.io/details-dialog-element/index.html) for 'Say Hello'
 - Add 'Next' and 'Previous' links in blog posts
 - Add serviceworker, especially to cache Montserrat webfont
+- Add syntax highlighting for code examples in blog
+- Add comment ability with id
+- delic.io.us style bookmarks
