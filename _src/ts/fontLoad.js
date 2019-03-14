@@ -1,2 +1,2 @@
-const FontFaceObserver = require('fontfaceobserver');
-export const onFontLoad = (fontName, onLoad, onError) => new FontFaceObserver(fontName).load().then(onLoad).catch(onError);
+var FontFaceObserver = require('fontfaceobserver');
+export var onFontLoad = function (fontName, onLoad, onError) { return new FontFaceObserver(fontName).load().then(onLoad).catch(onError); };

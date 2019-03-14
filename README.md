@@ -11,3 +11,4 @@ Website for [rendall.dev](https://rendall.dev)
 - Add serviceworker, especially to cache Montserrat webfont
 - CSS for `code` in blog
 - front-end testing probably using [cypress.io](https://www.cypress.io/)
+- build on Netlify

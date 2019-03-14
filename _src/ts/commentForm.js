@@ -1,30 +1,30 @@
-export const setupCommentForm = (sendFunc) => {
+export var setupCommentForm = function (sendFunc) {
     if (document.getElementById("form-toggle") === null)
         return;
-    const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const isValidField = (field) => {
+    var emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var isValidField = function (field) {
         switch (field.name) {
             case "name": return field.value != "";
             case "email": return emailRegex.test(field.value);
             case "message": return field.value != "";
             case "form-name": {
-                const formName = document.querySelector('form').attributes.getNamedItem('name').value;
+                var formName = document.querySelector('form').attributes.getNamedItem('name').value;
                 if (field.value !== formName)
-                    console.warn(`form-name field '${field.value}' does not equal form name '${formName}'`);
+                    console.warn("form-name field '" + field.value + "' does not equal form name '" + formName + "'");
                 return true;
             }
             case "confirm": return true;
             default: {
-                console.warn(`unknown field name '${field.name}'`);
+                console.warn("unknown field name '" + field.name + "'");
                 return true;
             }
         }
     };
-    const sendMessage = (fields, url) => {
-        const sendExec = (resolve, reject) => {
-            const params = fields.map(f => `${f.name}=${encodeURI(f.value)}`).join('&');
-            const sendReq = new XMLHttpRequest();
-            const onSendComplete = (e) => sendReq.status === 200 ? resolve() : reject(`${sendReq.status}:${sendReq.statusText}`);
+    var sendMessage = function (fields, url) {
+        var sendExec = function (resolve, reject) {
+            var params = fields.map(function (f) { return f.name + "=" + encodeURI(f.value); }).join('&');
+            var sendReq = new XMLHttpRequest();
+            var onSendComplete = function (e) { return sendReq.status === 200 ? resolve() : reject(sendReq.status + ":" + sendReq.statusText); };
             sendReq.open('POST', url);
             sendReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             sendReq.timeout = 5000;
@@ -33,41 +33,45 @@ export const setupCommentForm = (sendFunc) => {
         };
         return new Promise(sendExec);
     };
-    const showSuccess = () => {
+    var showSuccess = function () {
         document.querySelector('.contain-form').classList.add('is-success');
         document.querySelector('.notify-success').classList.add('is-success');
         resetError();
         console.log('success');
     };
-    const showError = (e) => {
+    var showError = function (e) {
         document.querySelector('.notify-error').classList.add('is-error');
         document.querySelector('#error-message').innerHTML = e;
         console.error(e);
     };
-    const showInvalid = (invalidFields) => invalidFields.map(f => document.querySelector(`label[for=${f}] + .notify-invalid`)).forEach(div => div.classList.add('is-invalid'));
-    const resetState = (collection, stateName, x = 0, dummy = null) => collection.item(x) === null ? null : resetState(collection, stateName, x + 1, collection.item(x).classList.remove(stateName));
-    const resetError = () => {
+    var showInvalid = function (invalidFields) { return invalidFields.map(function (f) { return document.querySelector("label[for=" + f + "] + .notify-invalid"); }).forEach(function (div) { return div.classList.add('is-invalid'); }); };
+    var resetState = function (collection, stateName, x, dummy) {
+        if (x === void 0) { x = 0; }
+        if (dummy === void 0) { dummy = null; }
+        return collection.item(x) === null ? null : resetState(collection, stateName, x + 1, collection.item(x).classList.remove(stateName));
+    };
+    var resetError = function () {
         resetState(document.getElementsByClassName('notify-error'), 'is-error');
         document.querySelector('#error-message').innerHTML = "";
     };
-    const onFormClick = (e) => {
+    var onFormClick = function (e) {
         e.preventDefault();
         resetState(document.getElementsByClassName('notify-invalid'), 'is-invalid');
-        const fields = Array.from(document.querySelectorAll('form input,textarea'));
-        const invalidFields = fields.reduce((acc, f) => isValidField(f) ? acc : [...acc, f.name], []);
-        const isValid = invalidFields.length === 0;
-        const sendMessagePromise = sendFunc === undefined ? sendMessage : sendFunc;
+        var fields = Array.from(document.querySelectorAll('form input,textarea'));
+        var invalidFields = fields.reduce(function (acc, f) { return isValidField(f) ? acc : acc.concat([f.name]); }, []);
+        var isValid = invalidFields.length === 0;
+        var sendMessagePromise = sendFunc === undefined ? sendMessage : sendFunc;
         if (isValid)
             sendMessagePromise(fields, '/')
-                .then(() => showSuccess())
-                .catch((error) => showError(error));
+                .then(function () { return showSuccess(); })
+                .catch(function (error) { return showError(error); });
         else
             showInvalid(invalidFields);
     };
     document.querySelector('form button').addEventListener('click', onFormClick);
-    const onFormToggle = (e) => {
+    var onFormToggle = function (e) {
         e.preventDefault();
-        const isSuccess = document.querySelector('.notify-success').classList.contains('is-success');
+        var isSuccess = document.querySelector('.notify-success').classList.contains('is-success');
         if (isSuccess) {
             document.querySelector('.contain-form').classList.remove('is-success');
             document.querySelector('.contain-form').classList.add('is-visible');

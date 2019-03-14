@@ -1,62 +1,62 @@
 import GoTrue from 'gotrue-js';
-const USER_API_URL = 'https://www.rendall.tv/.netlify/identity';
-const auth = new GoTrue({
+var USER_API_URL = 'https://www.rendall.tv/.netlify/identity';
+var auth = new GoTrue({
     APIUrl: USER_API_URL,
     audience: '',
     setCookie: false
 });
-const displayError = (errorMessage) => {
-    const messageDisplay = document.getElementById('message-display');
-    const errMessage = errorMessage.startsWith('invalid_grant:') ? errorMessage.slice(14) : errorMessage;
+var displayError = function (errorMessage) {
+    var messageDisplay = document.getElementById('message-display');
+    var errMessage = errorMessage.startsWith('invalid_grant:') ? errorMessage.slice(14) : errorMessage;
     messageDisplay.innerText = errMessage;
     messageDisplay.classList.add('error');
 };
-const displayMessage = (message) => {
-    const messageDisplay = document.getElementById('message-display');
+var displayMessage = function (message) {
+    var messageDisplay = document.getElementById('message-display');
     messageDisplay.innerText = message;
     messageDisplay.classList.remove('error');
 };
-const onSignup = () => { updateUI(); };
-const onSignupError = (error) => displayError(error.message);
-const onLogin = () => { updateUI(); };
-const onLoginError = (error) => displayError(error.message);
-const onLogoutError = (error) => displayError(error.message);
-const onLogout = (e) => auth.currentUser().logout().then(() => updateUI()).catch((error) => onLogoutError(error));
-const onSubmit = (e) => {
+var onSignup = function () { updateUI(); };
+var onSignupError = function (error) { return displayError(error.message); };
+var onLogin = function () { updateUI(); };
+var onLoginError = function (error) { return displayError(error.message); };
+var onLogoutError = function (error) { return displayError(error.message); };
+var onLogout = function (e) { return auth.currentUser().logout().then(function () { return updateUI(); }).catch(function (error) { return onLogoutError(error); }); };
+var onSubmit = function (e) {
     e.preventDefault();
-    const password = document.getElementById('password').value;
-    const email = document.getElementById('email').value;
-    const isSignup = document.getElementById('isSignup').checked;
-    const full_name = document.getElementById('name').value;
-    const login = () => auth.login(email, password, true).then(onLogin).catch(onLoginError);
-    const signup = () => auth.signup(email, password, { full_name }).then(onSignup).then(login).catch(onSignupError);
+    var password = document.getElementById('password').value;
+    var email = document.getElementById('email').value;
+    var isSignup = document.getElementById('isSignup').checked;
+    var full_name = document.getElementById('name').value;
+    var login = function () { return auth.login(email, password, true).then(onLogin).catch(onLoginError); };
+    var signup = function () { return auth.signup(email, password, { full_name: full_name }).then(onSignup).then(login).catch(onSignupError); };
     if (isSignup)
         signup();
     else
         login();
 };
-const onRecovery = () => {
-    const email = document.getElementById('email').value;
+var onRecovery = function () {
+    var email = document.getElementById('email').value;
     if (email === "")
         displayError("Please enter an email to recover");
     else {
         auth
             .requestPasswordRecovery(email)
-            .then(() => displayMessage("Recovery email sent"))
-            .catch((error) => displayError(error.message));
+            .then(function () { return displayMessage("Recovery email sent"); })
+            .catch(function (error) { return displayError(error.message); });
     }
 };
-const updateUI = () => {
-    const loginForm = document.getElementById('login-form');
-    const recoveryButton = document.getElementById('recovery-btn');
-    const logoutButton = document.getElementById('logout-btn');
+var updateUI = function () {
+    var loginForm = document.getElementById('login-form');
+    var recoveryButton = document.getElementById('recovery-btn');
+    var logoutButton = document.getElementById('logout-btn');
     document.getElementById('message-display').innerText = '';
     document.getElementById('message-display').classList.remove('error');
     if (auth.currentUser() === null) {
         loginForm.classList.remove('is-hidden');
         logoutButton.classList.add('is-hidden');
-        const checkbox = document.getElementById('isSignup');
-        const buttonText = checkbox.checked ? 'Sign up' : 'Log in';
+        var checkbox = document.getElementById('isSignup');
+        var buttonText = checkbox.checked ? 'Sign up' : 'Log in';
         document.getElementById('submit-btn').innerText = buttonText;
         if (checkbox.checked) {
             document.querySelector('input#name').removeAttribute('disabled');
