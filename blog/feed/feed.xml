@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.dev/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.dev"/>
-	<updated>2019-03-03T02:00:00+02:00</updated>
+	<updated>2019-04-23T03:00:00+03:00</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -308,6 +308,108 @@
 &lt;p&gt;I registered a domain name and crafted a website way back in the early 00s, right after undergrad, as many of us do, as a way to promote myself and showcase projects I had been involved with. The design was kitsch from the start. One might have called it &lt;a href=&quot;https://web.archive.org/web/20170811000534/http://rendall.tv/&quot;&gt;&lt;em&gt;ironic urban cowboy&lt;/em&gt;&lt;/a&gt;. The original brown-and-tan color scheme came from a drop-down list in freaking &lt;em&gt;Macromedia &lt;em&gt;Dreamweaver&lt;/em&gt;&lt;/em&gt;! And thus it sat for years, changing only very slightly, as more than a decade passed, even as the world&#39;s taste, and my own, changed. For years I paid $35 USD per month to an aging hosting company, and that more than anything else seems as archaic as dial-up.&lt;/p&gt;
 &lt;p&gt;The domain change and design change also corresponds to a personal shift in me that has been ongoing for some few years now. It is difficult to put into words, but it corresponds to a kind of increased seriousness of purpose or narrowing of focus. Software development in years past for me has been a way to make a decent income and have fun while doing it. While this is still true, software development has also become a way of life, both vocation and avocation. I don&#39;t want to predict what this internal shift means for the future (if anything!), or rhapsodize about the &lt;em&gt;passion&lt;/em&gt; (such an overused cliche of a word!) I feel for software development, but on some level it feels like I am waking up. To what, I do not know yet. To possibility, perhaps. There is so much happening, so many possibilities, so much talented activity.&lt;/p&gt;
 &lt;p&gt;The current design of this site is not in its final form by any means. It is now minimalist and cold with very little to recommend it, visually speaking. That will change in time. Slowly, but not as slowly as &lt;code&gt;rendall.tv&lt;/code&gt;!&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Thoughts on Technical Interviews and Challenges</title>
+		<link href="https://blog.rendall.dev/posts/2019/4/23/thoughts-on-technical-interviews-and-challenges/"/>
+		<updated>2019-04-23T03:00:00+03:00</updated>
+		<id>https://blog.rendall.dev/posts/2019/4/23/thoughts-on-technical-interviews-and-challenges/</id>
+		<content type="html">&lt;p&gt;A technical interview can be a learning experience for all, or it can be a grim, soul-sucking grind. The first path will lead to an effective team, and the second will lead to a dysfunctional team; this is an exorable, near-mathematical inevitability. Think deeply about how your interview process will lead to the team your company deserves.&lt;/p&gt;
+&lt;p&gt;This post talks in general about the second interview in the overwhelmingly popular two-interview format, where the first is a &#39;culture fit&#39; interview of an hour or two, and the second is the technical interview of about the same duration.&lt;/p&gt;
+&lt;p&gt;Here I discuss both a general philosophy and a specific, actionable approach to technical interview design, to make interviews effective, enjoyable and ethical.&lt;/p&gt;
+&lt;h3 id=&quot;effectiveness&quot;&gt;Effectiveness &lt;a class=&quot;direct-link&quot; href=&quot;#effectiveness&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Briefly, let&#39;s define an &lt;em&gt;effective&lt;/em&gt; interview process for a particular job as that which will identify the best, or even an adequate, candidate for that job. An interview can do this by drawing as accurate a &amp;quot;map&amp;quot; as reasonably possible of what a candidate can do, technically speaking.&lt;/p&gt;
+&lt;p&gt;A secondary goal, but still important, is to leave the candidate with a positive feeling about your company, even if the process does not end in a job offer.&lt;/p&gt;
+&lt;h3 id=&quot;the-map-is-not-the-territory&quot;&gt;The Map Is Not The Territory &lt;a class=&quot;direct-link&quot; href=&quot;#the-map-is-not-the-territory&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;There is a limit to how effective any evaluation can be, in the same way that a map cannot effectively show everything that&#39;s in the land it represents. In a map, all fractal irregularity of coastlines, street cracks, ant-hills and rotten post fences are subsumed in an abstract overview best suited for getting a car from &lt;em&gt;here&lt;/em&gt; to &lt;em&gt;there&lt;/em&gt;. There is nothing in a map about the beauty of a forest pond, the intimidation of a steep incline, the dangerousness of a particular intersection, nor who makes the best mojitos in town.&lt;/p&gt;
+&lt;p&gt;In the same way, an interview is not the job, with all of its daily grinds, challenges and triumphs. A job interview rarely covers, for instance, that which interviewers do not know they do not know, the &amp;quot;unknown unknowns&amp;quot;; on the contrary, interviewers almost always confirm their own and their employer&#39;s biases. The interview process format of having a culture fit interview of 2 hours or so, followed by a technical interview, is about as effective at finding a great match as going on a great first date and then deciding to move in together.&lt;/p&gt;
+&lt;p&gt;Understanding and accounting for this inherent lack of accuracy or precision must be part of any interview process.  That said, there are some things we can do to make the whole situation easier.&lt;/p&gt;
+&lt;h3 id=&quot;humility-and-respect&quot;&gt;Humility and Respect &lt;a class=&quot;direct-link&quot; href=&quot;#humility-and-respect&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A quick note about courtesy and respect: have it. Even, and especially, for those candidates who do not do well during the interview. There are many reasons a candidate might flounder that have nothing to do with their technical abilities. Resist any temptation to revel in your power over your temporary ability to give another person a hard time: this is the moment you shine by being humble and kind. You are representing your company and your own personal morals. Not much more need be said. Either this already makes sense to you, or your life has already gone off the rails.&lt;/p&gt;
+&lt;p&gt;It also absolutely needs to be said, if the candidate is talented at what they do, you need to internalize well that they are evaluating your company at the same time. Even if they are nervous and submissive and seem rather desperate, and even if you believe your interview process is infallible, you must jettison the notion that they are a petitioner for your scarce resource. A candidate&#39;s rejection for the position is very rarely viewed as a failure, but it could very well be. Talent is a scarcer resource than your unfilled positions. Stay humble.&lt;/p&gt;
+&lt;h3 id=&quot;similarity&quot;&gt;Similarity &lt;a class=&quot;direct-link&quot; href=&quot;#similarity&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;One goal of a well-designed interview process is to compare candidates. Only by having a similar interview format, with candidates having similar experiences, discussion topics and questions, can you even hope to have a basis to compare candidates accurately. If each interview is different and depends wholly on the mood and whims of the interviewers, there is really no basis to compare candidates&#39; technical skill (in contrast to the &lt;em&gt;culture fit&lt;/em&gt; interview, which can be more unique and wide-ranging).&lt;/p&gt;
+&lt;h3 id=&quot;agenda&quot;&gt;Agenda &lt;a class=&quot;direct-link&quot; href=&quot;#agenda&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Have an agenda, and have it be reasonably the same for each interview, in keeping with the principle of similarity. Write it down. Have the interview agenda be documented, and decided, around the same time you write the job description. Hand a copy of it to the candidate at the beginning of the interview. Everyone should know what is going to happen. It can even have some of the technical questions and terms you will cover during the interview.&lt;/p&gt;
+&lt;p&gt;Here is one template for an agenda:&lt;/p&gt;
+&lt;h4 id=&quot;general-introductions&quot;&gt;General introductions &lt;a class=&quot;direct-link&quot; href=&quot;#general-introductions&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;The candidate is offered water, coffee or snacks. The interviewers and candidate introduce themselves, talk about who they are. This is really just to get people chatting. It&#39;s not very important what is said at this point. These are the normal introductions by which strangers transform into acquaintences. Ice-breaking, jokes, stories are great! Then the interviewers present the agenda and go over it with the candidate. The goal here is to relax. Remember, you want the candidate at their best.&lt;/p&gt;
+&lt;p&gt;I like to state up front that, while there is time at the end of the interview for candidate&#39;s questions, that this is a conversation, and the candidate is interviewing the company as well. &amp;quot;Please, feel free to ask questions of us at any time, not just at the end.&amp;quot;&lt;/p&gt;
+&lt;h4 id=&quot;general-tech-discussion&quot;&gt;General tech discussion &lt;a class=&quot;direct-link&quot; href=&quot;#general-tech-discussion&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Ease the candidate into the topic of tech by asking them to talk about anything at all they find interesting in tech: perhaps a recent controversy, observation, trend, intriguing library or exciting project. Anything, really. As with the introduction, what is said here is not extremely important; the goal here is to ease the candidate&#39;s transition from outside concerns into a tech mindset. The interviewers can ask follow-up questions, but again, the goal is not test the candidate&#39;s knowledge, but to have a relaxed candidate. Nothing the candidate says here will be wrong. Also, bear in mind: having a candidate talk about their past projects is one of the least effective ways to evaluate their skill.&lt;/p&gt;
+&lt;p&gt;That said, there are some things the interviewers can start to notice. This is an opportunity for them to talk about what they are passionate about in technology, if anything. Even so, you don&#39;t know this person very well at this point, so you don&#39;t know what &#39;passion&#39; looks like for them, you don&#39;t know what they sound like when they&#39;re passionate. Do they talk in a monotone about everything? Are they excitable people who sound passionate about literally everything? You don&#39;t know, and so, do not place to great an emphasis on this section.&lt;/p&gt;
+&lt;h4 id=&quot;resume-%2F-cv-%2F-past-experiences&quot;&gt;Resume / CV / past experiences &lt;a class=&quot;direct-link&quot; href=&quot;#resume-%2F-cv-%2F-past-experiences&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Here the interview can get a bit more detailed, covering specific questions about duties or projects in the past. Have these written down, and these will necessarily be different for each candidate. While you can start with softball questions like &amp;quot;What is your proudest technical achievement?&amp;quot;, you should begin to turn to specifics. What were the projects you worked on in your last job? Why did you make those technical choices you did in your last project? Did you consider other options? If so, why did you reject them?&lt;/p&gt;
+&lt;p&gt;Still friendly, always, but the interview has begun. We are now about 15 or 20 minutes into the interview, and this phase goes for 10 or 20 minutes, depending on their experience.&lt;/p&gt;
+&lt;h4 id=&quot;break%3F&quot;&gt;Break? &lt;a class=&quot;direct-link&quot; href=&quot;#break%3F&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Offer a break of 5 to 10 minutes. It&#39;s about to get intense.&lt;/p&gt;
+&lt;h4 id=&quot;technical-questions&quot;&gt;Technical questions &lt;a class=&quot;direct-link&quot; href=&quot;#technical-questions&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;If you&#39;re looking for a specific kind of technical expertise, or if the candidate claims expertise, this is where you probe their knowledge. Ask questions with clearly right or wrong answers: &amp;quot;What is the event loop?&amp;quot; &amp;quot;What is a monad?&amp;quot; &amp;quot;What is the difference between a left outer join and an inner join?&amp;quot;&lt;/p&gt;
+&lt;p&gt;The temptation that many interviewers seem to have, here, is to assume a stern expresson and fire questions at the candidate in an intentionally unsettling manner, interrupting before they are finished. Resist doing this. The process is unsettling enough, and you are not evaluating a candidate&#39;s ability to withstand a hazing. You want the candidate at their best. Unsettling the candidate reflects badly on the company and is ineffective at finding clear technical thinkers. I have met geniuses who are rattled by a &#39;hello&#39;, but are sweet and dedicated.&lt;/p&gt;
+&lt;p&gt;Never tell someone they have done well with a question when they have not.&lt;/p&gt;
+&lt;p&gt;This part can take anywhere from 20 minutes to 45 minutes or longer.&lt;/p&gt;
+&lt;h4 id=&quot;break!&quot;&gt;Break! &lt;a class=&quot;direct-link&quot; href=&quot;#break!&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Mandatory break. 5-15 minutes. It&#39;s about to get really intense. Encourage them to have a snack. Keep water in the room.&lt;/p&gt;
+&lt;h4 id=&quot;coding-exercise&quot;&gt;Coding exercise &lt;a class=&quot;direct-link&quot; href=&quot;#coding-exercise&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;It is essential to have a coding exercise as a part of a technical interview process. Not doing this is a crap shoot. Or Russian roulette. Coding is where the rubber meets the road. Not evaluating a programmer&#39;s ability to program is an extremely poor decision, no matter their background.&lt;/p&gt;
+&lt;p&gt;If the coding exercise is during the interview, be very clear and consistent about what is to happen, whatever that is. e.g. &amp;quot;We will present a problem. Outline a solution on the whiteboard. We are less interested in a correct solution than in seeing how you think through problems, so communicate verbally as you solve it.&amp;quot;  Or, &amp;quot;Here is a small coding problem. We will leave you alone for an hour as you solve it.&amp;quot;&lt;/p&gt;
+&lt;p&gt;The topic of coding exercises is vast, and I won&#39;t do more than touch on it here. Entire articles, books, blogs and video channels are dedicated to the topic, so it does at least deserve its own (necessarily incomplete) section. More about that below.&lt;/p&gt;
+&lt;h4 id=&quot;break!-2&quot;&gt;Break! &lt;a class=&quot;direct-link&quot; href=&quot;#break!-2&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Yes, another 5 minute break. They might need a few minutes to collect themselves.&lt;/p&gt;
+&lt;h4 id=&quot;debrief%2C-feedback&quot;&gt;Debrief, feedback &lt;a class=&quot;direct-link&quot; href=&quot;#debrief%2C-feedback&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Give them the opportunity to talk about the interview process itself. Solicit feedback about how the interview &lt;em&gt;process&lt;/em&gt; itself could have gone better. They also might have some feelings about their performance. This is where you can identify ways to improve and even lend a sympathetic ear. If they have done poorly, do not rush them out the door or be impatient. Answer their questions until the end of your allotted time. Tell them about what next steps will be.&lt;/p&gt;
+&lt;p&gt;If you like them, talk about how great it is to work at your company.&lt;/p&gt;
+&lt;h4 id=&quot;departure&quot;&gt;Departure &lt;a class=&quot;direct-link&quot; href=&quot;#departure&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Regardless of your evaluation, shake their hands and &lt;em&gt;look them in the eye&lt;/em&gt;. They honored you with their time. Respect that.&lt;/p&gt;
+&lt;h3 id=&quot;coding-exercise-2&quot;&gt;Coding exercise &lt;a class=&quot;direct-link&quot; href=&quot;#coding-exercise-2&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;As said before, some kind of coding exercise is essential. And, likewise, doing poorly on any particular exercise does not mean that they would be bad at the job, or bad at programming: only that they did poorly on an exercise. It is possible that the interview process or the test itself is poorly designed. I view coding exercises as but one channel to understand a candidate; an important channel, but only one.&lt;/p&gt;
+&lt;p&gt;There are many different formats for coding exercises: whiteboard exercise, take-home projects, multiple-choice tests, pair-programming, verbal questions about terminology. Here I&#39;ll only write some general principles, and get specific only about &lt;em&gt;take-home projects&lt;/em&gt; for now.&lt;/p&gt;
+&lt;h4 id=&quot;generally&quot;&gt;Generally &lt;a class=&quot;direct-link&quot; href=&quot;#generally&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Coding exercises should be the same for all candidates, in accordance with the Principle of Similarity, in order to accurately compare performance. An ad-hoc exercise, custom-designed for a particular candidate will not lead to an accurate evaluation.&lt;/li&gt;
+&lt;li&gt;If the coding exercise has a clear, unambiguous, correct answer, then consider having unit tests. This eliminates biases about coding style, doubts about whether some particular solution can work, and misinterpretation of the result.&lt;/li&gt;
+&lt;li&gt;If the coding exercise does not have a clear, unambiguous correct answer, then consider having clear, unambiguous acceptance criteria.&lt;/li&gt;
+&lt;li&gt;Overall, leave more time for any exercise than might be usual. Yes, the question might be very easy under normal circumstances, but these are not normal circumstances.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;take-home-projects&quot;&gt;Take-home projects &lt;a class=&quot;direct-link&quot; href=&quot;#take-home-projects&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;A take-home project reveals a lot about your company, so consider it carefully.&lt;/p&gt;
+&lt;p&gt;Unless you pay the client, a take-home project or exam must not be intended to take more than an hour or so. It might take the candidate more than an hour, but that&#39;s their business. It must - &lt;em&gt;must&lt;/em&gt; - be designed sincerely to take no more than an hour. Do the project yourself, or have a respected developer do it, and if it takes longer than an hour, scale it back.&lt;/p&gt;
+&lt;p&gt;It &lt;em&gt;must&lt;/em&gt; have very clear acceptance criteria, preferably actual unit- or end-to-end tests. It must only evaluate the skill-set the candidate will be hired for. No UXD for a front-end engineer, for instance.&lt;/p&gt;
+&lt;p&gt;I will explain why in the form of advice to your candidate: If a company sends you a project that takes hours, or does not have clear acceptance criteria, this is a company that is unambiguously and clearly telling you that they will not respect your time and will have unclear, shifting and non-existent acceptance criteria in their day-to-day operations. If you receive a test like this, run. You have been warned.&lt;/p&gt;
+&lt;p&gt;Needless to say, if your take-home project has a deadline, ask the candidate when they would like to begin.&lt;/p&gt;
+&lt;h3 id=&quot;preparation&quot;&gt;Preparation &lt;a class=&quot;direct-link&quot; href=&quot;#preparation&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Apparently, it needs to be said: be well-prepared and on time. Here is how to do that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go through the candidate&#39;s application and CV, and decide what experience-related questions you will ask.&lt;/li&gt;
+&lt;li&gt;Print out any needed materials like agendas, copies of the CV, and coding exercises.&lt;/li&gt;
+&lt;li&gt;Make sure that the interview room is booked and has fresh dry-erase markers, erasers, and a pitcher of water.&lt;/li&gt;
+&lt;li&gt;Send an email to the candidate about what they can expect. Attach the agenda if possible.
+&lt;ul&gt;
+&lt;li&gt;If the candidate needs to bring any materials, then tell them.
+&lt;ul&gt;
+&lt;li&gt;e.g. portfolio, source code, links to previous work&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DO NOT rely on the candidate&#39;s having laptop unless you have specifically requested they bring one.&lt;/li&gt;
+&lt;li&gt;Do not request that candidates bring a laptop, anyway. Supply one, if necessary.
+&lt;ul&gt;
+&lt;li&gt;Perhaps they develop on a desktop. They might have to borrow or buy one. This is no poor reflection on them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;If the candidate will need a computer or other equipment, make sure that it is set up and working.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;miscellany&quot;&gt;Miscellany &lt;a class=&quot;direct-link&quot; href=&quot;#miscellany&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Do not mention how many interviews you need to get through.&lt;/li&gt;
+&lt;li&gt;Do not hold interviews if you have no intention of filling the job.&lt;/li&gt;
+&lt;li&gt;Do not ask candidates to rate their experience with some specific technology. The &lt;a href=&quot;https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect&quot;&gt;Dunning-Kruger Effect&lt;/a&gt; guarantees your experienced candidates will underrate themselves and your less experienced candidates will overrate themselves.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;conclusion-%2F-tl%3Bdr&quot;&gt;Conclusion / TL;DR &lt;a class=&quot;direct-link&quot; href=&quot;#conclusion-%2F-tl%3Bdr&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Be kind. Be relentless. Be human. The way you treat people in the interview will exactly reflect the team you build. Dysfunction begins and ends with the hiring process. If your company wants highly effective, talented developers, then craft an interview process that reflects a highly effective, talented company.&lt;/p&gt;
 </content>
 	</entry>
 </feed>

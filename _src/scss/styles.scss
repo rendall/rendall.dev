@@ -126,6 +126,10 @@ $site-max-width: 45rem;
       &__Article {
         max-width: 45rem;
 
+        a.direct-link {
+          visibility: hidden;
+        }
+
         p {
           margin: 0 0 1rem 0;
         }

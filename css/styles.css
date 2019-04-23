@@ -504,6 +504,9 @@ a:visited {
 .Blog__Post .Post__Article {
   max-width: 45rem;
 }
+.Blog__Post .Post__Article a.direct-link {
+  visibility: hidden;
+}
 .Blog__Post .Post__Article p {
   margin: 0 0 1rem 0;
 }
