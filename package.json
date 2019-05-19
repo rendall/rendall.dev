@@ -8,7 +8,7 @@
     "help": "sass --help",
     "build:11ty": "cd _src && eleventy --output=../ && cd blog && eleventy",
     "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
-    "build:copy": "rm -R ./blog/js && cp -R ./js/ ./blog",
+    "build:copy": "rimraf ./blog/js && cp -R ./js/ ./blog",
     "build:tsc": "tsc",
     "build:webpack": "webpack",
     "build": "yarn build:tsc && yarn build:webpack && yarn run build:11ty && yarn run build:css && yarn run build:copy"
@@ -32,9 +32,11 @@
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
     "prettier": "1.16.1",
+    "rimraf": "^2.6.3",
     "sass": "^1.14.3",
     "string": "^3.3.3",
     "stylelint": "^9.10.1",
+    "typescript": "^3.4.5",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
   },
