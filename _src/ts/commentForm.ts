@@ -1,7 +1,5 @@
 export const setupCommentForm = (sendFunc?:any) => {
 
-    // if (document.getElementById("form-toggle") === null) return;
-
     const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     const isValidField = (field: { name: string, value: string }): boolean => {
@@ -14,6 +12,7 @@ export const setupCommentForm = (sendFunc?:any) => {
                 if (field.value !== formName) console.warn(`form-name field '${field.value}' does not equal form name '${formName}'`)
                 return true // Invalidating a hidden field would confuse the user.
             }
+            case "city": return true;
             case "confirm": return true
             default: {
                 console.warn(`unknown field name '${field.name}'`)
