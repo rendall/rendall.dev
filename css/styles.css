@@ -673,3 +673,7 @@ ul.comma-separated-list > li:last-child:after {
 .append-colon:after {
   content: ": ";
 }
+
+.u-indent-2rem {
+  margin-left: 2rem;
+}
