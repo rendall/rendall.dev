@@ -4,12 +4,13 @@
   "description": "The website for rendall.dev",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "help": "sass --help",
+    "build": "yarn run build:site && yarn run build:11ty && yarn run build:css && yarn run build:copy",
     "build:11ty": "cd _src && eleventy --output=../ && cd blog && eleventy",
-    "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
     "build:copy": "rm -R ./blog/js && cp -R ./js/ ./blog",
-    "build": "yarn run build:11ty && yarn run build:css && yarn run build:copy"
+    "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
+    "build:site": "tsc && webpack",
+    "help": "sass --help",
+    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -33,12 +34,12 @@
     "sass": "^1.14.3",
     "string": "^3.3.3",
     "stylelint": "^9.10.1",
+    "typescript": "^3.5.2",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
     "dotenv-webpack": "^1.7.0",
     "fontfaceobserver": "^2.1.0",
-    "gotrue-js": "^0.9.24"
-  }
+    "gotrue-js": "^0.9.24"  }
 }
