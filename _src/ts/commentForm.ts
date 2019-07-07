@@ -1,5 +1,8 @@
 export const setupCommentForm = (sendFunc?:any) => {
 
+    const hasCommentForm = document.querySelector('form[name=contact]') !== null;
+    if (!hasCommentForm) return;
+
     const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     const isValidField = (field: { name: string, value: string }): boolean => {
