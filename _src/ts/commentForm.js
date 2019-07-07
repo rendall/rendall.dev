@@ -11,6 +11,7 @@ export var setupCommentForm = function (sendFunc) {
                     console.warn("form-name field '" + field.value + "' does not equal form name '" + formName + "'");
                 return true;
             }
+            case "city": return true;
             case "confirm": return true;
             default: {
                 console.warn("unknown field name '" + field.name + "'");
