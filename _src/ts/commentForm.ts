@@ -42,7 +42,7 @@ export const setupCommentForm = (sendFunc?:any) => {
         document.querySelector('.contain-form')!.classList.add('is-success')
         document.querySelector('.notify-success')!.classList.add('is-success')
         resetError()
-        console.log('success')
+        // console.log('success')
     }
 
     const showError = (e: string) => {
