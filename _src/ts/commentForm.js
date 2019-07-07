@@ -36,7 +36,6 @@ export var setupCommentForm = function (sendFunc) {
         document.querySelector('.contain-form').classList.add('is-success');
         document.querySelector('.notify-success').classList.add('is-success');
         resetError();
-        console.log('success');
     };
     var showError = function (e) {
         document.querySelector('.notify-error').classList.add('is-error');
