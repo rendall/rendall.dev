@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn run build:site && yarn run build:11ty && yarn run build:css && yarn run build:copy",
     "build:11ty": "cd _src && eleventy --output=../ && cd blog && eleventy",
-    "build:copy": "rm -R ./blog/js && cp -R ./js/ ./blog",
+    "build:copy": "rimraf ./blog/js && cpx ./js/**/* ./blog/js/",
     "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
     "build:site": "tsc && webpack",
     "help": "sass --help",
@@ -27,10 +27,12 @@
     "@11ty/eleventy-plugin-rss": "^1.0.3",
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.0",
     "@types/fontfaceobserver": "^0.0.6",
+    "cpx": "^1.5.0",
     "luxon": "^1.8.2",
     "markdown-it": "^8.4.2",
     "markdown-it-anchor": "^5.0.2",
     "prettier": "1.16.1",
+    "rimraf": "^2.6.3",
     "sass": "^1.14.3",
     "string": "^3.3.3",
     "stylelint": "^9.10.1",
@@ -41,5 +43,6 @@
   "dependencies": {
     "dotenv-webpack": "^1.7.0",
     "fontfaceobserver": "^2.1.0",
-    "gotrue-js": "^0.9.24"  }
+    "gotrue-js": "^0.9.24"
+  }
 }
