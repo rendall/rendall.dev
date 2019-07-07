@@ -1,6 +1,7 @@
 export const setupCommentForm = (sendFunc?:any) => {
 
-    if (document.getElementById("form-toggle") === null) return;
+    const hasCommentForm = document.querySelector('form[name=contact]') !== null;
+    if (!hasCommentForm) return;
 
     const emailRegex = /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -14,6 +15,7 @@ export const setupCommentForm = (sendFunc?:any) => {
                 if (field.value !== formName) console.warn(`form-name field '${field.value}' does not equal form name '${formName}'`)
                 return true // Invalidating a hidden field would confuse the user.
             }
+            case "city": return true;
             case "confirm": return true
             default: {
                 console.warn(`unknown field name '${field.name}'`)
@@ -43,7 +45,7 @@ export const setupCommentForm = (sendFunc?:any) => {
         document.querySelector('.contain-form')!.classList.add('is-success')
         document.querySelector('.notify-success')!.classList.add('is-success')
         resetError()
-        console.log('success')
+        // console.log('success')
     }
 
     const showError = (e: string) => {
@@ -93,7 +95,7 @@ export const setupCommentForm = (sendFunc?:any) => {
         else document.querySelector('.contain-form')!.classList.toggle('is-visible')
     }
 
-    document.querySelector('#form-toggle')!.addEventListener('click', onFormToggle)
+    // document.querySelector('#form-toggle')!.addEventListener('click', onFormToggle)
 
     // To include those browsers that do not use js, the form is visible by default and hidden with javascript.
     // document.querySelector('.contain-form').classList.remove('is-visible')
