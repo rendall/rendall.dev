@@ -1,26 +1,34 @@
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-const COMMENT_TOO_LONG = "comment is too long";
-const INCLUDES_LINK = "comment includes link: user verification required";
-const isBlacklisted = (ip) => false;
-const extractUser = (context) => ({
+var JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+var COMMENT_TOO_LONG = "comment is too long";
+var INCLUDES_LINK = "comment includes link: user verification required";
+var isBlacklisted = function (ip) { return false; };
+var extractUser = function (context) { return ({
     id: "guid",
     name: "name",
     email: "email"
-});
-const verifyText = (text) => {
+}); };
+var verifyText = function (text) {
     return { verifyCode: 200, message: "OK" };
 };
-const selectAllCommentsPromise = (path, user) => new Promise((resolve, reject) => { });
-const insertCommentPromise = (user, body) => new Promise((resolve, reject) => { });
-const getComments = (event, context, callback) => selectAllCommentsPromise(context.path).then(comments => callback(null, { statusCode: 200, body: JSON.stringify(comments) }));
-const putComment = (event, context, callback) => {
-    const user = extractUser(context);
-    const { verifyCode, message } = verifyText(context.body);
+var selectAllCommentsPromise = function (path, user) {
+    return new Promise(function (resolve, reject) { });
+};
+var insertCommentPromise = function (user, body) {
+    return new Promise(function (resolve, reject) { });
+};
+var getComments = function (event, context, callback) {
+    return selectAllCommentsPromise(context.path).then(function (comments) {
+        return callback(null, { statusCode: 200, body: JSON.stringify(comments) });
+    });
+};
+var putComment = function (event, context, callback) {
+    var user = extractUser(context);
+    var _a = verifyText(context.body), verifyCode = _a.verifyCode, message = _a.message;
     switch (verifyCode) {
         case 200:
             insertCommentPromise(user, context.body)
-                .then(() => callback(null, { statusCode: 201, body: "Created" }))
-                .catch(error => {
+                .then(function () { return callback(null, { statusCode: 201, body: "Created" }); })
+                .catch(function (error) {
                 callback(null, { statusCode: 500, body: "Server error" });
             });
             break;
@@ -38,7 +46,7 @@ const putComment = (event, context, callback) => {
             }
     }
 };
-const commentsHandler = (event, context, callback) => {
+var commentsHandler = function (event, context, callback) {
     if (isBlacklisted(context.headers["client-ip"])) {
         callback(null, { statusCode: 204 });
         return;
