@@ -9,7 +9,7 @@ export const setupCommentForm = (sendFunc?:any) => {
         switch (field.name) {
             case "name": return field.value != ""
             case "email": return emailRegex.test(field.value)
-            case "message": return field.value != ""
+            case "message": return field.value != "" && field.value.length > 5 && field.value.includes(" ")
             case "form-name": {
                 const formName = document.querySelector('form')!.attributes!.getNamedItem('name')!.value
                 if (field.value !== formName) console.warn(`form-name field '${field.value}' does not equal form name '${formName}'`)
