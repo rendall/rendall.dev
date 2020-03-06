@@ -7,7 +7,7 @@ export var setupCommentForm = function (sendFunc) {
         switch (field.name) {
             case "name": return field.value != "";
             case "email": return emailRegex.test(field.value);
-            case "message": return field.value != "";
+            case "message": return field.value != "" && field.value.length > 5 && field.value.includes(" ");
             case "form-name": {
                 var formName = document.querySelector('form').attributes.getNamedItem('name').value;
                 if (field.value !== formName)
