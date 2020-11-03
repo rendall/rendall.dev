@@ -676,6 +676,19 @@ ul.comma-separated-list > li:last-child:after {
   content: "";
 }
 
+ul.semicolon-separated-list {
+  display: inline;
+}
+ul.semicolon-separated-list > li {
+  display: inline;
+}
+ul.semicolon-separated-list > li:after {
+  content: "; ";
+}
+ul.semicolon-separated-list > li:last-child:after {
+  content: "";
+}
+
 .append-colon:after {
   content: ": ";
 }

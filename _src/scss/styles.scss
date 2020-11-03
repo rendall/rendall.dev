@@ -366,6 +366,21 @@ ul.comma-separated-list {
   }
 }
 
+ul.semicolon-separated-list {
+  display: inline;
+
+  & > li {
+    display: inline;
+
+    &:after {
+      content: "; ";
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
 .append-colon {
   &:after {
     content: ": ";
