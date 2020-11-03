@@ -10,20 +10,22 @@
 </head>
 <body>
     <main class="Resume">
-    <div class="no-print">
-        <p>This is my resume / CV. Feel free to <a href="#" id="print-button">print directly from this page (or press Ctrl/Command + P )</a>.</p><p> Or, you can also </p>
+    <div class="no-print print-instructions is-collapsed">
+        <p>This is my resume / CV.</p>
         <ul>
+            <li>Feel free to <a href="#" id="print-button">print directly from this page (or press Ctrl/Command + P )</a>.</li>
             <li><a href="rendallkoski.pdf" download>download a PDF version</a>,</li>
             <li><a target="_blank" href="https://docs.google.com/document/d/1dfiAVUVUVMeFW6hxONcYYUL7-6tcze2rQTAbwT2XUKc/edit?usp=sharing">download almost any format</a> via Google docs or 
             <li><a href="/">return to the home page</a>.</li>
         </ul>
         <hr>
     </div>
+    <button class="no-print show-instructions-button" aria-label="expand or collapse instructions"><svg alt="information" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></button>
         {{ content | safe }}
     </main>
     <script>
         document.querySelector('#print-button').addEventListener('click', () => window.print());
     </script>
-    <script src="/js/home.js"></script>
+    <script src="/js/resume.js"></script>
 </body>
 </html>

@@ -209,6 +209,10 @@ html {
 }
 
 .Resume {
+  max-width: 54rem;
+  margin: 0 auto;
+  position: relative;
+
   h1,
   h2,
   h3,
@@ -278,11 +282,9 @@ html {
     }
   }
 
-  &__Title {
-  }
+  // &__Title { }
 
-  &__Post {
-  }
+  // &__Post { }
 
   &__Article,
   article {
@@ -312,8 +314,7 @@ html {
     }
   }
 
-  &__Date {
-  }
+  // &__Date { }
 
   &__Postlist {
     list-style-type: none;
@@ -388,6 +389,45 @@ ul.semicolon-separated-list {
 .append-colon {
   &:after {
     content: ': ';
+  }
+}
+
+.print-instructions {
+  max-height: 12rem;
+  transition: max-height 0.5s;
+  overflow: hidden;
+
+  &.is-collapsed {
+    max-height: 0;
+
+    & + .show-instructions-button {
+      display: inline-block;
+    }
+
+    & ~ h1 {
+      display: inline;
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+.show-instructions-button {
+  width: 3rem;
+  cursor: pointer;
+  background: transparent;
+  display: none;
+  border: none;
+  position: absolute;
+  right: 0;
+
+  &.is-showing {
+    display: unset;
+  }
+
+  &:hover {
+    svg {
+      fill: lightgray;
+    }
   }
 }
 

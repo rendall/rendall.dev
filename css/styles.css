@@ -412,7 +412,7 @@ a:visited {
   }
 
   .no-print {
-    display: none;
+    display: none !important;
   }
 }
 html {
@@ -553,6 +553,11 @@ html {
 .Blog__Postlist .Postlist__Item article.Item__Teaser p {
   display: inline;
   margin-right: 0.5rem;
+}
+.Resume {
+  max-width: 54rem;
+  margin: 0 auto;
+  position: relative;
 }
 .Resume h1,
 .Resume h2,
@@ -695,6 +700,38 @@ ul.semicolon-separated-list > li:last-child:after {
 
 .append-colon:after {
   content: ": ";
+}
+
+.print-instructions {
+  max-height: 12rem;
+  transition: max-height 0.5s;
+  overflow: hidden;
+}
+.print-instructions.is-collapsed {
+  max-height: 0;
+}
+.print-instructions.is-collapsed + .show-instructions-button {
+  display: inline-block;
+}
+.print-instructions.is-collapsed ~ h1 {
+  display: inline;
+  vertical-align: text-bottom;
+}
+
+.show-instructions-button {
+  width: 3rem;
+  cursor: pointer;
+  background: transparent;
+  display: none;
+  border: none;
+  position: absolute;
+  right: 0;
+}
+.show-instructions-button.is-showing {
+  display: unset;
+}
+.show-instructions-button:hover svg {
+  fill: lightgray;
 }
 
 .u-indent-2rem {
