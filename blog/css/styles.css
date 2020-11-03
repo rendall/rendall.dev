@@ -664,10 +664,14 @@ footer {
 }
 
 ul.comma-separated-list {
-  display: inline;
+  display: inline-flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 ul.comma-separated-list > li {
-  display: inline;
+  white-space: nowrap;
+  margin: 0;
+  margin-right: 0.25rem;
 }
 ul.comma-separated-list > li:after {
   content: ", ";
