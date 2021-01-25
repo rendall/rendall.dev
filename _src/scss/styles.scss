@@ -2,6 +2,7 @@
 
 @import '_normalize-css';
 @import '_rendall-normalize';
+@import '_prism';
 @import 'simple-comment';
 
 $site-max-width: 50rem;
@@ -268,6 +269,9 @@ html {
 }
 
 .Blog {
+
+  line-height: 1.5rem;
+
   &__Header {
   }
 
