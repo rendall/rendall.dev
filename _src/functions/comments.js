@@ -64,3 +64,4 @@ var commentsHandler = function (event, context, callback) {
     }
 };
 exports.handler = commentsHandler;
+export {};
