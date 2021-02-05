@@ -1,13 +1,33 @@
-const string = require('string');
-const { DateTime } = require("luxon");
+const pluginImage = require("@11ty/eleventy-img");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const string = require('string');
+const { DateTime } = require("luxon");
 
+async function imageShortcode(src, alt, sizes) {
+  let metadata = await pluginImage(src, {
+    widths: [600, 1200],
+    formats: ["jpeg"]
+  });
+
+  let imageAttributes = {
+    alt,
+    loading: "lazy",
+    decoding: "async",
+  };
+
+  return pluginImage.generateHTML(metadata, imageAttributes);
+}
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+
+  // eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+  // eleventyConfig.addLiquidShortcode("image", imageShortcode);
+  // eleventyConfig.addJavaScriptFunction("image", imageShortcode);
+
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-MM-dd');
@@ -52,7 +72,6 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
-  //eleventyConfig.addPassthroughCopy("img");
   //eleventyConfig.addPassthroughCopy("css");
 
   /* Markdown Plugins */
@@ -72,6 +91,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setLibrary("md", markdownIt(options)
     .use(markdownItAnchor, opts)
   );
+
+  eleventyConfig.addPassthroughCopy("img");
 
   return {
     templateFormats: [

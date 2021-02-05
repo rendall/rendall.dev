@@ -4,6 +4,7 @@
   "description": "The website for rendall.dev",
   "main": "index.js",
   "scripts": {
+    "prebuild": "rimraf ./blog/img",
     "build": "yarn run build:site && yarn run build:11ty && yarn run build:css && yarn run build:copy",
     "build:11ty": "cd _src && eleventy --output=../ && cd blog && eleventy",
     "build:copy": "rimraf ./blog/js && cpx ./js/**/* ./blog/js/",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/rendall/rendall.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-img": "^0.7.8",
     "@11ty/eleventy-plugin-rss": "^1.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
     "@types/fontfaceobserver": "^0.0.6",
