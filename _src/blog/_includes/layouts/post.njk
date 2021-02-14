@@ -5,7 +5,8 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
 ---
 <header class="Post__Header">
     <h2 class="Post__Title">{{ title }}</h2>
-    <time class="Post__Date" datetime="{{ page.year }}-{{ page.month }}-{{ page.day }}">{{ date | readableDate }}</time>
+    {%- if subtitle -%}<h2 class="Post__SubTitle">{{ subtitle }}</h2>{%- endif -%}
+    <time class="Post__Date" datetime="{{ date | readableDate }}">{{ date | readableDate }}</time>
     {% for tag in tags %}
       {%- if tag != "post" -%}
       {% set tagUrl %}/tags/{{ tag }}/{% endset %}

@@ -1,9 +1,13 @@
-/* rendall.dev styles */
+/**
+ * /* rendall.dev styles
+ *
+ * @format
+ */
 
-@import '_normalize-css';
-@import '_rendall-normalize';
-@import '_prism';
-@import 'simple-comment';
+@import "_normalize-css";
+@import "_rendall-normalize";
+@import "_prism";
+@import "simple-comment";
 
 $site-max-width: 50rem;
 
@@ -33,7 +37,7 @@ html {
       border: solid gray 1px;
       border-radius: 0.5rem;
       padding-left: 0.5rem;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: "Courier New", Courier, monospace;
       font-weight: bold;
       font-size: 1rem;
       color: #6a5151;
@@ -117,9 +121,6 @@ html {
     }
   }
 
-  &__Title {
-  }
-
   &__Post {
     .Post {
       &__Header {
@@ -128,6 +129,13 @@ html {
 
       &__Title {
         margin: 0 0 0.25rem 0;
+        font-size: 1.5rem;
+      }
+
+      &__SubTitle {
+        font-style: italic;
+        margin: 0 0 1rem;
+        font-size: 1.25rem;
       }
 
       &__Article {
@@ -380,11 +388,11 @@ ul.comma-separated-list {
     margin-right: 0.25rem;
 
     &:after {
-      content: ', ';
+      content: ", ";
     }
 
     &:last-child:after {
-      content: '';
+      content: "";
     }
   }
 }
@@ -396,17 +404,17 @@ ul.semicolon-separated-list {
     display: inline;
 
     &:after {
-      content: '; ';
+      content: "; ";
     }
 
     &:last-child:after {
-      content: '';
+      content: "";
     }
   }
 }
 .append-colon {
   &:after {
-    content: ': ';
+    content: ": ";
   }
 }
 
