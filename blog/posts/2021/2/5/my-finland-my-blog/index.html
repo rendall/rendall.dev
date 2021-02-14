@@ -6,10 +6,6 @@
     <title>My Finland, My Blog</title>
     <link rel="stylesheet" href="/css/styles.css" />
     <link
-      href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css"
-      rel="stylesheet"
-    />
-    <link
       rel="alternate"
       href="/feed/feed.xml"
       type="application/atom+xml"
@@ -25,7 +21,7 @@
     <main class="Blog__Post">
       <header class="Post__Header">
         <h2 class="Post__Title">My Finland, My Blog</h2>
-        <time class="Post__Date" datetime="--">2021-02-05</time>
+        <time class="Post__Date" datetime="2021-02-05">2021-02-05</time>
 
         <a href="/tags/finland/" class="tag">finland</a>
         <a href="/tags/meta/" class="tag">meta</a>
@@ -106,18 +102,22 @@
           fancy, but not only.
         </p>
       </article>
-
       <p><a href="/">← Home</a></p>
+
+      <link
+        href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css"
+        rel="stylesheet"
+      />
+      <div id="simple-comment-area"></div>
+      <script
+        type="module"
+        src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"
+      ></script>
     </main>
-    <div id="simple-comment-area"></div>
 
     <footer></footer>
 
     <!-- Current page: /posts/2021/2/5/my-finland-my-blog/ -->
     <script src="/js/home.js"></script>
-    <script
-      type="module"
-      src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"
-    ></script>
   </body>
 </html>
