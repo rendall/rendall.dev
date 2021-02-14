@@ -1,32 +1,37 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-       <p><img alt="hello" src="icons/hello.svg" />say hello</p>
-        <p>You can get in touch with me by filling out this form. The message will come to me in a dream, so be imaginitive!</p>
-                    <p>Please leave valid contact information, or I will not be able to get back in touch with you.</p>
-            <form name="contact" method="POST" netlify-honeypot="city" netlify>
-                <fieldset>
-                    <label for="name">your name<input name="name"></label>
-                    <div class="notify-invalid">please enter your name</div>
-                </fieldset>
-                <fieldset>
-                    <label for="email">email<input name="email" /></label>
-                    <div class="notify-invalid">please enter an email</div>
-                </fieldset>
-                <fieldset>
-                    <label for="message">message<textarea name="message"></textarea></label>
-                    <div class="notify-invalid">please enter a message</div>
-                </fieldset>
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="city" />
-                <button>Send</button>
-            </form>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <p><img alt="hello" src="icons/hello.svg" />say hello</p>
+    <p>
+      You can get in touch with me by filling out this form. The message will
+      come to me in a dream, so be imaginitive!
+    </p>
+    <p>
+      Please leave valid contact information, or I will not be able to get back
+      in touch with you.
+    </p>
+    <form name="contact" method="POST" netlify-honeypot="city" netlify>
+      <fieldset>
+        <label for="name">your name<input name="name" /></label>
+        <div class="notify-invalid">please enter your name</div>
+      </fieldset>
+      <fieldset>
+        <label for="email">email<input name="email" /></label>
+        <div class="notify-invalid">please enter an email</div>
+      </fieldset>
+      <fieldset>
+        <label for="message">message<textarea name="message"></textarea></label>
+        <div class="notify-invalid">please enter a message</div>
+      </fieldset>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="city" />
+      <button>Send</button>
+    </form>
+  </body>
 </html>

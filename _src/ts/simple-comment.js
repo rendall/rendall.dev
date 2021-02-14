@@ -1,1 +1,1 @@
-console.log("simple-comment")
+console.log("simple-comment");

@@ -1,159 +1,637 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="web-font">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using filter, map, reduce and forEach</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="alternate"
+      href="/feed/feed.xml"
+      type="application/atom+xml"
+      title="Rendall&#39;s blog"
+    />
+  </head>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Using filter, map, reduce and forEach</title>
-	<link rel="stylesheet" href="/css/styles.css">
-	<link href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css" rel="stylesheet" />
-	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rendall&#39;s blog">
-</head>
+  <body class="Blog">
+    <header class="Blog__Header">
+      <h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
+    </header>
 
-<body class="Blog">
-	<header class="Blog__Header">
-		<h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
-	</header>
+    <main class="Blog__Post">
+      <header class="Post__Header">
+        <h2 class="Post__Title">Using filter, map, reduce and forEach</h2>
+        <time class="Post__Date" datetime="--">2020-01-22</time>
 
-	<main class="Blog__Post" >
-		<header class="Post__Header">
-    <h2 class="Post__Title">Using filter, map, reduce and forEach</h2>
-    <time class="Post__Date" datetime="--">2020-01-22</time>
-    
-      <a href="/tags/tech/" class="tag">tech</a>
-      <a href="/tags/code/" class="tag">code</a>
-      <a href="/tags/typescript/" class="tag">typescript</a>
-</header>
+        <a href="/tags/tech/" class="tag">tech</a>
+        <a href="/tags/code/" class="tag">code</a>
+        <a href="/tags/typescript/" class="tag">typescript</a>
+      </header>
 
-<article class="Post__Article">
-<!-- @format -->
-<p>I have a simple rule of thumb when choosing to use array methods, and I'd like to share it with you. The array methods I'm discussing here are:</p>
-<ul>
-<li><code>arr.filter(y)</code></li>
-<li><code>arr.map(y)</code></li>
-<li><code>arr.reduce(y)</code></li>
-<li><code>arr.forEach(y)</code></li>
-</ul>
-<p>For me, each of these are answers to the question <em>How does an array need to change?</em></p>
-<p>Briefly, the rule of thumb is this: <em>Use <code>filter</code> if the array length needs to get smaller; use <code>map</code> if the array length stays the same but the elements of the array need to change in some way; use <code>reduce</code> if the array length needs to change, especially bigger, <em>or</em> the array needs to be transformed into some other type, like into an object or a string; and use <code>forEach</code> only when side-effects are necessary</em></p>
-<p>I use these methods all the time in my code, roughly in that order of priority.</p>
-<p>If you're already familiar with these, that's it. That's the blog post. You can stop reading. All the rest is just expansion, reiteration. I should have just stopped there, but what kind of blog post would that be? Absurd, that's what</p>
-<p>Or go ahead and skim the examples.</p>
-<p>If you're not already familiar with these, this post is probably not the best introduction, but I'll give it a good go. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN</a> is a great resource to learn more about them.</p>
-<h2 id="filter"><code>filter</code> <a class="direct-link" href="#filter">#</a></h2>
-<p><em>Use <code>filter</code> if the array length needs to get smaller</em></p>
-<p><code>filter</code> is straight-forward: a <em>filter</em> removes unwanted stuff, and an <em>array filter</em> removes unwanted elements from your array. This leads inevitably to the array being the same length or smaller</p>
-<p><code>filter</code> takes a <em>predicate</em> for its argument, which is a function that answers a <em>true</em> or <em>false</em> question about that input. If the predicate returns <em>true</em>, the element is included; if it returns <em>false</em>, the element is excluded from the output array</p>
-<h3 id="filter-examples">filter examples <a class="direct-link" href="#filter-examples">#</a></h3>
-<p>Consider the array <code>[1, &quot;tooth&quot;, 3, &quot;fort&quot;, &quot;fie!&quot;, 6]</code></p>
-<p>This is an array of mixed type, containing elements of type <code>number</code> and <code>string</code>. Let's apply a <code>filter</code> to remove <code>string</code>s from the array, so that it's an array only of <code>number</code>s</p>
-<p>Here is a predicate that returns <code>true</code> if the input is a <code>number</code> and <code>false</code> otherwise: <code>(x) =&gt; typeof x === &quot;number&quot;</code></p>
-<p>Putting them together, with <code>filter</code>:</p>
-<p><code>[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;, 6].filter((elem) =&gt; typeof elem === &quot;number&quot;)</code></p>
-<p>This line takes the array <code>[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;, 6]</code>, applies the <em>filter</em> <code>(elem) =&gt; typeof elem === &quot;number&quot;</code> to each element in the array and returns the result, <code>[1,3,6]</code>, all and only numbers</p>
-<p>Note that the new array is length 3, while the input array is 6. It was a good decision to apply <code>filter</code> in this case!</p>
-<p>Here's an example from <a href="https://github.com/rendall/levenshtein-searcher/blob/601f69c630e4e1df84f30e93eb9ac0e645684b0e/src/index.ts#L26">working code</a>:</p>
-<p><code>const searchSpace = dict.filter((entry) =&gt; entry.length == wordLength);</code></p>
-<p>Here, <code>dict</code> is literally a list of words <em>(e.g. &quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;, ...) only, <em>humongous</em></em> and the predicate, <code>(entry) =&gt; entry.length == wordLength</code>, returns <code>true</code> if the number of characters in <code>entry</code> is exactly <code>wordLength</code> and <code>false</code> if it's any other length. Applying this predicate to <code>dict</code> returns an array of words that all have a <code>length</code> matching <code>wordLength</code>. The statement assigns all of this to the constant <code>searchSpace</code></p>
-<p>Marvelous! The new array <code>searchSpace</code> is smaller than the input array <code>dict</code>, consisting entirely of words that are only of length <code>wordLength</code>. Another win for the Rule of Thumb!</p>
-<h2 id="map">map <a class="direct-link" href="#map">#</a></h2>
-<p><em>Use <code>map</code> if the array length stays the same but the elements of the array need to change in some way</em></p>
-<p>The <code>map</code> method transforms each element of an array into something else, and returns these new elements in a new array of exactly the same length. It takes as its argument a function that accepts an input value and returns another transformed value based on the input. <code>map</code> passes each element in turn to this function, and returns an array with that function applied to each value</p>
-<h3 id="map-examples">map examples <a class="direct-link" href="#map-examples">#</a></h3>
-<p>Consider the array <code>[1, &quot;tooth&quot;, 3, &quot;fort&quot;, &quot;fie!&quot;, 6]</code> and the function <code>(x) =&gt; typeof x === &quot;number&quot;? x : 0</code></p>
-<p>As before, the array is of mixed type, consisting of <code>number</code> and <code>string</code> elements. The function checks if <code>x</code> is of type <code>number</code> and returns <code>x</code> unchanged if it is, or <code>0</code> if it's of any other type</p>
-<p>Putting them togther with map:</p>
-<p><code>[1, &quot;tooth&quot;, 3, &quot;fort&quot;, &quot;fie!&quot;, 6].map((x) =&gt; typeof x === &quot;number&quot;? x : 0)</code> which returns <code>[1, 0, 3, 0, 0, 6]</code></p>
-<p>Note that the input array length is 6, and the output array is the same length! I am pleased</p>
-<p>From <a href="https://github.com/rendall/simple-comment/blob/53827633f74332d358284a4a30289e6617116600/src/dist/js/apiClient.ts#L126">working code</a>:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">objToQuery</span> <span class="token operator">=</span> <span class="token punctuation">(</span>obj<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>  Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"&amp;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><em>(This is a TypeScript function, but just convert this part <code>(obj: {})</code> to <code>(obj)</code> and it's JavaScript)</em></p>
-<p>This <code>objToQuery</code> function accepts a simple object (e.g. <code>{page:1,query:&quot;lime&quot;}</code>) and returns a string (e.g. <code>page=1&amp;query=lime</code>) representation of the object. This is useful to convert a (simple!) object into a URL query string</p>
-<p>Briefly reviewing <code>Object.entries</code> (and cribbing from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">MDN</a>), it takes an <code>object</code> and returns an array of its <code>[key, value]</code> pairs. So, using our example object, <code>Object.entries({page:1,query:&quot;lime&quot;})</code> returns <code>[[&quot;page&quot;,1],[&quot;query&quot;,&quot;lime&quot;]]</code></p>
-<p>Applying the line <code>.map(entry =&gt; `${entry[0]}=${entry[1]}`)</code> to <code>[[&quot;page&quot;,1],[&quot;query&quot;,&quot;lime&quot;]]</code> returns a simple array <code>[&quot;page=1&quot;, &quot;query=lime&quot;]</code>. Finally, applying <code>.join(&quot;&amp;&quot;)</code> returns a string, each element of the array &quot;joined&quot; with <em>&amp;</em>: <code>&quot;page=1&amp;query=lime&quot;</code></p>
-<p>Note that the input array for <code>map</code>, <code>[[&quot;page&quot;,1],[&quot;query&quot;,&quot;lime&quot;]]</code> is of length 2 (2 key-value pairs) and the output array <code>[&quot;page=1&quot;, &quot;query=lime&quot;]</code> is also length 2 (2 strings). The input and output array stayed the same size, while each element was transformed! This is exactly as we predicted!! Astounding</p>
-<h2 id="reduce"><code>reduce</code> <a class="direct-link" href="#reduce">#</a></h2>
-<p><em>Use <code>reduce</code> if the array length needs to change, especially bigger, <em>or</em> the array needs to be transformed into some other type, like into an object or a string</em></p>
-<p><code>reduce</code> is misunderstood and mistrusted, but it's probably my favorite of the array methods (<a href="https://www.youtube.com/watch?v=qaGjS7-qWzg">Here are two devs shamefully making fun of people who use it</a>, but do use it whenever necessary, and use it confidently and with pride!). I think people are confused by the <code>reduce</code> name, which implies that the array is going to get smaller. Not so! Remember, the array size is going to <em>change</em> or become <em>not an array</em>. Any time you need to expand an array into a bigger array <em>or</em> convert it into something else, consider using <code>reduce</code></p>
-<h3 id="reduce-description"><code>reduce</code> description <a class="direct-link" href="#reduce-description">#</a></h3>
-<p>Like the other array methods, <code>reduce</code> takes a function as an argument. Maybe confusingly, this function is called the <em>reducer</em>, but the name isn't important. It's just a function like any other. <code>reduce</code>, like the other methods, calls this function once successively for each element of its input array, in order. Unlike the other methods, this <em>reducer</em> function itself requires 2 arguments instead of 1. Also unlike the other methods, it is the <em>second</em> argument of this function that receives the element value, not the first</p>
-<p>The reducer's first argument value is the output of the <em>previous</em> call to the reducer, or if there is no previous element (because it's the first one) it's by default the first element of the array</p>
-<p><code>reduce</code> returns whatever its <em>reducer</em> returns when called with the last element of its input array</p>
-<p>More info at <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">MDN</a></p>
-<p>Let's have a quick example or two:</p>
-<h3 id="reduce-examples"><code>reduce</code> examples <a class="direct-link" href="#reduce-examples">#</a></h3>
-<p>Consider <code>[1, &quot;two&quot;, 3, &quot;four&quot;]</code> and the function <code>(prev, elem) =&gt; elem</code></p>
-<p>That function takes two arguments and returns only the second one. Calling that function with <code>(&quot;a&quot;,&quot;b&quot;)</code> would just return <code>&quot;b&quot;</code>. It's a useless function on its own, but it's useful as an example. <code>[1, &quot;two&quot;, 3, &quot;four&quot;].reduce((prev, elem) =&gt; elem)</code> will call that function successively, and the reducer will receive values and return them successively, like so:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token comment">// the first element of the array is 1</span><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token number">1</span> <span class="token punctuation">)</span><br><span class="token comment">// So, in this iteration, the first argument is</span><br><span class="token comment">// by default the first element of the array (1),</span><br><span class="token comment">// The second argument is the element itself,</span><br><span class="token comment">// and this reducer returns the second argument, the element itself: value 1</span><br><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"two"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">"two"</span> <span class="token punctuation">)</span> <span class="token comment">// the first argument is the result of the previous iteration (1),</span><br><span class="token comment">// but this reducer ignores it, and just returns the second argument</span><br><span class="token comment">// the second argument is the value of the element of this iteration (value: "two"),</span><br><span class="token comment">// and so this iteration returns "two",</span><br><span class="token comment">// which becomes the first argument value for the next iteration:</span><br><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token string">"two"</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token number">3</span> <span class="token punctuation">)</span> <span class="token comment">// the first argument is the result of the previous iteration ("two"),</span><br><span class="token comment">// the second argument is the value of the element for this iteration (3),</span><br><span class="token comment">// and so it returns 3</span><br><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token string">"four"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">"four"</span> <span class="token punctuation">)</span><br><span class="token comment">// finally, the first argument is the result of the previous iteration (3),</span><br><span class="token comment">// the second argument is the value of the element for this iteration ("four"),</span><br><span class="token comment">// and so it returns "four", and since "four" is the last element of the array</span><br><span class="token comment">// reduce itself returns "four as its final result</span></code></pre>
-<p>So <code>[1, &quot;two&quot;, 3, &quot;four&quot;].reduce((prev, elem) =&gt; elem)</code> returns <code>&quot;four&quot;</code>, which is the value of the last call to the reducer, which just returns the last element of the array</p>
-<p>Note that the size of the input array is 4, and the output isn't an array at all, but a <code>string</code>!</p>
-<h4 id="array-into-one-thing">array into one thing <a class="direct-link" href="#array-into-one-thing">#</a></h4>
-<p>Consider the array <code>[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;, 6]</code> and the function <code>(str, elem) =&gt; `${str}&amp;${elem}</code></p>
-<p>We've seen the array before, an array of mixed types. The function just takes two arguments and joins them using <code>&amp;</code>. Calling this function with <code>&quot;apple&quot;</code> and <code>&quot;banana&quot;</code> will return <code>&quot;apple&amp;banana&quot;</code>. That seems rather limited</p>
-<p>What happens when we add it to <code>reduce</code>, as in <code>[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;, 6].reduce((str, elem) =&gt; `${str}&amp;${elem}`)</code> is a bit more interesting, because it returns <code>&quot;1&amp;two&amp;3&amp;four&amp;five&amp;6&quot;</code></p>
-<p>Congratulations! We reinvented <code>.join</code>. No wonder those devs mocked <code>reduce</code>!</p>
-<h4 id="array-changes-size">array changes size <a class="direct-link" href="#array-changes-size">#</a></h4>
-<p>Let's strip duplicated elements out of an array!</p>
-<p>Consider the function <code>(arr,e) =&gt; arr.indexOf(e) &gt;= 0? arr : [...arr, e]</code></p>
-<p>This function takes an array as its first argument, <code>arr</code>, and any value at all as its second argument <code>e</code>. It checks <code>arr.indexOf(e)</code> to see if <code>e</code> is in <code>arr</code>. If it is <em>(i.e. <code>arr.indexOf(e) &gt;= 0</code>)</em> then the function returns <code>arr</code> itself. But if the value <code>e</code> is <em>not</em> in <code>arr</code> <em>(i.e. <code>arr.indexOf(e) === -1</code>)</em> then it returns the array <code>arr</code> with <code>e</code> appended as its final value <em>(i.e. <code>[...arr, e]</code>)</em></p>
-<p>So, this function would accept, say <code>([1,2], 2)</code> and return <code>[1,2]</code>; and would accept <code>([1,2], 3)</code> and return <code>[1,2,3]</code>. This function when used as a reducer in <code>reduce</code> will return another array with all duplicates stripped</p>
-<p>Wait, I forgot to mention one thing before! <code>reduce</code> can take 2 arguments! The first is mandatory, and that's the <em>reducer</em> we've been talking about. The second, <em>optional</em> argument is the first value to be sent to the reducer. If it's not supplied, it's by default the first value of the array, as we discussed before. You okay? Let's take a look:</p>
-<p><code>[1,1,1,2,2,3,3,4,4,4,5,6,6].reduce((arr,e) =&gt; arr.indexOf(e) &gt;= 0? arr : [...arr, e], [])</code> is going to return <code>[1,2,3,4,5,6]</code>, which is the original array stripped of duplicates</p>
-<p>Let's step through it</p>
-<pre class="language-ts"><code class="language-ts"><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// is the first iteration.</span><br><span class="token comment">// its first argument is `[]`, which we gave as the second argument to reduce, above</span><br><span class="token comment">// its second argument, 1, is the element value of this iteration</span><br><span class="token comment">// Reducer checks [] to see if it has `1` in it, and it doesn't, so reducer returns `[1]`</span><br><br><span class="token comment">// ...which now becomes the value of the first argument sent to the second iteration:</span><br><br><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><br><span class="token comment">// reducer checks `[1]` to see if it contains `1`</span><br><span class="token comment">// It does! So reducer returns `[1]`</span><br><br><span class="token comment">// the next iteration is identical, because arr[3] is value 1</span><br><span class="token comment">// So skipping ahead to:</span><br><br><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><br><span class="token comment">// reducer checks `[1]` to see if it contains `2`</span><br><span class="token comment">// it does *not*, so reducer returns `[1,2]`</span><br><span class="token comment">// ... which is the first argument of the next iteration...</span><br><br><span class="token comment">// and so on, until the last element of the array:</span><br><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><br><span class="token comment">// reducer checks the array to see if 6 is in it, and it is</span><br><span class="token comment">// so it returns the array itself, unaltered</span><br><span class="token comment">// and since `reduce` is at the end of the input array</span><br><span class="token comment">// `reduce` returns the first argument value,</span><br><span class="token comment">// the array is the solution!</span></code></pre>
-<p>Stick all of that in a named function, and you can strip duplicates out of any array you pass in</p>
-<p><code>const uniq = (arr) =&gt; arr.reduce((acc,e) =&gt; acc.indexOf(e) &gt;= 0? acc : [...acc, e], [])</code></p>
-<p>So</p>
-<pre class="language-ts"><code class="language-ts"><span class="token function">uniq</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//  => [1,2,3,4,5,6]</span></code></pre>
-<h4 id="what-else-can-reduce-do%3F">What else can <code>reduce</code> do? <a class="direct-link" href="#what-else-can-reduce-do%3F">#</a></h4>
-<p>Oh, lots. Maybe you have a succession of functions and you want to pass the result of one into the next one in turn. For instance, if you want to extract the user id and password sent in an auth header, you <em>could</em> do something like this:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getUserIdPassword</span><span class="token punctuation">(</span>headers<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> headerValue <span class="token operator">=</span> <span class="token function">getAuthHeaderValue</span><span class="token punctuation">(</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> decodedHeader <span class="token operator">=</span> <span class="token function">decodeAuthHeader</span><span class="token punctuation">(</span>headerValue<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> parsedHeader <span class="token operator">=</span> <span class="token function">parseAuthHeader</span><span class="token punctuation">(</span>decodedHeader<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> parsedHeader<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<p>Or <a href="https://github.com/rendall/simple-comment/blob/c3b9931d701352bcb42dca43fa8bb23af62e4c2b/src/lib/utilities.ts#L221">you could do</a>:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getUserIdPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span>headers<span class="token punctuation">)</span> <span class="token operator">=></span><br>  <span class="token punctuation">[</span>getAuthHeaderValue<span class="token punctuation">,</span> decodeAuthHeader<span class="token punctuation">,</span> parseAuthHeader<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><br>    <span class="token punctuation">(</span>acc<span class="token punctuation">,</span> func<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">func</span><span class="token punctuation">(</span>acc<span class="token punctuation">)</span><span class="token punctuation">,</span><br>    headers<br>  <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Personal preference. No judgment.</p>
-<p>Maybe you want to create an object out of key-value pairs. You can do:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">toObj</span> <span class="token operator">=</span> <span class="token punctuation">(</span>keyValues<span class="token punctuation">)</span> <span class="token operator">=></span><br>  keyValues<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token function">toObj</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>  <span class="token punctuation">[</span><span class="token string">"page"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"fields"</span><span class="token punctuation">,</span> <span class="token string">"size,weight,color"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"priority"</span><span class="token punctuation">,</span> <span class="token string">"A"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => {page: 1, fields: "size,weight,color", priority: "A"}</span></code></pre>
-<p>In all of these cases, we're essentially converting an array into something else, maybe another different array. If you're doing that, <code>reduce</code> might get you there faster.</p>
-<h2 id="foreach"><code>forEach</code> <a class="direct-link" href="#foreach">#</a></h2>
-<p><em>use <code>forEach</code> only when side-effects are necessary</em></p>
-<p>Briefly, a <em>side effect</em> is when a function changes a value or has an effect outside of its own scope. So, a quick f'rinstance:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><br><span class="token keyword">function</span> <span class="token function">incr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  count <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<p>Calling <code>incr()</code> causes a <em>side-effect</em> of incrementing <code>count</code> by 1</p>
-<p>So, if you need to do something like that, <code>forEach</code> is your method. The function that <code>forEach</code> accepts as an argument returns no value. Nothing. It's of type <code>void</code>. So:</p>
-<p><code>(elem) =&gt; {}</code> is pretty much it</p>
-<p>Maybe you want to clear a signup form:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">clearSignupForm</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>  <span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token function">getElem</span><span class="token punctuation">(</span><span class="token string">"form"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><br>    <span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>i<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Or maybe you want to log array contents to your console:</p>
-<pre class="language-ts"><code class="language-ts">data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> elem<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>Personally, I use <code>forEach</code> only when a side effect is the only solution possible. I never do something like:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">let</span> keyValObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br><br><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"page"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"fields"</span><span class="token punctuation">,</span><span class="token string">"size,weight,color"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"priority"</span><span class="token punctuation">,</span><span class="token string">"A"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">[</span>key<span class="token punctuation">,</span>value<span class="token punctuation">]</span> <span class="token operator">=></span> keyValObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">)</span></code></pre>
-<p>It becomes difficult to know what's going on with <code>keyValObj</code> as the codebase grows. Better to have the direct assignment:</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> keyValObj <span class="token operator">=</span> <span class="token punctuation">[</span><br>  <span class="token punctuation">[</span><span class="token string">"page"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"fields"</span><span class="token punctuation">,</span> <span class="token string">"size,weight,color"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"priority"</span><span class="token punctuation">,</span> <span class="token string">"A"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="extraneous-addendium">Extraneous addendium <a class="direct-link" href="#extraneous-addendium">#</a></h2>
-<p>I didn't tell you something. All of these array methods take functions as arguments... <em>MDN</em> calls them <em>callbacks</em> so let's do that. All of these array methods take <em>callbacks</em> as we've discussed. The thing I didn't mention is that these array methods pass more values to the <em>callbacks</em> than just the current value of the array. They also receive the current <em>index</em> of the array, and after that, the <em>entire</em> array. That looks like this:</p>
-<p>Lets pass into <code>[&quot;zero&quot;, &quot;one&quot;, &quot;three&quot;].forEach</code> this <em>callback</em>: <code>(elem, index, arr) =&gt; console.log({ elem, index, arr })</code> and see the output.</p>
-<pre class="language-ts"><code class="language-ts"><span class="token punctuation">[</span><span class="token string">"zero"</span><span class="token punctuation">,</span> <span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"three"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> index<span class="token punctuation">,</span> arr<span class="token punctuation">)</span> <span class="token operator">=></span><br>  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> elem<span class="token punctuation">,</span> index<span class="token punctuation">,</span> arr <span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// {elem: "zero", index: 0, arr: ["zero", "one", "three"]}</span><br><span class="token comment">// {elem: "one", index: 1, arr: ["zero", "one", "three"]}</span><br><span class="token comment">// {elem: "three", index: 2, arr: ["zero", "one", "three"]}</span></code></pre>
-<p>As we see here, the <code>elem</code> value is followed by the <code>index</code> value of the current array, followed by <code>arr</code> which contains the entire input array</p>
-<p>Same goes for the <em>callbacks</em> on all the other methods, including <code>reduce</code>. In case you find it useful</p>
-<p>Also, you can chain these methods together. Here's <a href="https://github.com/rendall/simple-comment/blob/57fc97334f8b7e883a6c0112210d5f1014b83198/tests/secrets.test.ts#L34">an example</a> of how that's done:</p>
-<pre class="language-ts"><code class="language-ts">exampleEnvEntries <span class="token operator">=</span> exampleEnv<br>  <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\r</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\n{2}</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"/n"</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">=></span> l<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">!</span>l<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// eliminate comments</span><br>  <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">=></span> l<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eliminate blank lines</span></code></pre>
-<p>This takes a string called exampleEnv, splits it into an array which holds one line of text per element, removes blank spaces at the beginning and end of each of those lines, filters out any that start with <code>#</code> and discards any blank lines</p>
-<p><a href="https://github.com/rendall/simple-comment/blob/57fc97334f8b7e883a6c0112210d5f1014b83198/tests/secrets.test.ts#L48">Later</a>, this example file is tested against the user's file and warns the user if their file is missing something or if they have not changed something they should have changed, using <code>forEach</code>:</p>
-<pre class="language-ts"><code class="language-ts">exampleEnvEntries<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token punctuation">[</span>varName<span class="token punctuation">,</span> varValue<span class="token punctuation">]</span> <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is defined as an environmental variable</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token function">expect</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">[</span>varName<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeDefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// The value of each SECRET or PASSWORD in 'example.env' is not the same as in process.env</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>varName<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"SECRET"</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">||</span> varName<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"PASSWORD"</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><br>    <span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is not </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varValue<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">expect</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">[</span>varName<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>not<span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span>varValue<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+      <article class="Post__Article">
+        <!-- @format -->
+        <p>
+          I have a simple rule of thumb when choosing to use array methods, and
+          I'd like to share it with you. The array methods I'm discussing here
+          are:
+        </p>
+        <ul>
+          <li><code>arr.filter(y)</code></li>
+          <li><code>arr.map(y)</code></li>
+          <li><code>arr.reduce(y)</code></li>
+          <li><code>arr.forEach(y)</code></li>
+        </ul>
+        <p>
+          For me, each of these are answers to the question
+          <em>How does an array need to change?</em>
+        </p>
+        <p>
+          Briefly, the rule of thumb is this:
+          <em
+            >Use <code>filter</code> if the array length needs to get smaller;
+            use <code>map</code> if the array length stays the same but the
+            elements of the array need to change in some way; use
+            <code>reduce</code> if the array length needs to change, especially
+            bigger, <em>or</em> the array needs to be transformed into some
+            other type, like into an object or a string; and use
+            <code>forEach</code> only when side-effects are necessary</em
+          >
+        </p>
+        <p>
+          I use these methods all the time in my code, roughly in that order of
+          priority.
+        </p>
+        <p>
+          If you're already familiar with these, that's it. That's the blog
+          post. You can stop reading. All the rest is just expansion,
+          reiteration. I should have just stopped there, but what kind of blog
+          post would that be? Absurd, that's what
+        </p>
+        <p>Or go ahead and skim the examples.</p>
+        <p>
+          If you're not already familiar with these, this post is probably not
+          the best introduction, but I'll give it a good go.
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+            >MDN</a
+          >
+          is a great resource to learn more about them.
+        </p>
+        <h2 id="filter">
+          <code>filter</code> <a class="direct-link" href="#filter">#</a>
+        </h2>
+        <p>
+          <em
+            >Use <code>filter</code> if the array length needs to get
+            smaller</em
+          >
+        </p>
+        <p>
+          <code>filter</code> is straight-forward: a <em>filter</em> removes
+          unwanted stuff, and an <em>array filter</em> removes unwanted elements
+          from your array. This leads inevitably to the array being the same
+          length or smaller
+        </p>
+        <p>
+          <code>filter</code> takes a <em>predicate</em> for its argument, which
+          is a function that answers a <em>true</em> or <em>false</em> question
+          about that input. If the predicate returns <em>true</em>, the element
+          is included; if it returns <em>false</em>, the element is excluded
+          from the output array
+        </p>
+        <h3 id="filter-examples">
+          filter examples <a class="direct-link" href="#filter-examples">#</a>
+        </h3>
+        <p>
+          Consider the array
+          <code
+            >[1, &quot;tooth&quot;, 3, &quot;fort&quot;, &quot;fie!&quot;,
+            6]</code
+          >
+        </p>
+        <p>
+          This is an array of mixed type, containing elements of type
+          <code>number</code> and <code>string</code>. Let's apply a
+          <code>filter</code> to remove <code>string</code>s from the array, so
+          that it's an array only of <code>number</code>s
+        </p>
+        <p>
+          Here is a predicate that returns <code>true</code> if the input is a
+          <code>number</code> and <code>false</code> otherwise:
+          <code>(x) =&gt; typeof x === &quot;number&quot;</code>
+        </p>
+        <p>Putting them together, with <code>filter</code>:</p>
+        <p>
+          <code
+            >[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;,
+            6].filter((elem) =&gt; typeof elem === &quot;number&quot;)</code
+          >
+        </p>
+        <p>
+          This line takes the array
+          <code
+            >[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;,
+            6]</code
+          >, applies the <em>filter</em>
+          <code>(elem) =&gt; typeof elem === &quot;number&quot;</code> to each
+          element in the array and returns the result, <code>[1,3,6]</code>, all
+          and only numbers
+        </p>
+        <p>
+          Note that the new array is length 3, while the input array is 6. It
+          was a good decision to apply <code>filter</code> in this case!
+        </p>
+        <p>
+          Here's an example from
+          <a
+            href="https://github.com/rendall/levenshtein-searcher/blob/601f69c630e4e1df84f30e93eb9ac0e645684b0e/src/index.ts#L26"
+            >working code</a
+          >:
+        </p>
+        <p>
+          <code
+            >const searchSpace = dict.filter((entry) =&gt; entry.length ==
+            wordLength);</code
+          >
+        </p>
+        <p>
+          Here, <code>dict</code> is literally a list of words
+          <em
+            >(e.g. &quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;, ...)
+            only, <em>humongous</em></em
+          >
+          and the predicate,
+          <code>(entry) =&gt; entry.length == wordLength</code>, returns
+          <code>true</code> if the number of characters in <code>entry</code> is
+          exactly <code>wordLength</code> and <code>false</code> if it's any
+          other length. Applying this predicate to <code>dict</code> returns an
+          array of words that all have a <code>length</code> matching
+          <code>wordLength</code>. The statement assigns all of this to the
+          constant <code>searchSpace</code>
+        </p>
+        <p>
+          Marvelous! The new array <code>searchSpace</code> is smaller than the
+          input array <code>dict</code>, consisting entirely of words that are
+          only of length <code>wordLength</code>. Another win for the Rule of
+          Thumb!
+        </p>
+        <h2 id="map">map <a class="direct-link" href="#map">#</a></h2>
+        <p>
+          <em
+            >Use <code>map</code> if the array length stays the same but the
+            elements of the array need to change in some way</em
+          >
+        </p>
+        <p>
+          The <code>map</code> method transforms each element of an array into
+          something else, and returns these new elements in a new array of
+          exactly the same length. It takes as its argument a function that
+          accepts an input value and returns another transformed value based on
+          the input. <code>map</code> passes each element in turn to this
+          function, and returns an array with that function applied to each
+          value
+        </p>
+        <h3 id="map-examples">
+          map examples <a class="direct-link" href="#map-examples">#</a>
+        </h3>
+        <p>
+          Consider the array
+          <code
+            >[1, &quot;tooth&quot;, 3, &quot;fort&quot;, &quot;fie!&quot;,
+            6]</code
+          >
+          and the function
+          <code>(x) =&gt; typeof x === &quot;number&quot;? x : 0</code>
+        </p>
+        <p>
+          As before, the array is of mixed type, consisting of
+          <code>number</code> and <code>string</code> elements. The function
+          checks if <code>x</code> is of type <code>number</code> and returns
+          <code>x</code> unchanged if it is, or <code>0</code> if it's of any
+          other type
+        </p>
+        <p>Putting them togther with map:</p>
+        <p>
+          <code
+            >[1, &quot;tooth&quot;, 3, &quot;fort&quot;, &quot;fie!&quot;,
+            6].map((x) =&gt; typeof x === &quot;number&quot;? x : 0)</code
+          >
+          which returns <code>[1, 0, 3, 0, 0, 6]</code>
+        </p>
+        <p>
+          Note that the input array length is 6, and the output array is the
+          same length! I am pleased
+        </p>
+        <p>
+          From
+          <a
+            href="https://github.com/rendall/simple-comment/blob/53827633f74332d358284a4a30289e6617116600/src/dist/js/apiClient.ts#L126"
+            >working code</a
+          >:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">objToQuery</span> <span class="token operator">=</span> <span class="token punctuation">(</span>obj<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>  Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"&amp;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p>
+          <em
+            >(This is a TypeScript function, but just convert this part
+            <code>(obj: {})</code> to <code>(obj)</code> and it's
+            JavaScript)</em
+          >
+        </p>
+        <p>
+          This <code>objToQuery</code> function accepts a simple object (e.g.
+          <code>{page:1,query:&quot;lime&quot;}</code>) and returns a string
+          (e.g. <code>page=1&amp;query=lime</code>) representation of the
+          object. This is useful to convert a (simple!) object into a URL query
+          string
+        </p>
+        <p>
+          Briefly reviewing <code>Object.entries</code> (and cribbing from
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries"
+            >MDN</a
+          >), it takes an <code>object</code> and returns an array of its
+          <code>[key, value]</code> pairs. So, using our example object,
+          <code>Object.entries({page:1,query:&quot;lime&quot;})</code> returns
+          <code
+            >[[&quot;page&quot;,1],[&quot;query&quot;,&quot;lime&quot;]]</code
+          >
+        </p>
+        <p>
+          Applying the line
+          <code>.map(entry =&gt; `${entry[0]}=${entry[1]}`)</code> to
+          <code
+            >[[&quot;page&quot;,1],[&quot;query&quot;,&quot;lime&quot;]]</code
+          >
+          returns a simple array
+          <code>[&quot;page=1&quot;, &quot;query=lime&quot;]</code>. Finally,
+          applying <code>.join(&quot;&amp;&quot;)</code> returns a string, each
+          element of the array &quot;joined&quot; with <em>&amp;</em>:
+          <code>&quot;page=1&amp;query=lime&quot;</code>
+        </p>
+        <p>
+          Note that the input array for <code>map</code>,
+          <code
+            >[[&quot;page&quot;,1],[&quot;query&quot;,&quot;lime&quot;]]</code
+          >
+          is of length 2 (2 key-value pairs) and the output array
+          <code>[&quot;page=1&quot;, &quot;query=lime&quot;]</code> is also
+          length 2 (2 strings). The input and output array stayed the same size,
+          while each element was transformed! This is exactly as we predicted!!
+          Astounding
+        </p>
+        <h2 id="reduce">
+          <code>reduce</code> <a class="direct-link" href="#reduce">#</a>
+        </h2>
+        <p>
+          <em
+            >Use <code>reduce</code> if the array length needs to change,
+            especially bigger, <em>or</em> the array needs to be transformed
+            into some other type, like into an object or a string</em
+          >
+        </p>
+        <p>
+          <code>reduce</code> is misunderstood and mistrusted, but it's probably
+          my favorite of the array methods (<a
+            href="https://www.youtube.com/watch?v=qaGjS7-qWzg"
+            >Here are two devs shamefully making fun of people who use it</a
+          >, but do use it whenever necessary, and use it confidently and with
+          pride!). I think people are confused by the <code>reduce</code> name,
+          which implies that the array is going to get smaller. Not so!
+          Remember, the array size is going to <em>change</em> or become
+          <em>not an array</em>. Any time you need to expand an array into a
+          bigger array <em>or</em> convert it into something else, consider
+          using <code>reduce</code>
+        </p>
+        <h3 id="reduce-description">
+          <code>reduce</code> description
+          <a class="direct-link" href="#reduce-description">#</a>
+        </h3>
+        <p>
+          Like the other array methods, <code>reduce</code> takes a function as
+          an argument. Maybe confusingly, this function is called the
+          <em>reducer</em>, but the name isn't important. It's just a function
+          like any other. <code>reduce</code>, like the other methods, calls
+          this function once successively for each element of its input array,
+          in order. Unlike the other methods, this <em>reducer</em> function
+          itself requires 2 arguments instead of 1. Also unlike the other
+          methods, it is the <em>second</em> argument of this function that
+          receives the element value, not the first
+        </p>
+        <p>
+          The reducer's first argument value is the output of the
+          <em>previous</em> call to the reducer, or if there is no previous
+          element (because it's the first one) it's by default the first element
+          of the array
+        </p>
+        <p>
+          <code>reduce</code> returns whatever its <em>reducer</em> returns when
+          called with the last element of its input array
+        </p>
+        <p>
+          More info at
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"
+            >MDN</a
+          >
+        </p>
+        <p>Let's have a quick example or two:</p>
+        <h3 id="reduce-examples">
+          <code>reduce</code> examples
+          <a class="direct-link" href="#reduce-examples">#</a>
+        </h3>
+        <p>
+          Consider <code>[1, &quot;two&quot;, 3, &quot;four&quot;]</code> and
+          the function <code>(prev, elem) =&gt; elem</code>
+        </p>
+        <p>
+          That function takes two arguments and returns only the second one.
+          Calling that function with
+          <code>(&quot;a&quot;,&quot;b&quot;)</code> would just return
+          <code>&quot;b&quot;</code>. It's a useless function on its own, but
+          it's useful as an example.
+          <code
+            >[1, &quot;two&quot;, 3, &quot;four&quot;].reduce((prev, elem) =&gt;
+            elem)</code
+          >
+          will call that function successively, and the reducer will receive
+          values and return them successively, like so:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token comment">// the first element of the array is 1</span><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token number">1</span> <span class="token punctuation">)</span><br><span class="token comment">// So, in this iteration, the first argument is</span><br><span class="token comment">// by default the first element of the array (1),</span><br><span class="token comment">// The second argument is the element itself,</span><br><span class="token comment">// and this reducer returns the second argument, the element itself: value 1</span><br><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"two"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">"two"</span> <span class="token punctuation">)</span> <span class="token comment">// the first argument is the result of the previous iteration (1),</span><br><span class="token comment">// but this reducer ignores it, and just returns the second argument</span><br><span class="token comment">// the second argument is the value of the element of this iteration (value: "two"),</span><br><span class="token comment">// and so this iteration returns "two",</span><br><span class="token comment">// which becomes the first argument value for the next iteration:</span><br><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token string">"two"</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token number">3</span> <span class="token punctuation">)</span> <span class="token comment">// the first argument is the result of the previous iteration ("two"),</span><br><span class="token comment">// the second argument is the value of the element for this iteration (3),</span><br><span class="token comment">// and so it returns 3</span><br><br><span class="token function">reduce</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token string">"four"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">"four"</span> <span class="token punctuation">)</span><br><span class="token comment">// finally, the first argument is the result of the previous iteration (3),</span><br><span class="token comment">// the second argument is the value of the element for this iteration ("four"),</span><br><span class="token comment">// and so it returns "four", and since "four" is the last element of the array</span><br><span class="token comment">// reduce itself returns "four as its final result</span></code></pre>
+        <p>
+          So
+          <code
+            >[1, &quot;two&quot;, 3, &quot;four&quot;].reduce((prev, elem) =&gt;
+            elem)</code
+          >
+          returns <code>&quot;four&quot;</code>, which is the value of the last
+          call to the reducer, which just returns the last element of the array
+        </p>
+        <p>
+          Note that the size of the input array is 4, and the output isn't an
+          array at all, but a <code>string</code>!
+        </p>
+        <h4 id="array-into-one-thing">
+          array into one thing
+          <a class="direct-link" href="#array-into-one-thing">#</a>
+        </h4>
+        <p>
+          Consider the array
+          <code
+            >[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;,
+            6]</code
+          >
+          and the function <code>(str, elem) =&gt; `${str}&amp;${elem}</code>
+        </p>
+        <p>
+          We've seen the array before, an array of mixed types. The function
+          just takes two arguments and joins them using <code>&amp;</code>.
+          Calling this function with <code>&quot;apple&quot;</code> and
+          <code>&quot;banana&quot;</code> will return
+          <code>&quot;apple&amp;banana&quot;</code>. That seems rather limited
+        </p>
+        <p>
+          What happens when we add it to <code>reduce</code>, as in
+          <code
+            >[1, &quot;two&quot;, 3, &quot;four&quot;, &quot;five&quot;,
+            6].reduce((str, elem) =&gt; `${str}&amp;${elem}`)</code
+          >
+          is a bit more interesting, because it returns
+          <code>&quot;1&amp;two&amp;3&amp;four&amp;five&amp;6&quot;</code>
+        </p>
+        <p>
+          Congratulations! We reinvented <code>.join</code>. No wonder those
+          devs mocked <code>reduce</code>!
+        </p>
+        <h4 id="array-changes-size">
+          array changes size
+          <a class="direct-link" href="#array-changes-size">#</a>
+        </h4>
+        <p>Let's strip duplicated elements out of an array!</p>
+        <p>
+          Consider the function
+          <code>(arr,e) =&gt; arr.indexOf(e) &gt;= 0? arr : [...arr, e]</code>
+        </p>
+        <p>
+          This function takes an array as its first argument, <code>arr</code>,
+          and any value at all as its second argument <code>e</code>. It checks
+          <code>arr.indexOf(e)</code> to see if <code>e</code> is in
+          <code>arr</code>. If it is
+          <em>(i.e. <code>arr.indexOf(e) &gt;= 0</code>)</em> then the function
+          returns <code>arr</code> itself. But if the value <code>e</code> is
+          <em>not</em> in <code>arr</code>
+          <em>(i.e. <code>arr.indexOf(e) === -1</code>)</em> then it returns the
+          array <code>arr</code> with <code>e</code> appended as its final value
+          <em>(i.e. <code>[...arr, e]</code>)</em>
+        </p>
+        <p>
+          So, this function would accept, say <code>([1,2], 2)</code> and return
+          <code>[1,2]</code>; and would accept <code>([1,2], 3)</code> and
+          return <code>[1,2,3]</code>. This function when used as a reducer in
+          <code>reduce</code> will return another array with all duplicates
+          stripped
+        </p>
+        <p>
+          Wait, I forgot to mention one thing before! <code>reduce</code> can
+          take 2 arguments! The first is mandatory, and that's the
+          <em>reducer</em> we've been talking about. The second,
+          <em>optional</em> argument is the first value to be sent to the
+          reducer. If it's not supplied, it's by default the first value of the
+          array, as we discussed before. You okay? Let's take a look:
+        </p>
+        <p>
+          <code
+            >[1,1,1,2,2,3,3,4,4,4,5,6,6].reduce((arr,e) =&gt; arr.indexOf(e)
+            &gt;= 0? arr : [...arr, e], [])</code
+          >
+          is going to return <code>[1,2,3,4,5,6]</code>, which is the original
+          array stripped of duplicates
+        </p>
+        <p>Let's step through it</p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// is the first iteration.</span><br><span class="token comment">// its first argument is `[]`, which we gave as the second argument to reduce, above</span><br><span class="token comment">// its second argument, 1, is the element value of this iteration</span><br><span class="token comment">// Reducer checks [] to see if it has `1` in it, and it doesn't, so reducer returns `[1]`</span><br><br><span class="token comment">// ...which now becomes the value of the first argument sent to the second iteration:</span><br><br><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><br><span class="token comment">// reducer checks `[1]` to see if it contains `1`</span><br><span class="token comment">// It does! So reducer returns `[1]`</span><br><br><span class="token comment">// the next iteration is identical, because arr[3] is value 1</span><br><span class="token comment">// So skipping ahead to:</span><br><br><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><br><span class="token comment">// reducer checks `[1]` to see if it contains `2`</span><br><span class="token comment">// it does *not*, so reducer returns `[1,2]`</span><br><span class="token comment">// ... which is the first argument of the next iteration...</span><br><br><span class="token comment">// and so on, until the last element of the array:</span><br><span class="token punctuation">.</span><span class="token function">reducer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><br><span class="token comment">// reducer checks the array to see if 6 is in it, and it is</span><br><span class="token comment">// so it returns the array itself, unaltered</span><br><span class="token comment">// and since `reduce` is at the end of the input array</span><br><span class="token comment">// `reduce` returns the first argument value,</span><br><span class="token comment">// the array is the solution!</span></code></pre>
+        <p>
+          Stick all of that in a named function, and you can strip duplicates
+          out of any array you pass in
+        </p>
+        <p>
+          <code
+            >const uniq = (arr) =&gt; arr.reduce((acc,e) =&gt; acc.indexOf(e)
+            &gt;= 0? acc : [...acc, e], [])</code
+          >
+        </p>
+        <p>So</p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token function">uniq</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//  => [1,2,3,4,5,6]</span></code></pre>
+        <h4 id="what-else-can-reduce-do%3F">
+          What else can <code>reduce</code> do?
+          <a class="direct-link" href="#what-else-can-reduce-do%3F">#</a>
+        </h4>
+        <p>
+          Oh, lots. Maybe you have a succession of functions and you want to
+          pass the result of one into the next one in turn. For instance, if you
+          want to extract the user id and password sent in an auth header, you
+          <em>could</em> do something like this:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getUserIdPassword</span><span class="token punctuation">(</span>headers<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> headerValue <span class="token operator">=</span> <span class="token function">getAuthHeaderValue</span><span class="token punctuation">(</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> decodedHeader <span class="token operator">=</span> <span class="token function">decodeAuthHeader</span><span class="token punctuation">(</span>headerValue<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">const</span> parsedHeader <span class="token operator">=</span> <span class="token function">parseAuthHeader</span><span class="token punctuation">(</span>decodedHeader<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">return</span> parsedHeader<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+        <p>
+          Or
+          <a
+            href="https://github.com/rendall/simple-comment/blob/c3b9931d701352bcb42dca43fa8bb23af62e4c2b/src/lib/utilities.ts#L221"
+            >you could do</a
+          >:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getUserIdPassword</span> <span class="token operator">=</span> <span class="token punctuation">(</span>headers<span class="token punctuation">)</span> <span class="token operator">=></span><br>  <span class="token punctuation">[</span>getAuthHeaderValue<span class="token punctuation">,</span> decodeAuthHeader<span class="token punctuation">,</span> parseAuthHeader<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><br>    <span class="token punctuation">(</span>acc<span class="token punctuation">,</span> func<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">func</span><span class="token punctuation">(</span>acc<span class="token punctuation">)</span><span class="token punctuation">,</span><br>    headers<br>  <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p>Personal preference. No judgment.</p>
+        <p>
+          Maybe you want to create an object out of key-value pairs. You can do:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">toObj</span> <span class="token operator">=</span> <span class="token punctuation">(</span>keyValues<span class="token punctuation">)</span> <span class="token operator">=></span><br>  keyValues<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token function">toObj</span><span class="token punctuation">(</span><span class="token punctuation">[</span><br>  <span class="token punctuation">[</span><span class="token string">"page"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"fields"</span><span class="token punctuation">,</span> <span class="token string">"size,weight,color"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"priority"</span><span class="token punctuation">,</span> <span class="token string">"A"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => {page: 1, fields: "size,weight,color", priority: "A"}</span></code></pre>
+        <p>
+          In all of these cases, we're essentially converting an array into
+          something else, maybe another different array. If you're doing that,
+          <code>reduce</code> might get you there faster.
+        </p>
+        <h2 id="foreach">
+          <code>forEach</code> <a class="direct-link" href="#foreach">#</a>
+        </h2>
+        <p>
+          <em>use <code>forEach</code> only when side-effects are necessary</em>
+        </p>
+        <p>
+          Briefly, a <em>side effect</em> is when a function changes a value or
+          has an effect outside of its own scope. So, a quick f'rinstance:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><br><span class="token keyword">function</span> <span class="token function">incr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  count <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+        <p>
+          Calling <code>incr()</code> causes a <em>side-effect</em> of
+          incrementing <code>count</code> by 1
+        </p>
+        <p>
+          So, if you need to do something like that, <code>forEach</code> is
+          your method. The function that <code>forEach</code> accepts as an
+          argument returns no value. Nothing. It's of type <code>void</code>.
+          So:
+        </p>
+        <p><code>(elem) =&gt; {}</code> is pretty much it</p>
+        <p>Maybe you want to clear a signup form:</p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">clearSignupForm</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><br>  <span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token function">getElem</span><span class="token punctuation">(</span><span class="token string">"form"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><br>    <span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>i<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p>Or maybe you want to log array contents to your console:</p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts">data<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> elem<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <p>
+          Personally, I use <code>forEach</code> only when a side effect is the
+          only solution possible. I never do something like:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">let</span> keyValObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br><br><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"page"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"fields"</span><span class="token punctuation">,</span><span class="token string">"size,weight,color"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"priority"</span><span class="token punctuation">,</span><span class="token string">"A"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">[</span>key<span class="token punctuation">,</span>value<span class="token punctuation">]</span> <span class="token operator">=></span> keyValObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">)</span></code></pre>
+        <p>
+          It becomes difficult to know what's going on with
+          <code>keyValObj</code> as the codebase grows. Better to have the
+          direct assignment:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token keyword">const</span> keyValObj <span class="token operator">=</span> <span class="token punctuation">[</span><br>  <span class="token punctuation">[</span><span class="token string">"page"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"fields"</span><span class="token punctuation">,</span> <span class="token string">"size,weight,color"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token punctuation">[</span><span class="token string">"priority"</span><span class="token punctuation">,</span> <span class="token string">"A"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><br><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token operator">...</span>obj<span class="token punctuation">,</span> <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        <h2 id="extraneous-addendium">
+          Extraneous addendium
+          <a class="direct-link" href="#extraneous-addendium">#</a>
+        </h2>
+        <p>
+          I didn't tell you something. All of these array methods take functions
+          as arguments... <em>MDN</em> calls them <em>callbacks</em> so let's do
+          that. All of these array methods take <em>callbacks</em> as we've
+          discussed. The thing I didn't mention is that these array methods pass
+          more values to the <em>callbacks</em> than just the current value of
+          the array. They also receive the current <em>index</em> of the array,
+          and after that, the <em>entire</em> array. That looks like this:
+        </p>
+        <p>
+          Lets pass into
+          <code
+            >[&quot;zero&quot;, &quot;one&quot;,
+            &quot;three&quot;].forEach</code
+          >
+          this <em>callback</em>:
+          <code
+            >(elem, index, arr) =&gt; console.log({ elem, index, arr })</code
+          >
+          and see the output.
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts"><span class="token punctuation">[</span><span class="token string">"zero"</span><span class="token punctuation">,</span> <span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"three"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> index<span class="token punctuation">,</span> arr<span class="token punctuation">)</span> <span class="token operator">=></span><br>  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> elem<span class="token punctuation">,</span> index<span class="token punctuation">,</span> arr <span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// {elem: "zero", index: 0, arr: ["zero", "one", "three"]}</span><br><span class="token comment">// {elem: "one", index: 1, arr: ["zero", "one", "three"]}</span><br><span class="token comment">// {elem: "three", index: 2, arr: ["zero", "one", "three"]}</span></code></pre>
+        <p>
+          As we see here, the <code>elem</code> value is followed by the
+          <code>index</code> value of the current array, followed by
+          <code>arr</code> which contains the entire input array
+        </p>
+        <p>
+          Same goes for the <em>callbacks</em> on all the other methods,
+          including <code>reduce</code>. In case you find it useful
+        </p>
+        <p>
+          Also, you can chain these methods together. Here's
+          <a
+            href="https://github.com/rendall/simple-comment/blob/57fc97334f8b7e883a6c0112210d5f1014b83198/tests/secrets.test.ts#L34"
+            >an example</a
+          >
+          of how that's done:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts">exampleEnvEntries <span class="token operator">=</span> exampleEnv<br>  <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\r</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\n{2}</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"/n"</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">=></span> l<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>  <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">!</span>l<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// eliminate comments</span><br>  <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">=></span> l<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eliminate blank lines</span></code></pre>
+        <p>
+          This takes a string called exampleEnv, splits it into an array which
+          holds one line of text per element, removes blank spaces at the
+          beginning and end of each of those lines, filters out any that start
+          with <code>#</code> and discards any blank lines
+        </p>
+        <p>
+          <a
+            href="https://github.com/rendall/simple-comment/blob/57fc97334f8b7e883a6c0112210d5f1014b83198/tests/secrets.test.ts#L48"
+            >Later</a
+          >, this example file is tested against the user's file and warns the
+          user if their file is missing something or if they have not changed
+          something they should have changed, using <code>forEach</code>:
+        </p>
+        <pre
+          class="language-ts"
+        ><code class="language-ts">exampleEnvEntries<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token punctuation">[</span>varName<span class="token punctuation">,</span> varValue<span class="token punctuation">]</span> <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is defined as an environmental variable</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token function">expect</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">[</span>varName<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeDefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// The value of each SECRET or PASSWORD in 'example.env' is not the same as in process.env</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>varName<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"SECRET"</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">||</span> varName<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"PASSWORD"</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><br>    <span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is not </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varValue<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">expect</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">[</span>varName<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>not<span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span>varValue<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+      </article>
 
-</article>
+      <p><a href="/">← Home</a></p>
+    </main>
+    <div id="simple-comment-area"></div>
 
-<p><a href="/">← Home</a></p>
+    <footer></footer>
 
-		</main>
-		<div id="simple-comment-area">
-		</div>
-
-		<footer></footer>
-
-		<!-- Current page: /posts/2020/1/22/using-filter-map-reduce-and-foreach/ -->
-		<script src="/js/home.js"></script>
-		<script type="module" src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"></script>
-</body>
-
+    <!-- Current page: /posts/2020/1/22/using-filter-map-reduce-and-foreach/ -->
+    <script src="/js/home.js"></script>
+    <script
+      type="module"
+      src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"
+    ></script>
+  </body>
 </html>
