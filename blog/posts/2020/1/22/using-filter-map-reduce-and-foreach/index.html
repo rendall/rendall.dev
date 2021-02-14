@@ -6,10 +6,6 @@
     <title>Using filter, map, reduce and forEach</title>
     <link rel="stylesheet" href="/css/styles.css" />
     <link
-      href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css"
-      rel="stylesheet"
-    />
-    <link
       rel="alternate"
       href="/feed/feed.xml"
       type="application/atom+xml"
@@ -25,7 +21,7 @@
     <main class="Blog__Post">
       <header class="Post__Header">
         <h2 class="Post__Title">Using filter, map, reduce and forEach</h2>
-        <time class="Post__Date" datetime="--">2020-01-22</time>
+        <time class="Post__Date" datetime="2020-01-22">2020-01-22</time>
 
         <a href="/tags/tech/" class="tag">tech</a>
         <a href="/tags/code/" class="tag">code</a>
@@ -620,18 +616,22 @@
           class="language-ts"
         ><code class="language-ts">exampleEnvEntries<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>  <span class="token keyword">const</span> <span class="token punctuation">[</span>varName<span class="token punctuation">,</span> varValue<span class="token punctuation">]</span> <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"="</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is defined as an environmental variable</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token function">expect</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">[</span>varName<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeDefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// The value of each SECRET or PASSWORD in 'example.env' is not the same as in process.env</span><br>  <span class="token keyword">if</span> <span class="token punctuation">(</span>varName<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"SECRET"</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">||</span> varName<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"PASSWORD"</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><br>    <span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is not </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>varValue<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">expect</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">[</span>varName<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>not<span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span>varValue<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
       </article>
-
       <p><a href="/">← Home</a></p>
+
+      <link
+        href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css"
+        rel="stylesheet"
+      />
+      <div id="simple-comment-area"></div>
+      <script
+        type="module"
+        src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"
+      ></script>
     </main>
-    <div id="simple-comment-area"></div>
 
     <footer></footer>
 
     <!-- Current page: /posts/2020/1/22/using-filter-map-reduce-and-foreach/ -->
     <script src="/js/home.js"></script>
-    <script
-      type="module"
-      src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"
-    ></script>
   </body>
 </html>

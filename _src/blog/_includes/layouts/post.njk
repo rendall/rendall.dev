@@ -4,19 +4,23 @@ templateClass: Blog__Post
 permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title | slugify }}/index.html
 ---
 <header class="Post__Header">
-    <h2 class="Post__Title">{{ title }}</h2>
-    {%- if subtitle -%}<h2 class="Post__SubTitle">{{ subtitle }}</h2>{%- endif -%}
-    <time class="Post__Date" datetime="{{ date | readableDate }}">{{ date | readableDate }}</time>
-    {% for tag in tags %}
-      {%- if tag != "post" -%}
-      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-      <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
-      {%- endif -%}
-    {% endfor %}
+  <h2 class="Post__Title">{{ title }}</h2>
+  {%- if subtitle -%}<h2 class="Post__SubTitle">{{ subtitle }}</h2>{%- endif -%}
+  <time class="Post__Date" datetime="{{ date | readableDate }}">{{ date | readableDate }}</time>
+  {% for tag in tags %}
+  {%- if tag != "post" -%}
+  {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+  <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+  {%- endif -%}
+  {% endfor %}
 </header>
 
 <article class="Post__Article">
-{{ content | safe }}
+  {{ content | safe }}
 </article>
-
 <p><a href="{{ '/' | url }}">← Home</a></p>
+
+<link href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css" rel="stylesheet" />
+<div id="simple-comment-area"></div>
+<script type="module" src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"></script>
+
