@@ -560,8 +560,7 @@
 		<link href="https://blog.rendall.dev/posts/2021/2/5/lazy-sunday-musings/"/>
 		<updated>2021-02-05T00:00:00Z</updated>
 		<id>https://blog.rendall.dev/posts/2021/2/5/lazy-sunday-musings/</id>
-		<content type="html">&lt;!-- @format --&gt;
-&lt;p&gt;In which Rendall muses on due dilligence, translates a Tweet, learns about the best-selling Finnish band of all time, and mentions a fellow Finnish-language-learner&lt;/p&gt;
+		<content type="html">&lt;p&gt;In which your humble author muses on due diligence, translates a Tweet, learns about the best-selling Finnish band of all time, and mentions a fellow Finnish-language-learner&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://blog.rendall.dev/img/paino.jpg&quot; alt=&quot;A dusky shot of a building with a sign M&amp;amp;P Paino&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;simple-comment&quot;&gt;Simple Comment &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/2/5/lazy-sunday-musings/#simple-comment&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I&#39;ve been spending time creating a commenting system called &lt;em&gt;Simple Comment&lt;/em&gt; and I&#39;d like to talk about some of the learnings &lt;a href=&quot;https://blog.rendall.dev/posts/2021/2/5/lazy-sunday-musings/#learnings-def&quot;&gt;1&lt;/a&gt;&lt;/p&gt;
@@ -576,7 +575,7 @@
 &lt;p&gt;Due diligence: I searched online for about 3 hours and I would have thought this would be enough. But instead I confirmed a preconception that my ideas are completely original and no other developer has my concerns. Actually, there are lots of other devs who not only share my concerns, but started awhile ago!&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Authentication: It&#39;s a beast. As with the comment system itself, my due dilligence was lacking. There are a fair number of open-source solutions that I could have used, and it would have shaved weeks off my time. I&#39;ll go over authentication in some future post.&lt;/p&gt;
+&lt;p&gt;Authentication: It&#39;s a beast. As with the comment system itself, my due diligence was lacking. There are a fair number of open-source solutions that I could have used, and it would have shaved weeks off my time. I&#39;ll go over authentication in some future post.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Cross-site: I&#39;m super glad to have learned about cross-site requests and implemented an example. There are lots of undocumented gotchas, particularly privacy-related extentions and using &lt;em&gt;incognito&lt;/em&gt; (or &lt;em&gt;private&lt;/em&gt;) mode, that will interfere with expected behavior. I&#39;ll write a post about &lt;em&gt;cross-site&lt;/em&gt; requests in future&lt;/p&gt;
