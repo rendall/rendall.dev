@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="web-font">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Twitter &#39;Likes&#39; Hider</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css" rel="stylesheet" />
+	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rendall&#39;s blog">
+</head>
+
+<body class="Blog">
+	<header class="Blog__Header">
+		<h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
+	</header>
+
+	<main class="Blog__Post" >
+		<header class="Post__Header">
+    <h2 class="Post__Title">Twitter &#39;Likes&#39; Hider</h2><h2 class="Post__SubTitle">The Accidental, Incidental Browser Extension</h2><time class="Post__Date" datetime="2021-02-14">2021-02-14</time>
+    
+      <a href="/tags/tech/" class="tag">tech</a>
+      <a href="/tags/code/" class="tag">code</a>
+</header>
+
+<article class="Post__Article">
+<!-- @format -->
+<p>I like Twitter. For the most part. I like that there is immediate access to information, thoughts and musings from around the world, from everyday individuals. I dislike that mobs attack and bully individuals on Twitter, and while I am certain that Twitter as an organization abhors this, I believe that it is an inevitable result of deliberate design decisions.</p>
+<p><img src="/img/twitterLikesHiderLogo.png" alt="Twitter 'Likes' Hider logo"> I like for example that I'm aware of police brutality protests in Lagos and larger Nigeria, the peaceful revolution and attempted violent suppression in Belarus, their sister protests in Russia, the latest in Japanese computer art made with artificial intelligence, on and on.</p>
+<p>But Twitter continues to pull its users into drama (aka <em>engagement</em>). I carefully curate my feed to people and accounts I find interesting with a wide range of opinions, but Twitter will insert into my feed all kinds of extraneous impertinent appurtanances, for instance a viral tweet that someone I follow 'likes'; or a tweet, not by someone I follow, but by someone <em>they</em> follow. Lately Twitter has been suggesting topics (always in the form of overly dramatic, alarmist tweets).</p>
+<p>It's a cognitive load for me, to resist inserting my opinion on random concerns that will never in any reasonable timeframe affect me, personally. The final straw for me was a tweet in my feed from someone I did not know, indignant over the origin story written on a food package about a brand I will never use, filled to bursting with <em>other</em> people's opinion about whether or not the indignation was warranted. It was a really, in my opinion, a dumb thing to be upset about, but never, ever tell someone who is upset about something that it's not worth it to be upset about.</p>
+<h2 id="writing-an-extension%2C-then-ignoring-it">Writing an Extension, then Ignoring It <a class="direct-link" href="#writing-an-extension%2C-then-ignoring-it">#</a></h2>
+<p>So 3.5 years ago I wrote an open-source extension to hide those kinds of tweets on Chrome and called it <a href="https://chrome.google.com/webstore/detail/twitter-likes-hider/dkcgnebncpfljfaaplmedjnfjifffagj"><em>Twitter 'Likes' Hider</em></a>. Not the most imaginative name, but it describes exactly what it does.</p>
+<p>Then I forgot about it. For some reason, Twitter stopped showing me those kinds of tweets in my feed. The extension was extraneous. In the meantime the extension quietly gathered users over the years and now has nearly 1000 installations despite a <em>3.17</em> rating. The ratings are bi-modal, mostly either 5 stars (the highest rating) or 1 star (the lowest). Apparently it didn't work for everyone. I <em>think</em> that's where all of the 1 star ratings come from, but <em>big shrug</em> I can't be sure, for sure. The few who wrote anything noted only, succinctly, 'doesn't work', so, well I <em>guess</em> that's why.</p>
+<h2 id="paying-attention-again">Paying Attention Again <a class="direct-link" href="#paying-attention-again">#</a></h2>
+<p>After an update to Twitter's frontend stack (they seem to have swapped in React and Atomic CSS) the extension stopped working for me, and I started paying attention again. And actually caring for it. I'd like others to be able to use it. Occassionally I'll get appreciative email from someone, asking me to update it somehow. Sometimes even offers to insert sketchy code, which I would never do.</p>
+<p>I like maintaining it, because I personally find it useful and it's not too onerous. I think the next big update will be to make a Firefox version, so then I can use it on the mobile site. Android Chrome does not allow extensions and mobile Firefox does. The number of users has risen steadily since the last update, so I think other people appreciate it.</p>
+<p>Testing is a bit tricky. It was 'growth hacked', so to speak, so testing is local, manual and then straight to production. I'd like to fix that, but it would involve creating a fake Twitter page and making sure that it looks the way it should.</p>
+<h2 id="open-source">Open source <a class="direct-link" href="#open-source">#</a></h2>
+<p>The code is open source under an AGPL license, and you can see it here: <a href="https://chrome.google.com/webstore/detail/twitter-likes-hider/dkcgnebncpfljfaaplmedjnfjifffagj">https://chrome.google.com/webstore/detail/twitter-likes-hider/dkcgnebncpfljfaaplmedjnfjifffagj</a> What I <em>really</em> need help with is with the logo. If you're a graphics person, please get in touch.</p>
+<p>If you try it out, let me know. I'd absolutely appreciate any feedback!</p>
+
+</article>
+
+<p><a href="/">← Home</a></p>
+
+		</main>
+		<div id="simple-comment-area">
+		</div>
+
+		<footer></footer>
+
+		<!-- Current page: /posts/2021/2/14/twitter-likes-hider/ -->
+		<script src="/js/home.js"></script>
+		<script type="module" src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"></script>
+</body>
+
+</html>
