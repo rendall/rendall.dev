@@ -4,3 +4,4 @@ node_modules
 aspnet_client
 print
 .env
+.vscode/*
