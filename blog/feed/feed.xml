@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.dev/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.dev"/>
-	<updated>2021-02-14T00:00:00Z</updated>
+	<updated>2021-03-03T00:00:00Z</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -650,6 +650,25 @@ Apparently there are people who go around measuring this stuff, and ranking Euro
 &lt;h2 id=&quot;open-source&quot;&gt;Open source &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/2/14/twitter-likes-hider/#open-source&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The code is open source under an AGPL license, and you can see it here: &lt;a href=&quot;https://chrome.google.com/webstore/detail/twitter-likes-hider/dkcgnebncpfljfaaplmedjnfjifffagj&quot;&gt;https://chrome.google.com/webstore/detail/twitter-likes-hider/dkcgnebncpfljfaaplmedjnfjifffagj&lt;/a&gt; What I &lt;em&gt;really&lt;/em&gt; need help with is with the logo. If you&#39;re a graphics person, please get in touch.&lt;/p&gt;
 &lt;p&gt;If you try it out, let me know. I&#39;d absolutely appreciate any feedback!&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Process and Flow</title>
+		<link href="https://blog.rendall.dev/posts/2021/3/3/process-and-flow/"/>
+		<updated>2021-03-03T00:00:00Z</updated>
+		<id>https://blog.rendall.dev/posts/2021/3/3/process-and-flow/</id>
+		<content type="html">&lt;p&gt;As a Finnish language learner, I find &lt;a href=&quot;https://en.wiktionary.org/&quot;&gt;Wiktionary&lt;/a&gt; to be invaluable.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.rendall.dev/img/flow.jpg&quot; alt=&quot;Sunlight on a small, calm lake, a forest on the opposite shore&quot; /&gt; Several years ago (2014-2017) I ran a website that presented Finnish word definitions and inflections scraped from Wiktionary, but in a way that was more convenient for Finnish language learners (well, for me, anyway). I was in a full time Finnish course, and it was useful to me. I was likely also its only user.&lt;/p&gt;
+&lt;p&gt;It was built using C# and &lt;a href=&quot;http://asp.net/&quot;&gt;ASP.NET&lt;/a&gt; in a framework called MVC, which I had been using in my professional work. You can &lt;a href=&quot;https://github.com/rendall/suomenkieli-website&quot;&gt;peruse the source code here&lt;/a&gt;, if you&#39;re of a mind to do so. Its lack of documentation is discussed here.&lt;/p&gt;
+&lt;p&gt;I liked to code &amp;quot;in the Zone&amp;quot; or &amp;quot;in the Flow&amp;quot; then, and I can see it in the code. The Zone is a state of mind where the external world disappears and you&#39;re just focused on the task at hand to the exclusion of all else. People used to talk about that state of mind a lot, how to achieve it and maintain it (e.g. &amp;quot;Make sure you have a 3 hour block of uninterrupted time&amp;quot;), and it was felt to be essential to get really good work done. I believed it. There is even a brief scene in &lt;em&gt;The Social Network&lt;/em&gt; movie, where Sean Parker (Justin Timberlake) tries to ask a developer what he&#39;s doing and is rudely rebuffed. &amp;quot;He&#39;s in the Zone, don&#39;t bother him&amp;quot; he&#39;s told. Sean Parker then grins approvingly (and I cheered quietly). It seems to have fallen out of favor as a cultural idea these days, but it really had force for a long time, and some developers still swear by it today.&lt;/p&gt;
+&lt;p&gt;I think there&#39;s a general recognition that being in the Zone is not necessarily needed to get the best work done. Sitting down and typing is not the most important part of software development - it&#39;s critical, of course, and takes up the bulk of a developer&#39;s time - but the conceptual work of planning and architecting, and the social work of getting consensus, documentation and following an already established process is at least as important. To emphasize the Zone is to emphasize only one component of developing software.&lt;/p&gt;
+&lt;p&gt;As well, the state of hyper-intense focus means that as devs, we won&#39;t always ask if what we&#39;re doing at the moment is &lt;em&gt;necessary&lt;/em&gt;. Do I really need to optimize that function &lt;em&gt;now&lt;/em&gt;, or can I leave it for never? Coding in the flow means lots of lines of code are being written, but not always towards focused ends.&lt;/p&gt;
+&lt;p&gt;When creating or leading a project, I like to give a lot of thought to the process involved. There&#39;s a theory of art creation that &amp;quot;the process&amp;quot; &lt;em&gt;is&lt;/em&gt; the art, and the artistic works that the artist makes and people look at are just a by-product of that artistic process. I think that model can be useful when thinking about software creation also. The product, the software, is the result of a process. If the process is successful, then the software will be robust and bulletproof. Focus on the process, and the software will follow. Code reviews, automated testing, continuous integration are current practices that are part of the process.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;Suomenkieli Website&lt;/em&gt; was created when I still equated development to sitting down and typing. I would just start typing and it would all work out. And indeed, the website worked and did what it was supposed to do.&lt;/p&gt;
+&lt;p&gt;But for that site, there is zero documentation, so sorting through and getting it up and running is a bit of a chore. There is some reverse-engineering involved. I also was really enamored with the idea of using a relational database to connect all of the words with their declensions and conjugations. And that took up the bulk of my time in development: scraping those properly, making sure they were entered and annotated properly. I spent many hours in Flow, making sure that the contents of the cells of the HTML table displaying inflections were tagged properly with its column and row headers.&lt;/p&gt;
+&lt;p&gt;It turns out that the word itself and its &lt;a href=&quot;https://en.wiktionary.org/wiki/Appendix:Finnish_conjugation&quot;&gt;KOTUS type&lt;/a&gt; can completely determine its inflection. Which is to day, that I did not have to scrape the inflections, but could have derived them using Wiktionary&#39;s own scripts.&lt;/p&gt;
+&lt;p&gt;As for the site itself, I may find the time and energy to update it again; if you are interested in something like that, let me know. We could collaborate.&lt;/p&gt;
 </content>
 	</entry>
 </feed>
