@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.dev/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.dev"/>
-	<updated>2021-03-03T00:00:00Z</updated>
+	<updated>2021-03-10T00:00:00Z</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -669,6 +669,125 @@ Apparently there are people who go around measuring this stuff, and ranking Euro
 &lt;p&gt;But for that site, there is zero documentation, so sorting through and getting it up and running is a bit of a chore. There is some reverse-engineering involved. I also was really enamored with the idea of using a relational database to connect all of the words with their declensions and conjugations. And that took up the bulk of my time in development: scraping those properly, making sure they were entered and annotated properly. I spent many hours in Flow, making sure that the contents of the cells of the HTML table displaying inflections were tagged properly with its column and row headers.&lt;/p&gt;
 &lt;p&gt;It turns out that the word itself and its &lt;a href=&quot;https://en.wiktionary.org/wiki/Appendix:Finnish_conjugation&quot;&gt;KOTUS type&lt;/a&gt; can completely determine its inflection. Which is to day, that I did not have to scrape the inflections, but could have derived them using Wiktionary&#39;s own scripts.&lt;/p&gt;
 &lt;p&gt;As for the site itself, I may find the time and energy to update it again; if you are interested in something like that, let me know. We could collaborate.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Quest Driven Development</title>
+		<link href="https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/"/>
+		<updated>2021-03-10T00:00:00Z</updated>
+		<id>https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;Quest Driven Development&lt;/em&gt; is an expressive approach to writing game stories and interactive fiction that leaves coding and implementation to software, so writers can focus on narrative and world-building. This approach can highlight inconsistencies or problems as potentially clashing narrative branches are woven together, allowing a writer to correct errors or inconsistencies as they go.&lt;/p&gt;
+&lt;p&gt;Currently &lt;em&gt;Quest Driven Development&lt;/em&gt; is in the concept phase, but the problem and solution space is generally well understood. This post is a brief overview of its ideas.&lt;/p&gt;
+&lt;p&gt;The approach itself and infrastructure tooling is &lt;a href=&quot;https://github.com/rendall/quest-driven-development&quot;&gt;open-source&lt;/a&gt; (nothing hidden, and you can contribute) under the &lt;a href=&quot;https://github.com/rendall/quest-driven-development/blob/master/LICENSE&quot;&gt;standard MIT License&lt;/a&gt; (use it however you want, commercially or not, heck launch a business with it), and uses the &lt;a href=&quot;https://allcontributors.org/docs/en/overview&quot;&gt;all-contributors specification&lt;/a&gt;, which honors every contributor and contribution, both technical and non-technical.&lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#introduction&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Story-rich games, interactive fiction, branching narratives of all sorts including even bog-standard fetch quests all have the same underlying abstract structure. Leveraging principles from theory and practice in other areas of software development can improve the design, writing and programming of branching narratives.&lt;/p&gt;
+&lt;p&gt;A branching narrative creator can, using &lt;em&gt;Quest Driven Development&lt;/em&gt;, focus on the over-arching story, narrowing in on story details as needed, all while leaving actual implementation details such as variable values, error checks and if-then conditionals to software infrastructure and tooling.&lt;/p&gt;
+&lt;p&gt;When mature, this approach allows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;automatically testing the narrative structure for errors and incompletable states;&lt;/li&gt;
+&lt;li&gt;tracking narrative events and their consequences in world-building;&lt;/li&gt;
+&lt;li&gt;visualizing the narrative structure as a whole or in part;&lt;/li&gt;
+&lt;li&gt;interactively navigating and &amp;quot;getting a feel for&amp;quot; the narrative structure without needing to encode changes into the game platform;&lt;/li&gt;
+&lt;li&gt;automatic code generation using the narrative itself as a template, rather than programming the narrative by hand;&lt;/li&gt;
+&lt;li&gt;enable porting of game narratives into different platforms;&lt;/li&gt;
+&lt;li&gt;data-gathering about the popularity and difficulty of various narrative structures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As time goes on and the approach matures even further, it should be possible to procedurally generate coherent, unique branching narrative structures, for nearly infinite narratives.&lt;/p&gt;
+&lt;p&gt;Given the similar structures that quests share with well-understood problems in software development, current best practices and solutions to these problems can be leveraged to handle or even solve them.&lt;/p&gt;
+&lt;p&gt;As a minor point, a &lt;em&gt;quest&lt;/em&gt; is a goal-oriented subset of the general &lt;em&gt;branching narrative&lt;/em&gt;, but &lt;em&gt;Quest Driven Development&lt;/em&gt; itself can apply to any style of branching narrative, not only quests. &lt;em&gt;Quest Driven Development&lt;/em&gt; is however a snappier name than &lt;em&gt;Branching Narrative Driven Development&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;theory&quot;&gt;Theory &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#theory&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Quests and branching narratives in general correspond to some well-understood mathematical constructs in mathematics and computer science. If this does not interest you in the least, feel free to skip down to the &lt;a href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#practice&quot;&gt;Practice&lt;/a&gt; section below.&lt;/p&gt;
+&lt;h3 id=&quot;finite-state-machines&quot;&gt;Finite state machines &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#finite-state-machines&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A &lt;a href=&quot;https://en.wikipedia.org/wiki/Finite-state_machine&quot;&gt;finite state machine (FSM)&lt;/a&gt; is an idea from computer science, an abstract machine which has a specific number of &lt;em&gt;states&lt;/em&gt;. A &lt;a href=&quot;https://en.wikipedia.org/wiki/State_(computer_science)#Program_state&quot;&gt;&lt;em&gt;state&lt;/em&gt;&lt;/a&gt; can here entirely describe the player&#39;s position along a narrative arc as the result of any past decisions or actions. Some of the possible decisions at a given state will &lt;em&gt;transition&lt;/em&gt; the narrative arc from the current state to another state. In this way, a quest can be described as a finite state machine (or, rather, this essay applies only to those interactive narratives that fit the structure of a finite state machine). A &lt;em&gt;terminal state&lt;/em&gt; for our purposes is a state that ends, or narratively concludes, the quest.&lt;/p&gt;
+&lt;h3 id=&quot;graph-theory&quot;&gt;Graph theory &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#graph-theory&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A finite state machine, and therefore a quest, can be described as a directed graph, where &lt;em&gt;nodes&lt;/em&gt; of the graph are &lt;em&gt;states&lt;/em&gt;, and &lt;em&gt;edges&lt;/em&gt; of the graph are specific actions or decisions which transition the quest from one state to the next. This is wonderful news, because graphs, finite state machines, and therefore quests, have available an intuitive visualization and a rich knowledge base for reasoning about them.&lt;/p&gt;
+&lt;h4 id=&quot;regular-expressions&quot;&gt;Regular expressions &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#regular-expressions&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;A finite state machine can be entirely described by a regular expression. This is a minor point that may not be useful for &lt;em&gt;writing&lt;/em&gt; quests, but may be useful for &lt;em&gt;testing&lt;/em&gt; quests. What this would mean in practice is that a regular expression engine could be leveraged to test whether any given sequence of actions would lead to an ending (or &lt;em&gt;terminal state&lt;/em&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;practice&quot;&gt;Practice &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#practice&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A &lt;em&gt;state&lt;/em&gt; as described above can roughly correspond to a scene in a play or an episode in a long-arc TV series: the scenario the characters find themselves in are due to the result of all previous decisions, and the &lt;em&gt;transition&lt;/em&gt; corresponds to decisions or actions that move characters into new scenarios. A narrative constructed with this structure can leverage the theory outlined above &lt;em&gt;and&lt;/em&gt; the practices outlined below.&lt;/p&gt;
+&lt;h2 id=&quot;development-environment&quot;&gt;Development environment &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#development-environment&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As an &lt;em&gt;approach&lt;/em&gt; rather than as a specific software solution, &lt;em&gt;Quest Driven Development&lt;/em&gt; can accommodate all manner of writing styles and preferences.&lt;/p&gt;
+&lt;p&gt;In the abstract, a branching narrative writer will need an interface that outputs structured data objects which in turn are consumed by either an interpreter, compiler, testing platform or other game development platform. The actual nature of the development environment is flexible and can accommodate any sort of file format, from Word and text files, to spreadsheets, dynamic forms and widgets, to visual programming.&lt;/p&gt;
+&lt;p&gt;Practically, the structured data for a single scene of a larger narrative would look something like this:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br /&gt;  name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Stella reads the journal&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;  description&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &quot;After Fisk&#39;s betrayal and the loss of her medalion&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;  Stella in despair flips randomly through Grandma Pluck&#39;s journal.&lt;br /&gt;  There&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; she discovers how exactly the cult intends to summon the&lt;br /&gt;  End of Times. But what does she do with this knowledge?&quot;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;  decisions&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;action&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;tell-fisk&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; result&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;fisks-second-betrayal&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;action&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;do-nothing&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; result&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;arrival-of-the-eschaton&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;action&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;try-stop-cult&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; result&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;resolve-attempt&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br /&gt;  ...&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Software can consume and use such objects to map out the narrative structure, test it and even transform it into cold, hard code.&lt;/p&gt;
+&lt;h3 id=&quot;state-management&quot;&gt;State management &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#state-management&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The consequences of decisions can overlap and interfere with each other. In a large game, a narrative can become inconsistent: a decision made by the player may not be reflected in the game state later, and almost never in conversation with a minor character at any point. Worse, certain quests or the game itself may &lt;a href=&quot;https://duckduckgo.com/?q=quest+incompletable&amp;amp;ia=web&quot;&gt;enter into an incompletable state&lt;/a&gt;, infuriating and disappointing players.&lt;/p&gt;
+&lt;p&gt;Under the hood, a state is a collection of variables and their values, and a transition is a change to the value of one or more of these variables. Manipulating values directly is to transition unpredictably in an unmapped, unexplored state machine. Keeping track of all of these values so that they behave in an expected and consistent way is called &lt;em&gt;state management&lt;/em&gt;, and there are approaches to do this.&lt;/p&gt;
+&lt;p&gt;In &lt;em&gt;Quest Driven Development&lt;/em&gt;, the writer is encouraged to think of state not as a collection of variable-values, but as a branching-point in an narrative. Transitions are not to be thought of as changes to variables, but as possible decisions by the player that advance the story.&lt;/p&gt;
+&lt;h3 id=&quot;automated-testing&quot;&gt;Automated testing &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#automated-testing&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The internet is replete with plaintive posts from disappointed or infuriated players who cannot complete a quest or an entire game because of a broken quest. Quest Driven Development allows the narrative structure to be automatically explored and tested, flagging potential errors and inconsistencies. The narrative structure can be developed and tested in parallel and distinct from the underlying game platform.&lt;/p&gt;
+&lt;h3 id=&quot;x-driven-development&quot;&gt;X Driven Development &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#x-driven-development&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Generally, &lt;em&gt;X&lt;/em&gt; Driven Development (e.g. &lt;em&gt;Test Driven Development&lt;/em&gt;, &lt;em&gt;Behavior Driven Development&lt;/em&gt;, &lt;em&gt;Feature Driven Development&lt;/em&gt;) are approaches to &lt;em&gt;software&lt;/em&gt; development that emphasize the &lt;em&gt;X&lt;/em&gt; part, usually by crafting the development environment so that the &lt;em&gt;X&lt;/em&gt; can be written or developed first. In &lt;em&gt;Test&lt;/em&gt; Driven Development, developers write tests that fail, and then write software so that the test will pass. Similarly, in &lt;em&gt;Behavior&lt;/em&gt; Driven Development, development teams decide what behavior the software should have and write &lt;em&gt;expressive&lt;/em&gt; synopses of this behavior.&lt;/p&gt;
+&lt;p&gt;The advantages of this approach is that the application has a series of automated tests that describe what the software should do, and importantly, can identify immediately when later additions to the software introduces bugs.&lt;/p&gt;
+&lt;h3 id=&quot;quest-driven-development&quot;&gt;Quest Driven Development &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#quest-driven-development&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Likewise, &lt;em&gt;Quest Driven Development&lt;/em&gt; emphasizes the stories that a game wants to tell. As the game progresses, a series of quest objects are created that can be continually tested against, to ensure that later additions are coherent, potential bugs or narrative consistencies are highlighted, and &lt;a href=&quot;https://duckduckgo.com/?q=game+quest+incompletable&amp;amp;ia=web&quot;&gt;all quests are all completable&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;hence&quot;&gt;Hence &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#hence&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Quest Driven Development&lt;/em&gt; is a only an idea in its initial, conceptual phase. To be able to move beyond that into actually helping the community of story-driven game developers, I propose this list of future steps.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Contributions: As a greenfield, interdisciplinary concept, the field is wide open for contributions.
+&lt;ul&gt;
+&lt;li&gt;Ideas for improvement&lt;/li&gt;
+&lt;li&gt;User-interface and developer experience&lt;/li&gt;
+&lt;li&gt;Helpful theory and resources&lt;/li&gt;
+&lt;li&gt;Game developers and writers who would consider using it:
+&lt;ul&gt;
+&lt;li&gt;What would you need to begin using the QDD approach?
+&lt;ul&gt;
+&lt;li&gt;Tooling?&lt;/li&gt;
+&lt;li&gt;Development environment?&lt;/li&gt;
+&lt;li&gt;Tutorial?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;There are several channels to contribute and give feedback
+&lt;ul&gt;
+&lt;li&gt;Create a &lt;a href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/&quot;&gt;new issue&lt;/a&gt; on the [github repo]&lt;/li&gt;
+&lt;li&gt;Comment below on this blog post&lt;/li&gt;
+&lt;li&gt;Create a pull request for code&lt;/li&gt;
+&lt;li&gt;Create a page on the wiki&lt;/li&gt;
+&lt;li&gt;Others? Discord or Slack? &lt;a href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/&quot;&gt;What do you think?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Praxis: Culturally, the idea must be wedded and welded to actual development, not merely remain a theoretical idea&lt;/li&gt;
+&lt;li&gt;Roadmap: Phases, steps to maturity
+&lt;ul&gt;
+&lt;li&gt;Requests for comment, discussion and resources&lt;/li&gt;
+&lt;li&gt;Small games and quests, with input from active game developers&lt;/li&gt;
+&lt;li&gt;Tooling, such as JSON schema, testing frameworks, user interfaces&lt;/li&gt;
+&lt;li&gt;Automated code generation
+&lt;ul&gt;
+&lt;li&gt;Unity plugin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Procedural generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Culture:
+&lt;ul&gt;
+&lt;li&gt;Friendly and open, to newbies and non-technical people in particular,&lt;/li&gt;
+&lt;li&gt;Honoring of all contributions from all contributors&lt;/li&gt;
+&lt;li&gt;As an untested idea, &lt;em&gt;QDD&lt;/em&gt; very well may be an impractical dead end.
+&lt;ul&gt;
+&lt;li&gt;Advocates but not activists&lt;/li&gt;
+&lt;li&gt;Practice detachment from outcome&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/10/quest-driven-development/#resources&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In no particular order, nor even guaranteed relevance:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://ptolemy.berkeley.edu/publications/papers/98/InteractionFSM/InteractionFSM.pdf&quot;&gt;Interaction of Finite State Machines and Concurrency Models (pdf)&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://blogs.ubc.ca/lled4492015/files/2015/07/Interactive-Visualizations-of-Plot-in-Fiction.pdf&quot;&gt;Interactive Visualizations of Plot in Fiction (pdf)&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.w3.org/TR/scxml/&quot;&gt;SCXML specification&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://statecharts.github.io/&quot;&gt;Statecharts website&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/0167642387900359?via%3Dihub&quot;&gt;Statecharts: a visual formalism for complex systems&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://github.com/davidkpiano/xstate&quot;&gt;xstate (state management and visualization library)&lt;/a&gt;&lt;/p&gt;
 </content>
 	</entry>
 </feed>
