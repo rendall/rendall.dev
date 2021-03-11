@@ -1,0 +1,11 @@
+{
+  "states":[
+    {
+      "name":"start",
+      "exits":[
+        {"action":"open window", "destination":"window-open"},
+      ]
+    }
+  ]
+
+}
