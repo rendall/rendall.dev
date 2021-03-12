@@ -49,7 +49,7 @@ A [finite state machine (FSM)](https://en.wikipedia.org/wiki/Finite-state_machin
 
 A finite state machine, and therefore a quest, can be described as a directed graph, where _nodes_ of the graph are _states_, and _edges_ of the graph are specific actions or decisions which transition the quest from one state to the next. This is wonderful news, because graphs, finite state machines, and therefore quests, have available an intuitive visualization and a rich knowledge base for reasoning about them.
 
-#### Regular expressions
+### Regular expressions
 
 A finite state machine can be entirely described by a regular expression. This is a minor point that may not be useful for _writing_ quests, but may be useful for _testing_ quests. What this would mean in practice is that a regular expression engine could be leveraged to test whether any given sequence of actions would lead to an ending (or _terminal state_).
 
@@ -57,7 +57,7 @@ A finite state machine can be entirely described by a regular expression. This i
 
 A _state_ as described above can roughly correspond to a scene in a play or an episode in a long-arc TV series: the scenario the characters find themselves in are due to the result of all previous decisions, and the _transition_ corresponds to decisions or actions that move characters into new scenarios. A narrative constructed with this structure can leverage the theory outlined above _and_ the practices outlined below.
 
-## Development environment
+### Development environment
 
 As an _approach_ rather than as a specific software solution, _Quest Driven Development_ can accommodate all manner of writing styles and preferences.
 
@@ -101,7 +101,7 @@ Generally, _X_ Driven Development (e.g. _Test Driven Development_, _Behavior Dri
 
 The advantages of this approach is that the application has a series of automated tests that describe what the software should do, and importantly, can identify immediately when later additions to the software introduces bugs.
 
-### Quest Driven Development
+#### Quest Driven Development
 
 Likewise, _Quest Driven Development_ emphasizes the stories that a game wants to tell. As the game progresses, a series of quest objects are created that can be continually tested against, to ensure that later additions are coherent, potential bugs or narrative consistencies are highlighted, and [all quests are all completable](https://duckduckgo.com/?q=game+quest+incompletable&ia=web).
 
@@ -119,17 +119,19 @@ _Quest Driven Development_ is a only an idea in its initial, conceptual phase. T
       - Development environment?
       - Tutorial?
   - There are several channels to contribute and give feedback
-    - Create a [new issue]() on the [github repo]
+    - Create a [new issue](https://github.com/rendall/quest-driven-development/issues/new) on the [github repo](https://github.com/rendall/quest-driven-development)
     - Comment below on this blog post
-    - Create a pull request for code
-    - Create a page on the wiki
-    - Others? Discord or Slack? [What do you think?]()
+    - Create a [pull request](https://github.com/rendall/quest-driven-development/pulls) for code or documentation
+    - Create or edit a page [on the wiki](https://github.com/rendall/quest-driven-development/wiki)
+    - Others? Discord or Slack? [What do you think?](https://github.com/rendall/quest-driven-development/issues/new)
 - Praxis: Culturally, the idea must be wedded and welded to actual development, not merely remain a theoretical idea
+  - Pay particularly close attention to how game developers work and what they say
 - Roadmap: Phases, steps to maturity
   - Requests for comment, discussion and resources
   - Small games and quests, with input from active game developers
   - Tooling, such as JSON schema, testing frameworks, user interfaces
   - Automated code generation
+    - Tools that convert structured data to code
     - Unity plugin
   - Procedural generation
 - Culture:
