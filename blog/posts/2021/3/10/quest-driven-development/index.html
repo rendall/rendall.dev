@@ -39,9 +39,9 @@
           they go.
         </p>
         <p>
-          Currently <em>Quest Driven Development</em> is in the concept phase,
-          but the problem and solution space is generally well understood. This
-          post is a brief overview of its ideas.
+          Currently <em>Quest Driven Development (QDD)</em> is in the concept
+          phase, but the problem and solution space is generally well
+          understood. This post is a brief overview of its ideas.
         </p>
         <p>
           The approach itself and infrastructure tooling is
@@ -65,7 +65,7 @@
         </h2>
         <p>
           Story-rich games, interactive fiction, branching narratives of all
-          sorts including even bog-standard fetch quests all have the same
+          sorts, including even bog-standard fetch quests, all have the same
           underlying abstract structure. Leveraging principles from theory and
           practice in other areas of software development can improve the
           design, writing and programming of branching narratives.
@@ -112,13 +112,100 @@
           problems in software development, current best practices and solutions
           to these problems can be leveraged to handle or even solve them.
         </p>
+        <h3 id="brief-taxonomy-of-interactive-narrative-structures">
+          Brief Taxonomy of Interactive Narrative Structures
+          <a
+            class="direct-link"
+            href="#brief-taxonomy-of-interactive-narrative-structures"
+            >#</a
+          >
+        </h3>
         <p>
-          As a minor point, a <em>quest</em> is a goal-oriented subset of the
-          general <em>branching narrative</em>, but
+          If you're familiar with interactive and branching narratives, feel
+          free to skip ahead!
+        </p>
+        <p>
+          <em>Branching Narrative</em> is a general term for the class of
+          stories in which player actions can decide how a story proceeds.
+          <a href="https://en.wikipedia.org/wiki/Black_Mirror%3A_Bandersnatch"
+            >Black Mirror: Bandersnatch</a
+          >
+          is one example of this story as applied to film.
+          <a href="https://en.wikipedia.org/wiki/Life_Is_Strange"
+            >Life Is Strange</a
+          >
+          is an example applied to the medium of video games.
+          <a href="https://en.wikipedia.org/wiki/Dictionary_of_the_Khazars"
+            >Dictionary of the Khazars</a
+          >
+          is (arguably) an example of branching narrative applied to the
+          traditional book medium.
+        </p>
+        <p>
+          <em>Interactive</em> here means that the story somehow reacts to the
+          player. (And <em>player</em> here means the viewer or reader or
+          player, irrespective of the medium.)
+        </p>
+        <h4 id="linear-narrative">
+          Linear Narrative <a class="direct-link" href="#linear-narrative">#</a>
+        </h4>
+        <p>
+          Stories throughout history have overwhelmingly been <em>linear</em>,
+          in which the story begins and proceeds inevitably to its conclusion,
+          <em>Once upon a time...</em> to <em>...happily ever after</em>.
+        </p>
+        <p>
+          Often <em>linear narrative</em> is contrasted with
+          <em>interactive narrative</em>, but sometimes a narrative can be
+          <em>interactive</em> but nevertheless <em>linear</em>: there are no
+          branching states irrespective of the player's actions. While usually
+          considered to be a flaw, it sometimes can be an effective
+          story-telling device. One example is the interactive fiction
+          <a href="https://en.wikipedia.org/wiki/Photopia">Photopia</a>.
+        </p>
+        <h4 id="quests">Quests <a class="direct-link" href="#quests">#</a></h4>
+        <p>
+          A <em>quest</em> is a goal-oriented subset of the general
+          <em>branching narrative</em>, in which generally a character succeeds
+          at a task and is rewarded or fails and is not. As a minor point,
           <em>Quest Driven Development</em> itself can apply to any style of
           branching narrative, not only quests.
           <em>Quest Driven Development</em> is however a snappier name than
           <em>Branching Narrative Driven Development</em>
+        </p>
+        <h4 id="choose-your-own-adventure">
+          Choose Your Own Adventure
+          <a class="direct-link" href="#choose-your-own-adventure">#</a>
+        </h4>
+        <p>
+          <em>Choose Your Own Adventure (CYOA)</em> is a subset of
+          <em>branching narrative</em> in which a player's input is limited to a
+          specific and explicit set of choices, e.g.
+          <em
+            >&quot;To enter the cave, turn to page 25. To cross the river on the
+            log, turn to page 42&quot;</em
+          >. The actions that exit the current narrative state are clearly
+          listed as a multiple choice. While
+          <em>Quest Driven Development</em> can handle this style of narrative,
+          it is not restricted to that.
+        </p>
+        <p>
+          As an aside, though, I might argue that <em>nearly all</em> branching
+          narratives ultimately resolve to this kind of structure. In most game
+          platforms, the player has a wide variety of verbs and actions
+          available all the time, but only a small subset of these actions at
+          the right point will move the <em>narrative</em> along. These actions
+          that exit state are most often
+          <em>hidden or obscured from the player</em>, and part of the challenge
+          is to discern clues in the environment that indicate these
+          transitional actions. The above <em>CYOA</em> example for instance
+          might have in an Interactive Fiction platform only this description:
+          <em
+            >&quot;You are in a forest. To the north is a cave. A river flows
+            nearby, across which lays a log.&quot;</em
+          >
+          The player is invited to examine elements of the environment to decide
+          what actions will move the narrative ahead.
         </p>
         <h2 id="theory">Theory <a class="direct-link" href="#theory">#</a></h2>
         <p>
@@ -127,9 +214,11 @@
           science. If this does not interest you in the least, feel free to skip
           down to the <a href="#practice">Practice</a> section below.
         </p>
-        <h3 id="finite-state-machines">
-          Finite state machines
-          <a class="direct-link" href="#finite-state-machines">#</a>
+        <h3 id="finite-state-machines-and-statecharts">
+          Finite state machines and Statecharts
+          <a class="direct-link" href="#finite-state-machines-and-statecharts"
+            >#</a
+          >
         </h3>
         <p>
           A
@@ -150,6 +239,14 @@
           only to those interactive narratives that fit the structure of a
           finite state machine). A <em>terminal state</em> for our purposes is a
           state that ends, or narratively concludes, the quest.
+        </p>
+        <p>
+          The <a href="https://statecharts.github.io/">statechart</a> modifies
+          the concept of finite state machines to more easily apply to
+          real-world solutions, to allow for hierarchical structures and state
+          machines that coordinate in parallel. This could allow for the FSM
+          that represents the narrative structure to overlay another FSM that
+          represents locations in the game, for example.
         </p>
         <h3 id="graph-theory">
           Graph theory <a class="direct-link" href="#graph-theory">#</a>
@@ -212,7 +309,7 @@
         </p>
         <pre
           class="language-json"
-        ><code class="language-json"><span class="token punctuation">{</span><br>  name<span class="token operator">:</span> <span class="token string">"Stella reads the journal"</span><span class="token punctuation">,</span><br>  description<span class="token operator">:</span> "After Fisk's betrayal and the loss of her medalion<span class="token punctuation">,</span><br>  Stella in despair flips randomly through Grandma Pluck's journal.<br>  There<span class="token punctuation">,</span> she discovers how exactly the cult intends to summon the<br>  End of Times. But what does she do with this knowledge?"<span class="token punctuation">,</span><br>  decisions<span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"tell-fisk"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"fisks-second-betrayal"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"do-nothing"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"arrival-of-the-eschaton"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"try-stop-cult"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"resolve-attempt"</span><span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br>  ...<br><span class="token punctuation">}</span></code></pre>
+        ><code class="language-json"><span class="token punctuation">{</span><br>  name<span class="token operator">:</span> <span class="token string">"Stella reads the journal"</span><span class="token punctuation">,</span><br>  description<span class="token operator">:</span> "After Fisk's betrayal and the loss of her medalion<span class="token punctuation">,</span><br>  Stella in despair flips randomly through Grandma Pluck's journal.<br>  There<span class="token punctuation">,</span> she discovers how exactly the cult intends to summon the<br>  End of Times. But what does she do with this knowledge?"<span class="token punctuation">,</span><br>  decisions<span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"tell-fisk"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"fisks-second-betrayal"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"do-nothing"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"arrival-of-the-eschaton"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"try-stop-cult"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"bemusing-revelation"</span><span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br>  ...<br><span class="token punctuation">}</span></code></pre>
         <p>
           Software can consume and use such objects to map out the narrative
           structure, test it and even transform it into cold, hard code.
@@ -324,46 +421,6 @@
                   </li>
                 </ul>
               </li>
-              <li>
-                There are several channels to contribute and give feedback
-                <ul>
-                  <li>
-                    Create a
-                    <a
-                      href="https://github.com/rendall/quest-driven-development/issues/new"
-                      >new issue</a
-                    >
-                    on the
-                    <a
-                      href="https://github.com/rendall/quest-driven-development"
-                      >github repo</a
-                    >
-                  </li>
-                  <li>Comment below on this blog post</li>
-                  <li>
-                    Create a
-                    <a
-                      href="https://github.com/rendall/quest-driven-development/pulls"
-                      >pull request</a
-                    >
-                    for code or documentation
-                  </li>
-                  <li>
-                    Create or edit a page
-                    <a
-                      href="https://github.com/rendall/quest-driven-development/wiki"
-                      >on the wiki</a
-                    >
-                  </li>
-                  <li>
-                    Others? Discord or Slack?
-                    <a
-                      href="https://github.com/rendall/quest-driven-development/issues/new"
-                      >What do you think?</a
-                    >
-                  </li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li>
@@ -371,8 +428,8 @@
             development, not merely remain a theoretical idea
             <ul>
               <li>
-                Pay particularly close attention to how game developers work and
-                what they say
+                Pay particularly close attention to how game developers work,
+                and interactive fiction writers write, and what they say
               </li>
             </ul>
           </li>
@@ -416,6 +473,103 @@
             </ul>
           </li>
         </ul>
+        <p>
+          I have had this on my mind for a long time, and judging by some of the
+          response, others have as well. Let's cooperate and bring some beauty
+          to the world!
+        </p>
+        <h2 id="feedback">
+          Feedback <a class="direct-link" href="#feedback">#</a>
+        </h2>
+        <p>
+          If <em>Quest Driven Development</em> were a movie, this blog post is
+          but a teaser trailer. If something here reminds you of work that you
+          or someone else is doing, has done, wants to do, plans to do, or has
+          ideas about, please do drop me a line and send a link to anyone else
+          who might be interested!
+        </p>
+        <ul>
+          <li>
+            Create a
+            <a
+              href="https://github.com/rendall/quest-driven-development/issues/new"
+              >new issue</a
+            >
+            on the
+            <a href="https://github.com/rendall/quest-driven-development"
+              >github repo</a
+            >
+          </li>
+          <li>Comment below on this blog post</li>
+          <li>
+            Create a
+            <a href="https://github.com/rendall/quest-driven-development/pulls"
+              >pull request</a
+            >
+            for code or documentation
+          </li>
+          <li>
+            Create or edit a page
+            <a href="https://github.com/rendall/quest-driven-development/wiki"
+              >on the wiki</a
+            >
+          </li>
+          <li>
+            Others? Discord or Slack?
+            <a
+              href="https://github.com/rendall/quest-driven-development/issues/new"
+              >What do you think?</a
+            >
+          </li>
+        </ul>
+        <h2 id="addenda">
+          Addenda <a class="direct-link" href="#addenda">#</a>
+        </h2>
+        <p>
+          These are questions and concerns that came up from helpful first draft
+          readers or after publishing:
+        </p>
+        <p>
+          <em
+            >&quot;The structured data code example above looks like it would
+            list explicit actions, and the player then picks one. Isn't that a
+            Choose Your Own Adventure?&quot;</em
+          >
+        </p>
+        <p>
+          I'm glad you asked. In a word, no. Well, not necessarily. It could be,
+          but the primary focus of the <em>QDD</em> approach is on the
+          <em>narrative</em> and not on the world nor the presentation nor the
+          platform. The decisions listed above are only those which will
+          transition the narrative to the next state. While it may be
+          atmospherically important for the action
+          <em>&quot;look into the mirror&quot;</em> to have a response like
+          <em
+            >&quot;You look so tired, Stella. Maybe it would just be easier to
+            give up?&quot;</em
+          >, narratively speaking, that action does not drive the narrative
+          itself forward (the next stages appear to be rather dark for poor
+          Stella, judging by the state ids!).
+        </p>
+        <p>
+          <em
+            >&quot;How then would a writer encode 'atmospherics' using the QDD
+            approach?&quot;</em
+          >
+        </p>
+        <p>
+          This is new to me, too, so I can't give a definite answer other than
+          to say I know there is a good answer. One approach is to add something
+          like this to the decisions array, above:
+        </p>
+        <pre
+          class="language-json"
+        ><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"look-mirror"</span><span class="token punctuation">,</span><br>  <span class="token property">"onTransition"</span><span class="token operator">:</span> <span class="token string">"You look so tired, Stella. Maybe it would be easier to just give up?"</span><span class="token punctuation">,</span><br>  <span class="token property">"result"</span><span class="token operator">:</span> <span class="token string">"loop-back"</span><br><span class="token punctuation">}</span></code></pre>
+        <p>
+          But hopefully probably definitely better alternative solutions will
+          reveal themselves as this idea and tooling matures. Maybe you have a
+          good idea?
+        </p>
         <h2 id="resources">
           Resources <a class="direct-link" href="#resources">#</a>
         </h2>
