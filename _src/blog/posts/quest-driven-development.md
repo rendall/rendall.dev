@@ -85,39 +85,52 @@ A _state_ as described above can roughly correspond to a scene in a play or an e
 
 As an _approach_ rather than as a specific software solution, _Quest Driven Development_ can accommodate all manner of writing styles and preferences.
 
-In the abstract, a branching narrative writer will need an interface that outputs structured data objects which in turn are consumed by either an interpreter, compiler, testing platform or other game development platform. The actual nature of the development environment is flexible and can accommodate any sort of file format, from Word and text files, to spreadsheets, dynamic forms and widgets, to visual programming.
+In the abstract, a branching narrative writer will need an interface that outputs structured data objects which in turn are consumed by other software (perhaps directly by a game platform, or by a visualizer, or an interpreter). The actual nature of the development should be flexible enough to accommodate any sort of file format, from Word and text files, to spreadsheets, dynamic forms and widgets, to visual programming.
 
 Practically, the structured data for a single scene of a larger narrative would look something like this:
 
 ```json
-{
+[ {
   name: "Stella reads the journal",
-  description: "After Fisk's betrayal and the loss of her medalion,
+  description: "After Fisk's betrayal and the loss of her medallion,
   Stella in despair flips randomly through Grandma Pluck's journal.
   There, she discovers how exactly the cult intends to summon the
   End of Times. But what does she do with this knowledge?",
-  decisions: [
-    {action:"tell-fisk", result:"fisks-second-betrayal"},
-    {action:"do-nothing", result:"arrival-of-the-eschaton"},
-    {action:"try-stop-cult", result:"bemusing-revelation"}
+  actions: [
+    {decision:"tell-fisk", result:"fisks-second-betrayal"},
+    {decision:"do-nothing", result:"eschaton-arrival"},
+    {decision:"try-stop-cult", result:"disturbing-revelations"}
   ]
   ...
+},
+{
+  name: "Stella does nothing",
+  description: "Succumbing at last to exhaustion and fear, Stella
+  lays under her fluffy down comforter and curls into a ball,
+  rocking herself to sleep. The Final Battle is decisive. Entropy's
+  victory has always been inevitable, and now is its time.
+  Unleashed at last, Fenris, the Howling Wolf Always Hungry,
+  devours the Sun, the Moon, the Stars, Stella, Fisk, the cult, the
+  Earth, Time, and finally, itself. Nothing remains, but deep cold
+  and darkness, for eternity",
+  actions:[]
 }
+]
 ```
 
 Software can consume and use such objects to map out the narrative structure, test it and even transform it into cold, hard code.
 
 ### State management
 
-The consequences of decisions can overlap and interfere with each other. In a large game, a narrative can become inconsistent: a decision made by the player may not be reflected in the game state later, and almost never in conversation with a minor character at any point. Worse, certain quests or the game itself may [enter into an incompletable state](https://duckduckgo.com/?q=quest+incompletable&ia=web), infuriating and disappointing players.
+The consequences of potential decisions can overlap and interfere with each other. In a large game, a narrative can become inconsistent: a decision made by the player may not be reflected in the game state later, and almost never in conversation with a minor character at any point. Worse, certain quests or the game itself may [enter into an incompletable state](https://duckduckgo.com/?q=quest+incompletable&ia=web), infuriating and disappointing players.
 
 Under the hood, a state is a collection of variables and their values, and a transition is a change to the value of one or more of these variables. Manipulating values directly is to transition unpredictably in an unmapped, unexplored state machine. Keeping track of all of these values so that they behave in an expected and consistent way is called _state management_, and there are approaches to do this.
 
-In _Quest Driven Development_, the writer is encouraged to think of state not as a collection of variable-values, but as a branching-point in an narrative. Transitions are not to be thought of as changes to variables, but as possible decisions by the player that advance the story.
+In _Quest Driven Development_, the writer is encouraged to think of state not as a collection of variable-values, but as a branching-point in an narrative. Transitions are not to be thought of as changes to variables, but as possible actions by the player that advance the story.
 
 ### Automated testing
 
-The internet is replete with plaintive posts from disappointed or infuriated players who cannot complete a quest or an entire game because of a broken quest. Quest Driven Development allows the narrative structure to be automatically explored and tested, flagging potential errors and inconsistencies. The narrative structure can be developed and tested in parallel and distinct from the underlying game platform.
+The internet is replete with plaintive posts from disappointed or infuriated players who cannot complete a quest or an entire game because of a broken quest. _Quest Driven Development_ allows the narrative structure to be automatically explored and tested, flagging potential errors and inconsistencies. The narrative structure can be developed and tested in parallel and distinct from the underlying game platform.
 
 ### X Driven Development
 
@@ -144,14 +157,6 @@ _Quest Driven Development_ is a only an idea in its initial, conceptual phase. T
       - Tutorial?
 - Praxis: Culturally, the idea must be wedded and welded to actual development, not merely remain a theoretical idea
   - Pay particularly close attention to how game developers work, and interactive fiction writers write, and what they say
-- Roadmap: Phases, steps to maturity
-  - Requests for comment, discussion and resources
-  - Small games and quests, with input from active game developers
-  - Tooling, such as JSON schema, testing frameworks, user interfaces
-  - Automated code generation
-    - Tools that convert structured data to code
-    - Unity plugin
-  - Procedural generation
 - Culture:
   - Friendly and open, to newbies and non-technical people in particular,
   - Honoring of all contributions from all contributors
@@ -161,9 +166,23 @@ _Quest Driven Development_ is a only an idea in its initial, conceptual phase. T
 
 I have had this on my mind for a long time, and judging by some of the response, others have as well. Let's cooperate and bring some beauty to the world!
 
+### Roadmap
+
+- Blog posts that analyze and visualize in-the-wild branching-narratives
+- An [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product) that outputs a structured data file
+  - Also accepts a file and populates its interface with the structured data
+- Requests for comment, discussion and resources
+- Small games and quests, with input from active game developers
+- Tooling, such as JSON schema, testing frameworks, user interfaces
+- Automated code generation
+  - Tools that transpile structured data to code
+  - Unity plugin
+- Procedural generation
+- This is undoubtedly a years-long project, so expectations of leisurely progress should be set accordingly
+
 ## Feedback
 
-If _Quest Driven Development_ were a movie, this blog post is but a teaser trailer. If something here reminds you of work that you or someone else is doing, has done, wants to do, plans to do, or has ideas about, please do drop me a line and send a link to anyone else who might be interested!
+If _Quest Driven Development_ were a movie, this blog post is but a teaser trailer. If something here is unclear and you have a question, or it reminds you of work that you or someone else is doing, has done, wants to do, plans to do, or has ideas about, please do drop me a line and send a link to anyone else who might be interested!
 
 - Create a [new issue](https://github.com/rendall/quest-driven-development/issues/new) on the [github repo](https://github.com/rendall/quest-driven-development)
 - Comment below on this blog post
@@ -175,23 +194,27 @@ If _Quest Driven Development_ were a movie, this blog post is but a teaser trail
 
 These are questions and concerns that came up from helpful first draft readers or after publishing:
 
+_"Is this a no-code way for non-coders to create games?"_
+
+Not necessarily, but perhaps. It's more of an approach that enables creators to focus on narrative flow, getting out of the weeds of thinking in terms of variable values and more in terms of scenes and their transitions, the various ways the player can exit from those scenes. A side-effect of this approach should be more robust and error-free narratives, perhaps more complicated or sophisticated narrative structures, and perhaps an opening of the field to non-coders. But, it is by no means the only approach nor even the best approach for certain kinds of narrative or creative process.
+
 _"The structured data code example above looks like it would list explicit actions, and the player then picks one. Isn't that a Choose Your Own Adventure?"_
 
-I'm glad you asked. In a word, no. Well, not necessarily. It could be, but the primary focus of the _QDD_ approach is on the _narrative_ and not on the world nor the presentation nor the platform. The decisions listed above are only those which will transition the narrative to the next state. While it may be atmospherically important for the action _"look into the mirror"_ to have a response like _"You look so tired, Stella. Maybe it would just be easier to give up?"_, narratively speaking, that action does not drive the narrative itself forward (the next stages appear to be rather dark for poor Stella, judging by the state ids!).
+In a word, no. Well, not necessarily. The primary focus of the _QDD_ approach is on the _narrative_ and not on its presentation. The decisions listed above are only those which will transition the narrative to the next state. While it may be atmospherically important for the action _"look into the mirror"_ to have a response like _"The boils have spread below your hairline. You look so tired, Stella. Maybe it would just be easier to give up?"_, narratively speaking, that action does not drive the narrative itself forward (the next stages appear to be rather dark for poor Stella, judging by the state ids!).
 
 _"How then would a writer encode 'atmospherics' using the QDD approach?"_
 
-This is new to me, too, so I can't give a definite answer other than to say I know there is a good answer. One approach is to add something like this to the decisions array, above:
+This is new to me, too, so I can't give a definite answer other than to say I know there is a good answer. One approach is to add something like this to the actions array, above:
 
 ```json
 {
-  "action": "look-mirror",
+  "decision": "look-mirror",
   "onTransition": "You look so tired, Stella. Maybe it would be easier to just give up?",
   "result": "loop-back"
 }
 ```
 
-But hopefully probably definitely better alternative solutions will reveal themselves as this idea and tooling matures. Maybe you have a good idea?
+Or maybe the platform itself has generic responses to actions that are not explicitly covered by the narrative-state-machine. Or such responses are set as context variables by specific states. I mention these as possibilities, but hopefully probably definitely alternative solutions will reveal themselves as this idea and tooling matures. Maybe you have a good idea?
 
 ## Resources
 

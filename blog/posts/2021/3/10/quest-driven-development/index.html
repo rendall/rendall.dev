@@ -297,11 +297,11 @@
         <p>
           In the abstract, a branching narrative writer will need an interface
           that outputs structured data objects which in turn are consumed by
-          either an interpreter, compiler, testing platform or other game
-          development platform. The actual nature of the development environment
-          is flexible and can accommodate any sort of file format, from Word and
-          text files, to spreadsheets, dynamic forms and widgets, to visual
-          programming.
+          other software (perhaps directly by a game platform, or by a
+          visualizer, or an interpreter). The actual nature of the development
+          should be flexible enough to accommodate any sort of file format, from
+          Word and text files, to spreadsheets, dynamic forms and widgets, to
+          visual programming.
         </p>
         <p>
           Practically, the structured data for a single scene of a larger
@@ -309,7 +309,7 @@
         </p>
         <pre
           class="language-json"
-        ><code class="language-json"><span class="token punctuation">{</span><br>  name<span class="token operator">:</span> <span class="token string">"Stella reads the journal"</span><span class="token punctuation">,</span><br>  description<span class="token operator">:</span> "After Fisk's betrayal and the loss of her medalion<span class="token punctuation">,</span><br>  Stella in despair flips randomly through Grandma Pluck's journal.<br>  There<span class="token punctuation">,</span> she discovers how exactly the cult intends to summon the<br>  End of Times. But what does she do with this knowledge?"<span class="token punctuation">,</span><br>  decisions<span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"tell-fisk"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"fisks-second-betrayal"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"do-nothing"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"arrival-of-the-eschaton"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>action<span class="token operator">:</span><span class="token string">"try-stop-cult"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"bemusing-revelation"</span><span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br>  ...<br><span class="token punctuation">}</span></code></pre>
+        ><code class="language-json"><span class="token punctuation">[</span> <span class="token punctuation">{</span><br>  name<span class="token operator">:</span> <span class="token string">"Stella reads the journal"</span><span class="token punctuation">,</span><br>  description<span class="token operator">:</span> "After Fisk's betrayal and the loss of her medallion<span class="token punctuation">,</span><br>  Stella in despair flips randomly through Grandma Pluck's journal.<br>  There<span class="token punctuation">,</span> she discovers how exactly the cult intends to summon the<br>  End of Times. But what does she do with this knowledge?"<span class="token punctuation">,</span><br>  actions<span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span>decision<span class="token operator">:</span><span class="token string">"tell-fisk"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"fisks-second-betrayal"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>decision<span class="token operator">:</span><span class="token string">"do-nothing"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"eschaton-arrival"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">{</span>decision<span class="token operator">:</span><span class="token string">"try-stop-cult"</span><span class="token punctuation">,</span> result<span class="token operator">:</span><span class="token string">"disturbing-revelations"</span><span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br>  ...<br><span class="token punctuation">}</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  name<span class="token operator">:</span> <span class="token string">"Stella does nothing"</span><span class="token punctuation">,</span><br>  description<span class="token operator">:</span> "Succumbing at last to exhaustion and fear<span class="token punctuation">,</span> Stella<br>  lays under her fluffy down comforter and curls into a ball<span class="token punctuation">,</span><br>  rocking herself to sleep. The Final Battle is decisive. Entropy's<br>  victory has always been inevitable<span class="token punctuation">,</span> and now is its time.<br>  Unleashed at last<span class="token punctuation">,</span> Fenris<span class="token punctuation">,</span> the Howling Wolf Always Hungry<span class="token punctuation">,</span><br>  devours the Sun<span class="token punctuation">,</span> the Moon<span class="token punctuation">,</span> the Stars<span class="token punctuation">,</span> Stella<span class="token punctuation">,</span> Fisk<span class="token punctuation">,</span> the cult<span class="token punctuation">,</span> the<br>  Earth<span class="token punctuation">,</span> Time<span class="token punctuation">,</span> and finally<span class="token punctuation">,</span> itself. Nothing remains<span class="token punctuation">,</span> but deep cold<br>  and darkness<span class="token punctuation">,</span> for eternity"<span class="token punctuation">,</span><br>  actions<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><br><span class="token punctuation">}</span><br><span class="token punctuation">]</span></code></pre>
         <p>
           Software can consume and use such objects to map out the narrative
           structure, test it and even transform it into cold, hard code.
@@ -318,8 +318,8 @@
           State management <a class="direct-link" href="#state-management">#</a>
         </h3>
         <p>
-          The consequences of decisions can overlap and interfere with each
-          other. In a large game, a narrative can become inconsistent: a
+          The consequences of potential decisions can overlap and interfere with
+          each other. In a large game, a narrative can become inconsistent: a
           decision made by the player may not be reflected in the game state
           later, and almost never in conversation with a minor character at any
           point. Worse, certain quests or the game itself may
@@ -339,7 +339,7 @@
           In <em>Quest Driven Development</em>, the writer is encouraged to
           think of state not as a collection of variable-values, but as a
           branching-point in an narrative. Transitions are not to be thought of
-          as changes to variables, but as possible decisions by the player that
+          as changes to variables, but as possible actions by the player that
           advance the story.
         </p>
         <h3 id="automated-testing">
@@ -349,11 +349,11 @@
         <p>
           The internet is replete with plaintive posts from disappointed or
           infuriated players who cannot complete a quest or an entire game
-          because of a broken quest. Quest Driven Development allows the
-          narrative structure to be automatically explored and tested, flagging
-          potential errors and inconsistencies. The narrative structure can be
-          developed and tested in parallel and distinct from the underlying game
-          platform.
+          because of a broken quest. <em>Quest Driven Development</em> allows
+          the narrative structure to be automatically explored and tested,
+          flagging potential errors and inconsistencies. The narrative structure
+          can be developed and tested in parallel and distinct from the
+          underlying game platform.
         </p>
         <h3 id="x-driven-development">
           X Driven Development
@@ -434,27 +434,6 @@
             </ul>
           </li>
           <li>
-            Roadmap: Phases, steps to maturity
-            <ul>
-              <li>Requests for comment, discussion and resources</li>
-              <li>
-                Small games and quests, with input from active game developers
-              </li>
-              <li>
-                Tooling, such as JSON schema, testing frameworks, user
-                interfaces
-              </li>
-              <li>
-                Automated code generation
-                <ul>
-                  <li>Tools that convert structured data to code</li>
-                  <li>Unity plugin</li>
-                </ul>
-              </li>
-              <li>Procedural generation</li>
-            </ul>
-          </li>
-          <li>
             Culture:
             <ul>
               <li>
@@ -478,15 +457,56 @@
           response, others have as well. Let's cooperate and bring some beauty
           to the world!
         </p>
+        <h3 id="roadmap">
+          Roadmap <a class="direct-link" href="#roadmap">#</a>
+        </h3>
+        <ul>
+          <li>
+            Blog posts that analyze and visualize in-the-wild
+            branching-narratives
+          </li>
+          <li>
+            An
+            <a href="https://en.wikipedia.org/wiki/Minimum_viable_product"
+              >MVP</a
+            >
+            that outputs a structured data file
+            <ul>
+              <li>
+                Also accepts a file and populates its interface with the
+                structured data
+              </li>
+            </ul>
+          </li>
+          <li>Requests for comment, discussion and resources</li>
+          <li>
+            Small games and quests, with input from active game developers
+          </li>
+          <li>
+            Tooling, such as JSON schema, testing frameworks, user interfaces
+          </li>
+          <li>
+            Automated code generation
+            <ul>
+              <li>Tools that transpile structured data to code</li>
+              <li>Unity plugin</li>
+            </ul>
+          </li>
+          <li>Procedural generation</li>
+          <li>
+            This is undoubtedly a years-long project, so expectations of
+            leisurely progress should be set accordingly
+          </li>
+        </ul>
         <h2 id="feedback">
           Feedback <a class="direct-link" href="#feedback">#</a>
         </h2>
         <p>
           If <em>Quest Driven Development</em> were a movie, this blog post is
-          but a teaser trailer. If something here reminds you of work that you
-          or someone else is doing, has done, wants to do, plans to do, or has
-          ideas about, please do drop me a line and send a link to anyone else
-          who might be interested!
+          but a teaser trailer. If something here is unclear and you have a
+          question, or it reminds you of work that you or someone else is doing,
+          has done, wants to do, plans to do, or has ideas about, please do drop
+          me a line and send a link to anyone else who might be interested!
         </p>
         <ul>
           <li>
@@ -531,22 +551,38 @@
         </p>
         <p>
           <em
+            >&quot;Is this a no-code way for non-coders to create
+            games?&quot;</em
+          >
+        </p>
+        <p>
+          Not necessarily, but perhaps. It's more of an approach that enables
+          creators to focus on narrative flow, getting out of the weeds of
+          thinking in terms of variable values and more in terms of scenes and
+          their transitions, the various ways the player can exit from those
+          scenes. A side-effect of this approach should be more robust and
+          error-free narratives, perhaps more complicated or sophisticated
+          narrative structures, and perhaps an opening of the field to
+          non-coders. But, it is by no means the only approach nor even the best
+          approach for certain kinds of narrative or creative process.
+        </p>
+        <p>
+          <em
             >&quot;The structured data code example above looks like it would
             list explicit actions, and the player then picks one. Isn't that a
             Choose Your Own Adventure?&quot;</em
           >
         </p>
         <p>
-          I'm glad you asked. In a word, no. Well, not necessarily. It could be,
-          but the primary focus of the <em>QDD</em> approach is on the
-          <em>narrative</em> and not on the world nor the presentation nor the
-          platform. The decisions listed above are only those which will
+          In a word, no. Well, not necessarily. The primary focus of the
+          <em>QDD</em> approach is on the <em>narrative</em> and not on its
+          presentation. The decisions listed above are only those which will
           transition the narrative to the next state. While it may be
           atmospherically important for the action
           <em>&quot;look into the mirror&quot;</em> to have a response like
           <em
-            >&quot;You look so tired, Stella. Maybe it would just be easier to
-            give up?&quot;</em
+            >&quot;The boils have spread below your hairline. You look so tired,
+            Stella. Maybe it would just be easier to give up?&quot;</em
           >, narratively speaking, that action does not drive the narrative
           itself forward (the next stages appear to be rather dark for poor
           Stella, judging by the state ids!).
@@ -560,15 +596,18 @@
         <p>
           This is new to me, too, so I can't give a definite answer other than
           to say I know there is a good answer. One approach is to add something
-          like this to the decisions array, above:
+          like this to the actions array, above:
         </p>
         <pre
           class="language-json"
-        ><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"look-mirror"</span><span class="token punctuation">,</span><br>  <span class="token property">"onTransition"</span><span class="token operator">:</span> <span class="token string">"You look so tired, Stella. Maybe it would be easier to just give up?"</span><span class="token punctuation">,</span><br>  <span class="token property">"result"</span><span class="token operator">:</span> <span class="token string">"loop-back"</span><br><span class="token punctuation">}</span></code></pre>
+        ><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"decision"</span><span class="token operator">:</span> <span class="token string">"look-mirror"</span><span class="token punctuation">,</span><br>  <span class="token property">"onTransition"</span><span class="token operator">:</span> <span class="token string">"You look so tired, Stella. Maybe it would be easier to just give up?"</span><span class="token punctuation">,</span><br>  <span class="token property">"result"</span><span class="token operator">:</span> <span class="token string">"loop-back"</span><br><span class="token punctuation">}</span></code></pre>
         <p>
-          But hopefully probably definitely better alternative solutions will
-          reveal themselves as this idea and tooling matures. Maybe you have a
-          good idea?
+          Or maybe the platform itself has generic responses to actions that are
+          not explicitly covered by the narrative-state-machine. Or such
+          responses are set as context variables by specific states. I mention
+          these as possibilities, but hopefully probably definitely alternative
+          solutions will reveal themselves as this idea and tooling matures.
+          Maybe you have a good idea?
         </p>
         <h2 id="resources">
           Resources <a class="direct-link" href="#resources">#</a>
