@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.dev/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.dev"/>
-	<updated>2021-03-15T00:00:00Z</updated>
+	<updated>2022-04-16T00:00:00Z</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -798,7 +798,7 @@ Apparently there are people who go around measuring this stuff, and ranking Euro
 &lt;h2 id=&quot;feedback&quot;&gt;Feedback &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2021/3/15/quest-driven-development/#feedback&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;If &lt;em&gt;Quest Driven Development&lt;/em&gt; were a movie, this blog post is but a teaser trailer. If something here is unclear and you have a question, or it reminds you of work that you or someone else is doing, has done, wants to do, plans to do, or has ideas about, please do drop me a line and send a link to anyone else who might be interested!&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Create a &lt;a href=&quot;https://github.com/rendall/quest-driven-development/issues/new&quot;&gt;new issue&lt;/a&gt; on the &lt;a href=&quot;https://github.com/rendall/quest-driven-development&quot;&gt;github repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create a &lt;a href=&quot;https://github.com/rendall/quest-driven-development/issues/new&quot;&gt;new issue&lt;/a&gt; on the &lt;a href=&quot;https://github.com/rendall/quest-driven-development&quot;&gt;GitHub repo&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Comment below on this blog post&lt;/li&gt;
 &lt;li&gt;Create a &lt;a href=&quot;https://github.com/rendall/quest-driven-development/pulls&quot;&gt;pull request&lt;/a&gt; for code or documentation&lt;/li&gt;
 &lt;li&gt;Create or edit a page &lt;a href=&quot;https://github.com/rendall/quest-driven-development/wiki&quot;&gt;on the wiki&lt;/a&gt;&lt;/li&gt;
@@ -821,7 +821,41 @@ Apparently there are people who go around measuring this stuff, and ranking Euro
 &lt;a href=&quot;https://www.w3.org/TR/scxml/&quot;&gt;SCXML specification&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://statecharts.github.io/&quot;&gt;Statecharts website&lt;/a&gt;&lt;br /&gt;
 &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/0167642387900359?via%3Dihub&quot;&gt;Statecharts: a visual formalism for complex systems&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://github.com/davidkpiano/xstate&quot;&gt;xstate (state management and visualization library)&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://github.com/davidkpiano/xstate&quot;&gt;XState (state management and visualization library)&lt;/a&gt;&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Reading the Manual</title>
+		<link href="https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/"/>
+		<updated>2022-04-16T00:00:00Z</updated>
+		<id>https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/</id>
+		<content type="html">&lt;h1 id=&quot;reading-the-manual&quot;&gt;Reading the Manual &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/#reading-the-manual&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;It took me way too long in my career to understand this, but &lt;em&gt;reading the manual&lt;/em&gt; is a relatively easy way to boost programming super-powers.&lt;/p&gt;
+&lt;p&gt;Some manuals are nice to read ( &lt;a href=&quot;https://jestjs.io/&quot;&gt;jest&lt;/a&gt;, &lt;a href=&quot;https://redux.js.org/usage/index&quot;&gt;Redux&lt;/a&gt;, &lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/intro.html&quot;&gt;TypeScript&lt;/a&gt;, &lt;a href=&quot;https://nodejs.org/en/docs/guides/&quot;&gt;Node.js&lt;/a&gt;, &lt;a href=&quot;https://testing-library.com/docs/&quot;&gt;Testing Library&lt;/a&gt; among others ). Some, not so much. Still, nice or confusing, reading the entire manual with focus is low-hanging fruit for understanding your tools.&lt;/p&gt;
+&lt;p&gt;It is possible to have decent game without reading the manual at all, especially for intuitive programmers, and especially if someone who &lt;em&gt;has&lt;/em&gt; read the manual is around to explain things, but why not &lt;em&gt;be&lt;/em&gt; that person on your team who has actually &lt;em&gt;read the manual&lt;/em&gt;?&lt;/p&gt;
+&lt;p&gt;Reading the manual is &lt;em&gt;not&lt;/em&gt; memorizing the manual, motivated skimming for specific information, nor reading blog posts or watching videos made by people who may or may not have read the manual themselves.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Reading the manual&lt;/em&gt; is relaxed intent to understand that which the developers want to communicate directly to you, the user.&lt;/p&gt;
+&lt;h2 id=&quot;how-to-read-a-technical-manual&quot;&gt;How to Read a Technical Manual &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/#how-to-read-a-technical-manual&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Relaxed, focused and comfortable. The best time to read the manual is any time, but primarily when you feel that you have time. Distraction and anxiety is the enemy of absorption.&lt;/p&gt;
+&lt;p&gt;Reading the entire manual, once through, makes it easier to skim for specific information when you need it. Searching the manual only for information that is directly relevant to the immediate task at hand can give the false feeling that one has read the manual, but that gained knowledge, while authoritative, is narrow and specific.&lt;/p&gt;
+&lt;p&gt;Reading technical manuals is a skill like any other, and develops over time. The way to get better at it is to do it more.&lt;/p&gt;
+&lt;h2 id=&quot;an-approach&quot;&gt;An approach &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/#an-approach&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Reading the manual is for you, so there is no canonically correct way to do it. The correct way is whatever works, which means whatever allows you to best absorb the wisdom that the manual writers wish to impart to you.&lt;/p&gt;
+&lt;p&gt;That said, if you&#39;re having trouble getting started, here&#39;s one approach in 8 short steps!&lt;/p&gt;
+&lt;p&gt;First, identify a manual to read. Perhaps survey the tools that you use most often, whether programming languages, platforms, IDEs, CLIs, version control, OS, whatever. It&#39;s best if you have some familiarity already with the topic. Since you&#39;re probably here because of TypeScript, consider committing to read the TypeScript language manual. It&#39;s straight-forward, well-written, informative and useful.&lt;/p&gt;
+&lt;p&gt;Second, find the manual. Since it&#39;s a technical manual, it&#39;s online. You&#39;re not &lt;em&gt;usually&lt;/em&gt; looking for an &lt;em&gt;API reference&lt;/em&gt;, nor a &lt;em&gt;Getting Started&lt;/em&gt;, nor &lt;em&gt;tutorials&lt;/em&gt;, nor &lt;em&gt;cheat sheets&lt;/em&gt; (although, sometimes the manual is in fact hidden there). You&#39;re usually looking for a &lt;em&gt;Usage Guide&lt;/em&gt;, &lt;em&gt;Handbook&lt;/em&gt;, &lt;em&gt;User manual&lt;/em&gt;, &lt;em&gt;Reference&lt;/em&gt;, &lt;em&gt;Documentation&lt;/em&gt; or sometimes &lt;em&gt;Support&lt;/em&gt;. On the &lt;a href=&quot;https://www.typescriptlang.org/docs/&quot;&gt;official TypeScript language site&#39;s Documentation page&lt;/a&gt; it is called &lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/intro.html&quot;&gt;The TypeScript Handbook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Third, pour yourself a coffee, water, beer or whatever. Get comfortable. Relax. Focus. Begin reading.&lt;/p&gt;
+&lt;p&gt;Fourth. You might be tempted to skip some parts. Resist this impulse!&lt;/p&gt;
+&lt;p&gt;For instance, if you were to read the start of &lt;em&gt;The TypeScript Handbook&lt;/em&gt;: &lt;em&gt;&amp;quot;Over 20 years after its introduction to the programming community...&amp;quot;&lt;/em&gt;, what might you imagine the next word to be? What would the introducion be about?&lt;/p&gt;
+&lt;p&gt;You might, as I did, assume that the next part will be talking about &lt;em&gt;TypeScript&lt;/em&gt;, and how much the developers of &lt;em&gt;TypeScript&lt;/em&gt; are justifiably proud of their 20 year accomplishment.&lt;/p&gt;
+&lt;p&gt;The rest of the sentence and paragraph in fact discusses &lt;em&gt;JavaScript&lt;/em&gt;, not &lt;em&gt;TypeScript&lt;/em&gt;, which is not even mentioned until the end of the second paragraph. This whole section is primarily to impart the information that &lt;em&gt;&amp;quot;The goal of TypeScript is to be a static typechecker for JavaScript programs&amp;quot;&lt;/em&gt;, what a static typechecker means in this context, and the motivation for the project as a whole. You might already know that, but this particular sentence is a concise explanation from the developers to you about what it is they are doing. Everything else in this well-written manual flows from this. TypeScript can be entirely understood from that single sentence. And you almost skipped it!&lt;/p&gt;
+&lt;p&gt;Fifth. While I exhort you not to skip or skim, remember that this is for you. If reading the manual linearly from intro to credits doesn&#39;t make sense, don&#39;t do it. Skip around, read the interesting parts, or the relevant parts. Yes, I know this contradicts Step Four. The idea is to become thoroughly familiar with the material. Do that in the way that you feel is best. It might be relaxing to read those parts with which you feel most familiar already, to see if your assumptions are correct.&lt;/p&gt;
+&lt;p&gt;Sixth. You did it! Celebrate. Feel that glow of accomplishment. You now have gained a super-power.&lt;/p&gt;
+&lt;p&gt;Seventh. Use and apply your new knowledge for good. Go through your code and see how you or your team had mistaken assumptions. For instance, after reading in the Jest documenation that &lt;em&gt;&amp;quot;&lt;a href=&quot;https://jestjs.io/docs/mock-function-api#mockfnmockreset&quot;&gt;mockReset() does everything that mockClear() does&lt;/a&gt;&amp;quot;&lt;/em&gt; you can go through and remove all of those &lt;code&gt;mockClear(); mockReset();&lt;/code&gt; statements in your Jest testing suites.&lt;/p&gt;
+&lt;p&gt;Eighth. Last but not least. Revisit and reread. While absorbing everything is not the goal, becoming familiar is. The more familiar, the more super-power!&lt;/p&gt;
+&lt;h2 id=&quot;why-not-read-the-manual%3F&quot;&gt;Why not read the manual? &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/#why-not-read-the-manual%3F&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There are excellent reasons for &lt;em&gt;not&lt;/em&gt; reading the manual. Personal and professional life is filled with competing distractions. We have to decide among those which are most worth our limited attention. Reading the manual is usually not a pre-requisite for being productive and useful to your team, just as it&#39;s not always necessary to read the manual before using an appliance. Sometimes manuals are poorly written, confusing, out-of-date, or just plain do not exist. Even if it is well-written, it may not be &lt;em&gt;relevant&lt;/em&gt;. I personally don&#39;t have a pressing need to read the &lt;a href=&quot;https://docs.julialang.org/en/v1/&quot;&gt;Julia language manual&lt;/a&gt; today. Maybe tomorrow. I just can&#39;t say.&lt;/p&gt;
 </content>
 	</entry>
 </feed>

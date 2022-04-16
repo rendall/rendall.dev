@@ -1,152 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="web-font">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Process and Flow</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link
-      rel="alternate"
-      href="/feed/feed.xml"
-      type="application/atom+xml"
-      title="Rendall&#39;s blog"
-    />
-  </head>
 
-  <body class="Blog">
-    <header class="Blog__Header">
-      <h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
-    </header>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Process and Flow</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Rendall&#39;s blog">
+</head>
 
-    <main class="Blog__Post">
-      <header class="Post__Header">
-        <h2 class="Post__Title">Process and Flow</h2>
-        <time class="Post__Date" datetime="2021-03-03">2021-03-03</time>
+<body class="Blog">
+	<header class="Blog__Header">
+		<h1 class="Blog__Title"><a href="/">Rendall&#39;s blog</a></h1>
+	</header>
 
-        <a href="/tags/tech/" class="tag">tech</a>
-        <a href="/tags/code/" class="tag">code</a>
-      </header>
+	<main class="Blog__Post" >
+		<header class="Post__Header">
+  <h2 class="Post__Title">Process and Flow</h2><time class="Post__Date" datetime="2021-03-03">2021-03-03</time>
+  
+  <a href="/tags/tech/" class="tag">tech</a>
+  <a href="/tags/code/" class="tag">code</a>
+</header>
 
-      <article class="Post__Article">
-        <p>
-          As a Finnish language learner, I find
-          <a href="https://en.wiktionary.org">Wiktionary</a> to be invaluable.
-        </p>
-        <p>
-          <img
-            src="/img/flow.jpg"
-            alt="Sunlight on a small, calm lake, a forest on the opposite shore"
-          />
-          Several years ago (2014-2017) I ran a website that presented Finnish
-          word definitions and inflections scraped from Wiktionary, but in a way
-          that was more convenient for Finnish language learners (well, for me,
-          anyway). I was in a full time Finnish course, and it was useful to me.
-          I was likely also its only user.
-        </p>
-        <p>
-          It was built using C# and <a href="http://ASP.NET">ASP.NET</a> in a
-          framework called MVC, which I had been using in my professional work.
-          You can
-          <a href="https://github.com/rendall/suomenkieli-website"
-            >peruse the source code here</a
-          >, if you're of a mind to do so. Its lack of documentation is
-          discussed here.
-        </p>
-        <p>
-          I liked to code &quot;in the Zone&quot; or &quot;in the Flow&quot;
-          then, and I can see it in the code. The Zone is a state of mind where
-          the external world disappears and you're just focused on the task at
-          hand to the exclusion of all else. People used to talk about that
-          state of mind a lot, how to achieve it and maintain it (e.g.
-          &quot;Make sure you have a 3 hour block of uninterrupted time&quot;),
-          and it was felt to be essential to get really good work done. I
-          believed it. There is even a brief scene in
-          <em>The Social Network</em> movie, where Sean Parker (Justin
-          Timberlake) tries to ask a developer what he's doing and is rudely
-          rebuffed. &quot;He's in the Zone, don't bother him&quot; he's told.
-          Sean Parker then grins approvingly (and I cheered quietly). It seems
-          to have fallen out of favor as a cultural idea these days, but it
-          really had force for a long time, and some developers still swear by
-          it today.
-        </p>
-        <p>
-          I think there's a general recognition that being in the Zone is not
-          necessarily needed to get the best work done. Sitting down and typing
-          is not the most important part of software development - it's
-          critical, of course, and takes up the bulk of a developer's time - but
-          the conceptual work of planning and architecting, and the social work
-          of getting consensus, documentation and following an already
-          established process is at least as important. To emphasize the Zone is
-          to emphasize only one component of developing software.
-        </p>
-        <p>
-          As well, the state of hyper-intense focus means that as devs, we won't
-          always ask if what we're doing at the moment is <em>necessary</em>. Do
-          I really need to optimize that function <em>now</em>, or can I leave
-          it for never? Coding in the flow means lots of lines of code are being
-          written, but not always towards focused ends.
-        </p>
-        <p>
-          When creating or leading a project, I like to give a lot of thought to
-          the process involved. There's a theory of art creation that &quot;the
-          process&quot; <em>is</em> the art, and the artistic works that the
-          artist makes and people look at are just a by-product of that artistic
-          process. I think that model can be useful when thinking about software
-          creation also. The product, the software, is the result of a process.
-          If the process is successful, then the software will be robust and
-          bulletproof. Focus on the process, and the software will follow. Code
-          reviews, automated testing, continuous integration are current
-          practices that are part of the process.
-        </p>
-        <p>
-          The <em>Suomenkieli Website</em> was created when I still equated
-          development to sitting down and typing. I would just start typing and
-          it would all work out. And indeed, the website worked and did what it
-          was supposed to do.
-        </p>
-        <p>
-          But for that site, there is zero documentation, so sorting through and
-          getting it up and running is a bit of a chore. There is some
-          reverse-engineering involved. I also was really enamored with the idea
-          of using a relational database to connect all of the words with their
-          declensions and conjugations. And that took up the bulk of my time in
-          development: scraping those properly, making sure they were entered
-          and annotated properly. I spent many hours in Flow, making sure that
-          the contents of the cells of the HTML table displaying inflections
-          were tagged properly with its column and row headers.
-        </p>
-        <p>
-          It turns out that the word itself and its
-          <a href="https://en.wiktionary.org/wiki/Appendix:Finnish_conjugation"
-            >KOTUS type</a
-          >
-          can completely determine its inflection. Which is to day, that I did
-          not have to scrape the inflections, but could have derived them using
-          Wiktionary's own scripts.
-        </p>
-        <p>
-          As for the site itself, I may find the time and energy to update it
-          again; if you are interested in something like that, let me know. We
-          could collaborate.
-        </p>
-      </article>
-      <p><a href="/">← Home</a></p>
+<article class="Post__Article">
+  <p>As a Finnish language learner, I find <a href="https://en.wiktionary.org">Wiktionary</a> to be invaluable.</p>
+<p><img src="/img/flow.jpg" alt="Sunlight on a small, calm lake, a forest on the opposite shore"> Several years ago (2014-2017) I ran a website that presented Finnish word definitions and inflections scraped from Wiktionary, but in a way that was more convenient for Finnish language learners (well, for me, anyway). I was in a full time Finnish course, and it was useful to me. I was likely also its only user.</p>
+<p>It was built using C# and <a href="http://ASP.NET">ASP.NET</a> in a framework called MVC, which I had been using in my professional work. You can <a href="https://github.com/rendall/suomenkieli-website">peruse the source code here</a>, if you're of a mind to do so. Its lack of documentation is discussed here.</p>
+<p>I liked to code &quot;in the Zone&quot; or &quot;in the Flow&quot; then, and I can see it in the code. The Zone is a state of mind where the external world disappears and you're just focused on the task at hand to the exclusion of all else. People used to talk about that state of mind a lot, how to achieve it and maintain it (e.g. &quot;Make sure you have a 3 hour block of uninterrupted time&quot;), and it was felt to be essential to get really good work done. I believed it. There is even a brief scene in <em>The Social Network</em> movie, where Sean Parker (Justin Timberlake) tries to ask a developer what he's doing and is rudely rebuffed. &quot;He's in the Zone, don't bother him&quot; he's told. Sean Parker then grins approvingly (and I cheered quietly). It seems to have fallen out of favor as a cultural idea these days, but it really had force for a long time, and some developers still swear by it today.</p>
+<p>I think there's a general recognition that being in the Zone is not necessarily needed to get the best work done. Sitting down and typing is not the most important part of software development - it's critical, of course, and takes up the bulk of a developer's time - but the conceptual work of planning and architecting, and the social work of getting consensus, documentation and following an already established process is at least as important. To emphasize the Zone is to emphasize only one component of developing software.</p>
+<p>As well, the state of hyper-intense focus means that as devs, we won't always ask if what we're doing at the moment is <em>necessary</em>. Do I really need to optimize that function <em>now</em>, or can I leave it for never? Coding in the flow means lots of lines of code are being written, but not always towards focused ends.</p>
+<p>When creating or leading a project, I like to give a lot of thought to the process involved. There's a theory of art creation that &quot;the process&quot; <em>is</em> the art, and the artistic works that the artist makes and people look at are just a by-product of that artistic process. I think that model can be useful when thinking about software creation also. The product, the software, is the result of a process. If the process is successful, then the software will be robust and bulletproof. Focus on the process, and the software will follow. Code reviews, automated testing, continuous integration are current practices that are part of the process.</p>
+<p>The <em>Suomenkieli Website</em> was created when I still equated development to sitting down and typing. I would just start typing and it would all work out. And indeed, the website worked and did what it was supposed to do.</p>
+<p>But for that site, there is zero documentation, so sorting through and getting it up and running is a bit of a chore. There is some reverse-engineering involved. I also was really enamored with the idea of using a relational database to connect all of the words with their declensions and conjugations. And that took up the bulk of my time in development: scraping those properly, making sure they were entered and annotated properly. I spent many hours in Flow, making sure that the contents of the cells of the HTML table displaying inflections were tagged properly with its column and row headers.</p>
+<p>It turns out that the word itself and its <a href="https://en.wiktionary.org/wiki/Appendix:Finnish_conjugation">KOTUS type</a> can completely determine its inflection. Which is to day, that I did not have to scrape the inflections, but could have derived them using Wiktionary's own scripts.</p>
+<p>As for the site itself, I may find the time and energy to update it again; if you are interested in something like that, let me know. We could collaborate.</p>
 
-      <link
-        href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css"
-        rel="stylesheet"
-      />
-      <p>Leave a comment on this post:</p>
-      <div id="simple-comment-area"></div>
-      <script
-        type="module"
-        src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"
-      ></script>
-    </main>
+</article>
+<p><a href="/">← Home</a></p>
 
-    <footer></footer>
+<link href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css" rel="stylesheet" />
+<p>Leave a comment on this post:</p>
+<div id="simple-comment-area"></div>
+<script type="module" src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"></script>
 
-    <!-- Current page: /posts/2021/3/3/process-and-flow/ -->
-    <script src="/js/home.js"></script>
-  </body>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /posts/2021/3/3/process-and-flow/ -->
+		<script src="/js/home.js"></script>
+</body>
+
 </html>
