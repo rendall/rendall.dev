@@ -4,7 +4,7 @@
 	<subtitle>Sketches, thoughts, and observations on all the things. A personal notebook.</subtitle>
 	<link href="https://blog.rendall.dev/feed/feed.xml" rel="self"/>
 	<link href="https://blog.rendall.dev"/>
-	<updated>2022-04-16T00:00:00Z</updated>
+	<updated>2022-04-17T00:00:00Z</updated>
 	<id>https://blog.rendall.tv/</id>
 	<author>
 		<name>Rendall Koski</name>
@@ -856,6 +856,27 @@ Apparently there are people who go around measuring this stuff, and ranking Euro
 &lt;p&gt;Eighth. Last but not least. Revisit and reread. While absorbing everything is not the goal, becoming familiar is. The more familiar, the more super-power!&lt;/p&gt;
 &lt;h2 id=&quot;why-not-read-the-manual%3F&quot;&gt;Why not read the manual? &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/#why-not-read-the-manual%3F&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;There are excellent reasons for &lt;em&gt;not&lt;/em&gt; reading the manual. Personal and professional life is filled with competing distractions. We have to decide among those which are most worth our limited attention. Reading the manual is usually not a pre-requisite for being productive and useful to your team, just as it&#39;s not always necessary to read the manual before using an appliance. Sometimes manuals are poorly written, confusing, out-of-date, or just plain do not exist. Even if it is well-written, it may not be &lt;em&gt;relevant&lt;/em&gt;. I personally don&#39;t have a pressing need to read the &lt;a href=&quot;https://docs.julialang.org/en/v1/&quot;&gt;Julia language manual&lt;/a&gt; today. Maybe tomorrow. I just can&#39;t say.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Simple Manual Reading</title>
+		<link href="https://blog.rendall.dev/posts/2022/4/17/simple-manual-reading/"/>
+		<updated>2022-04-17T00:00:00Z</updated>
+		<id>https://blog.rendall.dev/posts/2022/4/17/simple-manual-reading/</id>
+		<content type="html">&lt;p&gt;&lt;a href=&quot;https://blog.rendall.dev/posts/2022/4/16/reading-the-manual/&quot;&gt;Yesterday&lt;/a&gt; I wrote, for the first time in a while, about my (re) discovering the super-power of RTFM (reading the fine manual).&lt;/p&gt;
+&lt;p&gt;Also yesterday, I discovered that my long-neglected, open-source side-project &lt;a href=&quot;https://github.com/rendall/simple-comment&quot;&gt;Simple Comment&lt;/a&gt; is failing in gruesome and unexpected ways. Today I&#39;m turning my attention to this, and upgrading where needed. Which also means that I can put my words into practice. I have some manuals to read. These are they:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.mongodb.com/docs/drivers/node/current/&quot;&gt;MongoDB Node.js driver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://yarnpkg.com/getting-started&quot;&gt;Yarn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.netlify.com/&quot;&gt;Netlify&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Do I read each cover-to-cover, linearly, in turn, as I &lt;em&gt;exhorted&lt;/em&gt; yesterday? Time will tell. It&#39;s a beautiful, sunny day in a region and season not known for its sunlight, and it&#39;s a long, holiday weekend. There are lots of things I would rather be doing. On the other hand, I do enjoy coding, and upgrading, so we&#39;ll see how the day goes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.rendall.dev/img/syd-wachs-slItfWbhijc-unsplash.jpg&quot; alt=&quot;Dusty shelf of books&quot; /&gt;&lt;br /&gt;
+&lt;a href=&quot;https://unsplash.com/@videmusart?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Image credit: Syd Wachs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;simple-comment-blues&quot;&gt;Simple Comment blues &lt;a class=&quot;direct-link&quot; href=&quot;https://blog.rendall.dev/posts/2022/4/17/simple-manual-reading/#simple-comment-blues&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We who have ever worked on solo projects have had the experience of looking at work that we have done in the past and been displeased. Perhaps our practices have matured, or consensus has moved on, or we&#39;ve learned since then. Whichever it is, I&#39;m not so keen on how &lt;em&gt;Simple Comment&lt;/em&gt; has aged in the last year. Still, I am committed to it and so it is upgrade time.&lt;/p&gt;
+&lt;p&gt;The main symptom is that on these blog pages, the comment system printed a bright, angry red error message &lt;code&gt;&amp;quot;Unknown referer blog.rendall.dev&amp;quot;&lt;/code&gt; and no friendly comment field. Also, the Netlify badge is &lt;a href=&quot;https://app.netlify.com/sites/simple-comment/deploys/625bdc640e96900008627c82&quot;&gt;failing build&lt;/a&gt; with the message &lt;code&gt;&amp;quot;error mongodb-memory-server@6.10.0: The engine &amp;quot;node&amp;quot; is incompatible with this module. Expected version &amp;quot;&amp;gt;=12.22.0&amp;quot;. Got &amp;quot;12.18.0&amp;quot;&lt;/code&gt;. I&#39;m pretty sure that means that Netlify is running Node.js version &lt;code&gt;12.18.0&lt;/code&gt; and not verson &lt;code&gt;14&lt;/code&gt;+. Also, there are &lt;a href=&quot;https://github.blog/2022-04-14-dependabot-alerts-now-surface-if-code-is-calling-vulnerability/&quot;&gt;Dependabot alerts&lt;/a&gt;, one of which is critical. So, there is a lot to sort out.&lt;/p&gt;
 </content>
 	</entry>
 </feed>
