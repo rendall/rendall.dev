@@ -31,7 +31,7 @@
     "@types/fontfaceobserver": "^0.0.6",
     "cpx": "^1.5.0",
     "luxon": "^1.25.0",
-    "markdown-it": "^12.0.4",
+    "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^7.0.1",
     "prettier": "2.2.1",
     "rimraf": "^3.0.2",
