@@ -93,6 +93,7 @@ module.exports = function (eleventyConfig) {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#",
+    tabIndex: false,
   };
 
   eleventyConfig.setLibrary(
