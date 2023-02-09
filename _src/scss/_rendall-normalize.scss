@@ -58,14 +58,11 @@ $a-visited: lighten($color-text, 20%);
 }
 
 html {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-
-  // &.web-font {
-  //   font-family: "Montserrat";
-  //   letter-spacing: 0rem;
-  // }
-
   background-color: $color-background;
+}
+
+body {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: $color-text;
   margin: 0;
   padding: 0;
