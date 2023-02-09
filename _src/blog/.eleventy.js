@@ -1,8 +1,12 @@
+const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
+
 const pluginImage = require("@11ty/eleventy-img");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const string = require("string");
+
 const { DateTime } = require("luxon");
+
+const slugify =  require( "../ts/slugify" );
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await pluginImage(src, {
@@ -21,6 +25,9 @@ async function imageShortcode(src, alt, sizes) {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPlugin(UpgradeHelper);
+
+  eleventyConfig.amendLibrary("md", mdLib => mdLib.enable("code"));
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
@@ -45,7 +52,7 @@ module.exports = function (eleventyConfig) {
 
   // The normal slug filter does not completely remove url-unsafe characters, so use this:
   eleventyConfig.addFilter("slugify", (input) =>
-    string(input).slugify().toString()
+    slugify(input)
   );
 
   // This is for post urls of the form ./posts/<year>/<month>/<date>
@@ -88,6 +95,7 @@ module.exports = function (eleventyConfig) {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#",
+    tabIndex: false,
   };
 
   eleventyConfig.setLibrary(

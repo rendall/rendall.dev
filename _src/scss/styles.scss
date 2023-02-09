@@ -7,6 +7,7 @@
 @import "_normalize-css";
 @import "_rendall-normalize";
 @import "_prism";
+@import "_prism-night-owl";
 @import "simple-comment";
 
 $site-max-width: 50rem;
@@ -17,11 +18,9 @@ html {
 }
 
 .Site {
-  &__Header {
-  }
+  &__Header {}
 
-  &__Main {
-  }
+  &__Main {}
 
   &__SocialList {
     img.icon {
@@ -157,12 +156,12 @@ html {
         li {
           margin-bottom: 0.25rem;
 
-          & > ul {
+          &>ul {
             margin-top: 0.5rem;
           }
         }
 
-        & > ul {
+        &>ul {
           list-style-type: disc;
 
           & ul {
@@ -177,8 +176,7 @@ html {
     }
   }
 
-  &__Date {
-  }
+  &__Date {}
 
   &__Postlist {
     padding: 0;
@@ -212,10 +210,18 @@ html {
         }
       }
 
-      &--active {
-      }
+      &--active {}
     }
   }
+
+  // Prism customizations
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    width: fit-content;
+    min-width: 45rem;
+  }
+
 }
 
 .Resume {
@@ -236,9 +242,9 @@ html {
     margin-top: 2rem;
   }
 
-  & > ul,
-  & > p,
-  & > h3 {
+  &>ul,
+  &>p,
+  &>h3 {
     margin-left: 1rem;
   }
 
@@ -280,8 +286,7 @@ html {
 .Blog {
   line-height: 1.5rem;
 
-  &__Header {
-  }
+  &__Header {}
 
   &__Nav {
     list-style-type: none;
@@ -322,12 +327,12 @@ html {
     li {
       margin-bottom: 0;
 
-      & > ul {
+      &>ul {
         margin-top: 1rem;
       }
     }
 
-    & > ul {
+    &>ul {
       list-style-type: disc;
 
       & ul {
@@ -382,7 +387,7 @@ ul.comma-separated-list {
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  & > li {
+  &>li {
     white-space: nowrap;
     margin: 0;
     margin-right: 0.25rem;
@@ -400,7 +405,7 @@ ul.comma-separated-list {
 ul.semicolon-separated-list {
   display: inline;
 
-  & > li {
+  &>li {
     display: inline;
 
     &:after {
@@ -412,6 +417,7 @@ ul.semicolon-separated-list {
     }
   }
 }
+
 .append-colon {
   &:after {
     content: ": ";
@@ -426,11 +432,11 @@ ul.semicolon-separated-list {
   &.is-collapsed {
     max-height: 0;
 
-    & + .show-instructions-button {
+    &+.show-instructions-button {
       display: inline-block;
     }
 
-    & ~ h1 {
+    &~h1 {
       vertical-align: text-bottom;
     }
   }

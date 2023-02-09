@@ -9,8 +9,8 @@ pagination:
     - post
     - posts
 layout: layouts/home.njk
-renderData:
-  title: Tagged “{{ tag }}”
+eleventyComputed:
+  title: "Tagged “{{ tag }}”"
 permalink: /tags/{{ tag }}/
 ---
 <h2 class="Blog__Headline">Tagged “{{ tag }}”</h2>
