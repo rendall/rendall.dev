@@ -35,7 +35,7 @@
     "markdown-it-anchor": "^8.6.6",
     "prettier": "2.2.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.32.6",
+    "sass": "^1.58.0",
     "string": "^3.3.3",
     "stylelint": "^13.9.0",
     "typescript": "^4.9.5",
