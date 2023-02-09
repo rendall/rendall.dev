@@ -1,7 +1,8 @@
-RAW
-node_modules
-.sass-cache
-aspnet_client
-print
 .env
+.sass-cache
 .vscode/*
+RAW
+aspnet_client
+node_modules
+print
+yarn-error.log
