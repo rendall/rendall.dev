@@ -25,7 +25,7 @@
   "homepage": "https://github.com/rendall/rendall.github.io#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0",
-    "@11ty/eleventy-img": "^0.7.8",
+    "@11ty/eleventy-img": "^3.0.0",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "@types/fontfaceobserver": "^0.0.6",
