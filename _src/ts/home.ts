@@ -1,2 +1,2 @@
-import { setupCommentForm } from "./commentForm";
-setupCommentForm();
+import { setupCommentForm } from "./commentForm"
+setupCommentForm()
