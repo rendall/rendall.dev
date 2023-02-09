@@ -25,11 +25,8 @@ Use a better box model (opinionated).
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-<<<<<<< HEAD
-=======
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
->>>>>>> format
 }
 
 /*
@@ -54,14 +51,8 @@ Grouping content
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
 */
 hr {
-<<<<<<< HEAD
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-=======
   height: 0; /* 1 */
   color: inherit; /* 2 */
->>>>>>> format
 }
 
 /*
@@ -69,38 +60,10 @@ Text-level semantics
 ====================
 */
 /**
-<<<<<<< HEAD
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
-=======
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
 abbr[title] {
   text-decoration: underline dotted;
->>>>>>> format
 }
 
 /**
@@ -117,14 +80,9 @@ strong {
 */
 code,
 kbd,
-<<<<<<< HEAD
-samp {
-  font-family: monospace, monospace; /* 1 */
-=======
 samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; /* 1 */
->>>>>>> format
   font-size: 1em; /* 2 */
 }
 
@@ -231,16 +189,7 @@ See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d4
 Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
 */
 legend {
-<<<<<<< HEAD
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
-=======
   padding: 0;
->>>>>>> format
 }
 
 /**
@@ -251,34 +200,10 @@ progress {
 }
 
 /**
-<<<<<<< HEAD
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-[type=checkbox],
-[type=radio] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-=======
 Correct the cursor style of increment and decrement buttons in Safari.
 */
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
->>>>>>> format
   height: auto;
 }
 
@@ -305,18 +230,6 @@ Remove the inner padding in Chrome and Safari on macOS.
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
-<<<<<<< HEAD
-}
-
-/* Interactive
-   ========================================================================== */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-=======
->>>>>>> format
 }
 
 /*
@@ -836,11 +749,7 @@ html {
 .Blog code[class*=language-],
 .Blog pre[class*=language-] {
   width: fit-content;
-<<<<<<< HEAD
-  min-width: 45rem;
-=======
   min-width: 50rem;
->>>>>>> format
 }
 
 .Resume {
