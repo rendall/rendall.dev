@@ -11,10 +11,8 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
-  line-height: 1.15;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /* Sections
@@ -49,12 +47,9 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
 }
 
 /**
@@ -62,10 +57,8 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /* Text-level semantics
@@ -82,12 +75,9 @@ a {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 abbr[title] {
-  border-bottom: none;
-  /* 1 */
-  text-decoration: underline;
-  /* 2 */
-  text-decoration: underline dotted;
-  /* 2 */
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -105,10 +95,8 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /**
@@ -158,14 +146,10 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  line-height: 1.15;
-  /* 1 */
-  margin: 0;
-  /* 2 */
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
 /**
@@ -233,18 +217,12 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  box-sizing: border-box;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
 }
 
 /**
@@ -267,10 +245,8 @@ textarea {
  */
 [type=checkbox],
 [type=radio] {
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
@@ -286,10 +262,8 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type=search] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
 }
 
 /**
@@ -304,10 +278,8 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /* Interactive
@@ -404,7 +376,6 @@ a:visited {
   body {
     margin: 1rem;
   }
-
   ul {
     margin-left: 1rem;
   }
@@ -414,7 +385,6 @@ a:visited {
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
   }
-
   .no-print {
     display: none !important;
   }
@@ -539,6 +509,161 @@ pre[class*=language-] {
 
 .token.inserted {
   color: green;
+}
+
+/**
+ * MIT License
+ * Copyright (c) 2018 Sarah Drasner
+ * Sarah Drasner's[@sdras] Night Owl
+ * Ported by Sara vieria [@SaraVieira]
+ * Added by Souvik Mandal [@SimpleIndian]
+ */
+code[class*=language-],
+pre[class*=language-] {
+  color: #d6deeb;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  font-size: 1em;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*=language-]::-moz-selection,
+pre[class*=language-] ::-moz-selection,
+code[class*=language-]::-moz-selection,
+code[class*=language-] ::-moz-selection {
+  text-shadow: none;
+  background: rgba(29, 59, 83, 0.99);
+}
+
+pre[class*=language-]::selection,
+pre[class*=language-] ::selection,
+code[class*=language-]::selection,
+code[class*=language-] ::selection {
+  text-shadow: none;
+  background: rgba(29, 59, 83, 0.99);
+}
+
+@media print {
+  code[class*=language-],
+  pre[class*=language-] {
+    text-shadow: none;
+  }
+}
+/* Code blocks */
+pre[class*=language-] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*=language-],
+pre[class*=language-] {
+  color: white;
+  background: #011627;
+}
+
+:not(pre) > code[class*=language-] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: rgb(99, 119, 119);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: rgb(199, 146, 234);
+}
+
+.namespace {
+  color: rgb(178, 204, 214);
+}
+
+.token.deleted {
+  color: rgba(239, 83, 80, 0.56);
+  font-style: italic;
+}
+
+.token.symbol,
+.token.property {
+  color: rgb(128, 203, 196);
+}
+
+.token.tag,
+.token.operator,
+.token.keyword {
+  color: rgb(127, 219, 202);
+}
+
+.token.boolean {
+  color: rgb(255, 88, 116);
+}
+
+.token.number {
+  color: rgb(247, 140, 108);
+}
+
+.token.constant,
+.token.function,
+.token.builtin,
+.token.char {
+  color: rgb(130, 170, 255);
+}
+
+.token.selector,
+.token.doctype {
+  color: rgb(199, 146, 234);
+  font-style: italic;
+}
+
+.token.attr-name,
+.token.inserted {
+  color: rgb(173, 219, 103);
+  font-style: italic;
+}
+
+.token.string,
+.token.url,
+.token.entity,
+.language-css .token.string,
+.style .token.string {
+  color: rgb(173, 219, 103);
+}
+
+.token.class-name,
+.token.atrule,
+.token.attr-value {
+  color: rgb(255, 203, 139);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: rgb(214, 222, 235);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
 }
 
 div#simple-comment-area {
@@ -690,6 +815,12 @@ html {
   display: inline;
   margin-right: 0.5rem;
 }
+.Blog code[class*=language-],
+.Blog pre[class*=language-] {
+  width: fit-content;
+  min-width: 45rem;
+}
+
 .Resume {
   max-width: 54rem;
   margin: 0 auto;

@@ -1,9 +1,11 @@
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 export var setupCommentForm = function (sendFunc) {
     var hasCommentForm = document.querySelector("form[name=contact]") !== null;
@@ -25,7 +27,7 @@ export var setupCommentForm = function (sendFunc) {
                     .querySelector("form")
                     .attributes.getNamedItem("name").value;
                 if (field.value !== formName)
-                    console.warn("form-name field '" + field.value + "' does not equal form name '" + formName + "'");
+                    console.warn("form-name field '".concat(field.value, "' does not equal form name '").concat(formName, "'"));
                 return true;
             }
             case "city":
@@ -33,7 +35,7 @@ export var setupCommentForm = function (sendFunc) {
             case "confirm":
                 return true;
             default: {
-                console.warn("unknown field name '" + field.name + "'");
+                console.warn("unknown field name '".concat(field.name, "'"));
                 return true;
             }
         }
@@ -41,13 +43,13 @@ export var setupCommentForm = function (sendFunc) {
     var sendMessage = function (fields, url) {
         var sendExec = function (resolve, reject) {
             var params = fields
-                .map(function (f) { return f.name + "=" + encodeURI(f.value); })
+                .map(function (f) { return "".concat(f.name, "=").concat(encodeURI(f.value)); })
                 .join("&");
             var sendReq = new XMLHttpRequest();
             var onSendComplete = function (e) {
                 return sendReq.status === 200
                     ? resolve()
-                    : reject(sendReq.status + ":" + sendReq.statusText);
+                    : reject("".concat(sendReq.status, ":").concat(sendReq.statusText));
             };
             sendReq.open("POST", url);
             sendReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -69,7 +71,7 @@ export var setupCommentForm = function (sendFunc) {
     };
     var showInvalid = function (invalidFields) {
         return invalidFields
-            .map(function (f) { return document.querySelector("label[for=" + f + "] + .notify-invalid"); })
+            .map(function (f) { return document.querySelector("label[for=".concat(f, "] + .notify-invalid")); })
             .forEach(function (div) { return div.classList.add("is-invalid"); });
     };
     var resetState = function (collection, stateName, x, dummy) {
@@ -87,7 +89,7 @@ export var setupCommentForm = function (sendFunc) {
         e.preventDefault();
         resetState(document.getElementsByClassName("notify-invalid"), "is-invalid");
         var fields = Array.from(document.querySelectorAll("form input,textarea"));
-        var invalidFields = fields.reduce(function (acc, f) { return (isValidField(f) ? acc : __spreadArrays(acc, [f.name])); }, []);
+        var invalidFields = fields.reduce(function (acc, f) { return (isValidField(f) ? acc : __spreadArray(__spreadArray([], acc, true), [f.name], false)); }, []);
         var isValid = invalidFields.length === 0;
         var sendMessagePromise = sendFunc === undefined ? sendMessage : sendFunc;
         if (isValid)
