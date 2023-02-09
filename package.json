@@ -27,7 +27,7 @@
     "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-img": "^0.7.8",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "@types/fontfaceobserver": "^0.0.6",
     "cpx": "^1.5.0",
     "luxon": "^1.25.0",
