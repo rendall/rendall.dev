@@ -84,9 +84,7 @@ var updateUI = function () {
             document.querySelector("input#name").removeAttribute("disabled");
         }
         else {
-            document
-                .querySelector("input#name")
-                .setAttribute("disabled", "disabled");
+            document.querySelector("input#name").setAttribute("disabled", "disabled");
         }
     }
     else {
