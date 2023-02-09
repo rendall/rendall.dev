@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/rendall/rendall.github.io#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy": "^2.0.0",
     "@11ty/eleventy-img": "^0.7.8",
     "@11ty/eleventy-plugin-rss": "^1.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
@@ -43,6 +43,7 @@
     "webpack-cli": "^4.5.0"
   },
   "dependencies": {
+    "@11ty/eleventy-upgrade-help": "^2.0.5",
     "dotenv-webpack": "^6.0.0",
     "fontfaceobserver": "^2.1.0",
     "gotrue-js": "^0.9.29"
