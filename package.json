@@ -43,7 +43,6 @@
   },
   "dependencies": {
     "@11ty/eleventy-upgrade-help": "^2.0.5",
-    "fontfaceobserver": "^2.1.0",
-    "gotrue-js": "^0.9.29"
+    "fontfaceobserver": "^2.1.0"
   }
 }
