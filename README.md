@@ -48,9 +48,4 @@ The command `yarn run start` will create a server at http://localhost:8080 for l
 - More pleasing visual design
 - Add 'Next' and 'Previous' links in blog posts
 - Add serviceworker, especially to cache Montserrat webfont
-- Front-end testing probably using [cypress.io](https://www.cypress.io/)
-- Use [details](https://github.github.io/details-dialog-element/index.html) for 'Say Hello'
-- Use Netlify's CI build
-- Add syntax highlighting for code examples in blog
-- Add comment ability with id
-- Delic.io.us style bookmarks
+- E2E testing
