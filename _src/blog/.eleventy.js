@@ -1,5 +1,3 @@
-const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
-
 const pluginImage = require("@11ty/eleventy-img");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -25,7 +23,6 @@ async function imageShortcode(src, alt, sizes) {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
-  eleventyConfig.addPlugin(UpgradeHelper);
 
   eleventyConfig.amendLibrary("md", mdLib => mdLib.enable("code"));
 
