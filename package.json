@@ -4,13 +4,16 @@
   "description": "The website for rendall.dev",
   "main": "index.js",
   "scripts": {
-    "prebuild": "node ./buildscripts/removeBlogImg.js",
     "build": "yarn run build:site && yarn run build:11ty && yarn run build:css && yarn run build:copy",
     "build:11ty": "cd _src && eleventy --output=../ && cd blog && eleventy",
     "build:copy": "node ./buildscripts/copyJsToBlogJs.js",
     "build:css": "sass ./_src/scss:./css --no-source-map && sass ./_src/scss:./blog/css --no-source-map",
     "build:site": "tsc && webpack",
     "help": "sass --help",
+    "prebuild": "node ./buildscripts/removeBlogImg.js",
+    "start": "concurrently \"yarn run start:root\" \"yarn run start:blog\"",
+    "start:blog": "http-server ./blog -p 8081 -a localhost -c-1",
+    "start:root": "http-server ./ -p 8080 --proxy http://localhost:8081",
     "test": "test"
   },
   "repository": {
@@ -28,6 +31,8 @@
     "@11ty/eleventy-img": "^3.0.0",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "concurrently": "^7.6.0",
+    "http-server": "^14.1.1",
     "luxon": "^3.2.1",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.6",
