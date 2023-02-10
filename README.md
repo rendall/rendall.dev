@@ -39,6 +39,10 @@ To handle this, the build will:
 - For the site, run the `eleventy` command from the `_src/` subdirectory and output to the parent: the command is `cd _src && eleventy --input=. --output=../`
 - For the blog, run `eleventy` from the subdirectory: the command is `cd _src/blog && eleventy`
 
+## Local development
+
+The command `yarn run start` will create a server at http://localhost:8080 for local development. This command runs two servers concurrently, one for the blog and the other for the homepage.
+
 ## Todo
 
 - More pleasing visual design
