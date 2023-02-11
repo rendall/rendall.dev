@@ -13,7 +13,7 @@
     "prebuild": "node ./buildscripts/removeBlogImg.js",
     "start": "concurrently \"yarn run start:root\" \"yarn run start:blog\"",
     "start:blog": "http-server ./blog -p 8081 -a localhost -c-1",
-    "start:root": "http-server ./ -p 8080 --proxy http://localhost:8081",
+    "start:root": "http-server ./ -p 8080 -a localhost --proxy http://localhost:8081",
     "test": "test"
   },
   "repository": {
