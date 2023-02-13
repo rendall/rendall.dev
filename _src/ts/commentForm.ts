@@ -70,7 +70,6 @@ export const setupCommentForm = (sendFunc?: any) => {
     document.querySelector(".contain-form")!.classList.add("is-success")
     document.querySelector(".notify-success")!.classList.add("is-success")
     resetError()
-    // console.log('success')
   }
 
   const showError = (e: string) => {
@@ -124,26 +123,4 @@ export const setupCommentForm = (sendFunc?: any) => {
   }
 
   document.querySelector("form button")!.addEventListener("click", onFormClick)
-
-  // The CSS-only 'hidden checkbox button toggle' hack does not play well with a11y.
-  // It is more important that the site is navigable by keyboard than it do interesting things without javascript.
-  const onFormToggle = (e: Event) => {
-    e.preventDefault()
-    const isSuccess = document
-      .querySelector(".notify-success")!
-      .classList.contains("is-success")
-
-    if (isSuccess) {
-      document.querySelector(".contain-form")!.classList.remove("is-success")
-      document.querySelector(".contain-form")!.classList.add("is-visible")
-      document.querySelector(".notify-success")!.classList.remove("is-success")
-      resetError()
-    } else
-      document.querySelector(".contain-form")!.classList.toggle("is-visible")
-  }
-
-  // document.querySelector('#form-toggle')!.addEventListener('click', onFormToggle)
-
-  // To include those browsers that do not use js, the form is visible by default and hidden with javascript.
-  // document.querySelector('.contain-form').classList.remove('is-visible')
 }
