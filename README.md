@@ -6,17 +6,26 @@ Website for [rendall.dev](https://rendall.dev)
 
 ## Magic instructions
 
+### Blog
+
 - Create a blog post by adding a file to `_src/blog/posts`
-- Re-build the site to incorporate any change using the command `yarn run build`
+
+### CV
+
+- [ ] Update `./_src/resume.pug` (source of truth), then:
+  - [ ] Update `./static/resume/rendallkoski.pdf`
+  - [ ] Update <https://docs.google.com/document/d/1dfiAVUVUVMeFW6hxONcYYUL7-6tcze2rQTAbwT2XUKc/edit?usp=sharing>
+  - [ ] Update <https://linkedin.com/in/rendallkoski>
 
 ## Site structure
 
 - `./dist` is the pubish directory of <https://www.rendall.dev>
 - `./dist/blog/` is the _root_ directory of the _blog_ <https://blog.rendall.dev>
-  -  redirects to <https://www.rendall.dev/blog> redirects to <https://blog.rendall.dev>
+  -  Requests to <https://www.rendall.dev/blog> redirect to <https://blog.rendall.dev>
 - `_src/` holds the source for <https://rendall.dev>
 - `_src/blog/` holds the source for <https://blog.rendall.dev>
   - Each site has a separate build process.
+- `./static` and `./static/blog` holds static resources and assets copied to `./dist` during build.
 
 ## Build
 
@@ -28,7 +37,29 @@ This site is built using [11ty](https://11ty.io). The build process is [non-defa
 
 ## Local development
 
-The command `yarn run start` will create a server at http://localhost:8080 for local development. This command runs two servers concurrently, one for the blog and the other for the homepage. Put 
+The command `yarn run start` will create a server at http://localhost:8080 for local development. This command runs two servers concurrently, one for the blog and the other for the homepage. Put:
+
+- Blog posts in `./_src`
+- `_/src/resume.pug` is the single source of truth, [propogate changes manually](#cv)
+
+## Deployment
+
+- Commit changes into a git change branch with an arbitrary name
+  - `git checkout staging && git pull`
+  - `git checkout -b <change branch name>`
+- Pull request against the `staging` branch
+  - These commands will make your life easier:
+  - `git checkout staging && git pull`
+  - `git fetch origin master:master`
+  - `git rebase --reapply-cherry-picks master`
+  - `git push --force`
+- When ready _merge_ the PR into the staging branch, preserving history 
+  - Netlify will automatically deploy from `staging`
+  - After deployment, can manually check at <https://staging.rendall.dev>
+- Pull request from `staging` against `master`
+- When ready _squash_ the PR into `master`, flattening history
+  - Netlify will automatically deploy from `master`
+  - After deployment, sites are live at <https://www.rendall.dev> and <https://blog.rendall.dev>
 
 ## Todo
 
@@ -36,3 +67,4 @@ The command `yarn run start` will create a server at http://localhost:8080 for l
 - Add 'Next' and 'Previous' links in blog posts
 - Add serviceworker, especially to cache Montserrat webfont
 - E2E testing
+- Automate propogation of CV changes
