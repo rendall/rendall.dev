@@ -6,3 +6,4 @@ aspnet_client
 node_modules
 print
 yarn-error.log
+dist
