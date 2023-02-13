@@ -21,11 +21,18 @@ Website for [rendall.dev](https://rendall.dev)
 
 - `./dist` is the pubish directory of <https://www.rendall.dev>
 - `./dist/blog/` is the _root_ directory of the _blog_ <https://blog.rendall.dev>
+<<<<<<< HEAD
   -  Requests to <https://www.rendall.dev/blog> redirect to <https://blog.rendall.dev>
 - `_src/` holds the source for <https://rendall.dev>
 - `_src/blog/` holds the source for <https://blog.rendall.dev>
   - Each site has a separate build process.
 - `./static` and `./static/blog` holds static resources and assets copied to `./dist` during build.
+=======
+  -  redirects to <https://www.rendall.dev/blog> redirects to <https://blog.rendall.dev>
+- `_src/` holds the source for <https://rendall.dev>
+- `_src/blog/` holds the source for <https://blog.rendall.dev>
+  - Each site has a separate build process.
+>>>>>>> 5a9ce71 (Move resume to ./static)
 
 ## Build
 
