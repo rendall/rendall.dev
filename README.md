@@ -11,37 +11,24 @@ Website for [rendall.dev](https://rendall.dev)
 
 ## Site structure
 
-- `./` The project root directory is the publish directory, except
-- `./blog/` is the _root_ directory of the _blog_
-  - <https://rendall.dev/blog> redirects to <https://blog.rendall.dev>
-  - Likewise <https://blog.rendall.dev>`/**/*` is served from `./blog/**/*`
+- `./dist` is the pubish directory of <https://www.rendall.dev>
+- `./dist/blog/` is the _root_ directory of the _blog_ <https://blog.rendall.dev>
+  -  redirects to <https://www.rendall.dev/blog> redirects to <https://blog.rendall.dev>
 - `_src/` holds the source for <https://rendall.dev>
-  - its structure mirrors that of its parent, `./` the publish directory
 - `_src/blog/` holds the source for <https://blog.rendall.dev>
+  - Each site has a separate build process.
 
 ## Build
 
-There are two build processes, one for the <https://rendall.dev> and another for <https://blog.rendall.dev>
+`yarn run build`
 
 ## 11ty static site generator
 
 This site is built using [11ty](https://11ty.io). The build process is [non-default](https://github.com/11ty/eleventy/issues/342#issuecomment-448224762) There are two eleventy builds, one for the <https://rendall.dev> site and the other for the <https://blog.rendall.dev> blog.
 
-First, for <https://rendall.dev>, rather than the expected, default 11ty configuration of `input=.` and `output=./_site/`, the configuration is instead `input=./_src` and `output=.`, and it is necessary to issue the command from the source subdirectory to output to the parent directory with the command `cd _src && eleventy --input=. --output=../`
-
-Second, for <https://blog.rendall.dev>, the subdirectory `./_src/blog` needs to output to `./blog`, but the URLs need to be prepended with `/` and not `/blog/` (as well as [other blog-specific configurations and plugins](https://github.com/11ty/eleventy-base-blog)). The server serves `/blog/` to <https://blog.rendall.dev>
-
-To handle this, the build will:
-
-- Ignore the `blog/` subdirectory: add the line `blog/` to `./_src/.eleventyignore`
-- Keep resources separate: make sure that `blog/` has its own `_includes`, `_data`, `_11ty` directories and so forth
-- Use a separate configuration for each build 11ty process: add a `./_src/blog/.eleventy.js` config file with `input: "."`, `pathprefix: "/"`, and `output: "../../blog/"`
-- For the site, run the `eleventy` command from the `_src/` subdirectory and output to the parent: the command is `cd _src && eleventy --input=. --output=../`
-- For the blog, run `eleventy` from the subdirectory: the command is `cd _src/blog && eleventy`
-
 ## Local development
 
-The command `yarn run start` will create a server at http://localhost:8080 for local development. This command runs two servers concurrently, one for the blog and the other for the homepage.
+The command `yarn run start` will create a server at http://localhost:8080 for local development. This command runs two servers concurrently, one for the blog and the other for the homepage. Put 
 
 ## Todo
 
