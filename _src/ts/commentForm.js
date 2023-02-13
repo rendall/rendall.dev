@@ -100,18 +100,4 @@ export var setupCommentForm = function (sendFunc) {
             showInvalid(invalidFields);
     };
     document.querySelector("form button").addEventListener("click", onFormClick);
-    var onFormToggle = function (e) {
-        e.preventDefault();
-        var isSuccess = document
-            .querySelector(".notify-success")
-            .classList.contains("is-success");
-        if (isSuccess) {
-            document.querySelector(".contain-form").classList.remove("is-success");
-            document.querySelector(".contain-form").classList.add("is-visible");
-            document.querySelector(".notify-success").classList.remove("is-success");
-            resetError();
-        }
-        else
-            document.querySelector(".contain-form").classList.toggle("is-visible");
-    };
 };
