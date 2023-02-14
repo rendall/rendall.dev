@@ -8,7 +8,7 @@ Website for [rendall.dev](https://rendall.dev)
 
 ### Blog
 
-- Create a blog post by adding a file to `_src/blog/posts`
+- Create a blog post by adding a markdown file to [_src/blog/posts](_src/blog/posts) and pushing it to the `master` branch.
 
 ### CV
 
