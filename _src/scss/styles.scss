@@ -17,9 +17,11 @@ html {
 }
 
 .Site {
-  &__Header {}
+  &__Header {
+  }
 
-  &__Main {}
+  &__Main {
+  }
 
   &__SocialList {
     img.icon {
@@ -155,12 +157,12 @@ html {
         li {
           margin-bottom: 0.25rem;
 
-          &>ul {
+          & > ul {
             margin-top: 0.5rem;
           }
         }
 
-        &>ul {
+        & > ul {
           list-style-type: disc;
 
           & ul {
@@ -175,7 +177,8 @@ html {
     }
   }
 
-  &__Date {}
+  &__Date {
+  }
 
   &__Postlist {
     padding: 0;
@@ -209,7 +212,8 @@ html {
         }
       }
 
-      &--active {}
+      &--active {
+      }
     }
   }
 
@@ -240,9 +244,9 @@ html {
     margin-top: 2rem;
   }
 
-  &>ul,
-  &>p,
-  &>h3 {
+  & > ul,
+  & > p,
+  & > h3 {
     margin-left: 1rem;
   }
 
@@ -284,7 +288,8 @@ html {
 .Blog {
   line-height: 1.5rem;
 
-  &__Header {}
+  &__Header {
+  }
 
   &__Nav {
     list-style-type: none;
@@ -298,12 +303,9 @@ html {
     }
   }
 
-  // &__Title { }
-
-  // &__Post { }
-
   &__Article,
   article {
+    margin-bottom: 1rem;
     img {
       margin: 0;
       margin-right: 1rem;
@@ -325,12 +327,12 @@ html {
     li {
       margin-bottom: 0;
 
-      &>ul {
+      & > ul {
         margin-top: 1rem;
       }
     }
 
-    &>ul {
+    & > ul {
       list-style-type: disc;
 
       & ul {
@@ -343,11 +345,34 @@ html {
     }
   }
 
-  // &__Date { }
-
   &__Postlist {
     list-style-type: none;
     counter-reset: 3;
+  }
+
+  footer &__Nav {
+    width: $site-max-width;
+
+    & > ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0;
+
+      li {
+        flex: 0 1 auto;
+        white-space: nowrap;
+
+        a {
+          font-weight: bold;
+        }
+
+        .arrow {
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 }
 
@@ -385,7 +410,7 @@ ul.comma-separated-list {
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  &>li {
+  & > li {
     white-space: nowrap;
     margin: 0;
     margin-right: 0.25rem;
@@ -403,7 +428,7 @@ ul.comma-separated-list {
 ul.semicolon-separated-list {
   display: inline;
 
-  &>li {
+  & > li {
     display: inline;
 
     &:after {
@@ -430,11 +455,11 @@ ul.semicolon-separated-list {
   &.is-collapsed {
     max-height: 0;
 
-    &+.show-instructions-button {
+    & + .show-instructions-button {
       display: inline-block;
     }
 
-    &~h1 {
+    & ~ h1 {
       vertical-align: text-bottom;
     }
   }
