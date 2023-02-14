@@ -18,10 +18,3 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
 <article class="Post__Article">
   {{ content | safe }}
 </article>
-<p><a href="{{ '/' | url }}">← Home</a></p>
-
-<link href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css" rel="stylesheet" />
-<p>Leave a comment on this post:</p>
-<div id="simple-comment-area"><div id="simple-comment-display"></div></div>
-<script type="module" src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"></script>
-

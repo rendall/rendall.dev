@@ -18,7 +18,25 @@
 		{{ content | safe }}
 		</main>
 
-		<footer></footer>
+		{% set previousPost = collections.posts | getPreviousCollectionItem %}
+		{% set nextPost = collections.posts | getNextCollectionItem %}
+		<footer>
+			<nav class="Blog__Nav">
+				<ul>
+					<li>{% if previousPost %}<a href="{{ previousPost.url }}"><span class="arrow">←</span> {{
+							previousPost.data.title }}</a>{% endif %} </li>
+					<li><a href="{{ '/' | url }}"> Home <span class="arrow">↑</span></a></li>
+					<li>{% if nextPost %}<a href="{{ nextPost.url }}">{{ nextPost.data.title }} <span class="arrow">→</span></a>{%
+						endif %}</li>
+				</ul>
+			</nav>
+			<link href="https://blog-rendall-dev-comments.netlify.app/css/simple-comment.css" rel="stylesheet" />
+			<div id="simple-comment-area">
+				<p>Leave a comment on this post:</p>
+				<div id="simple-comment-display"></div>
+			</div>
+			<script type="module" src="https://blog-rendall-dev-comments.netlify.app/js/simple-comment.js"></script>
+		</footer>
 
 		<!-- Current page: {{ page.url | url }} -->
 </body>
