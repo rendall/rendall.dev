@@ -20,6 +20,7 @@ const slugify = (title: string): string => {
     .replace(/^-*/g, "")
     .replace(/-*$/g, "")
     .toLowerCase()
+  console.log({ title, slug })
   return slug
 }
 
