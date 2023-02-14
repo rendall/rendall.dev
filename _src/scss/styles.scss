@@ -18,9 +18,11 @@ html {
 
 .Site {
   &__Header {
+    font-weight: bold;
   }
 
   &__Main {
+    max-width: $site-max-width;
   }
 
   &__SocialList {
