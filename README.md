@@ -21,7 +21,7 @@ Website for [rendall.dev](https://rendall.dev)
 
 - `./dist` is the pubish directory of <https://www.rendall.dev>
 - `./dist/blog/` is the _root_ directory of the _blog_ <https://blog.rendall.dev>
-  -  Requests to <https://www.rendall.dev/blog> redirect to <https://blog.rendall.dev>
+  - Requests to <https://www.rendall.dev/blog> redirect to <https://blog.rendall.dev>
 - `_src/` holds the source for <https://rendall.dev>
 - `_src/blog/` holds the source for <https://blog.rendall.dev>
   - Each site has a separate build process.
@@ -53,7 +53,7 @@ The command `yarn run start` will create a server at http://localhost:8080 for l
   - `git fetch origin master:master`
   - `git rebase --reapply-cherry-picks master`
   - `git push --force`
-- When ready _merge_ the PR into the staging branch, preserving history 
+- When ready _merge_ the PR into the staging branch, preserving history
   - Netlify will automatically deploy from `staging`
   - After deployment, can manually check at <https://staging.rendall.dev>
 - Pull request from `staging` against `master`
