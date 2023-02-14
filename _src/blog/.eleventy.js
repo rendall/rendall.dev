@@ -33,6 +33,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("slugify", (input) =>
     slugify(input)
   );
+  
+  eleventyConfig.addShortcode("uniqueSlug", function() {
+    const uniqueSlug = slugify(this.page.url)
+    console.log("page", {uniqueSlug}, this.page)
+    return slugify(this.page.url)})
 
   // This is for post urls of the form ./posts/<year>/<month>/<date>
   eleventyConfig.addFilter("year", (date) => new Date(date).getFullYear());

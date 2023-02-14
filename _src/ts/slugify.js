@@ -16,11 +16,12 @@ var slugify = function (title) {
         .trim()
         .replace(/[^A-Za-z0-9\[\] ]/g, toAscii)
         .replace(/[^\w\s-]/g, "")
-        .replace(/[_\s]+/g, "-")
+        .replace(/[_\s\/]+/g, "-")
         .replace(/-+/g, "-")
         .replace(/^-*/g, "")
         .replace(/-*$/g, "")
         .toLowerCase();
+    console.log({ title: title, slug: slug });
     return slug;
 };
 module.exports = slugify;
