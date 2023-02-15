@@ -18,9 +18,9 @@ const addCommentToList = (username: string, comment: string) => {
   }
 
   const newComment = document.createElement("li")
-  newComment.innerHTML = `<strong>${username}</strong>: ${comment}`
-  commentList.appendChild(newComment)
-}
+  const commentText = document.createTextNode(`${username}: ${comment}`)
+  newComment.appendChild(commentText)
+  commentList.appendChild(newComment)}
 
 const addCommentToStore = (
   username: string,
