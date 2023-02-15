@@ -15,7 +15,7 @@
       </h1>
     </header>
 
-    <main {% if templateClass %} class="{{ templateClass }}" {% endif %}>{{ content | safe }}</main>
+    <main class="Blog__Post">{{ content | safe }}</main>
     <aside>
       <div class="Blog__Form">
         <ul id="comment-list"></ul>
