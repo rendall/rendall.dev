@@ -177,6 +177,32 @@ html {
         }
       }
     }
+
+    .comment-list {
+      list-style-type: none;
+      padding: 0;
+
+      .comment {
+        padding: 1rem;
+        background-color: #f2f2f2;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+
+        &__author {
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+
+        &__date {
+          color: gray;
+          margin-bottom: 0.5rem;
+        }
+
+        &__text {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
   }
 
   &__Form {
@@ -402,6 +428,7 @@ html {
       color: red;
     }
   }
+
   // Prism customizations
 
   code[class*="language-"],
