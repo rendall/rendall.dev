@@ -1,6 +1,11 @@
-export const setupCommentForm = (sendFunc?: any) => {
-  const hasCommentForm = document.querySelector("form[name=contact]") !== null
-  if (!hasCommentForm) return
+export const setupCommentForm = (
+  onSubmitSuccess?: (fields: (HTMLInputElement | HTMLTextAreaElement)[]) => void
+) => {
+  const hasCommentForm = document.querySelector("form[name]") !== null
+  if (!hasCommentForm) {
+    console.warn("No comment form found on page.")
+    return
+  }
 
   const emailRegex =
     /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -113,14 +118,18 @@ export const setupCommentForm = (sendFunc?: any) => {
       []
     )
     const isValid = invalidFields.length === 0
-    const sendMessagePromise = sendFunc === undefined ? sendMessage : sendFunc
 
     if (isValid)
-      sendMessagePromise(fields, "/")
-        .then(() => showSuccess())
+      sendMessage(fields, "/")
+        .then(() => {
+          showSuccess()
+          if (onSubmitSuccess) onSubmitSuccess(fields)
+        })
         .catch((error: string) => showError(error))
     else showInvalid(invalidFields)
   }
 
   document.querySelector("form button")!.addEventListener("click", onFormClick)
+
+  console.info("Comment form setup complete")
 }
