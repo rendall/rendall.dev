@@ -1,6 +1,6 @@
-const path = require("path");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 module.exports = {
   mode: "production",
@@ -12,27 +12,25 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].js"
+    filename: "[name].js",
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
         use: "ts-loader",
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: [".ts", ".js"]
+    extensions: [".ts", ".js"],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: './static' },
-      ],
+      patterns: [{ from: "./static" }],
     }),
   ],
   devtool: "source-map",
-};
+}
