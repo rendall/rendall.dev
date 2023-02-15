@@ -1,2 +1,0 @@
-(()=>{"use strict";var r={395:r=>{var e={Ä:"A",Å:"A",Ö:"O",ä:"a",å:"a",ö:"o"},t=function(r){return e[r]||r};r.exports=function(r){return r.trim().replace(/[^A-Za-z0-9\[\] ]/g,t).replace(/[^\w\s-]/g,"").replace(/[_\s\/]+/g,"-").replace(/-+/g,"-").replace(/^-*/g,"").replace(/-*$/g,"").toLowerCase()}}},e={};!function t(a){var o=e[a];if(void 0!==o)return o.exports;var p=e[a]={exports:{}};return r[a](p,p.exports,t),p.exports}(395)})();
-//# sourceMappingURL=slugify.js.map
