@@ -17,10 +17,47 @@ const addCommentToList = (username: string, comment: string) => {
     return
   }
 
+  // Split the comment into paragraphs and create an HTML paragraph element for each
+  const paragraphs = comment
+    .replace(/\n+/g, "\n")
+    .split("\n")
+    .map((paragraph) => {
+      const paragraphEl = document.createElement("p")
+      paragraphEl.classList.add("comment-paragraph")
+      paragraphEl.classList.add("comment__text")
+      const paragraphText = document.createTextNode(paragraph.trim())
+      paragraphEl.appendChild(paragraphText)
+      return paragraphEl
+    })
+
+  // Create a new list item for the comment
   const newComment = document.createElement("li")
-  const commentText = document.createTextNode(`${username}: ${comment}`)
-  newComment.appendChild(commentText)
-  commentList.appendChild(newComment)}
+  newComment.classList.add("comment")
+
+  // Create a header section for the comment, including the username and timestamp
+  const header = document.createElement("header")
+  header.classList.add("comment-header")
+  const usernameEl = document.createElement("p")
+  usernameEl.classList.add("username")
+  usernameEl.classList.add("comment__author")
+  const usernameText = document.createTextNode(username)
+  usernameEl.appendChild(usernameText)
+  const timestampEl = document.createElement("time")
+  timestampEl.classList.add("timestamp")
+  timestampEl.classList.add("comment__date")
+  timestampEl.setAttribute("datetime", new Date().toISOString())
+  const timestampText = document.createTextNode("just now")
+  timestampEl.appendChild(timestampText)
+  header.appendChild(usernameEl)
+  header.appendChild(timestampEl)
+
+  // Add the paragraphs and header to the new list item, then add it to the comment list
+  newComment.appendChild(header)
+  paragraphs.forEach((paragraph) => {
+    newComment.appendChild(paragraph)
+  })
+  commentList.appendChild(newComment)
+}
 
 const addCommentToStore = (
   username: string,
@@ -65,6 +102,29 @@ const compareCommentsToStore = (
   commentStore.forEach((c: any) => addCommentToList(c.username, c.comment))
 }
 
+function updateTimestamps() {
+  const now = new Date()
+
+  const timestampEls = document.querySelectorAll(".timestamp")
+  timestampEls.forEach((el) => {
+    const datetimevalue = el.getAttribute("datetime")
+    const datetime = datetimevalue ? new Date(datetimevalue) : now
+    const diff = (now.getTime() - datetime.getTime()) / 1000
+
+    if (diff < 60) {
+      el.textContent = "just now"
+    } else if (diff < 3600) {
+      const minutes = Math.floor(diff / 60)
+      el.textContent = `${minutes} minute${minutes > 1 ? "s" : ""} ago`
+    } else if (diff < 86400) {
+      const hours = Math.floor(diff / 3600)
+      el.textContent = `${hours} hour${hours > 1 ? "s" : ""} ago`
+    } else {
+      const dateStr = datetime.toLocaleDateString()
+      el.textContent = dateStr
+    }
+  })
+}
 export const setupBlogComment = () => {
   const commentStore: CommentStore = JSON.parse(
     localStorage.getItem(COMMENT_STORE_KEY) || "[]"
@@ -87,6 +147,7 @@ export const setupBlogComment = () => {
     const commentList = document.getElementById("comment-list")
     if (!commentList) return
     compareCommentsToStore(commentList, commentStore)
+    updateTimestamps()
   }
 
   setupCommentList()
