@@ -7,3 +7,4 @@ node_modules
 print
 yarn-error.log
 dist
+_src/ts/*.js
