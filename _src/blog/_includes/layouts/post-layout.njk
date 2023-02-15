@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="web-font">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ renderData.title or title or metadata.title }}</title>
+    <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}" />
+  </head>
+
+  <body class="Blog">
+    <header class="Blog__Header">
+      <h1 class="Blog__Title">
+        <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+      </h1>
+    </header>
+
+    <main {% if templateClass %} class="{{ templateClass }}" {% endif %}>{{ content | safe }}</main>
+    <aside>
+      <div class="Blog__Form">
+        <ul id="comment-list"></ul>
+        <div class="contain-form is-visible">
+          <p>Leave a comment</p>
+          <div class="notify-error">
+            <p>There was an error. It's me, not you. You could try again later? Or try another method? Email? Smoke signals? Tell me what went wrong!</p>
+            <p id="error-message"></p>
+          </div>
+          <form name="{% formName %}" method="POST" netlify-honeypot="city" netlify="netlify" action="/accept">
+            <input type="hidden" name="form-name" value="{% formName %}" />
+            <fieldset>
+              <label for="message">message<textarea name="message" id="message" class="h15rem pad-top-05rem"></textarea></label>
+              <div class="notify-invalid">please enter a substantive message with no link or website address</div>
+            </fieldset>
+            <fieldset>
+              <label for="name">your name<input name="name" id="name" class="h2rem" /></label>
+              <div class="notify-invalid">please enter your name</div>
+            </fieldset>
+            <fieldset>
+              <label for="email">email<input type="email" name="email" id="email" class="h2rem" /></label>
+              <div class="notify-invalid">please enter an email</div>
+            </fieldset>
+            <fieldset class="hide">
+              <!-- spam prevention: this should remain empty -->
+              <label for="city">city</label><input name="city" id="city" />
+            </fieldset>
+            <fieldset>
+              <button>Send</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="notify-success">
+          <p>Comment successfully sent, and it awaits moderation.</p>
+        </div>
+      </div>
+    </aside>
+
+    {% set previousPost = collections.posts | getPreviousCollectionItem %} {% set nextPost = collections.posts | getNextCollectionItem %}
+    <footer>
+      <nav class="Blog__Nav">
+        <ul>
+          <li>
+            {% if previousPost %}
+            <a href="{{ previousPost.url }}"><span class="arrow">←</span> {{ previousPost.data.title }}</a>
+            {% endif %}
+          </li>
+          <li>
+            <a href="{{ '/' | url }}"> Home <span class="arrow">↑</span></a>
+          </li>
+          <li>
+            {% if nextPost %}
+            <a href="{{ nextPost.url }}">{{ nextPost.data.title }} <span class="arrow">→</span></a>
+            {% endif %}
+          </li>
+        </ul>
+      </nav>
+    </footer>
+    <script src="/js/post.js"></script>
+  </body>
+</html>

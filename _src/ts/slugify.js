@@ -1,27 +1,2 @@
-"use strict";
-var asciiMap = {
-    Ä: "A",
-    Å: "A",
-    Ö: "O",
-    ä: "a",
-    å: "a",
-    ö: "o",
-};
-var stripLeadingDashes = function (str) {
-    return str.startsWith("-") ? stripLeadingDashes(str.substring(1)) : str;
-};
-var toAscii = function (x) { return asciiMap[x] || x; };
-var slugify = function (title) {
-    var slug = title
-        .trim()
-        .replace(/[^A-Za-z0-9\[\] ]/g, toAscii)
-        .replace(/[^\w\s-]/g, "")
-        .replace(/[_\s\/]+/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-*/g, "")
-        .replace(/-*$/g, "")
-        .toLowerCase();
-    console.log({ title: title, slug: slug });
-    return slug;
-};
-module.exports = slugify;
+(()=>{"use strict";var r={395:r=>{var e={Ä:"A",Å:"A",Ö:"O",ä:"a",å:"a",ö:"o"},t=function(r){return e[r]||r};r.exports=function(r){return r.trim().replace(/[^A-Za-z0-9\[\] ]/g,t).replace(/[^\w\s-]/g,"").replace(/[_\s\/]+/g,"-").replace(/-+/g,"-").replace(/^-*/g,"").replace(/-*$/g,"").toLowerCase()}}},e={};!function t(a){var o=e[a];if(void 0!==o)return o.exports;var p=e[a]={exports:{}};return r[a](p,p.exports,t),p.exports}(395)})();
+//# sourceMappingURL=slugify.js.map

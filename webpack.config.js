@@ -5,11 +5,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: "production",
   entry: {
-    "./js/resume": "./_src/ts/resume.ts",
-    "./js/home": "./_src/ts/home.ts"
+    "./_src/ts/slugify": "./_src/ts/slugify.ts",
+    "./dist/blog/js/post": "./_src/ts/post.ts",
+    "./dist/js/home": "./_src/ts/home.ts",
+    "./dist/js/post": "./_src/ts/post.ts",
+    "./dist/js/resume": "./_src/ts/resume.ts",
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "/"),
     filename: "[name].js"
   },
   module: {
