@@ -1,86 +1,92 @@
-const pluginImage = require("@11ty/eleventy-img");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginImage = require("@11ty/eleventy-img")
+const pluginRss = require("@11ty/eleventy-plugin-rss")
+const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
 
-const { DateTime } = require("luxon");
+const { DateTime } = require("luxon")
 
-const slugify =  require( "../ts/slugify" );
+const slugify = require("../ts/slugify")
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPlugin(pluginRss)
+  eleventyConfig.addPlugin(pluginSyntaxHighlight)
 
-  eleventyConfig.amendLibrary("md", mdLib => mdLib.enable("code"));
+  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.enable("code"))
 
-  eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
+  eleventyConfig.addLayoutAlias("post", "layouts/post.njk")
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-MM-dd");
-  });
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-MM-dd")
+  })
 
   // This extracts the first paragraph of 'content' and returns it
   eleventyConfig.addFilter("teaser", (content) => {
-    if (!content) return;
+    if (!content) return
 
-    const paragraphRegex = /^\<p>.*\<\/p\>/m;
-    const firstParagraph = content.match(paragraphRegex);
+    const paragraphRegex = /^\<p>.*\<\/p\>/m
+    const firstParagraph = content.match(paragraphRegex)
 
-    if (firstParagraph === null) return content;
-    return firstParagraph[0];
-  });
+    if (firstParagraph === null) return content
+    return firstParagraph[0]
+  })
 
   // The normal slug filter does not completely remove url-unsafe characters, so use this:
-  eleventyConfig.addFilter("slugify", (input) =>
-    slugify(input)
-  );
+  eleventyConfig.addFilter("slugify", (input) => slugify(input))
+
+  eleventyConfig.addShortcode("formName", function () {
+    const formName = `${this.page.url}`
+      .replace(/\//g, "-")
+      .replace(/^-/, "")
+      .replace(/-$/, "")
+    return formName
+  })
 
   // This is for post urls of the form ./posts/<year>/<month>/<date>
-  eleventyConfig.addFilter("year", (date) => new Date(date).getFullYear());
-  eleventyConfig.addFilter("month", (date) => new Date(date).getMonth() + 1);
-  eleventyConfig.addFilter("day", (date) => new Date(date).getDate());
+  eleventyConfig.addFilter("year", (date) => new Date(date).getFullYear())
+  eleventyConfig.addFilter("month", (date) => new Date(date).getMonth() + 1)
+  eleventyConfig.addFilter("day", (date) => new Date(date).getDate())
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
     if (n < 0) {
-      return array.slice(n);
+      return array.slice(n)
     }
 
-    return array.slice(0, n);
-  });
+    return array.slice(0, n)
+  })
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toFormat("yyyy.MM.dd");
-  });
+    return DateTime.fromJSDate(dateObj).toFormat("yyyy.MM.dd")
+  })
 
   // only content in the `posts/` directory
   eleventyConfig.addCollection("posts", (collection) =>
     collection.getFilteredByGlob("./posts/*").sort((a, b) => a.date - b.date)
-  );
+  )
 
-  eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
+  eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"))
 
   /* Markdown Plugins */
-  let markdownIt = require("markdown-it");
-  let markdownItAnchor = require("markdown-it-anchor");
+  let markdownIt = require("markdown-it")
+  let markdownItAnchor = require("markdown-it-anchor")
   let options = {
     html: true,
     breaks: true,
     linkify: true,
-  };
+  }
   let opts = {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#",
     tabIndex: false,
-  };
+  }
 
   eleventyConfig.setLibrary(
     "md",
     markdownIt(options).use(markdownItAnchor, opts)
-  );
+  )
 
-  eleventyConfig.addPassthroughCopy("img");
+  eleventyConfig.addPassthroughCopy("img")
 
   return {
     templateFormats: ["md", "njk", "html", "liquid"],
@@ -101,5 +107,5 @@ module.exports = function (eleventyConfig) {
       data: "_data",
       output: "../../dist/blog/",
     },
-  };
-};
+  }
+}

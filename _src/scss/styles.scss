@@ -159,12 +159,12 @@ html {
         li {
           margin-bottom: 0.25rem;
 
-          & > ul {
+          &>ul {
             margin-top: 0.5rem;
           }
         }
 
-        & > ul {
+        &>ul {
           list-style-type: disc;
 
           & ul {
@@ -179,7 +179,40 @@ html {
     }
   }
 
-  &__Date {
+  &__Form {
+    max-width: $site-max-width;
+
+    #comment-list {
+      list-style-type: none;
+      padding: 0;
+
+      .comment {
+        padding: 1rem;
+        background-color: #f2f2f2;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+
+        &__header {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+        }
+
+        &__author {
+          font-weight: bold;
+          margin: 0 1rem 0 0.5rem;
+        }
+
+        &__date {
+          color: gray;
+          margin-bottom: 0.5rem;
+        }
+
+        &__text {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
   }
 
   &__Postlist {
@@ -213,9 +246,80 @@ html {
           margin-right: 0.5rem;
         }
       }
+    }
+  }
 
-      &--active {
-      }
+  form {
+
+    input,
+    textarea {
+      display: block;
+      border: solid gray 1px;
+      border-radius: 0.5rem;
+      padding-left: 0.5rem;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #6a5151;
+      min-height: 2rem;
+      max-width: 30rem;
+      min-width: 15rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      width: 50rem;
+      max-width: 50rem;
+      height: 7rem;
+    }
+  }
+
+  fieldset {
+    border: none;
+    margin: 0 0 1rem 0;
+    padding: 0;
+
+    &.hide {
+      display: none;
+    }
+  }
+
+  .contain-form {
+    display: none;
+
+    &.is-visible {
+      display: inherit;
+    }
+
+    &.is-success {
+      display: none;
+    }
+  }
+
+  .notify-invalid {
+    display: none;
+
+    &.is-invalid {
+      display: block;
+      color: red;
+    }
+  }
+
+  .notify-success {
+    display: none;
+
+    &.is-success {
+      display: block;
+    }
+  }
+
+  .notify-error {
+    display: none;
+
+    &.is-error {
+      display: block;
+      color: red;
     }
   }
 
@@ -246,9 +350,9 @@ html {
     margin-top: 2rem;
   }
 
-  & > ul,
-  & > p,
-  & > h3 {
+  &>ul,
+  &>p,
+  &>h3 {
     margin-left: 1rem;
   }
 
@@ -290,9 +394,6 @@ html {
 .Blog {
   line-height: 1.5rem;
 
-  &__Header {
-  }
-
   &__Nav {
     list-style-type: none;
   }
@@ -308,6 +409,7 @@ html {
   &__Article,
   article {
     margin-bottom: 1rem;
+
     img {
       margin: 0;
       margin-right: 1rem;
@@ -329,12 +431,12 @@ html {
     li {
       margin-bottom: 0;
 
-      & > ul {
+      &>ul {
         margin-top: 1rem;
       }
     }
 
-    & > ul {
+    &>ul {
       list-style-type: disc;
 
       & ul {
@@ -355,7 +457,7 @@ html {
   footer &__Nav {
     width: $site-max-width;
 
-    & > ul {
+    &>ul {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -412,7 +514,7 @@ ul.comma-separated-list {
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  & > li {
+  &>li {
     white-space: nowrap;
     margin: 0;
     margin-right: 0.25rem;
@@ -430,7 +532,7 @@ ul.comma-separated-list {
 ul.semicolon-separated-list {
   display: inline;
 
-  & > li {
+  &>li {
     display: inline;
 
     &:after {
@@ -457,11 +559,11 @@ ul.semicolon-separated-list {
   &.is-collapsed {
     max-height: 0;
 
-    & + .show-instructions-button {
+    &+.show-instructions-button {
       display: inline-block;
     }
 
-    & ~ h1 {
+    &~h1 {
       vertical-align: text-bottom;
     }
   }
