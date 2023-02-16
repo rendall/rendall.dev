@@ -177,32 +177,6 @@ html {
         }
       }
     }
-
-    .comment-list {
-      list-style-type: none;
-      padding: 0;
-
-      .comment {
-        padding: 1rem;
-        background-color: #f2f2f2;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-
-        &__author {
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-        }
-
-        &__date {
-          color: gray;
-          margin-bottom: 0.5rem;
-        }
-
-        &__text {
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
   }
 
   &__Form {
@@ -314,71 +288,6 @@ html {
       max-width: 50rem;
       height: 7rem;
     }
-  }
-
-  fieldset {
-    border: none;
-    margin: 0 0 1rem 0;
-    padding: 0;
-
-    &.hide {
-      display: none;
-    }
-  }
-
-  .contain-form {
-    display: none;
-
-    &.is-visible {
-      display: inherit;
-    }
-
-    &.is-success {
-      display: none;
-    }
-  }
-
-  .notify-invalid {
-    display: none;
-
-    &.is-invalid {
-      display: block;
-      color: red;
-    }
-  }
-
-  .notify-success {
-    display: none;
-
-    &.is-success {
-      display: block;
-    }
-  }
-
-  .notify-error {
-    display: none;
-
-    &.is-error {
-      display: block;
-      color: red;
-    }
-  }
-
-  form input,
-  textarea {
-    display: block;
-    border: solid gray 1px;
-    border-radius: 0.5rem;
-    padding-left: 0.5rem;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #6a5151;
-    min-height: 2rem;
-    max-width: 30rem;
-    min-width: 15rem;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   fieldset {
