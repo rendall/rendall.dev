@@ -76,13 +76,9 @@ module.exports = function (eleventyConfig) {
   })
 
   // only content in the `posts/` directory
-  eleventyConfig.addCollection("posts", (collection) => {
-    const posts = collection
-      .getFilteredByGlob("./posts/*")
-      .sort((a, b) => a.date - b.date)
-    posts.forEach((post) => console.log({ comments: post.data.comments }))
-    return posts
-  })
+  eleventyConfig.addCollection("posts", (collection) =>
+    collection.getFilteredByGlob("./posts/*").sort((a, b) => a.date - b.date)
+  )
 
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"))
 
