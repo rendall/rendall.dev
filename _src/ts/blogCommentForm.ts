@@ -2,8 +2,9 @@
 import { setupCommentForm } from "./commentForm"
 
 type Comment = {
-  username: string
+  author: string
   comment: string
+  post: string
   timestamp: number
 }
 
@@ -39,7 +40,7 @@ const addCommentToList = (
   const newComment = document.createElement("li")
   newComment.classList.add("comment")
 
-  // Create a header section for the comment, including the username and timestamp
+  // Create a header section for the comment, including the author and timestamp
   const header = document.createElement("header")
   header.classList.add("comment__header")
   const authorEl = document.createElement("p")
@@ -65,12 +66,13 @@ const addCommentToList = (
 }
 
 const addCommentToLocalStore = (
-  username: string,
+  author: string,
   comment: string,
+  post: string,
   commentStore: CommentStore
 ) => {
   const timestamp = new Date().getTime()
-  const newComment: Comment = { username, comment, timestamp }
+  const newComment: Comment = { author, comment, post, timestamp }
   const newStore: CommentStore = [...commentStore, newComment]
   localStorage.setItem(COMMENT_STORE_KEY, JSON.stringify(newStore))
 }
@@ -84,16 +86,18 @@ const overwriteCommentStore = (commentStore: CommentStore) =>
 /** Display comments that are in the local store but are not in the updated, static comment list. Return those comments */
 const refreshLocalCommentList = (
   commentList: HTMLUListElement,
-  commentStore: CommentStore
+  postComments: CommentStore
 ) => {
-  const lastUpdatedRaw = commentList.dataset.lastUpdated ?? "0"
+  const lastUpdatedRaw = commentList.dataset.lastupdated ?? "0"
   const lastUpdated = parseInt(lastUpdatedRaw)
-  const unaddressedComments = commentStore.filter(
-    (c: Comment) => c.timestamp > lastUpdated
+
+  const unaddressedComments = postComments.filter(
+    (c) => c.timestamp > lastUpdated
   )
-  unaddressedComments.forEach((c: any) =>
-    addCommentToList(c.username, c.comment, c.timestamp)
+  unaddressedComments.forEach((c: Comment) =>
+    addCommentToList(c.author, c.comment, c.timestamp)
   )
+
   return unaddressedComments
 }
 
@@ -103,25 +107,27 @@ export const setupBlogComment = () => {
     localStorage.getItem(COMMENT_STORE_KEY) || "[]"
   )
 
-  console.log({ commentStore })
   const onSubmitSuccess = (
     fields: (HTMLInputElement | HTMLTextAreaElement)[]
   ) => {
-    const usernameField = fields.find((f) => f.name === "name")
+    const authorField = fields.find((f) => f.name === "name")
     const commentField = fields.find((f) => f.name === "message")
-    if (!usernameField || !commentField) return
+    const formNameField = fields.find((f) => f.name === "form-name")
+    if (!authorField || !commentField || !formNameField) return
 
     addCommentToList(
-      usernameField.value,
+      authorField.value,
       commentField.value,
       new Date().getTime()
     )
+
     addCommentToLocalStore(
-      usernameField.value,
+      authorField.value,
       commentField.value,
+      formNameField.value,
       commentStore
     )
-    usernameField.value = ""
+    authorField.value = ""
     commentField.value = ""
   }
 
@@ -130,10 +136,18 @@ export const setupBlogComment = () => {
       "comment-list"
     ) as HTMLUListElement
     if (!commentList) return
-    const commentsInList = refreshLocalCommentList(commentList, commentStore)
-    overwriteCommentStore(commentsInList)
+
+    const post = commentList.getAttribute("name")
+
+    const postComments = commentStore.filter((c) => c.post === post)
+    const otherComments = commentStore.filter((c) => c.post !== post)
+    const remainingComments = refreshLocalCommentList(commentList, postComments)
+
+    console.log({ post, postComments, otherComments })
+
+    overwriteCommentStore([...otherComments, ...remainingComments])
   }
 
   setupCommentList()
-  setupCommentForm(onSubmitSuccess)
+  setupCommentForm(onSubmitSuccess, (_, fields) => onSubmitSuccess(fields))
 }
