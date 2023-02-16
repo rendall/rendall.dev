@@ -43,22 +43,28 @@ const addCommentToList = (
   // Create a header section for the comment, including the author and timestamp
   const header = document.createElement("header")
   header.classList.add("comment__header")
+  header.classList.add("comment__header--awaiting-moderation")
   const authorEl = document.createElement("p")
   authorEl.classList.add("comment__author")
   const authorText = document.createTextNode(author)
   authorEl.appendChild(authorText)
+  const awaitingParagraph = document.createElement("p")
+  awaitingParagraph.classList.add("comment__notice")
+  awaitingParagraph.innerText = "Awaiting moderation"
   const timestampEl = document.createElement("time")
   timestampEl.classList.add("comment__date")
   timestampEl.setAttribute("datetime", `${datetime}`)
   const timestampText = document.createTextNode(
-    new Date(datetime).toLocaleDateString()
+    new Date(datetime).toLocaleString()
   )
   timestampEl.appendChild(timestampText)
   header.appendChild(authorEl)
+  header.appendChild(awaitingParagraph)
   header.appendChild(timestampEl)
 
   // Add the paragraphs and header to the new list item, then add it to the comment list
   newComment.appendChild(header)
+
   paragraphs.forEach((paragraph) => {
     newComment.appendChild(paragraph)
   })
@@ -88,7 +94,7 @@ const refreshLocalCommentList = (
   commentList: HTMLUListElement,
   postComments: CommentStore
 ) => {
-  const lastUpdatedRaw = commentList.dataset.lastupdated ?? "0"
+  const lastUpdatedRaw = commentList.dataset.lastupdate ?? "0"
   const lastUpdated = parseInt(lastUpdatedRaw)
 
   const unaddressedComments = postComments.filter(
@@ -142,8 +148,6 @@ export const setupBlogComment = () => {
     const postComments = commentStore.filter((c) => c.post === post)
     const otherComments = commentStore.filter((c) => c.post !== post)
     const remainingComments = refreshLocalCommentList(commentList, postComments)
-
-    console.log({ post, postComments, otherComments })
 
     overwriteCommentStore([...otherComments, ...remainingComments])
   }

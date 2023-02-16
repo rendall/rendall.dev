@@ -40,10 +40,26 @@ module.exports = function (eleventyConfig) {
     return formName
   })
 
+  eleventyConfig.addFilter("formatText", (text) =>
+    text
+      .trim()
+      .replace(/\n+/g, "\n")
+      .split("\n")
+      .map((paragraph) => '<p class="comment__text">' + paragraph + "</p>")
+      .join("")
+  )
+
   // This is for post urls of the form ./posts/<year>/<month>/<date>
   eleventyConfig.addFilter("year", (date) => new Date(date).getFullYear())
   eleventyConfig.addFilter("month", (date) => new Date(date).getMonth() + 1)
   eleventyConfig.addFilter("day", (date) => new Date(date).getDate())
+
+  eleventyConfig.addFilter("getTime", (dateString) =>
+    new Date(dateString).getTime()
+  )
+  eleventyConfig.addFilter("toLocaleString", (dateString) =>
+    new Date(dateString).toLocaleString()
+  )
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter("head", (array, n) => {
