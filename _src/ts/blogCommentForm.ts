@@ -1,16 +1,22 @@
+/** Give the illusion that the Netlify Form is a commenting system! */
 import { setupCommentForm } from "./commentForm"
 
 type Comment = {
   username: string
   comment: string
-  timestamp: Number
+  timestamp: number
 }
 
 type CommentStore = Comment[]
 
 const COMMENT_STORE_KEY = "blog_comments"
 
-const addCommentToList = (username: string, comment: string) => {
+/** Comment added only to local view and not to the server */
+const addCommentToList = (
+  author: string,
+  comment: string,
+  datetime: number
+) => {
   const commentList = document.getElementById("comment-list")
   if (!commentList) {
     console.error("Comment list element not found")
@@ -23,7 +29,6 @@ const addCommentToList = (username: string, comment: string) => {
     .split("\n")
     .map((paragraph) => {
       const paragraphEl = document.createElement("p")
-      paragraphEl.classList.add("comment-paragraph")
       paragraphEl.classList.add("comment__text")
       const paragraphText = document.createTextNode(paragraph.trim())
       paragraphEl.appendChild(paragraphText)
@@ -36,19 +41,19 @@ const addCommentToList = (username: string, comment: string) => {
 
   // Create a header section for the comment, including the username and timestamp
   const header = document.createElement("header")
-  header.classList.add("comment-header")
-  const usernameEl = document.createElement("p")
-  usernameEl.classList.add("username")
-  usernameEl.classList.add("comment__author")
-  const usernameText = document.createTextNode(username)
-  usernameEl.appendChild(usernameText)
+  header.classList.add("comment__header")
+  const authorEl = document.createElement("p")
+  authorEl.classList.add("comment__author")
+  const authorText = document.createTextNode(author)
+  authorEl.appendChild(authorText)
   const timestampEl = document.createElement("time")
-  timestampEl.classList.add("timestamp")
   timestampEl.classList.add("comment__date")
-  timestampEl.setAttribute("datetime", new Date().toISOString())
-  const timestampText = document.createTextNode("just now")
+  timestampEl.setAttribute("datetime", `${datetime}`)
+  const timestampText = document.createTextNode(
+    new Date(datetime).toLocaleDateString()
+  )
   timestampEl.appendChild(timestampText)
-  header.appendChild(usernameEl)
+  header.appendChild(authorEl)
   header.appendChild(timestampEl)
 
   // Add the paragraphs and header to the new list item, then add it to the comment list
@@ -59,77 +64,46 @@ const addCommentToList = (username: string, comment: string) => {
   commentList.appendChild(newComment)
 }
 
-const addCommentToStore = (
+const addCommentToLocalStore = (
   username: string,
   comment: string,
   commentStore: CommentStore
 ) => {
   const timestamp = new Date().getTime()
-  const newComment = { username, comment, timestamp }
-  commentStore.push(newComment)
-  localStorage.setItem(COMMENT_STORE_KEY, JSON.stringify(commentStore))
+  const newComment: Comment = { username, comment, timestamp }
+  const newStore: CommentStore = [...commentStore, newComment]
+  localStorage.setItem(COMMENT_STORE_KEY, JSON.stringify(newStore))
 }
 
-const removeCommentFromStore = (
-  username: string,
-  comment: string,
+/** Replace the local store */
+const overwriteCommentStore = (commentStore: CommentStore) =>
+  commentStore && commentStore?.length > 0
+    ? localStorage.setItem(COMMENT_STORE_KEY, JSON.stringify(commentStore))
+    : localStorage.removeItem(COMMENT_STORE_KEY)
+
+/** Display comments that are in the local store but are not in the updated, static comment list. Return those comments */
+const refreshLocalCommentList = (
+  commentList: HTMLUListElement,
   commentStore: CommentStore
 ) => {
-  const matchingComment = commentStore.find(
-    (c: any) => c.username === username && c.comment === comment
+  const lastUpdatedRaw = commentList.dataset.lastUpdated ?? "0"
+  const lastUpdated = parseInt(lastUpdatedRaw)
+  const unaddressedComments = commentStore.filter(
+    (c: Comment) => c.timestamp > lastUpdated
   )
-  if (matchingComment) {
-    commentStore.splice(commentStore.indexOf(matchingComment), 1)
-    localStorage.setItem(COMMENT_STORE_KEY, JSON.stringify(commentStore))
-  }
+  unaddressedComments.forEach((c: any) =>
+    addCommentToList(c.username, c.comment, c.timestamp)
+  )
+  return unaddressedComments
 }
 
-const compareCommentsToStore = (
-  commentList: HTMLElement,
-  commentStore: CommentStore
-) => {
-  const listItems = Array.from(commentList.getElementsByTagName("li"))
-  listItems.forEach((item: HTMLElement) => {
-    const username = item.getElementsByTagName("strong")[0].innerText
-    const comment = item.lastChild!.textContent!
-    const matchingComment = commentStore.find(
-      (c: any) => c.username === username && c.comment === comment
-    )
-    if (matchingComment) {
-      removeCommentFromStore(username, comment, commentStore)
-    }
-  })
-  commentStore.forEach((c: any) => addCommentToList(c.username, c.comment))
-}
-
-function updateTimestamps() {
-  const now = new Date()
-
-  const timestampEls = document.querySelectorAll(".timestamp")
-  timestampEls.forEach((el) => {
-    const datetimevalue = el.getAttribute("datetime")
-    const datetime = datetimevalue ? new Date(datetimevalue) : now
-    const diff = (now.getTime() - datetime.getTime()) / 1000
-
-    if (diff < 60) {
-      el.textContent = "just now"
-    } else if (diff < 3600) {
-      const minutes = Math.floor(diff / 60)
-      el.textContent = `${minutes} minute${minutes > 1 ? "s" : ""} ago`
-    } else if (diff < 86400) {
-      const hours = Math.floor(diff / 3600)
-      el.textContent = `${hours} hour${hours > 1 ? "s" : ""} ago`
-    } else {
-      const dateStr = datetime.toLocaleDateString()
-      el.textContent = dateStr
-    }
-  })
-}
+/** Adds functionality to Netlify Forms that will display the submission as a comment on the page */
 export const setupBlogComment = () => {
   const commentStore: CommentStore = JSON.parse(
     localStorage.getItem(COMMENT_STORE_KEY) || "[]"
   )
 
+  console.log({ commentStore })
   const onSubmitSuccess = (
     fields: (HTMLInputElement | HTMLTextAreaElement)[]
   ) => {
@@ -137,17 +111,27 @@ export const setupBlogComment = () => {
     const commentField = fields.find((f) => f.name === "message")
     if (!usernameField || !commentField) return
 
-    addCommentToList(usernameField.value, commentField.value)
-    addCommentToStore(usernameField.value, commentField.value, commentStore)
+    addCommentToList(
+      usernameField.value,
+      commentField.value,
+      new Date().getTime()
+    )
+    addCommentToLocalStore(
+      usernameField.value,
+      commentField.value,
+      commentStore
+    )
     usernameField.value = ""
     commentField.value = ""
   }
 
   const setupCommentList = () => {
-    const commentList = document.getElementById("comment-list")
+    const commentList = document.getElementById(
+      "comment-list"
+    ) as HTMLUListElement
     if (!commentList) return
-    compareCommentsToStore(commentList, commentStore)
-    updateTimestamps()
+    const commentsInList = refreshLocalCommentList(commentList, commentStore)
+    overwriteCommentStore(commentsInList)
   }
 
   setupCommentList()

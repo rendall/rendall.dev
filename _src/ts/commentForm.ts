@@ -1,5 +1,11 @@
 export const setupCommentForm = (
-  onSubmitSuccess?: (fields: (HTMLInputElement | HTMLTextAreaElement)[]) => void
+  onSubmitSuccess?: (
+    fields: (HTMLInputElement | HTMLTextAreaElement)[]
+  ) => void,
+  onSubmitError?: (
+    reason: string,
+    fields: (HTMLInputElement | HTMLTextAreaElement)[]
+  ) => void
 ) => {
   const hasCommentForm = document.querySelector("form[name]") !== null
   if (!hasCommentForm) {
@@ -125,7 +131,10 @@ export const setupCommentForm = (
           showSuccess()
           if (onSubmitSuccess) onSubmitSuccess(fields)
         })
-        .catch((error: string) => showError(error))
+        .catch((error: string) => {
+          showError(error)
+          if (onSubmitError) onSubmitError(error, fields)
+        })
     else showInvalid(invalidFields)
   }
 
