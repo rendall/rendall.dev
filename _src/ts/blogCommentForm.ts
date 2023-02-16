@@ -88,7 +88,7 @@ const refreshLocalCommentList = (
   commentList: HTMLUListElement,
   postComments: CommentStore
 ) => {
-  const lastUpdatedRaw = commentList.dataset.lastupdated ?? "0"
+  const lastUpdatedRaw = commentList.dataset.lastupdate ?? "0"
   const lastUpdated = parseInt(lastUpdatedRaw)
 
   const unaddressedComments = postComments.filter(
@@ -142,8 +142,6 @@ export const setupBlogComment = () => {
     const postComments = commentStore.filter((c) => c.post === post)
     const otherComments = commentStore.filter((c) => c.post !== post)
     const remainingComments = refreshLocalCommentList(commentList, postComments)
-
-    console.log({ post, postComments, otherComments })
 
     overwriteCommentStore([...otherComments, ...remainingComments])
   }
