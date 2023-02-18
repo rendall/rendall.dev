@@ -57,19 +57,20 @@ $a-visited: lighten($color-text, 20%);
   font-display: fallback;
 }
 
+.normal-text {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  line-height: 2;
+  color: $color-text;
+}
+
 html {
   background-color: $color-background;
 }
 
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: $color-text;
   margin: 0;
   padding: 0;
-}
-
-body {
-  margin: 0.25rem;
 }
 
 ul {
@@ -83,16 +84,6 @@ a {
 
   &:visited {
     color: $a-visited;
-  }
-}
-
-@media (min-width: 600px) {
-  body {
-    margin: 1rem;
-  }
-
-  ul {
-    margin-left: 1rem;
   }
 }
 

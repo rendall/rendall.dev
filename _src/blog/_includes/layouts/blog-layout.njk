@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="web-font">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,14 +8,27 @@
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}" />
   </head>
 
-  <body class="Blog">
-    <header class="Blog__Header">
-      <h1 class="Blog__Title">
-        <a href="{{ '/' | url }}">{{ metadata.title }}</a>
-      </h1>
+  <body class="Site Blog grid-layout normal-text">
+    <header class="Site__Header Blog__Header grid-header banner">
+      <img src="/images/freddie-marriage-vSchPA-YA_A-unsplash.jpg" alt="" />
     </header>
+    <aside class="Site__Side grid-nav">
+      <header>
+        <span class="image avatar"><img src="/images/avatar.jpg" alt="" /></span>
+        <h1><a href="/">Rendall Koski</a></h1>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="https://rendall.dev/#about">About</a></li>
+          <li><a href="/" class="active">Blog</a></li>
+          <li><a href="https://rendall.dev/resume">CV / Resume</a></li>
+          <li><a href="https://rendall.dev/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <footer></footer>
+    </aside>
 
-    <main>{{ content | safe }}</main>
+    <main class="Site__Main Blog__Main grid-main">{{ content | safe }}</main>
 
     <footer></footer>
   </body>
