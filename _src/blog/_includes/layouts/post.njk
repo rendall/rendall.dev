@@ -3,7 +3,7 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="web-font">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,78 +12,92 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}" />
   </head>
 
-  <body class="Blog">
-    <header class="Blog__Header">
-      <h1 class="Blog__Title">
-        <a href="{{ '/' | url }}">{{ metadata.title }}</a>
-      </h1>
+  <body class="Site Blog grid-layout normal-text">
+    <header class="Site__Header Blog__Header grid-header banner">
+      <img src="/images/freddie-marriage-vSchPA-YA_A-unsplash.jpg" alt="" />
     </header>
 
-    <main class="Blog__Post">
-      <header class="Post__Header">
-        <h2 class="Post__Title">{{ title }}</h2>
-        {%- if subtitle -%}
-        <h2 class="Post__SubTitle">{{ subtitle }}</h2>
-        {%- endif -%}
-        <time class="Post__Date" datetime="{{ date | readableDate }}">{{ date | readableDate }}</time>
-        {% for tag in tags %} {%- if tag != "post" -%} {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-        <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
-        {%- endif -%} {% endfor %}
+    <aside class="Site__Side grid-nav">
+      <header>
+        <span class="image avatar"><img src="/images/avatar.jpg" alt="" /></span>
+        <h1><a href="/">Rendall Koski</a></h1>
       </header>
-
-      <article class="Post__Article">{{ content | safe }}</article>
-    </main>
-    <aside>
-      <div class="Blog__Form">
-        <ul id="comment-list" name="{% formName %}" data-lastupdate="{{ lastupdate | getTime}}">
-          {% for comment in comments %}
-          <li class="comment">
-            <header class="comment__header">
-              <p class="comment__author">{{comment.author}}</p>
-              <time class="comment__date" datetime="{{comment.time | getTime}}">{{comment.time | toLocaleString }}</time>
-            </header>
-            {{comment.text | formatText | safe}}
-          </li>
-          {% endfor %}
+      <nav>
+        <ul>
+          <li><a href="https://rendall.dev/#about">About</a></li>
+          <li><a href="/" class="active">Blog</a></li>
+          <li><a href="https://rendall.dev/resume">CV / Resume</a></li>
+          <li><a href="https://rendall.dev/#contact">Contact</a></li>
         </ul>
-        <div class="contain-form is-visible">
-          <p>Leave a comment</p>
-          <div class="notify-error">
-            <p>There was an error. It's me, not you. You could try again later? Or try another method? Email? Smoke signals? Tell me what went wrong!</p>
-            <p id="error-message"></p>
-          </div>
-          <form name="{% formName %}" method="POST" netlify-honeypot="city" netlify="netlify" action="/accept">
-            <input type="hidden" name="form-name" value="{% formName %}" />
-            <fieldset>
-              <label for="message">message<textarea name="message" id="message" class="h15rem pad-top-05rem"></textarea></label>
-              <div class="notify-invalid">please enter a substantive message with no link or website address</div>
-            </fieldset>
-            <fieldset>
-              <label for="name">your name<input name="name" id="name" class="h2rem" /></label>
-              <div class="notify-invalid">please enter your name</div>
-            </fieldset>
-            <fieldset>
-              <label for="email">email<input type="email" name="email" id="email" class="h2rem" /></label>
-              <div class="notify-invalid">please enter an email</div>
-            </fieldset>
-            <fieldset class="hide">
-              <!-- spam prevention: this should remain empty -->
-              <label for="city">city</label><input name="city" id="city" />
-            </fieldset>
-            <fieldset>
-              <button>Send</button>
-            </fieldset>
-          </form>
-        </div>
-        <div class="notify-success">
-          <p>Comment successfully sent, and it awaits moderation.</p>
-        </div>
-      </div>
+      </nav>
+      <footer></footer>
     </aside>
 
-    {% set previousPost = collections.posts | getPreviousCollectionItem %} {% set nextPost = collections.posts | getNextCollectionItem %}
-    <footer>
-      <nav class="Blog__Nav">
+    <main class="Site__Main Blog__Main grid-main">
+      <section>
+        <header class="Post__Header">
+          <h2 class="Post__Title">{{ title }}</h2>
+          {%- if subtitle -%}
+          <h2 class="Post__SubTitle">{{ subtitle }}</h2>
+          {%- endif -%}
+          <time class="Post__Date" datetime="{{ date | readableDate }}">{{ date | readableDate }}</time>
+          {% for tag in tags %} {%- if tag != "post" -%} {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+          <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+          {%- endif -%} {% endfor %}
+        </header>
+        <article class="Post__Article">{{ content | safe }}</article>
+      </section>
+
+      <section>
+        <div class="Blog__Form">
+          <ul id="comment-list" name="{% formName %}" data-lastupdate="{{ lastupdate | getTime}}">
+            {% for comment in comments %}
+            <li class="comment">
+              <header class="comment__header">
+                <p class="comment__author">{{comment.author}}</p>
+                <time class="comment__date" datetime="{{comment.time | getTime}}">{{comment.time | toLocaleString }}</time>
+              </header>
+              {{comment.text | formatText | safe}}
+            </li>
+            {% endfor %}
+          </ul>
+          <div class="contain-form is-visible">
+            <p>Leave a comment</p>
+            <div class="notify-error">
+              <p>There was an error. It's me, not you. You could try again later? Or try another method? Email? Smoke signals? Tell me what went wrong!</p>
+              <p id="error-message"></p>
+            </div>
+            <form name="{% formName %}" method="POST" netlify-honeypot="city" netlify="netlify" action="/accept">
+              <input type="hidden" name="form-name" value="{% formName %}" />
+              <fieldset>
+                <label for="message">message<textarea name="message" id="message" class="h15rem pad-top-05rem"></textarea></label>
+                <div class="notify-invalid">please enter a substantive message with no link or website address</div>
+              </fieldset>
+              <fieldset>
+                <label for="name">your name<input name="name" id="name" class="h2rem" /></label>
+                <div class="notify-invalid">please enter your name</div>
+              </fieldset>
+              <fieldset>
+                <label for="email">email<input type="email" name="email" id="email" class="h2rem" /></label>
+                <div class="notify-invalid">please enter an email</div>
+              </fieldset>
+              <fieldset class="hide">
+                <!-- spam prevention: this should remain empty -->
+                <label for="city">city</label><input name="city" id="city" />
+              </fieldset>
+              <fieldset>
+                <button>Send</button>
+              </fieldset>
+            </form>
+          </div>
+          <div class="notify-success">
+            <p>Comment successfully sent, and it awaits moderation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="Blog__Nav">
+        {% set previousPost = collections.posts | getPreviousCollectionItem %} {% set nextPost = collections.posts | getNextCollectionItem %}
         <ul>
           <li>
             {% if previousPost %}
@@ -99,8 +113,9 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
             {% endif %}
           </li>
         </ul>
-      </nav>
-    </footer>
+      </section>
+    </main>
+    <footer class="grid-footer"></footer>
     <script src="/js/post.js"></script>
   </body>
 </html>
