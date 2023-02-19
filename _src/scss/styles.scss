@@ -117,7 +117,7 @@ html {
     nav {
       flex-grow: 1;
 
-      &>ul>li {
+      & > ul > li {
         border-top: solid 1px #6a5151;
       }
 
@@ -134,7 +134,6 @@ html {
           }
 
           a {
-
             &:active,
             &.active {
               background-color: $color-text;
@@ -162,7 +161,6 @@ html {
 
   &__Message,
   &__SocialList {
-
     form input,
     textarea {
       display: block;
@@ -283,12 +281,12 @@ html {
     li {
       margin-bottom: 0;
 
-      &>ul {
+      & > ul {
         margin-top: 1rem;
       }
     }
 
-    &>ul {
+    & > ul {
       list-style-type: disc;
 
       & ul {
@@ -347,12 +345,12 @@ html {
         li {
           margin-bottom: 0.25rem;
 
-          &>ul {
+          & > ul {
             margin-top: 0.5rem;
           }
         }
 
-        &>ul {
+        & > ul {
           list-style-type: disc;
 
           & ul {
@@ -393,7 +391,7 @@ html {
             padding-bottom: 1rem;
           }
 
-          &>* {
+          & > * {
             margin: 0;
             padding: 0;
           }
@@ -456,7 +454,6 @@ html {
   }
 
   form {
-
     input,
     textarea {
       display: block;
@@ -540,7 +537,7 @@ html {
 
 .Resume {
   &__Side {
-    nav>ul ul>li {
+    nav > ul ul > li {
       text-align: right;
     }
 
@@ -574,7 +571,6 @@ html {
         display: inline-block;
         background-color: $color-background;
       }
-
     }
   }
 
@@ -595,9 +591,9 @@ html {
       margin-top: 2rem;
     }
 
-    &>ul,
-    &>p,
-    &>h3 {
+    & > ul,
+    & > p,
+    & > h3 {
       margin-left: 1rem;
     }
 
@@ -666,7 +662,7 @@ ul.comma-separated-list {
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  &>li {
+  & > li {
     white-space: nowrap;
     margin: 0;
     margin-right: 0.25rem;
@@ -684,7 +680,7 @@ ul.comma-separated-list {
 ul.semicolon-separated-list {
   display: inline;
 
-  &>li {
+  & > li {
     display: inline;
 
     &:after {
