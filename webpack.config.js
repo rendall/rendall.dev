@@ -4,8 +4,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
   mode: "production",
   entry: {
+    "./blog/js/blognav": "./_src/ts/blognav.ts",
     "./blog/js/post": "./_src/ts/post.ts",
+    "./js/blognav": "./_src/ts/blognav.ts",
     "./js/home": "./_src/ts/home.ts",
+    "./js/nav": "./_src/ts/nav.ts",
     "./js/post": "./_src/ts/post.ts",
   },
   output: {
