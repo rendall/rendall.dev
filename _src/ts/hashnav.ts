@@ -3,11 +3,11 @@ const updateActive = () => {
   const anchors = document.querySelectorAll(".Site__Side a")
   anchors.forEach((a) => a.classList.remove("active"))
   const hash = window.location.hash
-  if (hash && hash.length > 1) anchors.forEach((a) => {
-    if (a.getAttribute("href") === window.location.hash)
-      a.classList.add("active")
-  })
-  
+  if (hash && hash.length > 1)
+    anchors.forEach((a) => {
+      if (a.getAttribute("href") === window.location.hash)
+        a.classList.add("active")
+    })
 }
 
 // Add 'active' class to the anchor when clicked
