@@ -50,7 +50,10 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
 
       <section>
         <div class="Blog__Form">
-          <ul id="comment-list" name="{% formName %}" data-lastupdate="{{ lastupdate | getTime}}">
+
+          {% if comments %}
+          <h2>Comments:</h2>
+          <ul id="comment-list" class="comment__list" name="{% formName %}" data-lastupdate="{{ lastupdate | getTime}}">
             {% for comment in comments %}
             <li class="comment">
               <header class="comment__header">
@@ -61,6 +64,8 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
             </li>
             {% endfor %}
           </ul>
+          {% endif %}
+
           <div class="contain-form is-visible">
             <p>Leave a comment</p>
             <div class="notify-error">

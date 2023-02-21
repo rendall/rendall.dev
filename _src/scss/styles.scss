@@ -23,7 +23,7 @@ html {
   &.grid-layout {
     display: grid;
     grid-template-columns: $side-nav-width auto;
-    grid-template-rows: auto 1fr 20rem;
+    grid-template-rows: 20rem 1fr 20rem;
     grid-template-areas:
       "nav header"
       "nav main"
@@ -52,7 +52,7 @@ html {
 
     &.banner {
       display: block;
-      height: 19rem;
+      height: 100%;
       border-radius: 0;
 
       img {
@@ -368,7 +368,7 @@ html {
   &__Form {
     max-width: $site-max-width;
 
-    #comment-list {
+    .comment__list {
       list-style-type: none;
       padding: 0;
 
@@ -705,4 +705,67 @@ ul.semicolon-separated-list {
 
 .u-hide {
   display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .Site {
+    &.grid-layout {
+      grid-template-columns: 100%;
+      grid-template-rows: 10rem 1fr 20rem;
+      grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    }
+
+    .grid-nav {
+      display: none;
+    }
+
+    &__Main {
+      section {
+        max-width: unset;
+        margin: 0 1rem;
+      }
+    }
+  }
+
+  .Resume {
+    &__Main {
+      max-width: unset;
+      margin: 0 0.25rem;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .Blog {
+    &__Nav ul {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__Form {
+      h2 {
+        margin: 0;
+      }
+      .comment__list {
+        .comment__header {
+          flex-direction: column;
+        }
+      }
+    }
+
+    form {
+      textarea {
+        width: 100%;
+      }
+    }
+  }
 }
