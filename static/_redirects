@@ -12,3 +12,6 @@ https://staging.rendall.tv/* https://staging.rendall.dev/:splat 301!
 https://www.rendall.tv/* https://www.rendall.dev/:splat 301!
 https://rendall.dev/* https://www.rendall.dev/:splat 301!
 https://rendall.netlify.com/* https://www.rendall.dev/:splat 301!
+
+# "page has moved" fix
+https://blog.rendall.dev/posts/2021/2/5/lazy-sunday-musings/ https://blog.rendall.dev/posts/2021/2/7/lazy-sunday-musings/ 301!
