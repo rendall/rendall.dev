@@ -42,6 +42,18 @@ The command `yarn run start` will create a server at http://localhost:8080 for l
 - Blog posts in `./_src`
 - `_/src/resume.pug` is the single source of truth, [propogate changes manually](#cv)
 
+### Images
+
+To use srcset for any image, put it in the `./static` directory and run the command `node ./build-scripts/optimize-images.js`.
+This will take any image in `./static` (that is not in `./static/icons/` - that directory is excluded) and optimize, resizing them.
+It will output to screen an image tag like this, suitable for adding to the HTML.
+
+```HTML
+<img src="/images/rendall.png" srcset="/images/rendall-360w.png 360w, /images/rendall-480w.png 480w, /images/rendall-800w.png 800w">
+```
+
+Better to do it manually. Adding this to the build process, especially via webpack, is a path to darkness and despair.
+
 ## Deployment
 
 - Commit changes into a git change branch with an arbitrary name
