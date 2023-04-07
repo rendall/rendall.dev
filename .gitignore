@@ -8,3 +8,4 @@ print
 yarn-error.log
 dist
 _src/ts/*.js
+_src/blog/posts/img/
