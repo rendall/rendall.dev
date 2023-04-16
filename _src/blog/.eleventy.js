@@ -27,6 +27,26 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.amendLibrary("md", (mdLib) => mdLib.enable("code"))
 
+  /**
+   * Use this shortcode directly in the .md like this:
+   * {% imageCaption "/img/stephen-leonardi-ljNJn0ommQ8-unsplash.jpg", "Human in an alien mask", "Just a human in disguise", "Photo by Stephen Leonardi on Unsplash", "https://unsplash.com/it/@stephenleo1982?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" %}
+   * It will output the image, credits and caption bundled together in a <FIGURE> tag
+   */
+  eleventyConfig.addShortcode(
+    "imageCaption",
+    (src, alt, caption, credit, href) => {
+      const figStartSnippet = `<figure><img src="${src}" alt="${alt}" />`
+      const figCaption = caption ? `<figcaption>${caption}</figcaption>` : ""
+      const imageCredit =
+        credit && href
+          ? `<a href="${href}" class="image-credit">${credit}</a>`
+          : credit
+          ? `<span class="image-credit">${credit}</span>`
+          : ""
+      return `${figStartSnippet}${figCaption}${imageCredit}</figure>`
+    }
+  )
+
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk")
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
