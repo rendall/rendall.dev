@@ -8,8 +8,8 @@ const glob = require("glob")
 const path = require("path")
 const fs = require("fs-extra")
 
-const inputDir = path.join(__dirname, '../static');
-const outputDir = path.join(__dirname, '../static');
+const inputDir = path.join(__dirname, "../static")
+const outputDir = path.join(__dirname, "../static")
 const excludeDir = "icons"
 
 const optimizeImages = async () => {
@@ -74,7 +74,9 @@ const optimizeImages = async () => {
       }
     }
 
-    console.log("\n" + `<img src="/${file}" srcset="${srcset.join(", ")}">` + "\n")
+    console.log(
+      "\n" + `<img src="/${file}" srcset="${srcset.join(", ")}">` + "\n"
+    )
   }
 }
 
