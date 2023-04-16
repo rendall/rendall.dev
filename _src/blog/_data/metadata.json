@@ -9,6 +9,8 @@
     "url": "https://blog.rendall.dev/feed/feed.xml",
     "id": "https://blog.rendall.tv/"
   },
+  "image": "rendall.png",
+  "alt": "Rendall smiling",
   "author": {
     "name": "Rendall Koski",
     "email": "rendall@gmail.com"
