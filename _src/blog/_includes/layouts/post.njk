@@ -5,19 +5,31 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ renderData.title or title or metadata.title }}</title>
-    <meta property="og:title" content="{{ renderData.title or title or metadata.title }}" />
-    <meta property="og:description" content="{{ description }}" />
-    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
+    <meta charset="utf-8" />
+    {% if description %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="{{ description }}" />
+    {% else %}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="{{ metadata.defaultPostDescription }}" />
+    {% endif %}
+    <meta name="twitter:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}" />
+    <meta name="twitter:image:alt" content="{{ alt or metadata.alt }}" />
+    <meta name="twitter:site" content="@rendall" />
+    <meta name="twitter:creator" content="@rendall" />
+    <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}" />
+    <meta name="twitter:widgets:theme" content="dark" />
+    <meta name="twitter:dnt" content="on" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:description" content="{{ description or metadata.defaultPostDescription }}" />
     <meta property="og:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
-    <meta name="twitter:description" content="{{ description }}">
-    <meta name="twitter:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}">
-    <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
+    <meta property="og:title" content="{{ renderData.title or title or metadata.title }}" />
+    <meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}" />
+    <link rel="canonical" href="/" />
+    <link rel="me" href="https://twitter.com/rendall" />
+    <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
   </head>
 
   <body class="Site Blog grid-layout normal-text">

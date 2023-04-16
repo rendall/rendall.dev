@@ -360,6 +360,16 @@ html {
         margin: 0 0 1rem 0;
       }
 
+      picture.blog-picture {
+        display: inline-block;
+        vertical-align: middle;
+
+        img {
+          vertical-align: top;
+          height: auto;
+        }
+      }
+
       p:has(> img),
       p:has(> picture.blog-picture) {
         position: relative;
@@ -385,6 +395,7 @@ html {
       picture.blog-picture + br + a,
       picture.blog-picture + a {
         font-size: 1rem;
+        display: block;
       }
 
       picture.blog-picture:hover + br + a,

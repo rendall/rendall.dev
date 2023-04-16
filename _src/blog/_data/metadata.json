@@ -9,6 +9,9 @@
     "url": "https://blog.rendall.dev/feed/feed.xml",
     "id": "https://blog.rendall.tv/"
   },
+  "image": "rendall.png",
+  "alt": "Rendall smiling",
+  "defaultPostDescription": "Prepare to have your mind blown by the most incredible blog post you'll ever read. Rendall's writing is a masterclass in the art of essay writing. Don't miss out on this absolute tour-de-force!",
   "author": {
     "name": "Rendall Koski",
     "email": "rendall@gmail.com"
