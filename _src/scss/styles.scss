@@ -287,7 +287,7 @@ html {
     img {
       margin: 0;
       margin-right: 1rem;
-      max-height: 400px;
+      height: auto;
       max-width: 50%;
     }
 
@@ -358,6 +358,40 @@ html {
 
       p {
         margin: 0 0 1rem 0;
+      }
+
+      p:has(> img),
+      p:has(> picture.blog-picture) {
+        position: relative;
+      }
+
+      // :has is not yet widely supported, so this fails gracefully if it is not supported
+      img:has(+ br + a) + br + a,
+      img:has(+ a) + a,
+      picture.blog-picture:has(+ br + a) + br + a,
+      picture.blog-picture:has(+ a) + a {
+        position: absolute;
+        bottom: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        width: 100%;
+        padding-left: 1rem;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      img + br + a,
+      img + a,
+      picture.blog-picture + br + a,
+      picture.blog-picture + a {
+        font-size: 1rem;
+      }
+
+      picture.blog-picture:hover + br + a,
+      picture.blog-picture:hover + a,
+      picture.blog-picture + br + a:hover,
+      picture.blog-picture + a:hover {
+        opacity: 1;
       }
 
       ul {

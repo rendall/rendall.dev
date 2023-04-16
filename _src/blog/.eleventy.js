@@ -1,6 +1,7 @@
 const pluginImage = require("@11ty/eleventy-img")
 const pluginRss = require("@11ty/eleventy-plugin-rss")
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
+const img2picture = require("eleventy-plugin-img2picture")
 
 const { DateTime } = require("luxon")
 
@@ -9,7 +10,21 @@ const slugify = require("../ts/slugify")
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(pluginSyntaxHighlight)
+  eleventyConfig.addPlugin(img2picture, {
+    // Should be same as Eleventy input folder set using `dir.input`.
+    eleventyInputDir: ".",
 
+    // Output folder for optimized images.
+    imagesOutputDir: "../../dist/blog/img/",
+
+    // URL prefix for images src URLS.
+    // It should match with path suffix in `imagesOutputDir`.
+    // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
+    urlPath: "/img/",
+    hoistImgClass: true,
+    pictureClass: "blog-picture",
+    removeAttributes: ["width", "height"],
+  })
   eleventyConfig.amendLibrary("md", (mdLib) => mdLib.enable("code"))
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk")
