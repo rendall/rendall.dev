@@ -12,6 +12,10 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
     <meta property="og:description" content="{{ description }}" />
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
     <meta property="og:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ renderData.title or title or metadata.title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}">
     <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}" />
   </head>
