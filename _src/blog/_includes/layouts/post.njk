@@ -8,7 +8,7 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
     <title>{{ renderData.title or title or metadata.title }}</title>
     <meta charset="utf-8" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:description" content="{{ description or metadata.defaultPostDescription }}" />
     <meta name="twitter:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}" />
     <meta name="twitter:image:alt" content="{{ alt or metadata.alt }}" />
     <meta name="twitter:site" content="@rendall" />
@@ -17,7 +17,7 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
     <meta name="twitter:widgets:theme" content="dark" />
     <meta name="twitter:dnt" content="on" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:description" content="{{ description or metadata.defaultPostDescription }}" />
     <meta property="og:image" content="{{ metadata.url }}/img/{{ image or metadata.image }}" />
     <meta property="og:title" content="{{ renderData.title or title or metadata.title }}" />
     <meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
