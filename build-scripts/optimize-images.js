@@ -1,6 +1,8 @@
-/** Optimize and resize images in ./static
- * Run this manually whenever new images are added.
- * It will resize images, write them into ./static
+/** Optimize and resize images in ./static  Run this manually whenever
+ * new images are added. It will resize images, write them into ./static
+ * 
+ * Optionally include a filename that is already in static in order
+ * to resize that file only.
  */
 
 const sharp = require("sharp")
@@ -8,17 +10,13 @@ const glob = require("glob")
 const path = require("path")
 const fs = require("fs-extra")
 
-const inputDir = path.join(__dirname, "../static")
-const outputDir = path.join(__dirname, "../static")
+const inputDir = path.join(__dirname, "../static/images")
+const outputDir = path.join(__dirname, "../static/images")
 const excludeDir = "icons"
 
 const optimizeImages = async () => {
-  // Find all JPEG and PNG files in the input directory and its subdirectories
-  const files = glob
-    .sync(`**/!(${excludeDir})/**/*.{jpg,jpeg,png}`, {
-      cwd: inputDir,
-    })
-    .filter((filename) => !/-\d{3,4}w\.(jpe?g|png)$/.test(filename))
+  const targetFile = process.argv[2]
+  const files = getFilesToProcess(targetFile)
 
   // Define the desired output widths and quality
   const widths = [360, 480, 800, 1200, 2400, 4800]
@@ -80,6 +78,22 @@ const optimizeImages = async () => {
   }
 }
 
+const getFilesToProcess = (targetFile) => {
+  if (targetFile) {
+    const targetFilePath = path.join(inputDir, targetFile)
+    if (!fs.existsSync(targetFilePath)) {
+      console.error(`Error: File not found - ${targetFilePath}`)
+      process.exit(1)
+    }
+    return [targetFile]
+  } else {
+    return glob
+      .sync(`**/!(${excludeDir})/**/*.{jpg,jpeg,png}`, {
+        cwd: inputDir,
+      })
+      .filter((filename) => !/-\d{3,4}w\.(jpe?g|png)$/.test(filename))
+  }
+}
 /*
 <img src="example.jpg"
      srcset="example-small.jpg 480w,
