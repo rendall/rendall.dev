@@ -15,12 +15,12 @@ module.exports = function (eleventyConfig) {
     eleventyInputDir: ".",
 
     // Output folder for optimized images.
-    imagesOutputDir: "../../dist/blog/img/",
+    imagesOutputDir: "../../dist/blog/images/",
 
     // URL prefix for images src URLS.
     // It should match with path suffix in `imagesOutputDir`.
     // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
-    urlPath: "/img/",
+    urlPath: "/images/",
     hoistImgClass: true,
     pictureClass: "blog-picture",
     removeAttributes: ["width", "height"],
@@ -29,7 +29,7 @@ module.exports = function (eleventyConfig) {
 
   /**
    * Use this shortcode directly in the .md like this:
-   * {% imageCaption "/img/stephen-leonardi-ljNJn0ommQ8-unsplash.jpg", "Human in an alien mask", "Just a human in disguise", "Photo by Stephen Leonardi on Unsplash", "https://unsplash.com/it/@stephenleo1982?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" %}
+   * {% imageCaption "/images/stephen-leonardi-ljNJn0ommQ8-unsplash.jpg", "Human in an alien mask", "Just a human in disguise", "Photo by Stephen Leonardi on Unsplash", "https://unsplash.com/it/@stephenleo1982?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" %}
    * It will output the image, credits and caption bundled together in a <FIGURE> tag
    */
   eleventyConfig.addShortcode(
