@@ -1,6 +1,6 @@
 /** Optimize and resize images in ./static  Run this manually whenever
  * new images are added. It will resize images, write them into ./static
- * 
+ *
  * Optionally include a filename that is already in static in order
  * to resize that file only.
  */
