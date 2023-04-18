@@ -3,7 +3,7 @@
   "url": "https://blog.rendall.dev",
   "homesite": "https://www.rendall.dev",
   "feed": {
-    "subtitle": "Sketches, thoughts, and observations on all the things. A personal notebook.",
+    "subtitle": "Sketches, thoughts, and observations on all the things. A personal notebook, where I explore the vast expanse of my own ignorance. It's like therapy, but with more typos.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "url": "https://blog.rendall.dev/feed/feed.xml",
