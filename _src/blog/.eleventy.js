@@ -137,7 +137,7 @@ module.exports = function (eleventyConfig) {
     markdownIt(options).use(markdownItAnchor, opts)
   )
 
-  eleventyConfig.addPassthroughCopy("img")
+  eleventyConfig.addPassthroughCopy("images")
 
   return {
     templateFormats: ["md", "njk", "html", "liquid"],
