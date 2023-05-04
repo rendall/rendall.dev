@@ -1,11 +1,12 @@
 .env
 .sass-cache
 .vscode/*
+/images
 RAW
+_src/blog/posts/images/*
+_src/ts/*.js
 aspnet_client
+dist
 node_modules
 print
 yarn-error.log
-dist
-_src/ts/*.js
-_src/blog/posts/images/
