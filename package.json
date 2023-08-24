@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/rendall/rendall.github.io#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0",
+    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-img": "^3.1.0",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
@@ -44,13 +44,13 @@
     "prettier": "^2.8.4",
     "sass": "^1.58.0",
     "sharp": "^0.31.3",
-    "stylelint": "^13.9.0",
+    "stylelint": "^15.10.3",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "webpack": "^5.76.0",
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "eleventy-plugin-img2picture": "^4.1.0"
+    "eleventy-plugin-img2picture": "^4.1.1"
   }
 }
