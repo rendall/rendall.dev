@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ renderData.title or title or metadata.title }}</title>
-    <link rel="stylesheet" href="{{ '/css/styles.css' | url }}" />
-    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}" />
-    <meta name="description" content="Sketches, thoughts, and observations on all the things. A personal notebook, where I explore the vast expanse of my own ignorance. It's like therapy, but with more typos."
-  </head>
 
-  <body class="Site Blog grid-layout normal-text">
-    <header class="Site__Header Blog__Header grid-header banner">
-      <img alt="A desk, with a laptop and books" src="/images/freddie-marriage-vSchPA-YA_A-unsplash-cropped.jpg" data-img2picture-ignore="true" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ renderData.title or title or metadata.title }}</title>
+  <link rel="stylesheet" href="{{ '/css/styles.css' | url }}">
+  <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+  <meta name="description"
+    content="Sketches, thoughts, and observations on all the things. A personal notebook, where I explore the vast expanse of my own ignorance. It's like therapy, but with more typos."
+    </head>
+
+<body class="Site Blog grid-layout normal-text">
+  <header class="Site__Header Blog__Header grid-header banner">
+    <img alt="A desk, with a laptop and books" src="/images/freddie-marriage-vSchPA-YA_A-unsplash-cropped.jpg"
+      data-img2picture-ignore="true">
+  </header>
+  <aside class="Site__Side grid-nav">
+    <header>
+      <div class="image avatar"><img src="/images/rendall-360w.png" alt="Rendall smiling" width="200" height="200"
+          data-img2picture-ignore="true"></div>
+      <h1><a href="https://rendall.dev">Rendall Koski</a></h1>
     </header>
-    <aside class="Site__Side grid-nav">
-      <header>
-        <div class="image avatar"><img src="/images/rendall-360w.png" alt="Rendall smiling" width="200" height="200" data-img2picture-ignore="true" /></div>
-        <h1><a href="https://rendall.dev">Rendall Koski</a></h1>
-      </header>
-      <nav>
-        <ul>
-          <li><a href="https://rendall.dev/#about">About</a></li>
-          <li><a href="/" class="active">Blog</a></li>
-          <li><a href="https://rendall.dev/resume">CV / Resume</a></li>
-          <li><a href="https://rendall.dev/#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <footer></footer>
-    </aside>
-
-    <main class="Site__Main Blog__Main grid-main">{{ content | safe }}</main>
-
+    <nav>
+      <ul>
+        <li><a href="https://rendall.dev/#about">About</a></li>
+        <li><a href="/" class="active">Blog</a></li>
+        <li><a href="https://rendall.dev/resume">CV / Resume</a></li>
+        <li><a href="https://rendall.dev/#contact">Contact</a></li>
+      </ul>
+    </nav>
     <footer></footer>
-    <script src="/js/nav.js"></script>
-  </body>
+  </aside>
+
+  <main class="Site__Main Blog__Main grid-main">{{ content | safe }}</main>
+
+  <footer></footer>
+  <script src="/js/nav.js"></script>
+</body>
+
 </html>

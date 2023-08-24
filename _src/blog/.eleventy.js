@@ -34,7 +34,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode(
     "imageCaption",
     (src, alt, caption, credit, href) => {
-      const figStartSnippet = `<figure><img src="${src}" alt="${alt}" />`
+      const figStartSnippet = `<figure><img src="${src}" alt="${alt}">`
       const figCaption = caption ? `<figcaption>${caption}</figcaption>` : ""
       const imageCredit =
         credit && href
