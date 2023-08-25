@@ -105,8 +105,10 @@ module.exports = function (eleventyConfig) {
   })
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
-    return DateTime.fromJSDate(dateObj).toFormat("yyyy.MM.dd")
+  eleventyConfig.addFilter("toDatetime", (dateObj) => {
+    if (dateObj === undefined) return ""
+    else if (typeof dateObj === "string") return new Date(dateObj).toISOString()
+    else return dateObj.toISOString()
   })
 
   // only content in the `posts/` directory

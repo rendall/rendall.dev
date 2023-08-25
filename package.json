@@ -4,7 +4,7 @@
   "description": "The website for rendall.dev",
   "main": "index.js",
   "scripts": {
-    "build": "yarn run build:site && yarn run build:11ty && yarn run build:css",
+    "build": "yarn run build:css && yarn run build:site && yarn run build:11ty",
     "build:11ty": "cd _src && eleventy --output=../dist/ && cd blog && eleventy && cd ../..",
     "build:css": "sass ./_src/scss:./dist/css --no-source-map && sass ./_src/scss:./dist/blog/css --no-source-map",
     "build:site": "webpack",
