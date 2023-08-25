@@ -10,9 +10,9 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
       title="{{ metadata.title }}">
     <link rel="canonical" href="https://blog.rendall.dev/posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title | slugify }}/">
     <link rel="me" href="https://twitter.com/rendall">
-    <link rel="prerender" href="https://rendall.dev/#about" as="document">
-    <link rel="prerender" href="https://rendall.dev/#contact" as="document">
-    <link rel="prerender" href="https://rendall.dev/resume" as="document">
+    <link rel="prerender" href="https://rendall.dev/#about">
+    <link rel="prerender" href="https://rendall.dev/#contact">
+    <link rel="prerender" href="https://rendall.dev/resume">
     <link rel="stylesheet" href="{{ '/css/styles.css' | url }}">
     <meta charset="utf-8">
     <meta name="description" content="{{ description or metadata.defaultPostDescription }}">
