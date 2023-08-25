@@ -56,7 +56,7 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
       <footer></footer>
     </aside>
 
-    <main class="Site__Main Blog__Main grid-main">
+    <main class="Site__Main Post__Main grid-main">
       <section>
         <header class="Post__Header">
           <h2 class="Post__Title">{{ title }}</h2>
@@ -72,16 +72,15 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
       </section>
 
       <section>
+        <h2 class="section-header">Comments:</h2>
         <div class="Blog__Form">
           {% if comments %}
-          <h2>Comments:</h2>
           <ul id="comment-list" class="comment__list" name="{% formName %}" data-lastupdate="{{ lastupdate | getTime}}">
             {% for comment in comments %}
             <li class="comment">
               <header class="comment__header">
                 <p class="comment__author">{{comment.author}}</p>
-                <time class="comment__date" datetime="{{comment.time | getTime}}">{{comment.time | toLocaleString
-                }}</time>
+                <time class="comment__date" datetime="{{comment.time | toDatetime}}">{{comment.time | toLocaleString }}</time>
               </header>
               {{comment.text | formatText | safe}}
             </li>
@@ -126,7 +125,7 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
         </div>
       </section>
 
-      <section class="Blog__Nav">
+      <nav class="Blog__Nav">
         {% set previousPost = collections.posts | getPreviousCollectionItem %} {% set nextPost = collections.posts |
         getNextCollectionItem %}
         <ul>
@@ -144,7 +143,7 @@ permalink: /posts/{{ date | year }}/{{ date | month }}/{{ date | day }}/{{ title
             {% endif %}
           </li>
         </ul>
-      </section>
+      </nav>
     </main>
     <footer class="grid-footer"></footer>
     <script src="/js/post.js"></script>
