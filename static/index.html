@@ -2,15 +2,24 @@
 <html lang="en">
 
   <head>
+    <link rel="canonical" href="https://www.rendall.dev">
+    <link rel="prerender" href="./blog/" as="document">
+    <link rel="prerender" href="./resume/" as="document">
+    <meta name="description"
+      content="Get to know Rendall Koski. Explore his CV, blog, and social media accounts to learn more. Contact him through the provided form or social media to work together or ask questions.">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="-FSaRT58EqpfLpq5KSosoDUsrFBuJ8iXG7-7WCrgc8k">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .Site__Message img.icon,
+      .Site__SocialList img.icon {
+        width: 2rem;
+        vertical-align: middle;
+        margin-right: 1rem;
+      }
+    </style>
     <title>Rendall's website</title>
-    <link rel="stylesheet" href="/css/styles.css" type="text/css">
-    <link rel="canonical" href="https://www.rendall.dev">
-    <meta name="description" content="Get to know Rendall Koski. Explore his CV,
-    blog, and social media accounts to learn more. Contact him through the
-    provided form or social media to work together or ask questions.">
   </head>
 
   <body class="Site grid-layout normal-text">
@@ -28,8 +37,8 @@
       <nav>
         <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="./blog">Blog</a></li>
-          <li><a href="./resume">CV / Resume</a></li>
+          <li><a href="./blog/">Blog</a></li>
+          <li><a href="./resume/">CV / Resume</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -112,6 +121,7 @@
             <p id="error-message"></p>
           </div>
           <form name="contact" method="POST" netlify-honeypot="city" netlify="netlify" action="/accept">
+            <input type="hidden" name="form-name" value="contact">
             <fieldset>
               <label for="message">message<textarea name="message" id="message" class="h15rem pad-top-05rem"></textarea>
               </label>
