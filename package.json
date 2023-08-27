@@ -10,7 +10,7 @@
     "build:site": "webpack",
     "fix": "yarn prettier . --write",
     "help": "sass --help",
-    "prebuild": "yarn run fix && yarn tsc ./_src/ts/slugify.ts && rm -rf ./dist && yarn run prebuild:blog",
+    "prebuild": "yarn run fix && yarn tsc ./_src/ts/slugify.ts && yarn run prebuild:blog",
     "prebuild:blog": "rm -rf ./static/blog/images && cp -r ./static/images ./static/blog/",
     "start": "concurrently \"yarn run start:root\" \"yarn run start:blog\"",
     "start:blog": "http-server ./dist/blog -p 8081 -a localhost -c-1",
